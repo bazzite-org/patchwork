@@ -4738,6 +4738,7 @@ static int amdgpu_dm_mode_config_init(struct amdgpu_device *adev)
 	return 0;
 }
 
+#define AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV 12
 #define AMDGPU_DM_DEFAULT_MIN_BACKLIGHT 12
 #define AMDGPU_DM_DEFAULT_MAX_BACKLIGHT 255
 #define AMDGPU_DM_MIN_SPREAD ((AMDGPU_DM_DEFAULT_MAX_BACKLIGHT - AMDGPU_DM_DEFAULT_MIN_BACKLIGHT) / 2)
@@ -4769,13 +4770,29 @@ static void amdgpu_dm_update_backlight_caps(struct amdgpu_display_manager *dm,
 	}
 
 	if (!caps->caps_valid) {
+		printk(KERN_NOTICE"VLV ACPI does not provide backlight range, using defaults: %d %d\n",
+		       AMDGPU_DM_DEFAULT_MIN_BACKLIGHT, AMDGPU_DM_DEFAULT_MAX_BACKLIGHT);
+
 		caps->min_input_signal = AMDGPU_DM_DEFAULT_MIN_BACKLIGHT;
 		caps->max_input_signal = AMDGPU_DM_DEFAULT_MAX_BACKLIGHT;
 		caps->caps_valid = true;
+	} else {
+		printk(KERN_NOTICE"VLV Successfully queried backlight range over ACPI: %d %d\n",
+		       (int) caps->min_input_signal, (int) caps->max_input_signal);
+
+		if ( caps->min_input_signal > AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV )
+		{
+			caps->min_input_signal = AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV;
+			printk(KERN_NOTICE"VLV OVERRIDE backlight range (min only): %d %d\n",
+			       (int) caps->min_input_signal, (int) caps->max_input_signal);
+		}
 	}
 #else
 	if (caps->aux_support)
 		return;
+
+	printk(KERN_NOTICE"VLV Kernel built without ACPI. using backlight range defaults: %d %d\n",
+	       AMDGPU_DM_DEFAULT_MIN_BACKLIGHT, AMDGPU_DM_DEFAULT_MAX_BACKLIGHT);
 
 	caps->min_input_signal = AMDGPU_DM_DEFAULT_MIN_BACKLIGHT;
 	caps->max_input_signal = AMDGPU_DM_DEFAULT_MAX_BACKLIGHT;
@@ -4837,7 +4854,7 @@ static u32 convert_brightness_from_user(const struct amdgpu_dm_backlight_caps *c
 		break;
 	}
 
-	// Rescale 0..255 to min..max
+	// Rescale 0..AMDGPU_MAX_BL_LEVEL to min..max
 	return min + DIV_ROUND_CLOSEST((max - min) * brightness,
 				       AMDGPU_MAX_BL_LEVEL);
 }
@@ -4852,7 +4869,7 @@ static u32 convert_brightness_to_user(const struct amdgpu_dm_backlight_caps *cap
 
 	if (brightness < min)
 		return 0;
-	// Rescale min..max to 0..255
+	// Rescale min..max to 0..AMDGPU_MAX_BL_LEVEL
 	return DIV_ROUND_CLOSEST(AMDGPU_MAX_BL_LEVEL * (brightness - min),
 				 max - min);
 }
