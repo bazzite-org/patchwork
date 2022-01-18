@@ -2409,7 +2409,7 @@ static int __dwc3_gadget_wakeup(struct dwc3 *dwc, bool async)
 		return 0;
 
 	/* poll until Link State changes to ON */
-	retries = 20000;
+	retries = 2000000;
 
 	while (retries--) {
 		reg = dwc3_readl(dwc->regs, DWC3_DSTS);
