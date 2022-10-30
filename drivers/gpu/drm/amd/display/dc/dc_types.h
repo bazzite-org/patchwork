@@ -212,6 +212,9 @@ struct dc_edid_caps {
 	bool hdr_supported;
 	bool rr_capable;
 
+	/* DisplayPort caps */
+	uint32_t dsc_fixed_bits_per_pixel_x16;
+
 	struct dc_panel_patch panel_patch;
 };
 
