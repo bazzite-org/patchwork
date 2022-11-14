@@ -6673,7 +6673,7 @@ create_stream_for_sink(struct drm_connector *connector,
 
 	if (recalculate_timing)
 		drm_mode_set_crtcinfo(&saved_mode, 0);
-	else if (!old_stream)
+	else
 		drm_mode_set_crtcinfo(&mode, 0);
 
 	/*
