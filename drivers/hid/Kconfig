@@ -1391,4 +1391,6 @@ source "drivers/hid/intel-thc-hid/Kconfig"
 
 source "drivers/hid/ipts/Kconfig"
 
+source "drivers/hid/ithc/Kconfig"
+
 endif # HID_SUPPORT
