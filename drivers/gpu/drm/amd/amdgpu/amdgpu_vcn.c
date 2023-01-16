@@ -147,6 +147,12 @@ int amdgpu_vcn_sw_init(struct amdgpu_device *adev)
 		}
 	}
 
+	if (amdgpu_indirect_sram >= 0) {
+		adev->vcn.indirect_sram = (bool)amdgpu_indirect_sram;
+		dev_warn(adev->dev, "Forcibly set indirect SRAM status to: %d\n",
+			 amdgpu_indirect_sram);
+	}
+
 	/* from vcn4 and above, only unified queue is used */
 	adev->vcn.using_unified_queue =
 		amdgpu_ip_version(adev, UVD_HWIP, 0) >= IP_VERSION(4, 0, 0);
