@@ -7091,6 +7091,14 @@
 					request from 5000 ms to 500 ms);
 			Example: quirks=0781:5580:bk,0a5c:5834:gij
 
+	usbcore.interrupt_interval_override=
+			[USB] A list of USB devices for which a different polling
+			interval than the default shall be used on all interrupt-type
+			endpoints. The format is VendorID:ProductID:interval, with
+			the vendor and product ids specified hexadecimally, and the
+			interval decimally in milliseconds.
+			Example: interrupt_interval_override=045e:00db:16,1bcf:0005:2
+
 	usbhid.mousepoll=
 			[USBHID] The interval which mice are to be polled at.
 
