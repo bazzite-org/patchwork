@@ -3383,13 +3383,6 @@ fi\
 %endif
 %endif
 
-%ifnarch noarch %{nobuildarches}
-if [ -x /sbin/ldconfig ]
-then
-    /sbin/ldconfig -X || exit $?
-fi
-%endif
-
 ###
 ### file lists
 ###
