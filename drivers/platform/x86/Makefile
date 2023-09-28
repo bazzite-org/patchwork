@@ -4,9 +4,13 @@
 # x86 Platform-Specific Drivers
 #
 
+# ACPI calls
+
 # Windows Management Interface
 obj-$(CONFIG_ACPI_WMI)		+= wmi.o
 obj-$(CONFIG_WMI_BMOF)		+= wmi-bmof.o
+
+obj-$(CONFIG_ACPI_CALL)		+= acpi_call.o
 
 # WMI drivers
 obj-$(CONFIG_HUAWEI_WMI)		+= huawei-wmi.o
