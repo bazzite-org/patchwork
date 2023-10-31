@@ -232,7 +232,7 @@ int pcie_aer_is_native(struct pci_dev *dev)
 }
 EXPORT_SYMBOL_NS_GPL(pcie_aer_is_native, CXL);
 
-static int pci_enable_pcie_error_reporting(struct pci_dev *dev)
+int pci_enable_pcie_error_reporting(struct pci_dev *dev)
 {
 	int rc;
 
@@ -242,6 +242,19 @@ static int pci_enable_pcie_error_reporting(struct pci_dev *dev)
 	rc = pcie_capability_set_word(dev, PCI_EXP_DEVCTL, PCI_EXP_AER_FLAGS);
 	return pcibios_err_to_errno(rc);
 }
+EXPORT_SYMBOL_GPL(pci_enable_pcie_error_reporting);
+
+int pci_disable_pcie_error_reporting(struct pci_dev *dev)
+{
+	int rc;
+
+	if (!pcie_aer_is_native(dev))
+		return -EIO;
+
+	rc = pcie_capability_clear_word(dev, PCI_EXP_DEVCTL, PCI_EXP_AER_FLAGS);
+	return pcibios_err_to_errno(rc);
+}
+EXPORT_SYMBOL_GPL(pci_disable_pcie_error_reporting);
 
 int pci_aer_clear_nonfatal_status(struct pci_dev *dev)
 {
