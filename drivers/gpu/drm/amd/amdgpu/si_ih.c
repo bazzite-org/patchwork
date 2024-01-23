@@ -125,6 +125,7 @@ static u32 si_ih_get_wptr(struct amdgpu_device *adev,
 		 */
 		tmp &= ~IH_RB_CNTL__WPTR_OVERFLOW_CLEAR_MASK;
 		WREG32(IH_RB_CNTL, tmp);
+		ih->overflow = true;
 	}
 	return (wptr & ih->ptr_mask);
 }
