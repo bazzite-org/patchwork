@@ -209,6 +209,7 @@ int amdgpu_ih_process(struct amdgpu_device *adev, struct amdgpu_ih_ring *ih)
 {
 	unsigned int count;
 	u32 wptr;
+	int i;
 
 	if (!ih->enabled || adev->shutdown)
 		return IRQ_NONE;
@@ -225,6 +226,21 @@ restart_ih:
 	while (ih->rptr != wptr && --count) {
 		amdgpu_irq_dispatch(adev, ih);
 		ih->rptr &= ih->ptr_mask;
+	}
+
+	/* If the ring buffer overflowed, we might have lost some fence
+	 * signal interrupts. Check if there was any activity so the signal
+	 * doesn't get lost.
+	 */
+	if (ih->overflow) {
+		for (i = 0; i < AMDGPU_MAX_RINGS; ++i) {
+			struct amdgpu_ring *ring = adev->rings[i];
+
+			if (!ring || !ring->fence_drv.initialized)
+				continue;
+			amdgpu_fence_process(ring);
+		}
+		ih->overflow = false;
 	}
 
 	amdgpu_ih_set_rptr(adev, ih);
