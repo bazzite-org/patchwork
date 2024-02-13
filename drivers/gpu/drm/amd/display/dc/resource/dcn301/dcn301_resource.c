@@ -23,7 +23,7 @@
  *
  */
 
-
+#include <linux/dmi.h>
 #include "dm_services.h"
 #include "dc.h"
 
@@ -1404,6 +1404,22 @@ static struct resource_funcs dcn301_res_pool_funcs = {
 	.patch_unknown_plane_state = dcn20_patch_unknown_plane_state
 };
 
+static const struct dmi_system_id is_steamdeck[] = {
+	{	/* Valve Steam Deck (Galileo) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Galileo"),
+		},
+	},
+	{	/* Valve Steam Deck (Jupiter) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Jupiter"),
+		},
+	},
+	{}
+};
+
 static bool dcn301_resource_construct(
 	uint8_t num_virtual_links,
 	struct dc *dc,
@@ -1437,9 +1453,17 @@ static bool dcn301_resource_construct(
 	dc->caps.max_cursor_size = 256;
 	dc->caps.min_horizontal_blanking_period = 80;
 	dc->caps.dmdata_alloc_size = 2048;
-	dc->caps.max_slave_planes = 2;
-	dc->caps.max_slave_yuv_planes = 2;
-	dc->caps.max_slave_rgb_planes = 2;
+	
+	if (dmi_first_match(is_steamdeck)) {
+		dc->caps.max_slave_planes = 3;
+		dc->caps.max_slave_yuv_planes = 3;
+		dc->caps.max_slave_rgb_planes = 3;
+	} else {
+		dc->caps.max_slave_planes = 2;
+		dc->caps.max_slave_yuv_planes = 2;
+		dc->caps.max_slave_rgb_planes = 2;
+	}
+
 	dc->caps.is_apu = true;
 	dc->caps.post_blend_color_processing = true;
 	dc->caps.force_dp_tps4_for_cp2520 = true;
