@@ -130,6 +130,10 @@ i915_param_named_unsafe(lmem_size, uint, 0400,
 			"Set the lmem size(in MiB) for each region. (default: 0, all memory)");
 i915_param_named_unsafe(lmem_bar_size, uint, 0400,
 			"Set the lmem bar size(in MiB).");
+ 
+i915_param_named_unsafe(disable_async_page_flip, bool, 0400,
+			"Disable async page flipping"
+			"(0=disabled [default], 1=enabled)");
 
 #if IS_ENABLED(CONFIG_DRM_I915_REPLAY_GPU_HANGS_API)
 i915_param_named(enable_debug_only_api, bool, 0400,
