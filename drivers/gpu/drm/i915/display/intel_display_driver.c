@@ -127,7 +127,7 @@ static void intel_mode_config_init(struct drm_i915_private *i915)
 	mode_config->funcs = &intel_mode_funcs;
 	mode_config->helper_private = &intel_mode_config_funcs;
 
-	mode_config->async_page_flip = HAS_ASYNC_FLIPS(i915);
+	mode_config->async_page_flip = HAS_ASYNC_FLIPS(i915) && !i915->params.disable_async_page_flip;
 
 	/*
 	 * Maximum framebuffer dimensions, chosen to match
