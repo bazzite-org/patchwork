@@ -539,6 +539,9 @@ struct xe_device {
 		unsigned int czclk_freq;
 		unsigned int fsb_freq, mem_freq, is_ddr3;
 	};
+	struct {
+		bool disable_async_page_flip;
+	} params;
 
 	void *pxp;
 #endif
