@@ -111,7 +111,12 @@ static u32 ath11k_pci_window_read32(struct ath11k_base *ab, u32 offset)
 	struct ath11k_pci *ab_pci = ath11k_pci_priv(ab);
 	u32 window_start, val;
 
-	window_start = ath11k_pci_get_window_start(ab, offset);
+	if (ab->hw_params.static_window_map)
+        	window_start = ath11k_pci_get_window_start(ab, offset);
+      	else
+        	window_start = ATH11K_PCI_WINDOW_START;
+
+	//window_start = ath11k_pci_get_window_start(ab, offset);
 
 	if (window_start == ATH11K_PCI_WINDOW_START) {
 		spin_lock_bh(&ab_pci->window_lock);
