@@ -2551,7 +2551,7 @@ static void ath11k_peer_assoc_h_he(struct ath11k *ar,
 		    he_mcs_mask[i])
 			max_nss = i + 1;
 	}
-	arg->peer_nss = min(sta->deflink.rx_nss, max_nss);
+	arg->peer_nss = min(arg->peer_nss, (u32)max_nss);
 
 	if (arg->peer_phymode == MODE_11AX_HE160 ||
 	    arg->peer_phymode == MODE_11AX_HE80_80) {
@@ -4803,6 +4803,7 @@ static void ath11k_sta_rc_update_wk(struct work_struct *wk)
 
 	nss = max_t(u32, 1, nss);
 	nss = min(nss, ath11k_mac_max_nss(ht_mcs_mask, vht_mcs_mask, he_mcs_mask));
+	nss = min(nss, (u32)ar->num_tx_chains);
 
 	if (changed & IEEE80211_RC_BW_CHANGED) {
 		/* Get the peer phymode */
