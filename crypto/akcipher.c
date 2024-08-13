@@ -141,8 +141,7 @@ int crypto_register_akcipher(struct akcipher_alg *alg)
 
 	if (!alg->encrypt)
 		alg->encrypt = akcipher_default_op;
-	if (!alg->decrypt)
-		alg->decrypt = akcipher_default_op;
+	alg->decrypt = akcipher_default_op;
 	if (!alg->set_priv_key)
 		alg->set_priv_key = akcipher_default_set_key;
 
