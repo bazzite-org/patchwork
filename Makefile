@@ -367,6 +367,17 @@ ifneq ($(filter install,$(MAKECMDGOALS)),)
     endif
 endif
 
+# CKI/cross compilation hack
+# Do we need to rebuild scripts after cross compilation?
+# If kernel was cross-compiled, these scripts have arch of build host.
+REBUILD_SCRIPTS_FOR_CROSS:=0
+
+# Regenerating config with incomplete source tree will produce different
+# config options. Disable it.
+ifeq ($(REBUILD_SCRIPTS_FOR_CROSS),1)
+may-sync-config:=
+endif
+
 ifdef mixed-build
 # ===========================================================================
 # We're called with mixed targets (*config and build targets).
@@ -1936,7 +1947,22 @@ endif
 
 ifdef CONFIG_MODULES
 
-modules.order: $(build-dir)
+scripts_build:
+	$(MAKE) $(build)=scripts/basic
+	$(MAKE) $(build)=scripts/mod
+	$(MAKE) $(build)=scripts scripts/module.lds
+	$(MAKE) $(build)=scripts scripts/unifdef
+	$(MAKE) $(build)=scripts
+
+prepare_after_cross:
+	# disable STACK_VALIDATION to avoid building objtool
+	sed -i '/^CONFIG_STACK_VALIDATION/d' ./include/config/auto.conf || true
+	# build minimum set of scripts to allow building external modules
+	$(MAKE) KBUILD_EXTMOD="" M="" scripts_build V=1
+
+PHONY += prepare_after_cross scripts_build
+
+$(MODORDER): $(build-dir)
 	@:
 
 # KBUILD_MODPOST_NOFINAL can be set to skip the final link of modules.
