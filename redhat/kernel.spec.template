@@ -3927,6 +3927,7 @@ fi\
 %{_sysconfdir}/bash_completion.d/perf
 %doc linux-%{KVERREL}/tools/perf/Documentation/examples.txt
 %{_docdir}/perf-tip/tips.txt
+%{_includedir}/perf/perf_dlfilter.h
 
 %files -n python3-perf
 %{python3_sitearch}/*
@@ -3951,7 +3952,6 @@ fi\
 %{_includedir}/perf/bpf_perf.h
 %{_includedir}/perf/core.h
 %{_includedir}/perf/cpumap.h
-%{_includedir}/perf/perf_dlfilter.h
 %{_includedir}/perf/event.h
 %{_includedir}/perf/evlist.h
 %{_includedir}/perf/evsel.h
