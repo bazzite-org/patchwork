@@ -589,6 +589,13 @@ static int enter_state(suspend_state_t state)
 	if (state == PM_SUSPEND_TO_IDLE)
 		s2idle_begin();
 
+	/*
+	 * Linux does not have the concept of a "Screen Off" state, so call
+	 * the platform functions for Display On/Off prior to the suspend
+	 * sequence, mirroring Windows which calls them outside of it as well.
+	 */
+	platform_suspend_display_off();
+
 	if (sync_on_suspend_enabled) {
 		trace_suspend_resume(TPS("sync_filesystems"), 0, true);
 		ksys_sync_helper();
@@ -616,6 +623,8 @@ static int enter_state(suspend_state_t state)
 	suspend_finish();
  Unlock:
 	mutex_unlock(&system_transition_mutex);
+
+	platform_suspend_display_on();
 	return error;
 }
 
