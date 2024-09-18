@@ -254,6 +254,16 @@ static bool sleep_state_supported(suspend_state_t state)
 	       (valid_state(state) && !cxl_mem_active());
 }
 
+static int platform_standby_display_off(void)
+{
+	return s2idle_ops && s2idle_ops->display_off ? s2idle_ops->display_off() : 0;
+}
+
+static int platform_standby_display_on(void)
+{
+	return s2idle_ops && s2idle_ops->display_on ? s2idle_ops->display_on() : 0;
+}
+
 static int platform_suspend_prepare(suspend_state_t state)
 {
 	return state != PM_SUSPEND_TO_IDLE && suspend_ops->prepare ?
