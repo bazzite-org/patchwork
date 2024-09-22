@@ -11,6 +11,7 @@
 
 #include <linux/string.h>
 #include <linux/delay.h>
+#include <linux/dmi.h>
 #include <linux/errno.h>
 #include <linux/init.h>
 #include <linux/console.h>
@@ -60,6 +61,30 @@ static DECLARE_SWAIT_QUEUE_HEAD(s2idle_wait_head);
 
 enum s2idle_states __read_mostly s2idle_state;
 static DEFINE_RAW_SPINLOCK(s2idle_lock);
+
+// The ROG Ally series disconnects its controllers on Display Off, without
+// holding a lock, introducing a race condition. Add a delay to allow the
+// controller to disconnect cleanly prior to suspend.
+static const struct platform_s2idle_quirks rog_ally_quirks = {
+	.delay_display_off = 500,
+};
+
+static const struct dmi_system_id platform_s2idle_quirks[] = {
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC71L"),
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
+	{}
+};
+
 
 /**
  * pm_suspend_default_s2idle - Check if suspend-to-idle is the default suspend.
@@ -590,11 +615,25 @@ static int enter_state(suspend_state_t state)
 		s2idle_begin();
 
 	/*
+	 * Windows transitions between Modern Standby states slowly, over multiple
+	 * seconds. Certain manufacturers may rely on this, introducing race
+	 * conditions. Until Linux can support modern standby, add the relevant
+	 * delays between transitions here.
+	 */
+	const struct dmi_system_id *s2idle_sysid = dmi_first_match(
+		platform_s2idle_quirks
+	);
+	const struct platform_s2idle_quirks *s2idle_quirks = s2idle_sysid ?
+		s2idle_sysid->driver_data : NULL;
+
+	/*
 	 * Linux does not have the concept of a "Screen Off" state, so call
 	 * the platform functions for Display On/Off prior to the suspend
 	 * sequence, mirroring Windows which calls them outside of it as well.
 	 */
 	platform_suspend_display_off();
+	if (s2idle_quirks && s2idle_quirks->delay_display_off)
+		msleep(s2idle_quirks->delay_display_off);
 
 	if (sync_on_suspend_enabled) {
 		trace_suspend_resume(TPS("sync_filesystems"), 0, true);
@@ -624,6 +663,8 @@ static int enter_state(suspend_state_t state)
  Unlock:
 	mutex_unlock(&system_transition_mutex);
 
+	if (s2idle_quirks && s2idle_quirks->delay_display_on)
+		msleep(s2idle_quirks->delay_display_on);
 	platform_suspend_display_on();
 	return error;
 }
