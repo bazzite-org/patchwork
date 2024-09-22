@@ -144,6 +144,11 @@ struct platform_s2idle_ops {
 	int (*display_on)(void);
 };
 
+struct platform_s2idle_quirks {
+	int delay_display_off;
+	int delay_display_on;
+};
+
 #ifdef CONFIG_SUSPEND
 extern suspend_state_t pm_suspend_target_state;
 extern suspend_state_t mem_sleep_current;
