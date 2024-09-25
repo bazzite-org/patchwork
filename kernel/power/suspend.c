@@ -547,6 +547,13 @@ int suspend_devices_and_enter(suspend_state_t state)
 	if (state == PM_SUSPEND_TO_IDLE)
 		pm_set_suspend_no_platform();
 
+	/*
+	 * Linux does not have the concept of a "Sleep" state. As with Display
+	 * On/Off, call the platform functions for Sleep Entry/Exit prior to the
+	 * suspend sequence.
+	 */
+	platform_suspend_sleep_entry();
+
 	error = platform_suspend_begin(state);
 	if (error)
 		goto Close;
@@ -577,6 +584,8 @@ int suspend_devices_and_enter(suspend_state_t state)
  Close:
 	platform_resume_end(state);
 	pm_suspend_target_state = PM_SUSPEND_ON;
+
+	platform_suspend_sleep_exit();
 	return error;
 
  Recover_platform:
