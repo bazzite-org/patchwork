@@ -285,6 +285,18 @@ int platform_suspend_display_off(void)
 }
 EXPORT_SYMBOL_GPL(platform_suspend_display_off);
 
+int platform_suspend_sleep_entry(void)
+{
+	return s2idle_ops && s2idle_ops->sleep_entry ? s2idle_ops->sleep_entry() : 0;
+}
+EXPORT_SYMBOL_GPL(platform_suspend_sleep_entry);
+
+int platform_suspend_sleep_exit(void)
+{
+	return s2idle_ops && s2idle_ops->sleep_exit ? s2idle_ops->sleep_exit() : 0;
+}
+EXPORT_SYMBOL_GPL(platform_suspend_sleep_exit);
+
 int platform_suspend_display_on(void)
 {
 	return s2idle_ops && s2idle_ops->display_on ? s2idle_ops->display_on() : 0;
