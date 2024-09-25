@@ -133,6 +133,7 @@ struct platform_suspend_ops {
 
 struct platform_s2idle_ops {
 	int (*display_off)(void);
+	int (*sleep_entry)(void);
 	int (*begin)(void);
 	int (*prepare)(void);
 	int (*prepare_late)(void);
@@ -141,6 +142,7 @@ struct platform_s2idle_ops {
 	void (*restore_early)(void);
 	void (*restore)(void);
 	void (*end)(void);
+	int (*sleep_exit)(void);
 	int (*display_on)(void);
 };
 
