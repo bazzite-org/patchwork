@@ -148,6 +148,8 @@ struct platform_s2idle_ops {
 
 struct platform_s2idle_quirks {
 	int delay_display_off;
+	int delay_sleep_entry;
+	int delay_sleep_exit;
 	int delay_display_on;
 };
 
