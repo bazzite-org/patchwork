@@ -65,8 +65,11 @@ static DEFINE_RAW_SPINLOCK(s2idle_lock);
 // The ROG Ally series disconnects its controllers on Display Off, without
 // holding a lock, introducing a race condition. Add a delay to allow the
 // controller to disconnect cleanly prior to suspend.
+// In addition, the EC of the device rarely (1/20 attempts) may get stuck
+// after suspend in an invalid state, where it mirros Sleep behavior.
 static const struct platform_s2idle_quirks rog_ally_quirks = {
-	.delay_display_off = 500,
+	.delay_display_off = 200,
+	.delay_sleep_entry = 300,
 };
 
 static const struct dmi_system_id platform_s2idle_quirks[] = {
@@ -548,11 +551,23 @@ int suspend_devices_and_enter(suspend_state_t state)
 		pm_set_suspend_no_platform();
 
 	/*
-	 * Linux does not have the concept of a "Sleep" state. As with Display
+	 * Windows transitions between Modern Standby states slowly, as with
+	 * Display On/Off, query the appropriate delays here for Sleep Entry/Exit.
+	 */
+	const struct dmi_system_id *s2idle_sysid = dmi_first_match(
+		platform_s2idle_quirks
+	);
+	const struct platform_s2idle_quirks *s2idle_quirks = s2idle_sysid ?
+		s2idle_sysid->driver_data : NULL;
+
+	/*
+	 * Linux does not have the concept of a "Sleep" state. As done with Display
 	 * On/Off, call the platform functions for Sleep Entry/Exit prior to the
 	 * suspend sequence.
 	 */
 	platform_suspend_sleep_entry();
+	if (s2idle_quirks && s2idle_quirks->delay_sleep_entry)
+		msleep(s2idle_quirks->delay_sleep_entry);
 
 	error = platform_suspend_begin(state);
 	if (error)
@@ -585,6 +600,8 @@ int suspend_devices_and_enter(suspend_state_t state)
 	platform_resume_end(state);
 	pm_suspend_target_state = PM_SUSPEND_ON;
 
+	if (s2idle_quirks && s2idle_quirks->delay_sleep_exit)
+		msleep(s2idle_quirks->delay_sleep_exit);
 	platform_suspend_sleep_exit();
 	return error;
 
