@@ -259,6 +259,16 @@ static int platform_standby_display_off(void)
 	return s2idle_ops && s2idle_ops->display_off ? s2idle_ops->display_off() : 0;
 }
 
+static int platform_standby_sleep_entry(void)
+{
+	return s2idle_ops && s2idle_ops->sleep_entry ? s2idle_ops->sleep_entry() : 0;
+}
+
+static int platform_standby_sleep_exit(void)
+{
+	return s2idle_ops && s2idle_ops->sleep_exit ? s2idle_ops->sleep_exit() : 0;
+}
+
 static int platform_standby_display_on(void)
 {
 	return s2idle_ops && s2idle_ops->display_on ? s2idle_ops->display_on() : 0;
