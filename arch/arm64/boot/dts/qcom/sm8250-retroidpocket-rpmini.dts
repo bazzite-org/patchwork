@@ -31,6 +31,8 @@
 	touchscreen@38 {
 		touchscreen-size-x = <960>;
 		touchscreen-size-y = <1280>;
+		touchscreen-swapped-x-y;
+		touchscreen-inverted-x;
 	};
 };
 
