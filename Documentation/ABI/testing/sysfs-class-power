@@ -387,13 +387,14 @@ Description:
 		charging rate in order to prolong the battery health. "Bypass"
 		means the charger bypasses the charging path around the
 		integrated converter allowing for a "smart" wall adaptor to
-		perform the power conversion externally.
+		perform the power conversion externally. Certain devices
+		may enable bypass only when the device is awake ("BypassS0").
 
 		Access: Read, Write
 
 		Valid values:
 			      "Unknown", "N/A", "Trickle", "Fast", "Standard",
-			      "Adaptive", "Custom", "Long Life", "Bypass"
+			      "Adaptive", "Custom", "Long Life", "Bypass", "BypassS0"
 
 What:		/sys/class/power_supply/<supply_name>/charge_term_current
 Date:		July 2014
