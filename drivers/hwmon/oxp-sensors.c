@@ -27,6 +27,8 @@
 #include <linux/platform_device.h>
 #include <linux/processor.h>
 
+#include <acpi/battery.h>
+
 /* Handle ACPI lock mechanism */
 static u32 oxp_mutex;
 
@@ -88,6 +90,31 @@ static enum oxp_board board;
 #define OXP_TURBO_TAKE_VAL             0x40 /* All other models */
 
 #define OXP_TURBO_RETURN_VAL           0x00 /* Common return val */
+
+#define OXP_X1_CHARGE_LIMIT_REG      0xA3 /* X1 charge limit (%) */
+#define OXP_X1_CHARGE_BYPASS_REG     0xA4 /* X1 bypass charging */
+
+#define OXP_X1_CHARGE_BYPASS_MASK_S0 0x01
+#define OXP_X1_CHARGE_BYPASS_MASK_S3S5 0x0A /* Cannot control S3, S5 individually. */
+
+enum charge_type_value_index {
+	CT_OFF,
+	CT_S0,
+	CT_S5,
+};
+
+static u8 charge_type_values_x1[] = {
+	[CT_OFF] = 0x00,
+	[CT_S0] = OXP_X1_CHARGE_BYPASS_MASK_S0,
+	[CT_S5] = OXP_X1_CHARGE_BYPASS_MASK_S0 | OXP_X1_CHARGE_BYPASS_MASK_S3S5,
+};
+
+static const char * const charge_type_strings[] = {
+	[CT_OFF] = "Standard",
+	[CT_S0] = "BypassS0",
+	[CT_S5] = "Bypass",
+};
+
 
 static const struct dmi_system_id dmi_table[] = {
 	{
@@ -380,6 +407,172 @@ static ssize_t tt_toggle_show(struct device *dev,
 
 static DEVICE_ATTR_RW(tt_toggle);
 
+/* Callbacks for turbo toggle attribute */
+static bool charge_control_supported(void)
+{
+	switch (board) {
+	case oxp_x1:
+		return 1;
+	default:
+		break;
+	}
+	return 0;
+}
+
+static ssize_t charge_type_store(struct device *dev,
+			       struct device_attribute *attr, const char *buf,
+			       size_t count)
+{
+	u64 val, reg;
+	int ret;
+
+	ret = __sysfs_match_string(charge_type_strings,
+				   ARRAY_SIZE(charge_type_strings), buf);
+	if (ret < 0)
+		return ret;
+
+	switch (board) {
+	case oxp_x1:
+		val = charge_type_values_x1[ret];
+		reg = OXP_X1_CHARGE_BYPASS_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = write_to_ec(reg, val);
+	if (ret < 0)
+		return ret;
+
+	return count;
+}
+
+static ssize_t charge_type_show(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+{
+	int ret;
+	u8 reg;
+	long val;
+	const u8 *vals;
+	char *str;
+
+	switch (board) {
+	case oxp_x1:
+		vals = charge_type_values_x1;
+		reg = OXP_X1_CHARGE_BYPASS_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = read_from_ec(reg, 1, &val);
+	if (ret < 0)
+		return ret;
+
+	str = (char *) charge_type_strings[0];
+	for (ret = 0; ret < ARRAY_SIZE(charge_type_strings); ret++) {
+		if (val == vals[ret]) {
+			str = (char *) charge_type_strings[ret];
+			break;
+		}
+	}
+
+	return sysfs_emit(buf, "%s\n", str);
+}
+
+static DEVICE_ATTR_RW(charge_type);
+
+static ssize_t charge_control_end_threshold_store(struct device *dev,
+			       struct device_attribute *attr, const char *buf,
+			       size_t count)
+{
+	u64 val, reg;
+	int ret;
+
+	ret = kstrtou64(buf, 10, &val);
+	if (ret < 0)
+		return ret;
+
+	if (val > 100)
+		return -EINVAL;
+
+	switch (board) {
+	case oxp_x1:
+		reg = OXP_X1_CHARGE_LIMIT_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = write_to_ec(reg, val);
+	if (ret < 0)
+		return ret;
+
+	return count;
+}
+
+static ssize_t charge_control_end_threshold_show(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+{
+	int ret;
+	u8 reg;
+	long val;
+
+	switch (board) {
+	case oxp_x1:
+		reg = OXP_X1_CHARGE_LIMIT_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = read_from_ec(reg, 1, &val);
+	if (ret < 0)
+		return ret;
+
+	return sysfs_emit(buf, "%ld\n", val);
+}
+
+static DEVICE_ATTR_RW(charge_control_end_threshold);
+
+static int oxp_battery_add(struct power_supply *battery, struct acpi_battery_hook *hook)
+{
+	/* OneXPlayer devices only have one battery. */
+	if (strcmp(battery->desc->name, "BAT0") != 0 &&
+	    strcmp(battery->desc->name, "BAT1") != 0 &&
+	    strcmp(battery->desc->name, "BATC") != 0 &&
+	    strcmp(battery->desc->name, "BATT") != 0)
+		return -ENODEV;
+
+	if (device_create_file(&battery->dev,
+	    &dev_attr_charge_control_end_threshold))
+		return -ENODEV;
+	
+	if (device_create_file(&battery->dev,
+	    &dev_attr_charge_type)) {
+		device_remove_file(&battery->dev,
+				&dev_attr_charge_control_end_threshold);
+		return -ENODEV;
+	}
+
+	return 0;
+}
+
+static int oxp_battery_remove(struct power_supply *battery, struct acpi_battery_hook *hook)
+{
+	device_remove_file(&battery->dev,
+			   &dev_attr_charge_control_end_threshold);
+	device_remove_file(&battery->dev,
+			   &dev_attr_charge_type);
+	return 0;
+}
+
+static struct acpi_battery_hook battery_hook = {
+	.add_battery = oxp_battery_add,
+	.remove_battery = oxp_battery_remove,
+	.name = "OneXPlayer Battery",
+};
+
 /* PWM enable/disable functions */
 static int oxp_pwm_enable(void)
 {
@@ -623,18 +816,18 @@ static const struct hwmon_channel_info * const oxp_platform_sensors[] = {
 	NULL,
 };
 
-static struct attribute *oxp_ec_attrs[] = {
+static struct attribute *oxp_turbo_attrs[] = {
 	&dev_attr_tt_toggle.attr,
 	NULL
 };
 
-static struct attribute_group oxp_ec_attribute_group = {
+static struct attribute_group oxp_turbo_attribute_group = {
 	.is_visible = tt_toggle_is_visible,
-	.attrs = oxp_ec_attrs,
+	.attrs = oxp_turbo_attrs,
 };
 
 static const struct attribute_group *oxp_ec_groups[] = {
-	&oxp_ec_attribute_group,
+	&oxp_turbo_attribute_group,
 	NULL
 };
 
@@ -693,6 +886,9 @@ static int __init oxp_platform_init(void)
 		platform_create_bundle(&oxp_platform_driver,
 				       oxp_platform_probe, NULL, 0, NULL, 0);
 
+	if (charge_control_supported())
+		battery_hook_register(&battery_hook);
+
 	return PTR_ERR_OR_ZERO(oxp_platform_device);
 }
 
@@ -700,6 +896,8 @@ static void __exit oxp_platform_exit(void)
 {
 	platform_device_unregister(oxp_platform_device);
 	platform_driver_unregister(&oxp_platform_driver);
+	if (charge_control_supported())
+		battery_hook_unregister(&battery_hook);
 }
 
 MODULE_DEVICE_TABLE(dmi, dmi_table);
