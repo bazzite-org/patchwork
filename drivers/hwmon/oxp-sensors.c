@@ -89,6 +89,35 @@ static enum oxp_board board;
 
 #define OXP_TURBO_RETURN_VAL           0x00 /* Common return val */
 
+#define OXP_X1_CHARGE_LIMIT_REG      0xA3 /* X1 charge limit (%) */
+#define OXP_X1_CHARGE_BYPASS_REG     0xA4 /* X1 bypass charging */
+
+#define OXP_X1_CHARGE_BYPASS_MASK_AWAKE 0x01
+#define OXP_X1_CHARGE_BYPASS_MASK_SLEEP 0x02 /* Asleep and Off might be swapped */
+#define OXP_X1_CHARGE_BYPASS_MASK_OFF   0x08
+
+enum charge_bypass_value_index {
+	CBP_OFF,
+	CBP_AWAKE,
+	CBP_ASLEEP,
+	CBP_ALWAYS,
+};
+
+static u8 charge_bypass_values_x1[] = {
+	[CBP_OFF] = 0x00,
+	[CBP_AWAKE] = OXP_X1_CHARGE_BYPASS_MASK_AWAKE,
+	[CBP_ASLEEP] = OXP_X1_CHARGE_BYPASS_MASK_AWAKE | OXP_X1_CHARGE_BYPASS_MASK_SLEEP,
+	[CBP_ALWAYS] = OXP_X1_CHARGE_BYPASS_MASK_AWAKE | OXP_X1_CHARGE_BYPASS_MASK_SLEEP | OXP_X1_CHARGE_BYPASS_MASK_OFF,
+};
+
+static const char * const charge_bypass_strings[] = {
+	[CBP_OFF] = "off",
+	[CBP_AWAKE] = "awake",
+	[CBP_ASLEEP] = "asleep",
+	[CBP_ALWAYS] = "always",
+};
+
+
 static const struct dmi_system_id dmi_table[] = {
 	{
 		.matches = {
@@ -380,6 +409,135 @@ static ssize_t tt_toggle_show(struct device *dev,
 
 static DEVICE_ATTR_RW(tt_toggle);
 
+/* Callbacks for turbo toggle attribute */
+static umode_t charge_is_visible(struct kobject *kobj,
+				    struct attribute *attr, int n)
+{
+	switch (board) {
+	case oxp_x1:
+		return attr->mode;
+	default:
+		break;
+	}
+	return 0;
+}
+
+static ssize_t charge_bypass_store(struct device *dev,
+			       struct device_attribute *attr, const char *buf,
+			       size_t count)
+{
+	u64 val, reg;
+	int ret;
+
+	ret = __sysfs_match_string(charge_bypass_strings,
+				   ARRAY_SIZE(charge_bypass_strings), buf);
+	if (ret < 0)
+		return ret;
+
+	switch (board) {
+	case oxp_x1:
+		val = charge_bypass_values_x1[ret];
+		reg = OXP_X1_CHARGE_BYPASS_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = write_to_ec(reg, val);
+	if (ret < 0)
+		return ret;
+
+	return count;
+}
+
+static ssize_t charge_bypass_show(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+{
+	int ret;
+	u8 reg;
+	long val;
+	const u8 *vals;
+	char *str;
+
+	switch (board) {
+	case oxp_x1:
+		vals = charge_bypass_values_x1;
+		reg = OXP_X1_CHARGE_BYPASS_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = read_from_ec(reg, 1, &val);
+	if (ret < 0)
+		return ret;
+
+	str = (char *) charge_bypass_strings[0];
+	for (ret = 0; ret < ARRAY_SIZE(charge_bypass_strings); ret++) {
+		if (val == vals[ret]) {
+			str = (char *) charge_bypass_strings[ret];
+			break;
+		}
+	}
+
+	return sysfs_emit(buf, "%s\n", str);
+}
+
+static DEVICE_ATTR_RW(charge_bypass);
+
+static ssize_t charge_limit_store(struct device *dev,
+			       struct device_attribute *attr, const char *buf,
+			       size_t count)
+{
+	u64 val, reg;
+	int ret;
+
+	ret = kstrtou64(buf, 0, &val);
+	if (ret < 0)
+		return ret;
+
+	if (val > 100)
+		return -EINVAL;
+
+	switch (board) {
+	case oxp_x1:
+		reg = OXP_X1_CHARGE_LIMIT_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = write_to_ec(reg, val);
+	if (ret < 0)
+		return ret;
+
+	return count;
+}
+
+static ssize_t charge_limit_show(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+{
+	int ret;
+	u8 reg;
+	long val;
+
+	switch (board) {
+	case oxp_x1:
+		reg = OXP_X1_CHARGE_LIMIT_REG;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	ret = read_from_ec(reg, 1, &val);
+	if (ret < 0)
+		return ret;
+
+	return sysfs_emit(buf, "%ld\n", val);
+}
+
+static DEVICE_ATTR_RW(charge_limit);
+
 /* PWM enable/disable functions */
 static int oxp_pwm_enable(void)
 {
@@ -623,18 +781,30 @@ static const struct hwmon_channel_info * const oxp_platform_sensors[] = {
 	NULL,
 };
 
-static struct attribute *oxp_ec_attrs[] = {
+static struct attribute *oxp_turbo_attrs[] = {
 	&dev_attr_tt_toggle.attr,
 	NULL
 };
 
-static struct attribute_group oxp_ec_attribute_group = {
+static struct attribute_group oxp_turbo_attribute_group = {
 	.is_visible = tt_toggle_is_visible,
-	.attrs = oxp_ec_attrs,
+	.attrs = oxp_turbo_attrs,
+};
+
+static struct attribute *oxp_charge_attrs[] = {
+	&dev_attr_charge_bypass.attr,
+	&dev_attr_charge_limit.attr,
+	NULL
+};
+
+static struct attribute_group oxp_charge_attribute_group = {
+	.is_visible = charge_is_visible,
+	.attrs = oxp_charge_attrs,
 };
 
 static const struct attribute_group *oxp_ec_groups[] = {
-	&oxp_ec_attribute_group,
+	&oxp_turbo_attribute_group,
+	&oxp_charge_attribute_group,
 	NULL
 };
 
