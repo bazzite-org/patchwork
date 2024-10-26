@@ -97,6 +97,11 @@ static enum oxp_board board;
 #define OXP_X1_CHARGE_BYPASS_MASK_S0 0x01
 #define OXP_X1_CHARGE_BYPASS_MASK_S3S5 0x0A /* Cannot control S3, S5 individually. */
 
+#define OXP_X1_TURBO_LED_REG           0x57 /* X1 Turbo LED */
+
+#define OXP_X1_TURBO_LED_OFF           0x01
+#define OXP_X1_TURBO_LED_ON            0x02
+
 enum charge_type_value_index {
 	CT_OFF,
 	CT_S0,
@@ -406,6 +411,62 @@ static ssize_t tt_toggle_show(struct device *dev,
 }
 
 static DEVICE_ATTR_RW(tt_toggle);
+
+static ssize_t tt_led_store(struct device *dev,
+			       struct device_attribute *attr, const char *buf,
+			       size_t count)
+{
+	u8 reg, val;
+	int rval;
+	bool value;
+
+	rval = kstrtobool(buf, &value);
+	if (rval)
+		return rval;
+
+	switch (board) {
+	case oxp_2:
+	case oxp_x1:
+		reg = OXP_X1_TURBO_LED_REG;
+		val = value ? OXP_X1_TURBO_LED_ON : OXP_X1_TURBO_LED_OFF;
+		break;
+	default:
+		return -EINVAL;
+	}
+	rval = write_to_ec(reg, val);
+
+	if (rval)
+		return rval;
+
+	return count;
+}
+
+static ssize_t tt_led_show(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+{
+	int retval;
+	u8 reg;
+	long enval;
+	long val;
+
+	switch (board) {
+	case oxp_2:
+	case oxp_x1:
+		reg = OXP_2_TURBO_SWITCH_REG;
+		enval = OXP_X1_TURBO_LED_ON;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	retval = read_from_ec(reg, 1, &val);
+	if (retval)
+		return retval;
+
+	return sysfs_emit(buf, "%d\n", val == enval);
+}
+
+static DEVICE_ATTR_RW(tt_led);
 
 /* Callbacks for turbo toggle attribute */
 static bool charge_control_supported(void)
@@ -818,6 +879,7 @@ static const struct hwmon_channel_info * const oxp_platform_sensors[] = {
 
 static struct attribute *oxp_turbo_attrs[] = {
 	&dev_attr_tt_toggle.attr,
+	&dev_attr_tt_led.attr,
 	NULL
 };
 
