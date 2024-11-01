@@ -1,3 +1,7 @@
+* Fri Nov 01 2024 Augusto Caringi <acaringi@redhat.com> [6.11.6-0]
+- Linux v6.11.6
+Resolves: 
+
 * Tue Oct 22 2024 Augusto Caringi <acaringi@redhat.com> [6.11.5-0]
 - Revert "fedora/configs: enable GPIO expander drivers" (Justin M. Forbes)
 - Add bluetooth bzs to BugsFixed (Justin M. Forbes)
