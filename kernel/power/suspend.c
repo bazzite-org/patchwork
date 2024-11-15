@@ -45,11 +45,20 @@ static const char * const mem_sleep_labels[] = {
 	[PM_SUSPEND_MEM] = "deep",
 };
 const char *mem_sleep_states[PM_SUSPEND_MAX];
+static const char * const standby_labels[] = {
+	[PM_STANDBY_ACTIVE] = "active",
+	[PM_STANDBY_SCREEN_OFF] = "screen_off",
+	[PM_STANDBY_SLEEP] = "sleep",
+	[PM_STANDBY_SLEEP_WAKE] = "sleep_wake",
+};
+const char *standby_states[PM_STANDBY_MAX];
 
 suspend_state_t mem_sleep_current = PM_SUSPEND_TO_IDLE;
 suspend_state_t mem_sleep_default = PM_SUSPEND_MAX;
 suspend_state_t pm_suspend_target_state;
 EXPORT_SYMBOL_GPL(pm_suspend_target_state);
+
+standby_state_t standby_current = PM_STANDBY_ACTIVE;
 
 unsigned int pm_suspend_global_flags;
 EXPORT_SYMBOL_GPL(pm_suspend_global_flags);
@@ -72,6 +81,80 @@ bool pm_suspend_default_s2idle(void)
 	return mem_sleep_current == PM_SUSPEND_TO_IDLE;
 }
 EXPORT_SYMBOL_GPL(pm_suspend_default_s2idle);
+
+static int _s2idle_standby_transition(standby_state_t state)
+{
+	int error;
+
+	if (state == standby_current)
+		return 0;
+	if (state > PM_STANDBY_MAX)
+		return -EINVAL;
+
+	pm_pr_dbg("Transitioning from standby state %s to %s\n",
+		  standby_states[standby_current], standby_states[state]);
+
+	/* Sleep wake can only be entered if we are on the sleep state. */
+	if (state == PM_STANDBY_SLEEP_WAKE) {
+		if (standby_current != PM_STANDBY_SLEEP)
+			return -EINVAL;
+		standby_current = state;
+		return platform_standby_turn_on_display();
+	}
+
+	if (standby_current < state) {
+		for (; standby_current < state; standby_current++) {
+			switch (standby_current + 1) {
+			case PM_STANDBY_SCREEN_OFF:
+				error = platform_standby_display_off();
+				break;
+			case PM_STANDBY_SLEEP:
+				error = platform_standby_sleep_entry();
+				break;
+			}
+
+			if (error)
+				return error;
+		}
+	} else if (standby_current > state) {
+		for (; standby_current > state; standby_current--) {
+			switch (standby_current) {
+			case PM_STANDBY_SLEEP:
+				error = platform_standby_sleep_exit();
+				break;
+			case PM_STANDBY_SCREEN_OFF:
+				error = platform_standby_display_on();
+				break;
+			}
+
+			if (error)
+				return error;
+		}
+	}
+
+	return 0;
+}
+
+/**
+ * pm_standby_transition - Transition between Modern Standby states
+ */
+int pm_standby_transition(standby_state_t state)
+{
+	unsigned int sleep_flags = lock_system_sleep();
+	int error = _s2idle_standby_transition(state);
+	unlock_system_sleep(sleep_flags);
+	return error;
+}
+EXPORT_SYMBOL_GPL(pm_standby_transition);
+
+int pm_standby_current_state(void)
+{
+	unsigned int sleep_flags = lock_system_sleep();
+	int state = standby_current;
+	unlock_system_sleep(sleep_flags);
+	return state;
+}
+EXPORT_SYMBOL_GPL(pm_standby_current_state);
 
 void s2idle_set_ops(const struct platform_s2idle_ops *ops)
 {
@@ -188,6 +271,16 @@ void __init pm_states_init(void)
 	 * initialize mem_sleep_states[] accordingly here.
 	 */
 	mem_sleep_states[PM_SUSPEND_TO_IDLE] = mem_sleep_labels[PM_SUSPEND_TO_IDLE];
+	/* All systems support the "active" state. */
+	standby_states[PM_STANDBY_ACTIVE] = standby_labels[PM_STANDBY_ACTIVE];
+	/* 
+	 * Not all systems support these states, where they will have increased
+	 * power consumption. If deemed necessary, they should be gated to not
+	 * mislead userspace.
+	 */
+	standby_states[PM_STANDBY_SCREEN_OFF] = standby_labels[PM_STANDBY_SCREEN_OFF];
+	standby_states[PM_STANDBY_SLEEP] = standby_labels[PM_STANDBY_SLEEP];
+	standby_states[PM_STANDBY_SLEEP_WAKE] = standby_labels[PM_STANDBY_SLEEP_WAKE];
 }
 
 static int __init mem_sleep_default_setup(char *str)
@@ -601,6 +694,9 @@ static int enter_state(suspend_state_t state)
 	if (!mutex_trylock(&system_transition_mutex))
 		return -EBUSY;
 
+	standby_state_t standby_prior = standby_current;
+	_s2idle_standby_transition(PM_STANDBY_SLEEP);
+
 	if (state == PM_SUSPEND_TO_IDLE)
 		s2idle_begin();
 
@@ -630,6 +726,8 @@ static int enter_state(suspend_state_t state)
 	pm_pr_dbg("Finishing wakeup.\n");
 	suspend_finish();
  Unlock:
+	_s2idle_standby_transition(standby_prior);
+
 	mutex_unlock(&system_transition_mutex);
 	return error;
 }
