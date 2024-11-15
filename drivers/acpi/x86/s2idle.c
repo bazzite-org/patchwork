@@ -112,6 +112,13 @@ static const struct s2idle_delay_quirks rog_ally_quirks = {
 	.delay_sleep_entry = 150,
 };
 
+static const struct platform_s2idle_quirks msi_claw_quirks = {
+	.delay_display_off = 500,
+	.delay_sleep_entry = 500,
+	.delay_sleep_exit = 200,
+	.delay_display_on = 200,
+};
+
 static const struct dmi_system_id s2idle_delay_quirks[] = {
 	{
 		.matches = {
@@ -124,6 +131,12 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
 		},
 		.driver_data = (void *)&rog_ally_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "MS-1T41"), // MSI CLAW
+		},
+		.driver_data = (void *)&msi_claw_quirks
 	},
 	{}
 };
