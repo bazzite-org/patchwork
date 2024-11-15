@@ -23,6 +23,8 @@ EXCLUDE_FILES=":(exclude,top).get_maintainer.conf \
 		:(exclude,top)redhat \
 		:(exclude,top)configs"
 
+FMARKER=$(git log --format="%h" --grep "\[redhat\] kernel-" -1)
+
 # If PATCHLIST_URL is not set to "none", generate Patchlist.changelog file that
 # holds the shas and commits not included upstream and git commit url.
 SPECPATCHLIST_CHANGELOG=0
@@ -35,9 +37,12 @@ if [ "$PATCHLIST_URL" != "none" ]; then
 	#
 	# May need to preserve word splitting in EXCLUDE_FILES
 	# shellcheck disable=SC2086
-	git log --no-merges --pretty=oneline --no-decorate ${UPSTREAM}.. $EXCLUDE_FILES | \
-		sed "s!^\([^ ]*\)!$PATCHLIST_URL/\1\n &!; s!\$!\n!" \
+	git log --no-merges --pretty=oneline --no-decorate "$FMARKER".. $EXCLUDE_FILES | \
+		sed "s!^\([^ ]*\)!$BPATCHLIST_URL/\1\n &!; s!\$!\n!" \
 		> "$SOURCES"/Patchlist.changelog
+	git log --no-merges --pretty=oneline --no-decorate ${UPSTREAM}.."$FMARKER" $EXCLUDE_FILES | \
+		sed "s!^\([^ ]*\)!$PATCHLIST_URL/\1\n &!; s!\$!\n!" \
+		>> "$SOURCES"/Patchlist.changelog
 	SPECPATCHLIST_CHANGELOG=1
 fi
 
@@ -98,16 +103,7 @@ test -f "$SOURCES/$SPECFILE" &&
 	/%%SPECCHANGELOG%%/r $clogf.stripped
 	/%%SPECCHANGELOG%%/d" "$SOURCES/$SPECFILE"
 
-if [ "$DISTRO" == "fedora" ]; then
-	# The tarball in the SRPM contains only the upstream sources.
-
-	# May need to preserve word splitting in EXCLUDE_FILES
-	# shellcheck disable=SC2086
-	git diff -p --binary --no-renames --stat "$MARKER".. $EXCLUDE_FILES \
-		> ${SOURCES}/patch-${SPECKVERSION}.${SPECKPATCHLEVEL}-redhat.patch
-else
-	# The tarball in the SRPM contains both upstream sources and OS-specifc
-	# commits.  Even though this is the case, an empty file for dist-git
-	# compatibility is necessary.
-	touch "${SOURCES}/patch-${SPECKVERSION}.${SPECKPATCHLEVEL}"-redhat.patch
-fi
+git diff -p --binary --no-renames --stat "$MARKER".."$FMARKER" $EXCLUDE_FILES \
+	> ${SOURCES}/patch-redhat.patch
+git format-patch --stdout --zero-commit -k "$FMARKER"  --no-renames -- $EXCLUDE_FILES \
+	> ${SOURCES}/patch-handheld.patch
