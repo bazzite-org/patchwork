@@ -39,6 +39,40 @@ Description:
 		See Documentation/admin-guide/pm/sleep-states.rst for more
 		information.
 
+What:		/sys/power/standby
+Date:		November 2024
+Contact:	Antheas Kapenekakis <lkml@antheas.dev>
+Description:
+		The /sys/power/standby file controls the standby state of the
+		system. Modern S0ix capable systems can enter a set of low power
+		states while the kernel is still active. Transitioning into those
+		states may 1) deactivate tertiary hardware, and 2) change the
+		presentation of the device (e.g., pulse the suspend light, turn
+		off the keyboard backlight).
+
+		Available states are "active" (fully active), "screen-off" (fully
+		active but all displays of the system are off; virtual and real),
+		"sleep" (major userspace components have been frozen; light
+		background tasks may still run; this state may affect the power
+		envelope of the device). The final state is DRIPS or LSP0, where
+		the kernel suspends, and is entered by writing "mem" to
+		/sys/power/state. There is a secondary sleep state called "resume"
+		that can only be entered from "sleep" and is used in certain
+		devices to boost the Power Limit (PLx) while remaining in sleep
+		to hasten preparing for transitioning to "active".
+
+		Writing one of the above strings to this file causes the system
+		to transition into the corresponding state, by firing the
+		corresponding firmware notifications during the transition.
+
+		DRIPS or LSP0 (i.e., mem "s2idle") can only be entered from the
+		"sleep" state. If the kernel is asked to transition to DRIPS from
+		a different state, it will transition to "sleep" and then suspend.
+		On wakeup, the kernel will transition back to the previous state.
+
+		See Documentation/admin-guide/pm/standby-states.rst for more
+		information.
+
 What:		/sys/power/disk
 Date:		September 2006
 Contact:	Rafael J. Wysocki <rjw@rjwysocki.net>

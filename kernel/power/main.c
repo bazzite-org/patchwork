@@ -748,6 +748,80 @@ static ssize_t state_store(struct kobject *kobj, struct kobj_attribute *attr,
 
 power_attr(state);
 
+#ifdef CONFIG_SUSPEND
+/*
+ * standby - control system s2idle standby state.
+ *
+ * show() returns available standby states, which may be "active", "screen_off",
+ * "sleep" and "resume" (still in sleep but preparing to turn on display).
+ * See Documentation/admin-guide/pm/standby-states.rst for a description of
+ * what they mean.
+ *
+ * store() accepts one of those strings, translates it into the proper
+ * enumerated value, and initiates a transition to that standby state.
+ *
+ * When the system suspends, it will first enter the state "sleep", suspend,
+ * and then restore the last state before entering "sleep". I.e., if userspace
+ * is not S0ix-aware, the transitions expected by Modern Standby devices will
+ * always be performed.
+ */
+static ssize_t standby_show(struct kobject *kobj, struct kobj_attribute *attr,
+			  char *buf)
+{
+	char *s = buf;
+	standby_state_t i;
+	standby_state_t curr = pm_standby_state();
+
+	if (curr < 0)
+		return -EBUSY;
+
+	for (i = PM_STANDBY_MIN; i < PM_STANDBY_MAX; i++)
+		if (standby_states[i])
+			s += sprintf(s, curr == i ? "[%s] " : "%s ", standby_states[i]);
+
+	if (s != buf)
+		/* convert the last space to a newline */
+		*(s - 1) = '\n';
+	return (s - buf);
+}
+
+static standby_state_t decode_standby_state(const char *buf, size_t n)
+{
+	standby_state_t state;
+	char *p;
+	int len;
+
+	p = memchr(buf, '\n', n);
+	len = p ? p - buf : n;
+
+	for (state = PM_STANDBY_MIN; state < PM_STANDBY_MAX; state++) {
+		const char *label = standby_states[state];
+
+		if (label && len == strlen(label) && !strncmp(buf, label, len))
+			return state;
+	}
+
+	return PM_STANDBY_MAX;
+}
+
+static ssize_t standby_store(struct kobject *kobj, struct kobj_attribute *attr,
+			   const char *buf, size_t n)
+{
+	int error;
+	standby_state_t state;
+
+	state = decode_standby_state(buf, n);
+
+	if (state >= PM_STANDBY_MAX)
+		return -EINVAL;
+
+	error = pm_standby_transition(state);
+	return error ? error : n;
+}
+
+power_attr(standby);
+#endif
+
 #ifdef CONFIG_PM_SLEEP
 /*
  * The 'wakeup_count' attribute, along with the functions defined in
@@ -974,6 +1048,7 @@ static struct attribute * g[] = {
 #ifdef CONFIG_SUSPEND
 	&mem_sleep_attr.attr,
 	&sync_on_suspend_attr.attr,
+	&standby_attr.attr,
 #endif
 #ifdef CONFIG_PM_AUTOSLEEP
 	&autosleep_attr.attr,
