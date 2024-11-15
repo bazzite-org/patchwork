@@ -142,6 +142,7 @@ struct platform_s2idle_ops {
 	void (*restore_early)(void);
 	void (*restore)(void);
 	void (*end)(void);
+	int (*turn_on_display)(void);
 	int (*sleep_exit)(void);
 	int (*display_on)(void);
 };
