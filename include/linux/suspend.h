@@ -142,6 +142,7 @@ struct platform_s2idle_ops {
 	void (*restore_early)(void);
 	void (*restore)(void);
 	void (*end)(void);
+	int (*turn_on_display)(void);
 	int (*sleep_exit)(void);
 	int (*display_on)(void);
 };
@@ -166,6 +167,7 @@ extern unsigned int pm_suspend_global_flags;
 
 int platform_standby_display_off(void);
 int platform_standby_sleep_entry(void);
+int platform_standby_turn_on_display(void);
 int platform_standby_sleep_exit(void);
 int platform_standby_display_on(void);
 
