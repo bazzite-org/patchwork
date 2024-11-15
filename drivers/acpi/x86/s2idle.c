@@ -123,6 +123,13 @@ static const struct s2idle_delay_quirks legion_go_s_quirks = {
 	.wake_on_ac = true,
 };
 
+static const struct s2idle_delay_quirks msi_claw_quirks = {
+	.delay_display_off = 500,
+	.delay_sleep_entry = 500,
+	.delay_sleep_exit = 200,
+	.delay_display_on = 200,
+};
+
 static const struct dmi_system_id s2idle_delay_quirks[] = {
 	/* ROG Ally */
 	{
@@ -161,6 +168,13 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "83Q3"),
 		},
 		.driver_data = (void *)&legion_go_s_quirks
+	},
+	/* MSI Claw */
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "MS-1T41"),
+		},
+		.driver_data = (void *)&msi_claw_quirks
 	},
 	{}
 };
