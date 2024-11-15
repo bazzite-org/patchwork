@@ -40,6 +40,15 @@ typedef int __bitwise suspend_state_t;
 #define PM_SUSPEND_MIN		PM_SUSPEND_TO_IDLE
 #define PM_SUSPEND_MAX		((__force suspend_state_t) 4)
 
+typedef int __bitwise standby_state_t;
+
+#define PM_STANDBY_ACTIVE		((__force standby_state_t) 0)
+#define PM_STANDBY_SCREEN_OFF	((__force standby_state_t) 1)
+#define PM_STANDBY_SLEEP		((__force standby_state_t) 2)
+#define PM_STANDBY_RESUME		((__force standby_state_t) 3)
+#define PM_STANDBY_MIN			PM_STANDBY_ACTIVE
+#define PM_STANDBY_MAX			((__force standby_state_t) 4)
+
 /**
  * struct platform_suspend_ops - Callbacks for managing platform dependent
  *	system sleep states.
@@ -281,6 +290,8 @@ extern void arch_suspend_enable_irqs(void);
 
 extern int pm_suspend(suspend_state_t state);
 extern bool sync_on_suspend_enabled;
+extern int pm_standby_transition(standby_state_t state);
+extern int pm_standby_state(void);
 #else /* !CONFIG_SUSPEND */
 #define suspend_valid_only_mem	NULL
 
