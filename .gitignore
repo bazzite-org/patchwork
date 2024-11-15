@@ -192,3 +192,7 @@ sphinx_*/
 
 # Rust analyzer configuration
 /rust-project.json
+
+# Bazzite Dev stuff
+cert.der
+key.*
