@@ -18,6 +18,7 @@
 #include <linux/acpi.h>
 #include <linux/device.h>
 #include <linux/dmi.h>
+#include <linux/delay.h>
 #include <linux/suspend.h>
 
 #include "../sleep.h"
@@ -91,11 +92,50 @@ struct lpi_device_constraint_amd {
 	int min_dstate;
 };
 
+struct s2idle_delay_quirks {
+	int delay_display_off;
+	int delay_sleep_entry;
+	int delay_sleep_exit;
+	int delay_display_on;
+};
+
+/*
+ * The ROG Ally series disconnects its controllers on Display Off and performs
+ * a fancy shutdown sequence, which requires around half a second to complete.
+ * If the power is cut earlier by entering it into D3, the original Ally unit
+ * might not disconnect its XInput MCU, causing excess battery drain, and the
+ * Ally X will make the controller restart post-suspend. In addition, the EC
+ * of the device rarely (1/20 attempts) may get stuck asserting PROCHOT after
+ * suspend (for various reasons), so split the delay between Display Off and
+ * Sleep Entry.
+ */
+static const struct s2idle_delay_quirks rog_ally_quirks = {
+	.delay_display_off = 350,
+	.delay_sleep_entry = 150,
+};
+
+static const struct dmi_system_id s2idle_delay_quirks[] = {
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC71L"),
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
+	{}
+};
+
 static LIST_HEAD(lps0_s2idle_devops_head);
 
 static struct lpi_constraints *lpi_constraints_table;
 static int lpi_constraints_table_size;
 static int rev_id;
+struct s2idle_delay_quirks *delay_quirks;
 
 #define for_each_lpi_constraint(entry)						\
 	for (int i = 0;								\
@@ -566,6 +606,9 @@ static int acpi_s2idle_display_off(void)
 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_DISPLAY_OFF,
 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
 
+	if (delay_quirks && delay_quirks->delay_display_off)
+		msleep(delay_quirks->delay_display_off);
+
 	acpi_scan_lock_release();
 
 	return 0;
@@ -586,6 +629,9 @@ static int acpi_s2idle_sleep_entry(void)
 	if (lps0_dsm_func_mask_microsoft > 0)
 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SLEEP_ENTRY,
 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+
+	if (delay_quirks && delay_quirks->delay_sleep_entry)
+		msleep(delay_quirks->delay_sleep_entry);
 
 	acpi_scan_lock_release();
 
@@ -627,6 +673,9 @@ static int acpi_s2idle_sleep_exit(void)
 	acpi_scan_lock_acquire();
 
 	/* Modern Standby Sleep Exit */
+	if (delay_quirks && delay_quirks->delay_sleep_exit)
+		msleep(delay_quirks->delay_sleep_exit);
+
 	if (lps0_dsm_func_mask_microsoft > 0)
 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SLEEP_EXIT,
 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
@@ -648,6 +697,9 @@ static int acpi_s2idle_display_on(void)
 	acpi_scan_lock_acquire();
 
 	/* Display on */
+	if (delay_quirks && delay_quirks->delay_display_on)
+		msleep(delay_quirks->delay_display_on);
+
 	if (lps0_dsm_func_mask_microsoft > 0)
 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_DISPLAY_ON,
 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
@@ -760,6 +812,10 @@ int acpi_register_lps0_dev(struct acpi_s2idle_dev_ops *arg)
 
 	sleep_flags = lock_system_sleep();
 	list_add(&arg->list_node, &lps0_s2idle_devops_head);
+	const struct dmi_system_id *s2idle_sysid = dmi_first_match(
+		s2idle_delay_quirks
+	);
+	delay_quirks = s2idle_sysid ? s2idle_sysid->driver_data : NULL;
 	unlock_system_sleep(sleep_flags);
 
 	return 0;
