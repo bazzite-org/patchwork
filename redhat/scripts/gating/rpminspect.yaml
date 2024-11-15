@@ -23,7 +23,8 @@ emptyrpm:
 patches:
     ignore_list:
         - linux-kernel-test.patch
-        - patch-%%SPECKVERSION%%.%%SPECKPATCHLEVEL%%-redhat.patch
+        - patch-redhat.patch
+        - patch-handheld.patch
 
 runpath:
     ignore:

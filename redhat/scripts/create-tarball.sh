@@ -1,12 +1,15 @@
 #!/bin/sh
 
-# shellcheck disable=SC2153
-[ "$DISTRO" != "fedora" ] && _GITID="$GITID" || _GITID="$MARKER"
+_GITID="$MARKER"
 
 # shellcheck disable=SC1083
 XZ_THREADS="--threads $RHJOBS"
 
-ARCH=$(arch)
+if command -v arch > /dev/null 2>&1; then
+	ARCH=$(arch)
+else
+	ARCH=$(uname -m)
+fi
 XZ_OPTIONS=""
 
 # convert from shortened git sha to standard 40 digit git sha
