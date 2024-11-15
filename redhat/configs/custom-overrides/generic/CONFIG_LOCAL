@@ -1,0 +1,10 @@
+# Save kernel config
+CONFIG_IKCONFIG=y
+CONFIG_IKCONFIG_PROC=y
+
+# Disable these for all arches except arm/x86
+# CONFIG_SND_SOC_AW87XXX is not set
+# CONFIG_JOYSTICK_ODIN2 is not set
+# CONFIG_DRM_PANEL_DDIC_CH13726A is not set
+# CONFIG_HID_ITHC is not set
+# CONFIG_PWM_HTR3212 is not set
