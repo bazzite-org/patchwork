@@ -1,3 +1,12 @@
+* Mon Nov 18 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.12.0-64]
+- redhat/configs: cleanup CONFIG_DEV_DAX (David Hildenbrand)
+- redhat/configs: cleanup CONFIG_TRANSPARENT_HUGEPAGE_MADVISE for Fedora (David Hildenbrand)
+- redhat/configs: cleanup CONFIG_TRANSPARENT_HUGEPAGE (David Hildenbrand)
+- redhat/configs: enable CONFIG_TRANSPARENT_HUGEPAGE on s390x in Fedora (David Hildenbrand)
+- redhat/configs: automotive: Enable j784s4evm am3359 tscadc configs (Joel Slebodnick)
+- Linux v6.12.0
+Resolves: 
+
 * Sun Nov 17 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.12.0-0.rc7.4a5df3796467.63]
 - Linux v6.12.0-0.rc7.4a5df3796467
 Resolves: 
