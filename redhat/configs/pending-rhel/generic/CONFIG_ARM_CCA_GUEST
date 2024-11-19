@@ -1,0 +1,15 @@
+# Symbol: ARM_CCA_GUEST [=m]
+# Type  : tristate
+# Defined at drivers/virt/coco/arm-cca-guest/Kconfig:1
+#   Prompt: Arm CCA Guest driver
+#   Depends on: VIRT_DRIVERS [=y] && ARM64 [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Virtualization drivers (VIRT_DRIVERS [=y])
+#         -> Arm CCA Guest driver (ARM_CCA_GUEST [=m])
+# Selects: TSM_REPORTS [=m]
+# 
+# 
+# 
+# Commit: 7999edc484ca (virt: arm-cca-guest: TSM_REPORT support for realms)
+CONFIG_ARM_CCA_GUEST=m
