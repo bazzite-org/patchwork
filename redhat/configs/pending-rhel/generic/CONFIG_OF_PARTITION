@@ -1,0 +1,16 @@
+# Symbol: OF_PARTITION [=n]
+# Type  : bool
+# Defined at block/partitions/Kconfig:273
+#   Prompt: Device Tree partition support
+#   Depends on: BLOCK [=y] && OF [=y]
+#   Visible if: BLOCK [=y] && OF [=y] && PARTITION_ADVANCED [=y]
+#   Location:
+#     -> Enable the block layer (BLOCK [=y])
+#       -> Partition Types
+#         -> Advanced partition selection (PARTITION_ADVANCED [=y])
+#           -> Device Tree partition support (OF_PARTITION [=n])
+# 
+# 
+# 
+# Commit: 2e3a191e89f9 (block: add support for partition table defined in OF)
+# CONFIG_OF_PARTITION is not set

@@ -1,0 +1,14 @@
+# Symbol: VIRTIO_MEM [=n]
+# Type  : tristate
+# Defined at drivers/virtio/Kconfig:123
+#   Prompt: Virtio mem driver
+#   Depends on: VIRTIO_MENU [=y] && (X86_64 || ARM64 || RISCV || S390 [=y]) && VIRTIO [=y] && MEMORY_HOTPLUG [=y] && MEMORY_HOTREMOVE [=y] && CONTIG_ALLOC [=y] && EXCLUSIVE_SYSTEM_RAM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Virtio drivers (VIRTIO_MENU [=y])
+#         -> Virtio mem driver (VIRTIO_MEM [=n])
+# 
+# 
+# 
+# Commit: 5f1f79bbc9e2 (virtio-mem: Paravirtualized memory hotplug)
+# CONFIG_VIRTIO_MEM is not set
