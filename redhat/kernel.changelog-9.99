@@ -1,3 +1,7 @@
+* Wed Nov 20 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.158f238aa69d.2]
+- Reset changelog for 6.13 (Justin M. Forbes)
+Resolves: 
+
 * Tue Nov 19 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.158f238aa69d.1]
 - Reset RHEL_RELEASE for 6.13 (Justin M. Forbes)
 - redhat: Move perf_dlfilter.h from libperf-devel to perf (Akihiko Odaki)
