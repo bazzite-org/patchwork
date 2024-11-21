@@ -1,0 +1,18 @@
+# Symbol: RTW88_8821AU [=n]
+# Type  : tristate
+# Defined at drivers/net/wireless/realtek/rtw88/Kconfig:203
+#   Prompt: Realtek 8821AU/8811AU USB wireless network adapter
+#   Depends on: NETDEVICES [=y] && WLAN [=y] && WLAN_VENDOR_REALTEK [=y] && RTW88 [=m] && USB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Wireless LAN (WLAN [=y])
+#           -> Realtek devices (WLAN_VENDOR_REALTEK [=y])
+#             -> Realtek 802.11ac wireless chips support (RTW88 [=m])
+#               -> Realtek 8821AU/8811AU USB wireless network adapter (RTW88_8821AU [=n])
+# Selects: RTW88_CORE [=m] && RTW88_USB [=m] && RTW88_8821A [=n]
+# 
+# 
+# 
+# Commit: 0e3e8284f8e1 (wifi: rtw88: Enable the new RTL8821AU/RTL8812AU drivers)
+# CONFIG_RTW88_8821AU is not set

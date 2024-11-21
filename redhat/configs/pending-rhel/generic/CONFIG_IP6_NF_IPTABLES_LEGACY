@@ -1,0 +1,23 @@
+# Symbol: IP6_NF_IPTABLES_LEGACY [=m]
+# Type  : tristate
+# Defined at net/ipv6/netfilter/Kconfig:10
+#   Prompt: Legacy IP6 tables support
+#   Depends on: NET [=y] && NETFILTER [=y] && INET [=y] && IPV6 [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Network packet filtering framework (Netfilter) (NETFILTER [=y])
+#           -> IPv6: Netfilter Configuration
+#             -> Legacy IP6 tables support (IP6_NF_IPTABLES_LEGACY [=m])
+# Selects: NETFILTER_XTABLES [=y]
+# Selected by [m]:
+#   - IP6_NF_FILTER [=m] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m]
+#   - IP6_NF_MANGLE [=m] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m]
+#   - IP6_NF_RAW [=m] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m]
+#   - IP6_NF_SECURITY [=m] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m] && SECURITY [=y] && NETFILTER_ADVANCED [=y]
+#   - IP6_NF_NAT [=m] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m] && NF_CONNTRACK [=m] && NETFILTER_ADVANCED [=y]
+# 
+# 
+# 
+# Commit: a9525c7f6219 (netfilter: xtables: allow xtables-nft only builds)
+CONFIG_IP6_NF_IPTABLES_LEGACY=m
