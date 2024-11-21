@@ -1,0 +1,17 @@
+# Symbol: RVU_ESWITCH [=m]
+# Type  : tristate
+# Defined at drivers/net/ethernet/marvell/octeontx2/Kconfig:50
+#   Prompt: Marvell RVU E-Switch support
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_MARVELL [=y] && OCTEONTX2_PF [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> Marvell devices (NET_VENDOR_MARVELL [=y])
+#             -> Marvell OcteonTX2 NIC Physical Function driver (OCTEONTX2_PF [=m])
+#               -> Marvell RVU E-Switch support (RVU_ESWITCH [=m])
+# 
+# 
+# 
+# Commit: 222a4eea9c6b (octeontx2-pf: RVU representor driver)
+CONFIG_RVU_ESWITCH=m

@@ -1,0 +1,18 @@
+# Symbol: DWMAC_THEAD [=n]
+# Type  : tristate
+# Defined at drivers/net/ethernet/stmicro/stmmac/Kconfig:231
+#   Prompt: T-HEAD dwmac support
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_STMICRO [=y] && STMMAC_ETH [=m] && STMMAC_PLATFORM [=m] && OF [=y] && (ARCH_THEAD [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> STMicroelectronics devices (NET_VENDOR_STMICRO [=y])
+#             -> STMicroelectronics Multi-Gigabit Ethernet driver (STMMAC_ETH [=m])
+#               -> STMMAC Platform bus support (STMMAC_PLATFORM [=m])
+#                 -> T-HEAD dwmac support (DWMAC_THEAD [=n])
+# 
+# 
+# 
+# Commit: 33a1a01e3afa (net: stmmac: Add glue layer for T-HEAD TH1520 SoC)
+# CONFIG_DWMAC_THEAD is not set
