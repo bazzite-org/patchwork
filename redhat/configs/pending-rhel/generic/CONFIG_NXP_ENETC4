@@ -1,0 +1,17 @@
+# Symbol: NXP_ENETC4 [=n]
+# Type  : tristate
+# Defined at drivers/net/ethernet/freescale/enetc/Kconfig:36
+#   Prompt: ENETC4 PF driver
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_FREESCALE [=y] && PCI_MSI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> Freescale devices (NET_VENDOR_FREESCALE [=y])
+#             -> ENETC4 PF driver (NXP_ENETC4 [=n])
+# Selects: MDIO_DEVRES [=y] && FSL_ENETC_CORE [=m] && FSL_ENETC_MDIO [=m] && NXP_ENETC_PF_COMMON [=m] && PHYLINK [=y] && DIMLIB [=y]
+# 
+# 
+# 
+# Commit: 99100d0d9922 (net: enetc: add preliminary support for i.MX95 ENETC PF)
+# CONFIG_NXP_ENETC4 is not set
