@@ -1,3 +1,10 @@
+* Thu Nov 21 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.fcc79e1714e8.4]
+- One more pending to fix a mismatch (Justin M. Forbes)
+- redhat: fix RT PREEMPT configs for Fedora and RHEL (Clark Williams)
+- Pending fixes to avoid mismatch for 6.13 (Justin M. Forbes)
+- Linux v6.13.0-0.rc0.fcc79e1714e8
+Resolves: 
+
 * Thu Nov 21 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.bf9aa14fc523.3]
 - Linux v6.13.0-0.rc0.bf9aa14fc523
 Resolves: 
