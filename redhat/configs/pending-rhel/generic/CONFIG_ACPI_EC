@@ -1,0 +1,14 @@
+# Symbol: ACPI_EC [=y]
+# Type  : bool
+# Defined at drivers/acpi/Kconfig:135
+#   Prompt: Embedded Controller
+#   Depends on: ACPI [=y] && HAS_IOPORT [=y]
+#   Location:
+#     -> Power management and ACPI options
+#       -> ACPI (Advanced Configuration and Power Interface) Support (ACPI [=y])
+#         -> Embedded Controller (ACPI_EC [=y])
+# 
+# 
+# 
+# Commit: a6021aa24f64 (ACPI: EC: make EC support compile-time conditional)
+CONFIG_ACPI_EC=y
