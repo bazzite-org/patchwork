@@ -1,0 +1,23 @@
+# Symbol: IP_NF_IPTABLES_LEGACY [=m]
+# Type  : tristate
+# Defined at net/ipv4/netfilter/Kconfig:14
+#   Prompt: Legacy IP tables support
+#   Depends on: NET [=y] && INET [=y] && NETFILTER [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Network packet filtering framework (Netfilter) (NETFILTER [=y])
+#           -> IP: Netfilter Configuration
+#             -> Legacy IP tables support (IP_NF_IPTABLES_LEGACY [=m])
+# Selects: NETFILTER_XTABLES [=y]
+# Selected by [m]:
+#   - IP_NF_FILTER [=m] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m]
+#   - IP_NF_NAT [=m] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m] && NF_CONNTRACK [=m]
+#   - IP_NF_MANGLE [=m] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m]
+#   - IP_NF_RAW [=m] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m]
+#   - IP_NF_SECURITY [=m] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m] && SECURITY [=y] && NETFILTER_ADVANCED [=y]
+# 
+# 
+# 
+# Commit: a9525c7f6219 (netfilter: xtables: allow xtables-nft only builds)
+CONFIG_IP_NF_IPTABLES_LEGACY=m

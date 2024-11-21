@@ -1,0 +1,16 @@
+# Symbol: GPIO_MPSSE [=n]
+# Type  : tristate
+# Defined at drivers/gpio/Kconfig:1857
+#   Prompt: FTDI MPSSE GPIO support
+#   Depends on: GPIOLIB [=y] && USB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> GPIO Support (GPIOLIB [=y])
+#         -> USB GPIO expanders
+#           -> FTDI MPSSE GPIO support (GPIO_MPSSE [=n])
+# Selects: GPIOLIB_IRQCHIP [=y]
+# 
+# 
+# 
+# Commit: c46a74ff05c0 (gpio: add support for FTDI's MPSSE as GPIO)
+# CONFIG_GPIO_MPSSE is not set
