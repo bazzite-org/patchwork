@@ -1,0 +1,15 @@
+# Symbol: SENSORS_NCT7363 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/Kconfig:1684
+#   Prompt: Nuvoton NCT7363Y
+#   Depends on: HWMON [=y] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> Nuvoton NCT7363Y (SENSORS_NCT7363 [=n])
+# Selects: REGMAP_I2C [=y]
+# 
+# 
+# 
+# Commit: 46b94c485ed1 (hwmon: Add driver for I2C chip Nuvoton NCT7363Y)
+# CONFIG_SENSORS_NCT7363 is not set

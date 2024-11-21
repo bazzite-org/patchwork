@@ -1,0 +1,13 @@
+# Symbol: X86_BUS_LOCK_DETECT [=y]
+# Type  : bool
+# Defined at arch/x86/Kconfig:2431
+#   Prompt: Split Lock Detect and Bus Lock Detect support
+#   Depends on: CPU_SUP_INTEL [=y] || CPU_SUP_AMD [=y]
+#   Location:
+#     -> Processor type and features
+#       -> Split Lock Detect and Bus Lock Detect support (X86_BUS_LOCK_DETECT [=y])
+# 
+# 
+# 
+# Commit: 350afa8a1101 (x86/split_lock: Move Split and Bus lock code to a dedicated file)
+CONFIG_X86_BUS_LOCK_DETECT=y
