@@ -3956,6 +3956,8 @@ static int btusb_probe(struct usb_interface *intf,
 		hdev->shutdown = btrtl_shutdown_realtek;
 		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
 		hdev->hw_error = btusb_rtl_hw_error;
+		data->suspend = btrtl_suspend;
+		data->resume = btrtl_resume;
 
 		/* Realtek devices need to set remote wakeup on auto-suspend */
 		set_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags);
