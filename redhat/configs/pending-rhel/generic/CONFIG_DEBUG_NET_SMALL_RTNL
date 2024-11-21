@@ -1,0 +1,15 @@
+# Symbol: DEBUG_NET_SMALL_RTNL [=n]
+# Type  : bool
+# Defined at net/Kconfig.debug:28
+#   Prompt: Add extra per-netns mutex inside RTNL
+#   Depends on: DEBUG_KERNEL [=y] && NET [=y] && LOCK_DEBUGGING_SUPPORT [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> Networking Debugging
+#         -> Add extra per-netns mutex inside RTNL (DEBUG_NET_SMALL_RTNL [=n])
+# Selects: PROVE_LOCKING [=n]
+# 
+# 
+# 
+# Commit: 76aed95319da (rtnetlink: Add per-netns RTNL.)
+# CONFIG_DEBUG_NET_SMALL_RTNL is not set

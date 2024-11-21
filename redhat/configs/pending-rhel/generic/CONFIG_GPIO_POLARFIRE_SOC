@@ -1,0 +1,16 @@
+# Symbol: GPIO_POLARFIRE_SOC [=n]
+# Type  : bool
+# Defined at drivers/gpio/Kconfig:547
+#   Prompt: Microchip FPGA GPIO support
+#   Depends on: GPIOLIB [=y] && HAS_IOMEM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> GPIO Support (GPIOLIB [=y])
+#         -> Memory mapped GPIO drivers
+#           -> Microchip FPGA GPIO support (GPIO_POLARFIRE_SOC [=n])
+# Selects: REGMAP_MMIO [=n]
+# 
+# 
+# 
+# Commit: a987b78f3615 (gpio: mpfs: add polarfire soc gpio support)
+# CONFIG_GPIO_POLARFIRE_SOC is not set

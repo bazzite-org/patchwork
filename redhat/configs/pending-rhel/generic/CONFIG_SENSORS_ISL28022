@@ -1,0 +1,15 @@
+# Symbol: SENSORS_ISL28022 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/Kconfig:858
+#   Prompt: Renesas ISL28022
+#   Depends on: HWMON [=y] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> Renesas ISL28022 (SENSORS_ISL28022 [=n])
+# Selects: REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 39671a14df4f (hwmon: (isl28022) new driver for ISL28022 power monitor)
+# CONFIG_SENSORS_ISL28022 is not set
