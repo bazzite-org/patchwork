@@ -1,0 +1,15 @@
+# Symbol: ARM_SMMU_V3_IOMMUFD [=n]
+# Type  : bool
+# Defined at drivers/iommu/Kconfig:418
+#   Prompt: Enable IOMMUFD features for ARM SMMUv3 (EXPERIMENTAL)
+#   Depends on: IOMMU_SUPPORT [=y] && ARM_SMMU_V3 [=y] && IOMMUFD [=m]
+#   Location:
+#     -> Device Drivers
+#       -> IOMMU Hardware Support (IOMMU_SUPPORT [=y])
+#         -> ARM Ltd. System MMU Version 3 (SMMUv3) Support (ARM_SMMU_V3 [=y])
+#           -> Enable IOMMUFD features for ARM SMMUv3 (EXPERIMENTAL) (ARM_SMMU_V3_IOMMUFD [=n])
+# 
+# 
+# 
+# Commit: 6912ec91828b (iommu/arm-smmu-v3: Support IOMMU_GET_HW_INFO via struct arm_smmu_hw_info)
+# CONFIG_ARM_SMMU_V3_IOMMUFD is not set
