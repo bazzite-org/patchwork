@@ -1,0 +1,16 @@
+# Symbol: DRM_PANEL_SAMSUNG_AMS639RQ08 [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/panel/Kconfig:626
+#   Prompt: Samsung AMS639RQ08 panel
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_PANEL [=y] && OF [=y] && DRM_MIPI_DSI [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Display Panels
+#             -> Samsung AMS639RQ08 panel (DRM_PANEL_SAMSUNG_AMS639RQ08 [=n])
+# 
+# 
+# 
+# Commit: bd07dbb929f6 (drm/panel: Add Samsung AMS639RQ08 panel driver)
+# CONFIG_DRM_PANEL_SAMSUNG_AMS639RQ08 is not set
