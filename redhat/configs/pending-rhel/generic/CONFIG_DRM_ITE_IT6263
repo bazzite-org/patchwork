@@ -1,0 +1,17 @@
+# Symbol: DRM_ITE_IT6263 [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/bridge/Kconfig:93
+#   Prompt: ITE IT6263 LVDS/HDMI bridge
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_BRIDGE [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Display Interface Bridges
+#             -> ITE IT6263 LVDS/HDMI bridge (DRM_ITE_IT6263 [=n])
+# Selects: DRM_DISPLAY_HDMI_STATE_HELPER [=y] && DRM_DISPLAY_HELPER [=m] && DRM_BRIDGE_CONNECTOR [=n] && DRM_KMS_HELPER [=y] && REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 049723628716 (drm/bridge: Add ITE IT6263 LVDS to HDMI converter)
+# CONFIG_DRM_ITE_IT6263 is not set
