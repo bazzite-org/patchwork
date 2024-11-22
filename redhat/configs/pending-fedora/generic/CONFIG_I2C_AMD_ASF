@@ -1,0 +1,17 @@
+# Symbol: I2C_AMD_ASF [=n]
+# Type  : tristate
+# Defined at drivers/i2c/busses/Kconfig:85
+#   Prompt: AMD ASF I2C Controller Support
+#   Depends on: I2C [=y] && HAS_IOMEM [=y] && I2C_PIIX4 [=m]
+#   Location:
+#     -> Device Drivers
+#       -> I2C support
+#         -> I2C support (I2C [=y])
+#           -> I2C Hardware Bus support
+#             -> AMD ASF I2C Controller Support (I2C_AMD_ASF [=n])
+# Selects: I2C_SLAVE [=y]
+# 
+# 
+# 
+# Commit: c509ebdb95ee (i2c: amd-asf: Add ACPI support for AMD ASF Controller)
+# CONFIG_I2C_AMD_ASF is not set
