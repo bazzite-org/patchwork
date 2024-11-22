@@ -4676,11 +4676,6 @@ int amdgpu_device_prepare(struct drm_device *dev)
 	if (dev->switch_power_state == DRM_SWITCH_POWER_OFF)
 		return 0;
 
-	/* Evict the majority of BOs before starting suspend sequence */
-	r = amdgpu_device_evict_resources(adev);
-	if (r)
-		goto unprepare;
-
 	flush_delayed_work(&adev->gfx.gfx_off_delay_work);
 
 	for (i = 0; i < adev->num_ip_blocks; i++) {
