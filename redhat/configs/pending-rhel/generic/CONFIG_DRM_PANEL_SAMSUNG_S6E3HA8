@@ -1,0 +1,17 @@
+# Symbol: DRM_PANEL_SAMSUNG_S6E3HA8 [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/panel/Kconfig:720
+#   Prompt: Samsung S6E3HA8 DSI video mode panel
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_PANEL [=y] && OF [=y] && DRM_MIPI_DSI [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Display Panels
+#             -> Samsung S6E3HA8 DSI video mode panel (DRM_PANEL_SAMSUNG_S6E3HA8 [=n])
+# Selects: DRM_DISPLAY_DSC_HELPER [=y] && VIDEOMODE_HELPERS [=y]
+# 
+# 
+# 
+# Commit: 779679d3c164 (drm/panel: Add support for S6E3HA8 panel driver)
+# CONFIG_DRM_PANEL_SAMSUNG_S6E3HA8 is not set
