@@ -12,4 +12,4 @@
 # 
 # 
 # Commit: fb4c31587adf (reset: amlogic: add auxiliary reset driver support)
-# CONFIG_RESET_MESON_AUX is not set
+CONFIG_RESET_MESON_AUX=m
