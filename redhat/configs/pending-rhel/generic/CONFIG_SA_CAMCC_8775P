@@ -1,0 +1,16 @@
+# Symbol: SA_CAMCC_8775P [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:478
+#   Prompt: SA8775P Camera Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> SA8775P Camera Clock Controller (SA_CAMCC_8775P [=n])
+# Selects: SA_GCC_8775P [=y]
+# 
+# 
+# 
+# Commit: 84c74dfbecc5 (clk: qcom: Add support for Camera Clock Controller on SA8775P)
+# CONFIG_SA_CAMCC_8775P is not set
