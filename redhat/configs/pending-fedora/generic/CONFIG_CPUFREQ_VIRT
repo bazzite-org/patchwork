@@ -1,0 +1,15 @@
+# Symbol: CPUFREQ_VIRT [=n]
+# Type  : tristate
+# Defined at drivers/cpufreq/Kconfig:220
+#   Prompt: Virtual cpufreq driver
+#   Depends on: CPU_FREQ [=y] && GENERIC_ARCH_TOPOLOGY [=y]
+#   Location:
+#     -> CPU Power Management
+#       -> CPU Frequency scaling
+#         -> CPU Frequency scaling (CPU_FREQ [=y])
+#           -> Virtual cpufreq driver (CPUFREQ_VIRT [=n])
+# 
+# 
+# 
+# Commit: 4fd06a5358e0 (cpufreq: add virtual-cpufreq driver)
+# CONFIG_CPUFREQ_VIRT is not set
