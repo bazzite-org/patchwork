@@ -1,3 +1,7 @@
+* Sat Nov 23 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.28eb75e178d3.6]
+- Linux v6.13.0-0.rc0.28eb75e178d3
+Resolves: 
+
 * Fri Nov 22 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.fcc79e1714e8.5]
 - redhat/configs: Enable Intel Bluetooth PCIE drivers (Bastien Nocera)
 Resolves: 
