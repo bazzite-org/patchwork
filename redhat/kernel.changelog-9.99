@@ -1,3 +1,9 @@
+* Sat Nov 23 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.228a1157fb9f.7]
+- Better fixes for the fedora mismatch (Justin M. Forbes)
+- Mismatch fix ups for Fedora (Justin M. Forbes)
+- Linux v6.13.0-0.rc0.228a1157fb9f
+Resolves: 
+
 * Sat Nov 23 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.28eb75e178d3.6]
 - Linux v6.13.0-0.rc0.28eb75e178d3
 Resolves: 
