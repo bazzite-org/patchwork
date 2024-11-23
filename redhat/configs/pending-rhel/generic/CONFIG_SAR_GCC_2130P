@@ -1,0 +1,18 @@
+# Symbol: SAR_GCC_2130P [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:586
+#   Prompt: SAR2130P Global Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> SAR2130P Global Clock Controller (SAR_GCC_2130P [=n])
+# Selects: QCOM_GDSC [=y]
+# Selected by [n]:
+#   - SAR_GPUCC_2130P [=n] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+# 
+# 
+# 
+# Commit: 13e677de1a7b (clk: qcom: add support for GCC on SAR2130P)
+# CONFIG_SAR_GCC_2130P is not set
