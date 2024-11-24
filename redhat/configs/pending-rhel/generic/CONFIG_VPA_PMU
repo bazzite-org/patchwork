@@ -1,0 +1,14 @@
+# Symbol: VPA_PMU [=n]
+# Type  : tristate
+# Defined at arch/powerpc/platforms/pseries/Kconfig:143
+#   Prompt: VPA PMU events
+#   Depends on: KVM_BOOK3S_64_HV [=m] && HV_PERF_CTRS [=y]
+#   Location:
+#     -> Platform support
+#       -> Hypervisor supplied PMU events (24x7 & GPCI) (HV_PERF_CTRS [=y])
+#         -> VPA PMU events (VPA_PMU [=n])
+# 
+# 
+# 
+# Commit: 176cda0619b6 (powerpc/perf: Add perf interface to expose vpa counters)
+# CONFIG_VPA_PMU is not set
