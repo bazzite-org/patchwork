@@ -1,3 +1,15 @@
+* Tue Nov 26 2024 Justin M. Forbes <jforbes@fedoraproject.org> [6.12.1-0]
+- Bluetooth: btusb: add Foxconn 0xe0fc for Qualcomm WCN785x (Mark Pearson) [2329005]
+- Initial set up for stable Fedora branch (Justin M. Forbes)
+- arm64: dts: qcom: x1e80100-vivobook-s15: Enable the gpu (Maud Spierings)
+- tools/rtla: fix collision with glibc sched_attr/sched_set_attr (Jan Stancek)
+- tools/rtla: drop __NR_sched_getattr (Jan Stancek)
+- Reset RHEL_RELEASE for 6.13 (Justin M. Forbes)
+- redhat: Move perf_dlfilter.h from libperf-devel to perf (Akihiko Odaki)
+- Consolidate configs to common for 6.12 (Justin M. Forbes)
+- Linux v6.12.1
+Resolves: rhbz#2329005
+
 * Mon Nov 18 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.12.0-64]
 - redhat/configs: cleanup CONFIG_DEV_DAX (David Hildenbrand)
 - redhat/configs: cleanup CONFIG_TRANSPARENT_HUGEPAGE_MADVISE for Fedora (David Hildenbrand)
