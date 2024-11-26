@@ -1,0 +1,15 @@
+# Symbol: PINCTRL_TH1520 [=n]
+# Type  : tristate
+# Defined at drivers/pinctrl/Kconfig:565
+#   Prompt: Pinctrl driver for the T-Head TH1520 SoC
+#   Depends on: PINCTRL [=y] && (ARCH_THEAD [=y] || COMPILE_TEST [=n]) && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Pin controllers (PINCTRL [=y])
+#         -> Pinctrl driver for the T-Head TH1520 SoC (PINCTRL_TH1520 [=n])
+# Selects: GENERIC_PINMUX_FUNCTIONS [=y] && GENERIC_PINCONF [=y] && PINMUX [=y]
+# 
+# 
+# 
+# Commit: bed5cd6f8a98 (pinctrl: Add driver for the T-Head TH1520 SoC)
+# CONFIG_PINCTRL_TH1520 is not set
