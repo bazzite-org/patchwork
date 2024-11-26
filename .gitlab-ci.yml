@@ -532,43 +532,43 @@ c10s_automotive_debug_merge_request:
 
 # c10s baselines
 c10s_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_up]
 
 c10s_debug_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_up_debug]
 
 # c10s_clang_baseline:
-#   extends: [.baseline, .trigger_c10s, .reported_tests_clang, .ark_latest_head,
+#   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
 #             .eln_clang_up]
 #
 # c10s_clang_debug_baseline:
-#   extends: [.baseline, .trigger_c10s, .reported_tests_clang, .ark_latest_head,
+#   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
 #             .eln_clang_up_debug]
 
-c10s_realtime_baseline:  # no tests as realtime code not present upstream
+c10s_realtime_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_rt]
 
-c10s_realtime_debug_baseline:  # no tests as realtime code not present upstream
+c10s_realtime_debug_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_rt_debug]
 
 c10s_64k_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_64k]
 
 c10s_64k_debug_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_64k_debug]
 
 c10s_automotive_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_automotive]
 
 c10s_automotive_debug_baseline:
-  extends: [.baseline, .trigger_c10s, .reported_tests, .ark_latest_head,
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_automotive_debug]
 
 # c10s CKI container image gating
@@ -588,11 +588,11 @@ c10s_debug_cki_gating:
 #   extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
 #             .eln_clang_up_debug, .cki_gating_overrides]
 
-c10s_realtime_cki_gating:  # no tests as realtime code not present upstream
+c10s_realtime_cki_gating:
   extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
             .eln_rt, .cki_gating_overrides]
 
-c10s_realtime_debug_cki_gating:  # no tests as realtime code not present upstream
+c10s_realtime_debug_cki_gating:
   extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
             .eln_rt_debug, .cki_gating_overrides]
 
