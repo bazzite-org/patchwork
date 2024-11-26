@@ -1,0 +1,14 @@
+# Symbol: THEAD_TH1520_MBOX [=n]
+# Type  : tristate
+# Defined at drivers/mailbox/Kconfig:299
+#   Prompt: T-head TH1520 Mailbox
+#   Depends on: MAILBOX [=y] && (ARCH_THEAD [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Mailbox Hardware Support (MAILBOX [=y])
+#         -> T-head TH1520 Mailbox (THEAD_TH1520_MBOX [=n])
+# 
+# 
+# 
+# Commit: 5d4d263e1c6b (mailbox: Introduce support for T-head TH1520 Mailbox driver)
+# CONFIG_THEAD_TH1520_MBOX is not set
