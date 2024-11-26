@@ -1,0 +1,15 @@
+# Symbol: PINCTRL_QCS615 [=n]
+# Type  : tristate
+# Defined at drivers/pinctrl/qcom/Kconfig.msm:194
+#   Prompt: Qualcomm Technologies QCS615 pin controller driver
+#   Depends on: PINCTRL [=y] && (ARCH_QCOM [=y] || COMPILE_TEST [=n]) && PINCTRL_MSM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Pin controllers (PINCTRL [=y])
+#         -> Qualcomm core pin controller driver (PINCTRL_MSM [=y])
+#           -> Qualcomm Technologies QCS615 pin controller driver (PINCTRL_QCS615 [=n])
+# 
+# 
+# 
+# Commit: b698f36a9d40 (pinctrl: qcom: add the tlmm driver for QCS615 platform)
+# CONFIG_PINCTRL_QCS615 is not set
