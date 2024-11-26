@@ -1,0 +1,16 @@
+# Symbol: UTIL_MACROS_KUNIT [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:2623
+#   Prompt: KUnit test util_macros.h functions at runtime
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> KUnit test util_macros.h functions at runtime (UTIL_MACROS_KUNIT [=m])
+# 
+# 
+# 
+# Commit: 111314157f78 (lib: util_macros_kunit: add kunit test for util_macros.h)
+CONFIG_UTIL_MACROS_KUNIT=m
