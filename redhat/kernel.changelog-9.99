@@ -1,3 +1,10 @@
+* Wed Nov 27 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.aaf20f870da0.10]
+- redhat/configs: enable SERIAL_AMBA_PL011 for automotive (Radu Rendec)
+- c10s: disable tests in CKI pipelines (Michael Hofmann)
+- redhat: Drop bpftool from kernel spec (Viktor Malik)
+- Linux v6.13.0-0.rc0.aaf20f870da0
+Resolves: 
+
 * Tue Nov 26 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.7eef7e306d3c.9]
 - Linux v6.13.0-0.rc0.7eef7e306d3c
 Resolves: 
