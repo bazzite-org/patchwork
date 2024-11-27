@@ -108,8 +108,7 @@ static int sig_prepare_alg(struct sig_alg *alg)
 {
 	struct crypto_alg *base = &alg->base;
 
-	if (!alg->sign)
-		alg->sign = sig_default_sign;
+	alg->sign = sig_default_sign;
 	if (!alg->verify)
 		alg->verify = sig_default_verify;
 	if (!alg->set_priv_key)
