@@ -1,0 +1,14 @@
+# Symbol: PCIE_THERMAL [=n]
+# Type  : bool
+# Defined at drivers/thermal/Kconfig:223
+#   Prompt: PCIe cooling support
+#   Depends on: THERMAL [=y] && PCIEPORTBUS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Thermal drivers (THERMAL [=y])
+#         -> PCIe cooling support (PCIE_THERMAL [=n])
+# 
+# 
+# 
+# Commit: d278b098282d (thermal: Add PCIe cooling driver)
+# CONFIG_PCIE_THERMAL is not set
