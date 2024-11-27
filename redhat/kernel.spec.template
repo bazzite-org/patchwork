@@ -711,7 +711,7 @@ BuildRequires: kmod, bash, coreutils, tar, git-core, which
 BuildRequires: bzip2, xz, findutils, m4, perl-interpreter, perl-Carp, perl-devel, perl-generators, make, diffutils, gawk, %compression
 BuildRequires: gcc, binutils, redhat-rpm-config, hmaccalc, bison, flex, gcc-c++
 %if 0%{?fedora}
-BuildRequires: rust, rust-src, bindgen
+BuildRequires: rust, rust-src, bindgen, rustfmt
 %endif
 BuildRequires: net-tools, hostname, bc, elfutils-devel
 BuildRequires: dwarves
