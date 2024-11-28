@@ -1,0 +1,15 @@
+# Symbol: RISCV_PROBE_VECTOR_UNALIGNED_ACCESS [=y]
+# Type  : bool
+# Defined at arch/riscv/Kconfig:948
+#   Prompt: Probe speed of vector unaligned accesses
+#   Depends on: RISCV_ISA_V [=y]
+#   Location:
+#     -> Platform type
+#       -> Vector unaligned Accesses Support (<choice> [=n])
+#         -> Probe speed of vector unaligned accesses (RISCV_PROBE_VECTOR_UNALIGNED_ACCESS [=y])
+# Selects: RISCV_VECTOR_MISALIGNED [=y]
+# 
+# 
+# 
+# Commit: d1703dc7bc8e (RISC-V: Detect unaligned vector accesses supported)
+CONFIG_RISCV_PROBE_VECTOR_UNALIGNED_ACCESS=y
