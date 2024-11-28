@@ -1,0 +1,15 @@
+# Symbol: PHY_NXP_PTN3222 [=n]
+# Type  : tristate
+# Defined at drivers/phy/Kconfig:85
+#   Prompt: NXP PTN3222 1-port eUSB2 to USB2 redriver
+#   Depends on: I2C [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PHY Subsystem
+#         -> NXP PTN3222 1-port eUSB2 to USB2 redriver (PHY_NXP_PTN3222 [=n])
+# Selects: GENERIC_PHY [=n]
+# 
+# 
+# 
+# Commit: c9be539e11f0 (phy: add NXP PTN3222 eUSB2 to USB2 redriver)
+# CONFIG_PHY_NXP_PTN3222 is not set
