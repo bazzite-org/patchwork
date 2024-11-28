@@ -1,0 +1,13 @@
+# Symbol: RISCV_ISA_SUPM [=y]
+# Type  : bool
+# Defined at arch/riscv/Kconfig:570
+#   Prompt: Supm extension for userspace pointer masking
+#   Depends on: 64BIT [=y]
+#   Location:
+#     -> Platform type
+#       -> Supm extension for userspace pointer masking (RISCV_ISA_SUPM [=y])
+# 
+# 
+# 
+# Commit: 09d6775f503b (riscv: Add support for userspace pointer masking)
+CONFIG_RISCV_ISA_SUPM=y

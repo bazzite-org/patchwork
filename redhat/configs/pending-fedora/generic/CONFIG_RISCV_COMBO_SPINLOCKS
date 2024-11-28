@@ -1,0 +1,15 @@
+# Symbol: RISCV_COMBO_SPINLOCKS [=y]
+# Type  : bool
+# Defined at arch/riscv/Kconfig:535
+#   Prompt: Using combo spinlock
+#   Depends on: SMP [=y] && MMU [=y]
+#   Location:
+#     -> Platform type
+#       -> RISC-V spinlock type (<choice> [=n])
+#         -> Using combo spinlock (RISCV_COMBO_SPINLOCKS [=y])
+# Selects: ARCH_USE_QUEUED_SPINLOCKS [=y]
+# 
+# 
+# 
+# Commit: ab83647fadae (riscv: Add qspinlock support)
+CONFIG_RISCV_COMBO_SPINLOCKS=y
