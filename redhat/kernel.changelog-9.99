@@ -1,3 +1,7 @@
+* Fri Nov 29 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.7af08b57bcb9.12]
+- Linux v6.13.0-0.rc0.7af08b57bcb9
+Resolves: 
+
 * Thu Nov 28 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc0.b86545e02e8c.11]
 - crypto: sig - Disable signing (Herbert Xu)
 - Linux v6.13.0-0.rc0.b86545e02e8c
