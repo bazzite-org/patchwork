@@ -1,0 +1,15 @@
+# Symbol: INTERCONNECT_QCOM_QCS8300 [=n]
+# Type  : tristate
+# Defined at drivers/interconnect/qcom/Kconfig:117
+#   Prompt: Qualcomm QCS8300 interconnect driver
+#   Depends on: INTERCONNECT [=y] && INTERCONNECT_QCOM_RPMH_POSSIBLE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> On-Chip Interconnect management support (INTERCONNECT [=y])
+#         -> Qualcomm QCS8300 interconnect driver (INTERCONNECT_QCOM_QCS8300 [=n])
+# Selects: INTERCONNECT_QCOM_RPMH [=y] && INTERCONNECT_QCOM_BCM_VOTER [=y]
+# 
+# 
+# 
+# Commit: 3063c3dfa07d (interconnect: qcom: add QCS8300 interconnect provider driver)
+# CONFIG_INTERCONNECT_QCOM_QCS8300 is not set
