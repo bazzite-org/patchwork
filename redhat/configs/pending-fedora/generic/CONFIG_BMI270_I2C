@@ -1,0 +1,16 @@
+# Symbol: BMI270_I2C [=n]
+# Type  : tristate
+# Defined at drivers/iio/imu/bmi270/Kconfig:11
+#   Prompt: Bosch BMI270 I2C driver
+#   Depends on: IIO [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Inertial measurement units
+#           -> Bosch BMI270 I2C driver (BMI270_I2C [=n])
+# Selects: BMI270 [=n] && REGMAP_I2C [=y]
+# 
+# 
+# 
+# Commit: 3ea51548d6b2 (iio: imu: Add i2c driver for bmi270 imu)
+# CONFIG_BMI270_I2C is not set

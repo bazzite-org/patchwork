@@ -1,0 +1,16 @@
+# Symbol: SMI240 [=n]
+# Type  : tristate
+# Defined at drivers/iio/imu/Kconfig:101
+#   Prompt: Bosch Sensor SMI240 Inertial Measurement Unit
+#   Depends on: IIO [=m] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Inertial measurement units
+#           -> Bosch Sensor SMI240 Inertial Measurement Unit (SMI240 [=n])
+# Selects: REGMAP_SPI [=m] && IIO_BUFFER [=y] && IIO_TRIGGERED_BUFFER [=m]
+# 
+# 
+# 
+# Commit: 99918e786a76 (iio: imu: smi240: add driver)
+# CONFIG_SMI240 is not set
