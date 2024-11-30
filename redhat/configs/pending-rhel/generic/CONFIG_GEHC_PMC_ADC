@@ -1,0 +1,15 @@
+# Symbol: GEHC_PMC_ADC [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:608
+#   Prompt: GE HealthCare PMC ADC driver
+#   Depends on: IIO [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> GE HealthCare PMC ADC driver (GEHC_PMC_ADC [=n])
+# 
+# 
+# 
+# Commit: fb45972c1883 (iio: adc: Add support for the GE HealthCare PMC ADC)
+# CONFIG_GEHC_PMC_ADC is not set
