@@ -1,0 +1,14 @@
+# Symbol: NVMEM_RCAR_EFUSE [=n]
+# Type  : tristate
+# Defined at drivers/nvmem/Kconfig:249
+#   Prompt: Renesas R-Car Gen4 E-FUSE support
+#   Depends on: (ARCH_RENESAS [=y] && ARM64 [=y] || COMPILE_TEST [=n]) && NVMEM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> NVMEM Support (NVMEM [=y])
+#         -> Renesas R-Car Gen4 E-FUSE support (NVMEM_RCAR_EFUSE [=n])
+# 
+# 
+# 
+# Commit: 1530b923a514 (nvmem: Add R-Car E-FUSE driver)
+# CONFIG_NVMEM_RCAR_EFUSE is not set
