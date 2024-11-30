@@ -1,0 +1,15 @@
+# Symbol: INTERCONNECT_QCOM_SAR2130P [=n]
+# Type  : tristate
+# Defined at drivers/interconnect/qcom/Kconfig:160
+#   Prompt: Qualcomm SAR2130P interconnect driver
+#   Depends on: INTERCONNECT [=y] && INTERCONNECT_QCOM_RPMH_POSSIBLE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> On-Chip Interconnect management support (INTERCONNECT [=y])
+#         -> Qualcomm SAR2130P interconnect driver (INTERCONNECT_QCOM_SAR2130P [=n])
+# Selects: INTERCONNECT_QCOM_RPMH [=y] && INTERCONNECT_QCOM_BCM_VOTER [=y]
+# 
+# 
+# 
+# Commit: 92c366a53c4a (interconnect: qcom: add support for SAR2130P)
+# CONFIG_INTERCONNECT_QCOM_SAR2130P is not set

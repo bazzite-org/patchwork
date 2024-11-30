@@ -1,0 +1,16 @@
+# Symbol: AD7625 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:249
+#   Prompt: Analog Devices AD7625/AD7626 High Speed ADC driver
+#   Depends on: IIO [=m] && PWM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Analog Devices AD7625/AD7626 High Speed ADC driver (AD7625 [=n])
+# Selects: IIO_BACKEND [=n]
+# 
+# 
+# 
+# Commit: b7ffd0fa65e9 (iio: adc: ad7625: add driver)
+# CONFIG_AD7625 is not set
