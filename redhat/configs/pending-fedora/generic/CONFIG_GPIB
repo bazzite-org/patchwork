@@ -1,0 +1,14 @@
+# Symbol: GPIB [=n]
+# Type  : tristate
+# Defined at drivers/staging/gpib/Kconfig:2
+#   Prompt: Linux GPIB drivers
+#   Depends on: STAGING [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Staging drivers (STAGING [=y])
+#         -> Linux GPIB drivers (GPIB [=n])
+# 
+# 
+# 
+# Commit: 165e8cc3cfec (staging: gpib: Add KBUILD files for GPIB drivers)
+# CONFIG_GPIB is not set
