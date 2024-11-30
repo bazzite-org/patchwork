@@ -1,0 +1,16 @@
+# Symbol: ALS31300 [=n]
+# Type  : tristate
+# Defined at drivers/iio/magnetometer/Kconfig:57
+#   Prompt: Allegro MicroSystems ALS31300 3-D Linear Hall Effect Sensor
+#   Depends on: IIO [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Magnetometer sensors
+#           -> Allegro MicroSystems ALS31300 3-D Linear Hall Effect Sensor (ALS31300 [=n])
+# Selects: REGMAP_I2C [=y] && IIO_BUFFER [=y] && IIO_TRIGGERED_BUFFER [=m]
+# 
+# 
+# 
+# Commit: 3c9b6fd74188 (iio: magnetometer: add Allegro MicroSystems ALS31300 3-D Linear Hall Effect driver)
+# CONFIG_ALS31300 is not set

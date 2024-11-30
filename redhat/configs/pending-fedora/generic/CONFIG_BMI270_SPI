@@ -1,0 +1,16 @@
+# Symbol: BMI270_SPI [=n]
+# Type  : tristate
+# Defined at drivers/iio/imu/bmi270/Kconfig:23
+#   Prompt: Bosch BMI270 SPI driver
+#   Depends on: IIO [=m] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Inertial measurement units
+#           -> Bosch BMI270 SPI driver (BMI270_SPI [=n])
+# Selects: BMI270 [=n] && REGMAP_SPI [=m]
+# 
+# 
+# 
+# Commit: 92cc50a00574 (iio: imu: bmi270: Add spi driver for bmi270 imu)
+# CONFIG_BMI270_SPI is not set
