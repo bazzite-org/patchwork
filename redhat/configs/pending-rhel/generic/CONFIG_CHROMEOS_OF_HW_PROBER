@@ -1,0 +1,15 @@
+# Symbol: CHROMEOS_OF_HW_PROBER [=y]
+# Type  : tristate
+# Defined at drivers/platform/chrome/Kconfig:64
+#   Prompt: ChromeOS Device Tree Hardware Prober
+#   Depends on: CHROME_PLATFORMS [=y] && OF [=y] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Platform support for Chrome hardware (CHROME_PLATFORMS [=y])
+#         -> ChromeOS Device Tree Hardware Prober (CHROMEOS_OF_HW_PROBER [=y])
+# Selects: OF_DYNAMIC [=y]
+# 
+# 
+# 
+# Commit: 3fc361af8ab0 (platform/chrome: Introduce device tree hardware prober)
+CONFIG_CHROMEOS_OF_HW_PROBER=y
