@@ -1,0 +1,15 @@
+# Symbol: RTC_DRV_AMLOGIC_A4 [=y]
+# Type  : tristate
+# Defined at drivers/rtc/Kconfig:2094
+#   Prompt: Amlogic RTC
+#   Depends on: RTC_CLASS [=y] && (ARCH_MESON [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Real Time Clock (RTC_CLASS [=y])
+#         -> Amlogic RTC (RTC_DRV_AMLOGIC_A4 [=y])
+# Selects: REGMAP_MMIO [=y]
+# 
+# 
+# 
+# Commit: c89ac9182ee2 (rtc: support for the Amlogic on-chip RTC)
+CONFIG_RTC_DRV_AMLOGIC_A4=y
