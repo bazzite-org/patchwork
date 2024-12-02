@@ -72,6 +72,7 @@
 #include "ivsrcid/ivsrcid_vislands30.h"
 
 #include <linux/backlight.h>
+#include <linux/dmi.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -4594,11 +4595,51 @@ static int amdgpu_dm_mode_config_init(struct amdgpu_device *adev)
 	return 0;
 }
 
-#define AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV 0
 #define AMDGPU_DM_DEFAULT_MIN_BACKLIGHT 12
 #define AMDGPU_DM_DEFAULT_MAX_BACKLIGHT 255
 #define AMDGPU_DM_MIN_SPREAD ((AMDGPU_DM_DEFAULT_MAX_BACKLIGHT - AMDGPU_DM_DEFAULT_MIN_BACKLIGHT) / 2)
 #define AUX_BL_DEFAULT_TRANSITION_TIME_MS 50
+
+static const struct dmi_system_id backlight_override_quirks[] = {
+	{	/* Valve Steam Deck (Galileo) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Galileo"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "1"),
+		},
+		.driver_data = (void *)0,
+	},
+	{	/* Valve Steam Deck (Jupiter) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Jupiter"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "1"),
+		},
+		.driver_data = (void *)0,
+	},
+	{	/* F1 Pro OLED */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1Pro"),
+		},
+		.driver_data = (void *)40,
+	},
+	{	/* F1 Pro Limited Edition */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1 EVA-02"),
+		},
+		.driver_data = (void *)40,
+	},
+	{	/* Zotac Gaming Zone */
+		.matches = {
+			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ZOTAC"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "G0A1W"),
+		},
+		.driver_data = (void *)40,
+	},
+	{}
+};
 
 static void amdgpu_dm_update_backlight_caps(struct amdgpu_display_manager *dm,
 					    int bl_idx)
@@ -4636,9 +4677,13 @@ static void amdgpu_dm_update_backlight_caps(struct amdgpu_display_manager *dm,
 		printk(KERN_NOTICE"VLV Successfully queried backlight range over ACPI: %d %d\n",
 		       (int) caps->min_input_signal, (int) caps->max_input_signal);
 
-		if ( caps->min_input_signal != AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV )
-		{
-			caps->min_input_signal = AMDGPU_DM_DEFAULT_MIN_BACKLIGHT_VLV;
+		const struct dmi_system_id *override_sysid =
+			dmi_first_match(backlight_override_quirks);
+
+		if (override_sysid &&
+		    caps->min_input_signal != (long) override_sysid->driver_data) {
+			caps->min_input_signal =
+				(long)override_sysid->driver_data;
 			printk(KERN_NOTICE"VLV OVERRIDE backlight range (min only): %d %d\n",
 			       (int) caps->min_input_signal, (int) caps->max_input_signal);
 		}
