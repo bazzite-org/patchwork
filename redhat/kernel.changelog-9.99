@@ -1,3 +1,7 @@
+* Wed Dec 04 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.feffde684ac2.16]
+- Linux v6.13.0-0.rc1.feffde684ac2
+Resolves: 
+
 * Tue Dec 03 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.cdd30ebb1b9f.15]
 - redhat/configs: default to PREEMPT_LAZY on x86, riscv (Michal Schmidt)
 - redhat/configs: New config CONFIG_PREEMPT_LAZY (Michal Schmidt)
