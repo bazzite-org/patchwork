@@ -1,3 +1,10 @@
+* Thu Dec 05 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.feffde684ac2.17]
+- redhat: configs: enable INTEL_PLR_TPMI for RHEL (David Arcari)
+- configs: Enable CONFIG_NETKIT for RHEL (Toke Høiland-Jørgensen)
+- redhat: fix build/install targets in netfilter kselftest (Davide Caratti)
+- RHEL: disable the btt driver (Jeff Moyer)
+Resolves: 
+
 * Wed Dec 04 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.feffde684ac2.16]
 - Linux v6.13.0-0.rc1.feffde684ac2
 Resolves: 
