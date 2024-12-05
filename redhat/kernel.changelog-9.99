@@ -1,3 +1,29 @@
+* Thu Dec 05 2024 Justin M. Forbes <jforbes@fedoraproject.org> [6.12.2-0]
+- Add new config for 6.12.2 (Justin M. Forbes)
+- Revert "udp: avoid calling sock_def_readable() if possible" (Fernando Fernandez Mancera)
+- Fedora: arm64: Enable Rockchip QP HDMI driver (Peter Robinson)
+- arm64: dts: rockchip: Enable HDMI on Hardkernel ODROID-M2 (Jonas Karlman)
+- arm64: dts: rockchip: Enable HDMI0 on FriendlyElec CM3588 NAS (Jonas Karlman)
+- arm64: dts: rockchip: Enable HDMI0 on rock-5a (Cristian Ciocaltea)
+- arm64: dts: rockchip: Enable HDMI0 on rk3588-nanopc-t6 (Marcin Juszkiewicz)
+- arm64: dts: rockchip: Enable HDMI0 on Orange Pi 5 (Jimmy Hon)
+- arm64: dts: rockchip: add and enable gpu node for Radxa ROCK 5A (FUKAUMI Naoki)
+- arm64: dts: rockchip: Enable HDMI0 on orangepi-5-plus (Cristian Ciocaltea)
+- arm64: dts: rockchip: Enable HDMI0 on rk3588-evb1 (Cristian Ciocaltea)
+- arm64: dts: rockchip: Enable HDMI0 on rock-5b (Cristian Ciocaltea)
+- arm64: dts: rockchip: Add HDMI0 node to rk3588 (Cristian Ciocaltea)
+- drm/rockchip: Add basic RK3588 HDMI output support (Cristian Ciocaltea)
+- drm/rockchip: Load crtc devices in preferred order (Jonas Karlman)
+- drm/rockchip: dw_hdmi: Enable 4K@60Hz mode on RK3399 and RK356x (Jonas Karlman)
+- drm/rockchip: dw_hdmi: Use auto-generated tables (Douglas Anderson)
+- drm/rockchip: dw_hdmi: Set cur_ctr to 0 always (Douglas Anderson)
+- drm/rockchip: dw_hdmi: Add phy_config for 594Mhz pixel clock (Nickey Yang)
+- drm/bridge: synopsys: Add DW HDMI QP TX Controller support library (Cristian Ciocaltea)
+- redhat: Drop bpftool from kernel spec (Viktor Malik)
+- Revert "add pci_hw_vendor_status()" (Justin M. Forbes)
+- Linux v6.12.2
+Resolves: 
+
 * Tue Nov 26 2024 Justin M. Forbes <jforbes@fedoraproject.org> [6.12.1-0]
 - Bluetooth: btusb: add Foxconn 0xe0fc for Qualcomm WCN785x (Mark Pearson) [2329005]
 - Initial set up for stable Fedora branch (Justin M. Forbes)
