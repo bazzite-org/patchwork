@@ -1,3 +1,8 @@
+* Fri Dec 06 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.b8f52214c61a.18]
+- redhat/kernel.spec.template: Link rtla against in-tree libcpupower (Tomas Glozar)
+- Linux v6.13.0-0.rc1.b8f52214c61a
+Resolves: 
+
 * Thu Dec 05 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc1.feffde684ac2.17]
 - redhat: configs: enable INTEL_PLR_TPMI for RHEL (David Arcari)
 - configs: Enable CONFIG_NETKIT for RHEL (Toke Høiland-Jørgensen)
