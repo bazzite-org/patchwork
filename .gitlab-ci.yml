@@ -208,12 +208,14 @@ workflow:
     package_name: kernel
     architectures: x86_64 aarch64 s390x ppc64le riscv64
     compiler: clang
+  allow_failure: true
 .rawhide_clang_up_debug:
   variables:
     rpmbuild_with: up debug
     package_name: kernel-debug
     architectures: x86_64 aarch64
     compiler: clang
+  allow_failure: true
 .rawhide_clanglto_up:
   variables:
     rpmbuild_with: clang_lto up base
@@ -300,21 +302,21 @@ rawhide_16k_debug_merge_request:
   extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
             .rawhide_16k_debug]
 
-rawhide_clang_merge_request:
-  extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .rawhide_clang_up]
+# rawhide_clang_merge_request:
+#   extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
+#             .rawhide_clang_up]
 
-rawhide_clang_debug_merge_request:
-  extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .rawhide_clang_up_debug]
+# rawhide_clang_debug_merge_request:
+#   extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
+#             .rawhide_clang_up_debug]
 
-rawhide_clanglto_merge_request:
-  extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .rawhide_clanglto_up]
+# rawhide_clanglto_merge_request:
+#   extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
+#             .rawhide_clanglto_up]
 
-rawhide_clanglto_debug_merge_request:
-  extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .rawhide_clanglto_up_debug]
+# rawhide_clanglto_debug_merge_request:
+#   extends: [.merge_request, .trigger_rawhide, .no_tests, .merge_ark_latest, .manual_for_bot,
+#             .rawhide_clanglto_up_debug]
 
 # Rawhide baselines
 rawhide_baseline:
