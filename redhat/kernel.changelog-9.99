@@ -1,3 +1,10 @@
+* Tue Dec 10 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.7cb1b4663150.22]
+- gitlab-ci: disable clang CI pipelines (Scott Weaver)
+- redhat/configs: Remove obsolete arch64/64k/CONFIG_FORCE_MAX_ZONEORDER (Waiman Long)
+- Fix up QCOM_EMAC config for Fedora (Justin M. Forbes)
+- Linux v6.13.0-0.rc2.7cb1b4663150
+Resolves: 
+
 * Mon Dec 09 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.21]
 - redhat/configs: automotive: disable CONFIG_IO_URING (Ian Mullins)
 - Linux v6.13.0-0.rc2
