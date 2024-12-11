@@ -1,3 +1,9 @@
+* Wed Dec 11 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.f92f4749861b.23]
+- crypto: rng - Fix extrng EFAULT handling (Herbert Xu)
+- redhat: configs: rhel: aarch64: Support NV Jetson MIPI camera (Kate Hsuan)
+- Linux v6.13.0-0.rc2.f92f4749861b
+Resolves: 
+
 * Tue Dec 10 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.7cb1b4663150.22]
 - gitlab-ci: disable clang CI pipelines (Scott Weaver)
 - redhat/configs: Remove obsolete arch64/64k/CONFIG_FORCE_MAX_ZONEORDER (Waiman Long)
