@@ -1,3 +1,11 @@
+* Thu Dec 12 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.231825b2e1ff.24]
+- generic: Remove and cleanups from staging 6.13 (Peter Robinson)
+- redhat: configs: Clean up DVB settings in RHEL (Kate Hsuan)
+- Move CONFIG_ARCH_TEGRA_241_SOC config/common so that it is enabled for RHEL as well as Fedora. Get rid of uneeded CONFIG_TEGRA241_CMDQV in configs/fedora while we're at it. (Mark Salter)
+- fedora: arm64: Enable the rockchip HDMI QP support (Peter Robinson)
+- Linux v6.13.0-0.rc2.231825b2e1ff
+Resolves: 
+
 * Wed Dec 11 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.f92f4749861b.23]
 - crypto: rng - Fix extrng EFAULT handling (Herbert Xu)
 - redhat: configs: rhel: aarch64: Support NV Jetson MIPI camera (Kate Hsuan)
