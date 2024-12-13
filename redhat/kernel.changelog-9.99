@@ -1,3 +1,8 @@
+* Fri Dec 13 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.f932fb9b4074.25]
+- redhat/configs: Enable the CS42L84 driver on Fedora (Neal Gompa)
+- Linux v6.13.0-0.rc2.f932fb9b4074
+Resolves: 
+
 * Thu Dec 12 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.231825b2e1ff.24]
 - generic: Remove and cleanups from staging 6.13 (Peter Robinson)
 - redhat: configs: Clean up DVB settings in RHEL (Kate Hsuan)
