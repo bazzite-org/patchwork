@@ -1,3 +1,8 @@
+* Mon Dec 16 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc3.28]
+- redhat/configs: automotive: disable CONFIG_NET_DROP_MONITOR (Davide Caratti)
+- Linux v6.13.0-0.rc3
+Resolves: 
+
 * Sun Dec 15 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc2.2d8308bf5b67.27]
 - Linux v6.13.0-0.rc2.2d8308bf5b67
 Resolves: 
