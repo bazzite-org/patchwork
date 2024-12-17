@@ -1,3 +1,10 @@
+* Tue Dec 17 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc3.f44d154d6e3d.29]
+- redhat/configs: Re-enable CONFIG_INFINIBAND_VMWARE_PVRDMA (Vitaly Kuznetsov)
+- redhat/configs: PREEMPT_NOTIFIERS does not need to be explicitly listed (Michal Schmidt)
+- redhat/configs: delete all CONFIG_PREEMPT_*BEHAVIOUR (Michal Schmidt)
+- Linux v6.13.0-0.rc3.f44d154d6e3d
+Resolves: 
+
 * Mon Dec 16 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc3.28]
 - redhat/configs: automotive: disable CONFIG_NET_DROP_MONITOR (Davide Caratti)
 - Linux v6.13.0-0.rc3
