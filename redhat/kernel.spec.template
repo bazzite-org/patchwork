@@ -1319,7 +1319,7 @@ analysing the logical and timing behavior of Linux.
 
 %package selftests-internal
 Summary: Kernel samples and selftests
-Requires: binutils, bpftool, iproute-tc, nmap-ncat, python3, fuse-libs, keyutils
+Requires: binutils, bpftool, fuse-libs, iproute-tc, iputils, keyutils, nmap-ncat, python3
 %description selftests-internal
 Kernel sample programs and selftests.
 
