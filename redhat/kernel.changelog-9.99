@@ -1,3 +1,7 @@
+* Thu Dec 19 2024 Augusto Caringi <acaringi@redhat.com> [6.12.6-0]
+- Linux v6.12.6
+Resolves: 
+
 * Sun Dec 15 2024 Justin M. Forbes <jforbes@fedoraproject.org> [6.12.5-0]
 - New config item for 6.12.5 (Justin M. Forbes)
 - x86/cpu: Add Lunar Lake to list of CPUs with a broken MONITOR  implementation (Mark Pearson) [2332094]
