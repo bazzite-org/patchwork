@@ -1,3 +1,7 @@
+* Fri Dec 20 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc3.8faabc041a00.32]
+- Linux v6.13.0-0.rc3.8faabc041a00
+Resolves: 
+
 * Thu Dec 19 2024 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc3.eabcdba3ad40.31]
 - redhat/configs: automotive: disable CONFIG_AIO (Davide Caratti)
 - Linux v6.13.0-0.rc3.eabcdba3ad40
