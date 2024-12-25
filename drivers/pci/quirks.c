@@ -5041,6 +5041,7 @@ static int  pci_quirk_wangxun_nic_acs(struct pci_dev *dev, u16 acs_flags)
 	return false;
 }
 
+static bool acs_ovf_enabled;
 static bool acs_on_downstream;
 static bool acs_on_multifunction;
 
@@ -5103,8 +5104,10 @@ next:
 			p++;
 	}
 
-	if (acs_on_downstream || acs_on_multifunction || max_acs_id)
+	if (acs_on_downstream || acs_on_multifunction || max_acs_id) {
 		pr_warn("Warning: PCIe ACS overrides enabled; This may allow non-IOMMU protected peer-to-peer DMA\n");
+		acs_ovf_enabled = true;
+	}
 
 	return 0;
 }
@@ -5113,6 +5116,11 @@ early_param("pcie_acs_override", pcie_acs_override_setup);
 static int pcie_acs_overrides(struct pci_dev *dev, u16 acs_flags)
 {
 	int i;
+
+	// Do not taint installations without a provided param
+	// by running the following code segment
+	if (!acs_ovf_enabled)
+		return -ENOTTY;
 
 	/* Never override ACS for legacy devices or devices with ACS caps */
 	if (!pci_is_pcie(dev) ||
