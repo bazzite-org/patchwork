@@ -1,3 +1,8 @@
+* Fri Dec 27 2024 Augusto Caringi <acaringi@redhat.com> [6.12.7-0]
+- Fix up CONFIG_IMX_SCMI_MISC_DRV config for Fedora (Augusto Caringi)
+- Linux v6.12.7
+Resolves: 
+
 * Thu Dec 19 2024 Augusto Caringi <acaringi@redhat.com> [6.12.6-0]
 - Linux v6.12.6
 Resolves: 
