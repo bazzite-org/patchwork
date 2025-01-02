@@ -1,3 +1,10 @@
+* Thu Jan 02 2025 Augusto Caringi <acaringi@redhat.com> [6.12.8-0]
+- Fix up last of fallout from ZRAM Backend churn (Justin M. Forbes)
+- Add more missing config items for ZRAM backend (Justin M. Forbes)
+- redhat/configs: Re-enable ZRAM backends (Neal Gompa)
+- Linux v6.12.8
+Resolves: 
+
 * Fri Dec 27 2024 Augusto Caringi <acaringi@redhat.com> [6.12.7-0]
 - Fix up CONFIG_IMX_SCMI_MISC_DRV config for Fedora (Augusto Caringi)
 - Linux v6.12.7
