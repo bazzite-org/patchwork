@@ -52,7 +52,7 @@ dist-cross-riscv64-rpms: dist-cross-setup dist-sources
 		echo "INFO: RISC-V builds are only supported on Fedora."; \
 	fi;
 
-dist-cross-all-rpms: dist-cross-setup dist-sources
+dist-cross-all-rpms: dist-cross-setup dist-sources ##build [x86_64 only] execute rpm builds for all supported archs using RHEL cross compiler
 	$(REDHAT)/scripts/cross-compile/x86_rngd.sh
 	$(CROSS_RPMFLAGS) --target aarch64 --with cross $(CROSS_DISABLED_SUBPACKAGES) -ba $(RPM)/SOURCES/$(SPECFILE)
 	$(CROSS_RPMFLAGS) --target ppc64le --with cross $(CROSS_DISABLED_SUBPACKAGES) -ba $(RPM)/SOURCES/$(SPECFILE)
@@ -85,7 +85,7 @@ dist-cross-riscv64-build: dist-cross-setup dist-sources
 	$(CROSS_RPMFLAGS) --target riscv64 --with cross --without debuginfo $(CROSS_DISABLED_SUBPACKAGES) -bc $(RPM)/SOURCES/$(SPECFILE)
 	$(REDHAT)/scripts/cross-compile/generate-cross-report.sh "riscv64"
 
-dist-cross-all-builds: dist-cross-setup dist-sources
+dist-cross-all-builds: dist-cross-setup dist-sources ##build [x86_64 only] execute "rpmbuild -bc" for all supported archs using RHEL cross compiler
 	$(REDHAT)/scripts/cross-compile/x86_rngd.sh
 	$(CROSS_RPMFLAGS) --target aarch64 --with cross --without debuginfo $(CROSS_DISABLED_SUBPACKAGES) -bc $(RPM)/SOURCES/$(SPECFILE)
 	$(CROSS_RPMFLAGS) --target ppc64le --with cross --without debuginfo $(CROSS_DISABLED_SUBPACKAGES) -bc $(RPM)/SOURCES/$(SPECFILE)
@@ -93,3 +93,6 @@ dist-cross-all-builds: dist-cross-setup dist-sources
 	$(CROSS_RPMFLAGS) --target riscv64 --with cross --without debuginfo $(CROSS_DISABLED_SUBPACKAGES) -bc $(RPM)/SOURCES/$(SPECFILE)
 	$(CROSS_RPMFLAGS) --without debuginfo -bc $(RPM)/SOURCES/$(SPECFILE)
 	$(REDHAT)/scripts/cross-compile/generate-cross-report.sh "aarch64 ppc64le s390x x86_64 riscv64"
+
+# this is a dummy entry to define help for the dist-cross-<arch>-build targets
+dist-cross-arch-build: ##build [x86_64 only] execute "rpmbuild -bc" for specified' <arch> using RHEL cross compiler.  Supported <arch>s:
