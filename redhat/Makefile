@@ -103,7 +103,7 @@ ifndef RHJOBS
 	  fi)
 endif
 
-ifeq ($(filter dist-full-help dist-help-% ,$(MAKECMDGOALS)),)
+ifeq ($(filter dist-full-help dist-help dist-help-% dist-helper-%,$(MAKECMDGOALS)),)
 LOCVERFILE:=../localversion
 # create an empty localversion file if you don't want a local buildid
 ifneq ($(wildcard $(LOCVERFILE)),)
@@ -368,6 +368,9 @@ endif
 
 include Makefile.cross
 
+# different types of help targets (for example, dist-help-misc or dist-help-build)
+HELP_TYPES=cleaning build kabi configuration misc
+
 #
 # Targets
 #
@@ -384,6 +387,7 @@ dist-python-check:
 		exit 1; \
 	fi
 
+dist-kabi: ##kabi Create kABI stablelist files in redhat/kabi/kabi-rhel*/ and merge kABI checksums into redhat/kabi/Module.kabi_*.
 dist-kabi: dist-python-check
 	@for KABIARCH in $(ARCH_LIST); do \
 		$(REDHAT)/kabi/show-kabi -k $(REDHAT)/kabi/kabi-module/ -m \
@@ -396,6 +400,7 @@ dist-kabi: dist-python-check
 	done;
 	@(cd $(REDHAT)/kabi/ && ln -Tsf kabi-rhel$(RHEL_MAJOR)$(RHEL_MINOR) kabi-current)
 
+dist-kabi-dup: ##kabi Merge kABI checksums for Driver Update Program (DUP) into redhat/kabi/Module.kabi_dup_*.
 dist-kabi-dup: dist-python-check
 	@for KABIARCH in $(ARCH_LIST); do \
 		touch $(REDHAT)/kabi/Module.kabi_dup_$$KABIARCH;\
@@ -476,9 +481,11 @@ dist-kabi-preimage-%: dist-kabi-index
 		done; \
 	fi
 
+dist-symtype-diff: ##kabi Diff kabi stablelist and current kernel.
 dist-symtype-diff: KABI_TOOL = $(REDHAT)/kabi/diff-kabi
 dist-symtype-diff: dist-assert-cross-tools dist-assert-tree-clean dist-configs dist-symtype-shared
 
+dist-kabi-update: ##kabi Update kabi stablelist checksums.
 dist-kabi-update: KABI_TOOL = $(REDHAT)/kabi/update-kabi
 dist-kabi-update: dist-assert-cross-tools dist-assert-tree-clean dist-configs dist-symtype-shared
 
@@ -501,6 +508,7 @@ dist-symtype-shared:
 		done; \
 	fi
 
+dist-check-kabi: ##kabi Check for changes in kABI stablelisted symbols. Requires a pre-compiled tree: run `make dist-configs`, copy the relevant config file from redhat/configs/ to .config, and run `make`.
 dist-check-kabi: dist-kabi
 	@if [ ! -e $(_OUTPUT)/Module.symvers ]; then \
 		echo "ERROR: You must compile the kernel and modules first";\
@@ -509,6 +517,7 @@ dist-check-kabi: dist-kabi
 	@$(REDHAT)/kabi/check-kabi -k $(REDHAT)/kabi/Module.kabi_$(MACH) \
 	 -s $(_OUTPUT)/Module.symvers
 
+dist-check-kabi-dup: ##kabi Like dist-check-kabi but uses a DUP kABI stablelist.
 dist-check-kabi-dup: dist-kabi-dup
 	@if [ ! -e $(_OUTPUT)/Module.symvers ]; then \
 		echo "ERROR: You must compile the kernel and modules first";\
@@ -517,6 +526,7 @@ dist-check-kabi-dup: dist-kabi-dup
 	@$(REDHAT)/kabi/check-kabi -k $(REDHAT)/kabi/Module.kabi_dup_$(MACH) \
 	-s $(_OUTPUT)/Module.symvers
 
+dist-kabi-dw-base: ##kabi Generate the base dataset for kABI DWARF-based check.
 dist-kabi-dw-base: dist-kabi
 	@echo "Generating baseline dataset for KABI DWARF-based comparison..."
 	@echo "**** GENERATING DWARF-based kABI baseline dataset ****"
@@ -524,6 +534,7 @@ dist-kabi-dw-base: dist-kabi
 		$(REDHAT)/kabi/kabi-current/kabi_stablelist_$(CURARCH) \
 		$(_OUTPUT) $(KABIDW)/base/$(CURARCH)/
 
+dist-kabi-dw-check: ##kabi Run DWARF-based kABI comparison of current binaries with the base dataset.
 dist-kabi-dw-check: dist-kabi
 	@if [ ! -d $(KABIDW)/base/$(CURARCH) ]; then \
 		echo "**** ERROR: ****"; \
@@ -545,14 +556,17 @@ dist-configs-commit: dist-configs-prep
 	+@cd $(REDHAT)/configs; ./generate_all_configs.sh 1;\
 	./process_configs.sh -z "$(SPECRPMVERSION)" "$(FLAVOR)"
 
+dist-configs: ##configuration Create RHEL config files in redhat/config/.
 dist-configs: dist-configs-prep
 	+@cd $(REDHAT)/configs; ./generate_all_configs.sh 1;\
 	./process_configs.sh $(PROCESS_CONFIGS_OPTS) "$(SPECRPMVERSION)" ""
 
+dist-fedora-configs: ##build build Fedora configs.
 dist-fedora-configs: FLAVOR = fedora
 dist-fedora-configs: dist-configs
 fedora-configs: dist-fedora-configs
 
+dist-rhel-configs: ##build build ELN configs.
 dist-rhel-configs: FLAVOR = rhel
 dist-rhel-configs: dist-configs
 rh-configs: dist-rhel-configs
@@ -564,30 +578,32 @@ dist-configs-prep: dist-clean-configs
 	+cd $(REDHAT)/configs; ./build_configs.sh "partial" "snip"
 	+cd $(REDHAT)/configs; ./build_configs.sh "$(SPECPACKAGE_NAME)" "$(FLAVOR)"
 
+dist-configs-arch: ##configuration Same as dist-configs but for single architecture only.
 dist-configs-arch: ARCH_MACH = $(MACH)
 dist-configs-arch: dist-configs
 
-dist-clean-configs:
+dist-clean-configs: ##cleaning Clean the redhat/configs/ directory.
 	@cd $(REDHAT)/configs; rm -f kernel-*.config kernel-*.config.orig kernel-*.config.tmp partial-*-snip.config
 
-dist-clean-sources:
+dist-clean-sources: ##cleaning Clean the redhat/rpm/SOURCES/ directory.
 # Do not cleanup when creating self-test data
 ifndef RHSELFTESTDATA
 	@rm -f $(RPM)/SPECS/*
 	@rm -f $(SOURCES)/*
 endif
 
-dist-clean-rpmdirs:
+dist-clean-rpmdirs: ##cleaning Clean the redhat/rpm/{BUILD,SRPMS,RPMS,SPECS}/ directories.
 	@for i in $(RPM)/{BUILD,SRPMS,RPMS,SPECS}/*; do \
 		rm -rf $$i; \
 	done;
 
+dist-clean: ##cleaning Clean redhat/configs/ and redhat/rpm/ directories.
 dist-clean: dist-clean-sources dist-clean-configs dist-clean-rpmdirs
 	@rm -f $(REDHAT)/linux-*.tar.xz
 	@rm -f $(REDHAT)/kernel-abi-stablelists-*.tar.xz
 	@rm -f $(REDHAT)/kernel-kabi-dw-*.tar.xz
 
-dist-stub-key:
+dist-stub-key: ##build Use pre generated keys to speed local test builds.
 	@echo "Copying pre-generated keys";
 	@echo "*** THIS IS NOT RECOMMENDED ***";
 	@echo "To be safe, keys should be created once for every build";
@@ -621,6 +637,7 @@ dist-git-version-check:
 		exit 1; \
 	fi
 
+dist-get-buildreqs: ##misc returns list of packages listed as build requirements for this kernel.
 dist-get-buildreqs: setup-source
 	@PKGLIST="rpm-build $$(rpmspec -q --buildrequires $(SOURCES)/$(SPECFILE) | cut -d ' ' -f 1)"; \
 	MISSING=""; \
@@ -719,34 +736,43 @@ sources-rh: $(TARBALL) $(KABI_TARBALL) $(KABIDW_TARBALL) generate-testpatch-tmp 
 
 dist-sources: dist-kabi dist-kabi-dup sources-rh
 
+dist-test-patch: ##build Create a diff against HEAD and put it in linux-kernel-test.patch.  This patch will be added to the kernel build.
 dist-test-patch: generate-testpatch-tmp
 	@mv $(TESTPATCH).tmp $(TESTPATCH);
 
 do-rpmbuild: dist-sources
 	$(RPMBUILD) --define "_sourcedir $(SOURCES)" --define "_builddir $(RPM)/BUILD" --define "_srcrpmdir $(RPM)/SRPMS" --define "_rpmdir $(RPM)/RPMS" --define "_specdir $(RPM)/SPECS" --define "dist $(DIST)" $(RPMBUILDOPTS) $(RPM)/SOURCES/$(SPECFILE)
 
+dist-all-rpms: ##build Create the binary RPMS and the SRPM for the kernel.  See the dist-brew target for available options.
 dist-all-rpms: RPMBUILDOPTS=--target $(MACH) -ba
 dist-all-rpms: dist-sources do-rpmbuild
 
+dist-srpm: ##build Create a source RPM and put it into the redhat/rpm/SRPMS/ directory.  See the dist-brew target for available options.
 dist-srpm: RPMBUILDOPTS=--nodeps -bs
 dist-srpm: dist-sources do-rpmbuild
 
+dist-srpm-gcov: ##build Create a source RPM with gcov enabled and put it into the redhat/rpm/SRPMS/ directory.
 dist-srpm-gcov: DISTLOCALVERSION=.gcov
 dist-srpm-gcov: BUILDOPTS+=+gcov
 dist-srpm-gcov: dist-srpm
 
+dist-rpms: ##build Create the binary RPMS for the kernel. See the dist-brew target for available options.
 dist-rpms: RPMBUILDOPTS=--target $(MACH) -bb
 dist-rpms: dist-sources do-rpmbuild
 
+# this is a dummy entry to define help for the dist-kernel-* targets
+dist-kernel-type: ##build Create binary RPMS for a particular kernel type.  Available <type>s:
 dist-kernel-%: dist-sources
 	RPMBUILDOPTS="--target $(MACH) --with $* -bb" make do-rpmbuild
 
+dist-prep: ##build Setup the redhat/rpm/BUILD/ directory with the kernel source.  See the dist-brew target for available options.
 dist-prep: RPMBUILDOPTS=--nodeps --target noarch -bp
 dist-prep: dist-sources do-rpmbuild
 
 dist-perf: RPMBUILDOPTS=--without up --without smp --without zfcpdump --without debug --without doc --without headers --without doc --without debuginfo --target $(MACH) -bb
 dist-perf: dist-sources do-rpmbuild
 
+dist-rpm-baseonly: ##build Create the binary RPMS for the kernel and modules (no userspace tools or debuginfo).
 dist-rpm-baseonly: RPMBUILDOPTS=--target $(MACH) --without debug --without debuginfo --without vdso_install --without bpftool --without perf --without tools -bb
 dist-rpm-baseonly: dist-sources do-rpmbuild
 
@@ -777,7 +803,7 @@ dist-release-changed:
 dist-release: dist-clean-sources
 	@$(MAKE) dist-release-changed
 
-dist-get-tag:
+dist-get-tag: ##misc Returns the latest release tag.
 	$(info $(DISTRELEASETAG))
 
 dist-release-tag:
@@ -818,6 +844,10 @@ dist-vr-check:
 # This is because target-specific variables only apply inside the recipe, but we
 # need to recalculate some values such as BUILD_TARGET that depends on them.
 # However, do not override any value directly defined by the user.
+dist-brew: ##build Create a kernel SRPM and then call brew to build the created SRPM.  Add BUILDOPTS="+<opt> -<opt> [...]" to enable/disable build options.
+dist-koji: ##build Create a kernel SRPM and then call koji to build the created SRPM.  See the dist-brew target for available options.
+distg-brew: ##build Pass HEAD of the current git branch to brew to build an RPM set.  Do not forget to push to the remote repository first.  Preceed make command by RHGITCOMMIT=<commitID> specify commit ID to use.  To set the remote repo, invoke 'git config rhg.url git://<repo_path>'.
+distg-koji: ##build Pass HEAD of the current git branch to koji to build an RPM set.  Do not forget to push to the remote repository first.  See the distg-brew target for options and configuration.
 dist-brew distg-brew: DISTRO=$(if $(DISTRO_USERDEF),$(DISTRO_USERDEF),rhel)
 dist-brew distg-brew: DIST=$(if $(DIST_USERDEF),$(DIST_USERDEF),.el$(RHEL_MAJOR))
 dist-brew distg-brew: BUILD_PROFILE=$(if $(BUILD_PROFILE_USERDEF),$(BUILD_PROFILE_USERDEF))
@@ -862,18 +892,18 @@ dist-rtg: dist-release
 
 # RH_LATEST returns the value of the latest "known good" kernel from brew.
 # This should not be confused with the latest top-of-tree development tag.
-dist-get-latest:
+dist-get-latest: ##misc Returns the latest "known good" kernel from brew. This should not be confused with the latest top-of-tree development tag.
 	$(eval RH_LATEST:=$(shell brew latest-pkg --quiet rhel-${RHEL_MAJOR}.${RHEL_MINOR}.0-candidate kernel | awk ' { print $$1 } '))
 	@echo "The latest kernel package tag is ${RH_LATEST}."
 
-dist-os-version:
+dist-os-version: ##misc Displays the current Red Hat Enterprise Linux version target used by the current branch/tree.
 	@echo "OSVERSION: $(RHEL_MAJOR).$(RHEL_MINOR)"
 
 dist-dump-variables:
 	$(eval VARS:=$(sort $(shell cat Makefile.variables | sed '/^#/d; /^$$/d; s/[ ]*[?:]=.*//')))
 	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment default automatic, $(origin $V)),$(info $V=$($V)),$(if $(filter $(VARS),$(V)),$(info $V=$($V)))))
 
-dist-self-test:
+dist-self-test: ##misc Runs self-tests from the redhat/self-test directory.
 	@if test -x /usr/bin/bats; then \
 		bats $(REDHAT)/self-test/*.bats ; \
 	else \
@@ -883,141 +913,109 @@ dist-self-test:
 dist-self-test-data:
 	./self-test/data/create-data.sh
 
-dist-check-licenses:
+dist-check-licenses: ##misc Runs license selftest checking SPDX-License-Identifier: tags in all source files against `License:` field in the specfile template.
 	@if test -x /usr/bin/bats; then \
 		bats $(REDHAT)/self-test/1007-spdx-licenses.bats ; \
 	else \
 		echo "dist-check-licenses: The bats package is not installed" ; \
 	fi
 
-dist-help:
-	@echo  'Cleaning targets:'
-	@echo  '  dist-clean          - Clean redhat/configs/ and redhat/rpm/ directories.'
-	@echo  ''
-	@echo  'Building targets:'
-	@echo  '  dist-srpm           - Create a source RPM.'
-	@echo  '  dist-all-rpms       - Create a source RPM and build binary RPMs locally.'
-	@echo  '  dist-brew           - Create a source RPM and call brew to build binary RPMs.'
-	@echo  '  distg-brew          - Build RPMs using a remote git repo.'
-	@echo  '                        [Configuration needed.]'
-	@echo  '  dist-cross-all-rpms - Build RPMs for all supported archs using a cross'
-	@echo  '                        compiler.'
-	@echo  ''
-	@echo  'Configuration targets:'
-	@echo  '  dist-configs        - Create RHEL config files in redhat/config/.'
-	@echo  ''
-	@echo  'For detailed description and full list of targets, run `make dist-full-help`.'
-	@echo  ''
+#
+# Help output
+#
+
+# There's no reason for there to be a 26 (plus three spaces = 29) gap between
+# the target and description output.  It was pulled out of the air because it looked
+# nice on both 80 and 100 column terminals.  So nyah if you don't like it.
+dist-helper-output: COLUMNS=$(shell expr $(shell tput cols) - 29)
+dist-helper-output:
+	@awk -v cols=${COLUMNS} -v distbrew="${HELP_DIST_BREW_OUTPUT}" \
+		-v distkerneltype="${HELP_DIST_KERNEL_TYPE}" -v arches="${ARCH_LIST}" \
+		-v onetarget=${HELP_ONE_TARGET} \
+	'BEGIN {FS = ":.*##${HELP_TYPE}";} \
+		/^[a-zA-Z_0-9-]+:.*?##${HELP_TYPE}/ { \
+			target=$$1; \
+			desc=$$2; \
+			if ( onetarget != "" && onetarget != target) \
+				next; \
+			if ( target == "dist-brew" ) \
+				desc = desc" Available <opt>s and their default values: "distbrew; \
+			if ( target == "dist-kernel-type" ) { \
+				target = "dist-kernel-<type>"; \
+				desc = desc" Available <type>s: "distkerneltype; \
+			} \
+			if ( target == "dist-cross-arch-build" ) { \
+				target = "dist-cross-<arch>-build"; \
+				desc = desc" "arches; \
+			} \
+			desclength = length(desc); \
+			if (desclength <= cols) { \
+				printf ("  \033[36m%-26s\033[0m %s\n", target, desc); \
+				if ( onetarget != "" && onetarget != target) \
+					exit; \
+			} else {\
+				substrloc = 0; \
+				first = 1; \
+				while ( substrloc + cols < desclength ) { \
+					substrlength = cols; \
+					while ( substr(desc, substrloc + substrlength, 1) != " " ) { \
+						substrlength = substrlength - 1; \
+					} \
+					if ( first == 1 ) { \
+						printf("  \033[36m%-26s\033[0m %s\n", target, substr(desc, substrloc, substrlength)); \
+						first = 0; \
+					} else \
+						printf("  %-26s %s\n", " ", substr(desc, substrloc, substrlength)); \
+					substrloc = substrloc + substrlength; \
+				} \
+				printf("  %-26s %s\n", " ", substr(desc, substrloc, cols)); \
+				if ( onetarget != "" && onetarget != target) \
+					exit; \
+			} \
+		} \
+	' $(MAKEFILE_LIST)
+
+dist-help-%: HELP_TYPE=$(patsubst dist-help-%,%,$@)
+dist-help-%:
+	@if ! echo "${HELP_TYPES}" | grep -q ${HELP_TYPE}; then \
+		echo "No help for ${HELP_TYPE}.  Valid types are {${HELP_TYPES}}"; \
+		exit 1; \
+	fi
+	@if [ "${HELP_TYPE}" == "build" ]; then \
+		HELP_DIST_BREW_OUTPUT="$(shell sed -n -e 's/^%define with_\([^ \t]*\).*\?_without_.*/+\1/p' -e 's/^%define with_\([^ \t]*\).*\?_with_.*/-\1/p' kernel.spec.template | grep -v 'only$$')" HELP_DIST_KERNEL_TYPE="$(shell sed -n 's/^%define with_\([^ ]*only\).*/\1/p' kernel.spec.template)" make -s dist-helper-output; \
+	else \
+		echo "${HELP_TYPE} targets:"; \
+		make -s dist-helper-output; \
+		echo " "; \
+	fi
 
 dist-full-help:
-	@echo  'Cleaning targets:'
-	@echo  '  dist-clean            - Do dist-clean-sources, dist-clean-configs, &'
-	@echo  '                          dist-clean-rpmdirs.'
-	@echo  '  dist-clean-sources    - Clean the redhat/rpm/SOURCES/ directory.'
-	@echo  '  dist-clean-configs    - Clean the redhat/configs/ directory.'
-	@echo  '  dist-clean-rpmdirs    - Clean the redhat/rpm/{BUILD,SRPMS,RPMS,SPECS}/'
-	@echo  '                          directories.'
-	@echo  ''
-	@echo  'Building targets:'
-	@echo  ' All RPM/SRPM files will be put under the redhat/rpm/ directory.'
-	@echo  ''
-	@echo  '  dist-srpm       - Create a source RPM and put it into the redhat/rpm/SRPMS/'
-	@echo  '                    directory.  See the dist-brew target for available options.'
-	@echo  '  dist-srpm-gcov  - Create a source RPM with gcov enabled and put it into the'
-	@echo  '                    redhat/rpm/SRPMS/ directory.'
-	@echo  '  dist-brew       - Create a kernel SRPM and then call brew to build the'
-	@echo  '                    created SRPM.  Add BUILDOPTS="+<opt> -<opt> [...]" to'
-	@echo  '                    enable/disable build options.'
-	@echo  '                    Available <opt>s and their default values:' \
-		$$(sed -n -e 's/^%define with_\([^ \t]*\).*\?_without_.*/+\1/p' \
-		          -e 's/^%define with_\([^ \t]*\).*\?_with_.*/-\1/p' kernel.spec.template | \
-		grep -v 'only$$') | fmt -80
-	@echo  '  dist-koji       - Create a kernel SRPM and then call koji to build the'
-	@echo  '                    created SRPM.  See the dist-brew target for available'
-	@echo  '                    options.'
-	@echo  '  distg-brew      - Pass HEAD of the current git branch to brew to build an'
-	@echo  '                    RPM set.  Do not forget to push to the remote repository'
-	@echo  '                    first.  Preceed make command by RHGITCOMMIT=<commitID>'
-	@echo  '                    specify commit ID to use.'
-	@echo  '                    To set the remote repo, invoke:'
-	@echo  '                         git config rhg.url git://<repo_path>'
-	@echo  '  distg-koji      - Pass HEAD of the current git branch to koji to build an'
-	@echo  '                    RPM set.  Do not forget to push to the remote repository'
-	@echo  '                    first.  See the distg-brew target for options and'
-	@echo  '                    configuration.'
-	@echo  '  dist-rpms       - Create the binary RPMS for the kernel.'
-	@echo  '                    See the dist-brew target for available options.'
-	@echo  '  dist-rpm-baseonly  - Create the binary RPMS for the kernel and modules'
-	@echo  '                       (no userspace tools or debuginfo).'
-	@echo  '  dist-kernel-<type> - Create  binary RPMS for a particular kernel type.'
-	@echo  '                       Available <type>s:'\
-		$$(sed -n 's/^%define with_\([^ ]*only\).*/\1/p' kernel.spec.template)
+	@for helptype in ${HELP_TYPES}; \
+	do \
+		make -s dist-help-$${helptype}; \
+	done
 
-	@echo  '  dist-all-rpms   - Create the binary RPMS and the SRPM for the kernel.'
-	@echo  '                    See the dist-brew target for available options.'
-	@echo  '  dist-prep       - Setup the redhat/rpm/BUILD/ directory with the kernel'
-	@echo  '                    source.  See the dist-brew target for available options.'
-	@echo  '  dist-test-patch - Create a diff against HEAD and put it in'
-	@echo  '                    linux-kernel-test.patch.  This patch will'
-	@echo  '                    be added to the kernel build.'
-	@echo  '  dist-stub-key   - Use pre generated keys to speed local test builds.'
-	@echo  '  dist-cross-download     - [x86_64 only] download cross compiler rpms.'
-	@echo  '  dist-cross-all-builds   - [x86_64 only] execute "rpmbuild -bc" for all'
-	@echo  '                            supported archs using RHEL cross compiler.'
-	@echo  '  dist-cross-<arch>-build - [x86_64 only] execute "rpmbuild -bc" for specified'
-	@echo  '                            <arch> using RHEL cross compiler.'
-	@echo  '                            Supported <arch>s: x86_64'\
-		$$(sed -n 's/.*--target \([^ ]*\).*/\1/p' Makefile.cross | sort -u)
-	@echo  '  dist-cross-all-rpms     - [x86_64 only] execute rpm builds for all supported'
-	@echo  '                            archs using RHEL cross compiler.'
-	@echo  '  dist-cross-<arch>-rpms  - [x86_64 only] execute rpm builds for specified'
-	@echo  '                            <arch> using RHEL cross compiler.'
-	@echo  '                            See dist-cross-<arch>-build for the supported archs.'
-	@echo  '  dist-rhel-configs       - build ELN configs'
-	@echo  '  dist-fedora-configs     - build Fedora configs'
-
+dist-help:
+	@echo  'cleaning targets:'
+	@make -s HELP_TYPE=cleaning HELP_ONE_TARGET=dist-clean dist-helper-output
 	@echo  ''
-	@echo  'kABI targets:'
-	@echo  '  dist-kabi           - Create kABI stablelist files in redhat/kabi/kabi-rhel*/'
-	@echo  '                        and merge kABI checksums into redhat/kabi/Module.kabi_*.'
-	@echo  '  dist-kabi-dup       - Merge kABI checksums for Driver Update Program (DUP)'
-	@echo  '                        into redhat/kabi/Module.kabi_dup_*.'
-	@echo  '  dist-check-kabi     - Check for changes in kABI stablelisted symbols.'
-	@echo  '                        Requires a pre-compiled tree: run `make dist-configs`,'
-	@echo  '                        copy the relevant config file from redhat/configs/ to'
-	@echo  '                       .config, and run `make`.'
-	@echo  '  dist-check-kabi-dup - Like dist-check-kabi but uses a DUP kABI stablelist.'
-	@echo  '  dist-kabi-dw-base   - Generate the base dataset for kABI DWARF-based check.'
-	@echo  '  dist-kabi-dw-check  - Run DWARF-based kABI comparison of current binaries'
-	@echo  '                        with the base dataset.'
-	@echo  '  dist-kabi-update    - Update kabi stablelist checksums.'
-	@echo  '  dist-symtype-diff   - Diff kabi stablelist and current kernel.'
-
+	@echo  'building targets:'
+	@make -s HELP_TYPE=build HELP_ONE_TARGET=dist-srpm dist-helper-output
+	@make -s HELP_TYPE=build HELP_ONE_TARGET=dist-all-rpms dist-helper-output
+	@make -s HELP_TYPE=build HELP_ONE_TARGET=dist-brew dist-helper-output
+	@make -s HELP_TYPE=build HELP_ONE_TARGET=distg-brew dist-helper-output
+	@make -s HELP_TYPE=build HELP_ONE_TARGET=dist-cross-all-rpms dist-helper-output
 	@echo  ''
-	@echo  'Configuration targets:'
-	@echo  '  dist-configs  - Creates config files for RHEL $(RHEL_MAJOR) architectures,'
-	@echo  '                  cleans them by running make nonint_oldconfig, and copies'
-	@echo  '                  them to redhat/configs/ directory. This is the target to use'
-	@echo  '                  for a config!  Copy the config file you want from the'
-	@echo  '                  redhat/configs/ directory to .config'
-	@echo  '  dist-configs-arch  - Same as dist-configs but for single architecture only.'
-
+	@echo  'configuration targets:'
+	@make -s HELP_TYPE=configuration HELP_ONE_TARGET=dist-configs dist-helper-output
 	@echo  ''
-	@echo  'Misc targets:'
-	@echo  '  dist-get-buildreqs - returns list of packages listed as build requirements'
-	@echo  '                       for this kernel'
-	@echo  '  dist-get-latest - Returns the latest "known good" kernel from brew. This'
-	@echo  '                    should not be confused with the latest top-of-tree'
-	@echo  '                    development tag.'
-	@echo  '  dist-get-tag    - Returns the latest release tag'
-	@echo  '  dist-os-version - Displays the current Red Hat Enterprise Linux versioni'
-	@echo  '                    target used by the current branch/tree.'
-	@echo  '  dist-self-test  - Runs self-tests from the redhat/self-test directory'
-	@echo  '  dist-check-licenses - Runs license selftest checking SPDX-License-Identifier:'
-	@echo  '                        tags in all source files against `License:` field in the'
-	@echo  '                        specfile template.'
+	@echo  'Longer help for commands can be displayed with'
+	@echo  ''
+	@echo  -e '     \033[36mmake dist-help-HELPTYPE\033[0m'
+	@echo  ''
+	@echo  'where HELPTYPE is one of: {${HELP_TYPES}}.'
+	@echo  ''
+	@echo  -e 'For full list of targets, run `\033[36mmake dist-full-help\033[0m`.'
 	@echo  ''
 
-dist-prarit:
-	@echo "hello world"
 export
