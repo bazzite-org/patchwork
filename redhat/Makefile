@@ -103,6 +103,7 @@ ifndef RHJOBS
 	  fi)
 endif
 
+ifeq ($(filter dist-full-help dist-help-% ,$(MAKECMDGOALS)),)
 LOCVERFILE:=../localversion
 # create an empty localversion file if you don't want a local buildid
 ifneq ($(wildcard $(LOCVERFILE)),)
@@ -117,6 +118,7 @@ else
   ifeq (,$(findstring s,$(firstword -$(MAKEFLAGS))))
     $(info DISTLOCALVERSION is "$(DISTLOCALVERSION)".)
   endif
+endif
 endif
 
 # options for process_configs.sh script
@@ -1016,4 +1018,6 @@ dist-full-help:
 	@echo  '                        specfile template.'
 	@echo  ''
 
+dist-prarit:
+	@echo "hello world"
 export
