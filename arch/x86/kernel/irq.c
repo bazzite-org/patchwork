@@ -266,11 +266,7 @@ static __always_inline int call_irq_handler(int vector, struct pt_regs *regs)
 		handle_irq(desc, regs);
 	} else {
 		ret = -EINVAL;
-		if (desc == VECTOR_UNUSED) {
-			pr_emerg_ratelimited("%s: %d.%u No irq handler for vector\n",
-					     __func__, smp_processor_id(),
-					     vector);
-		} else {
+		if (desc != VECTOR_UNUSED) {
 			__this_cpu_write(vector_irq[vector], VECTOR_UNUSED);
 		}
 	}
