@@ -263,9 +263,7 @@ static struct irq_desc *reevaluate_vector(int vector)
 	if (!IS_ERR_OR_NULL(desc))
 		return desc;
 
-	if (desc == VECTOR_UNUSED)
-		pr_emerg_ratelimited("No irq handler for %d.%u\n", smp_processor_id(), vector);
-	else
+	if (desc != VECTOR_UNUSED)
 		__this_cpu_write(vector_irq[vector], VECTOR_UNUSED);
 	return NULL;
 }
