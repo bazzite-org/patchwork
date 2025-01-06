@@ -62,6 +62,7 @@ static int lps0_dsm_func_mask_microsoft;
 static int lps0_dsm_state;
 static bool lps0_dsm_in_display_off;
 static bool lps0_dsm_in_sleep;
+static bool lps0_dsm_in_lps0;
 
 /* Device constraint entry structure */
 struct lpi_device_info {
@@ -589,6 +590,64 @@ static int acpi_s2idle_sleep_entry(void)
 	return 0;
 }
 
+static int acpi_s2idle_lps0_entry(void)
+{
+	if (!lps0_device_handle || sleep_no_lps0 ||
+	    (lps0_dsm_func_mask_microsoft <= 0 && lps0_dsm_func_mask <= 0))
+		return 0;
+
+	if (WARN_ON(lps0_dsm_in_lps0))
+		return -EINVAL;
+
+	lps0_dsm_in_lps0 = true;
+	acpi_scan_lock_acquire();
+
+	/* LPS0 entry */
+	if (lps0_dsm_func_mask > 0 && acpi_s2idle_vendor_amd())
+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY_AMD,
+					lps0_dsm_func_mask, lps0_dsm_guid);
+
+	if (lps0_dsm_func_mask_microsoft > 0)
+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
+				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+
+	if (lps0_dsm_func_mask > 0 && !acpi_s2idle_vendor_amd())
+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
+					lps0_dsm_func_mask, lps0_dsm_guid);
+
+	acpi_scan_lock_release();
+
+	return 0;
+}
+
+static int acpi_s2idle_lps0_exit(void)
+{
+	if (!lps0_device_handle || sleep_no_lps0 ||
+	    (lps0_dsm_func_mask_microsoft <= 0 && lps0_dsm_func_mask <= 0))
+		return 0;
+
+	if (WARN_ON(!lps0_dsm_in_lps0))
+		return -EINVAL;
+
+	lps0_dsm_in_lps0 = false;
+	acpi_scan_lock_acquire();
+
+	/* LPS0 exit */
+	if (lps0_dsm_func_mask > 0)
+		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
+					ACPI_LPS0_EXIT_AMD :
+					ACPI_LPS0_EXIT,
+					lps0_dsm_func_mask, lps0_dsm_guid);
+
+	if (lps0_dsm_func_mask_microsoft > 0)
+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
+				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+
+	acpi_scan_lock_release();
+
+	return 0;
+}
+
 static int acpi_s2idle_sleep_exit(void)
 {
 	if (!lps0_device_handle || sleep_no_lps0 || lps0_dsm_func_mask_microsoft <= 0)
@@ -646,19 +705,6 @@ int acpi_s2idle_prepare_late(void)
 	if (pm_debug_messages_on)
 		lpi_check_constraints();
 
-	/* LPS0 entry */
-	if (lps0_dsm_func_mask > 0 && acpi_s2idle_vendor_amd())
-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY_AMD,
-					lps0_dsm_func_mask, lps0_dsm_guid);
-
-	if (lps0_dsm_func_mask_microsoft > 0)
-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
-				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-
-	if (lps0_dsm_func_mask > 0 && !acpi_s2idle_vendor_amd())
-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
-					lps0_dsm_func_mask, lps0_dsm_guid);
-
 	list_for_each_entry(handler, &lps0_s2idle_devops_head, list_node) {
 		if (handler->prepare)
 			handler->prepare();
@@ -690,22 +736,12 @@ void acpi_s2idle_restore_early(void)
 	list_for_each_entry(handler, &lps0_s2idle_devops_head, list_node)
 		if (handler->restore)
 			handler->restore();
-
-	/* LPS0 exit */
-	if (lps0_dsm_func_mask > 0)
-		acpi_sleep_run_lps0_dsm(acpi_s2idle_vendor_amd() ?
-					ACPI_LPS0_EXIT_AMD :
-					ACPI_LPS0_EXIT,
-					lps0_dsm_func_mask, lps0_dsm_guid);
-
-	if (lps0_dsm_func_mask_microsoft > 0)
-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
-				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
 }
 
 static const struct platform_s2idle_ops acpi_s2idle_ops_lps0 = {
 	.display_off = acpi_s2idle_display_off,
 	.sleep_entry = acpi_s2idle_sleep_entry,
+	.lps0_entry = acpi_s2idle_lps0_entry,
 	.begin = acpi_s2idle_begin,
 	.prepare = acpi_s2idle_prepare,
 	.prepare_late = acpi_s2idle_prepare_late,
@@ -714,6 +750,7 @@ static const struct platform_s2idle_ops acpi_s2idle_ops_lps0 = {
 	.restore_early = acpi_s2idle_restore_early,
 	.restore = acpi_s2idle_restore,
 	.end = acpi_s2idle_end,
+	.lps0_exit = acpi_s2idle_lps0_exit,
 	.sleep_exit = acpi_s2idle_sleep_exit,
 	.display_on = acpi_s2idle_display_on,
 };
