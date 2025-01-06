@@ -23,6 +23,7 @@
 
 #include "../sleep.h"
 
+#define CONFIG_SUSPEND
 #ifdef CONFIG_SUSPEND
 
 static bool sleep_no_lps0 __read_mostly;
@@ -114,6 +115,41 @@ static const struct s2idle_delay_quirks rog_ally_quirks = {
 	.delay_sleep_entry = 150,
 };
 
+/*
+ * Certain OneXPlayer and GPD devices past the AMD 8000 series use an
+ * overheating trick to get Windows to hibernate. This works by setting
+ * the primary thermal zone of the device (acpitz) to 105C, which is its
+ * _HOT temperature, under which windows should hibernate. If the device
+ * is suspended, the EC will wake it up, which registers under ACPI as
+ * pressing the power button.
+ *
+ * A variant of BIOSes in these devices is "smarter" where the EC triggers
+ * the wakeup for hibernation by pressing the power button but then ACPI
+ * guards the overheat warning with being in Modern Standby. If we exit
+ * Modern Standby too quickly, when the EC queries the overheat function
+ * the guard will be gone, so we lose the overheat warning and thereby
+ * the cause of the wakeup. If this happens in the user's bag, this leads
+ * to "hot bag" syndrome.
+ *
+ * Therefore, add a delay to sleep_exit, ensuring that the hibernation
+ * warning in those BIOSes is registered. Userspace can then use this
+ * warning to emergency hibernate or shutdown the device. Once this
+ * warning happens, the EC of the device is tainted and will cause
+ * repeated wake-ups and maintain the overheat temperature. As we can no
+ * longer distinguish between the user of the device trying to wake it up
+ * and the EC, the only solution is to power down the device (S4S5).
+ */
+static const struct s2idle_delay_quirks overheat_quirks = {
+	.delay_sleep_exit = 500,
+};
+
+static const struct s2idle_delay_quirks msi_claw_quirks = {
+	.delay_display_off = 500,
+	.delay_sleep_entry = 500,
+	.delay_sleep_exit = 200,
+	.delay_display_on = 200,
+};
+
 static const struct dmi_system_id s2idle_delay_quirks[] = {
 	{
 		.matches = {
@@ -126,6 +162,75 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
 		},
 		.driver_data = (void *)&rog_ally_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "MS-1T41"), // MSI CLAW
+		},
+		.driver_data = (void *)&msi_claw_quirks
+	},
+ 	{	/* OneXPlayer X1 AMD */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER X1 A"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+ 	{	/* OneXPlayer X1 Intel */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER X1 i"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* OneXPlayer X1 mini (AMD) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER X1 mini"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* OneXPlayer OneXFly F1 Pro (OLED) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1Pro"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* OneXPlayer OneXFly F1 Pro (OLED) LE Red variant */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1 EVA-02"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* GPD Win 4 */
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1618-04"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{ 	/* GPD Win Mini */
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1617-01"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* GPD Win Max 7000-8000 */
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1619-04"),
+		},
+		.driver_data = (void *)&overheat_quirks,
+	},
+	{	/* GPD Win Max Strix Point */
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1619-05"),
+		},
+		.driver_data = (void *)&overheat_quirks,
 	},
 	{}
 };
