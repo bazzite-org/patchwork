@@ -623,9 +623,9 @@ Summary: The Linux kernel
 
 # Architectures we build tools/cpupower on
 %if 0%{?fedora}
-%define cpupowerarchs %{ix86} x86_64 ppc64le aarch64
+%define cpupowerarchs %{ix86} x86_64 ppc64le aarch64 riscv64
 %else
-%define cpupowerarchs i686 x86_64 ppc64le aarch64
+%define cpupowerarchs i686 x86_64 ppc64le aarch64 riscv64
 %endif
 
 # Architectures we build kernel livepatching selftests on
