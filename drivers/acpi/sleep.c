@@ -810,8 +810,56 @@ bool acpi_s2idle_wake(void)
 	return false;
 }
 
+static const struct dmi_system_id dmi_table_wak[] = {
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER X1 A"),
+		},
+		.driver_data = (void *)ACPI_STATE_S0,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER X1 i"),
+		},
+		.driver_data = (void *)ACPI_STATE_S0,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER X1Pro"),
+		},
+		.driver_data = (void *)ACPI_STATE_S0,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER X1 mini"),
+		},
+		.driver_data = (void *)ACPI_STATE_S0,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1619-04"),
+		},
+		.driver_data = (void *)ACPI_STATE_S3,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "GPD"),
+			DMI_MATCH(DMI_PRODUCT_NAME, "G1619-05"),
+		},
+		.driver_data = (void *)ACPI_STATE_S3,
+	},
+	{} /* Terminating entry */
+};
+
 void acpi_s2idle_restore(void)
 {
+	const struct dmi_system_id *wak_entry;
+
 	/*
 	 * Drain pending events before restoring the working-state configuration
 	 * of GPEs.
@@ -825,6 +873,17 @@ void acpi_s2idle_restore(void)
 	acpi_enable_all_runtime_gpes();
 
 	acpi_disable_wakeup_devices(ACPI_STATE_S0);
+	wak_entry = dmi_first_match(dmi_table_wak);
+	if (wak_entry) {
+		/*
+		 * Force _WAK to run so that OSFG is set to 1 and the EC
+		 * re-enumerates. GPD Win Max 2 needs to exit S3 which also has
+		 * other side effects. OXP devices run the outer loop with s0.
+		 */
+		pr_info("Executing _WAK for state S%d\n",
+			(u8)(uintptr_t) wak_entry->driver_data);
+		acpi_leave_sleep_state((u8)(uintptr_t) wak_entry->driver_data);
+	}
 
 	if (acpi_sci_irq_valid()) {
 		acpi_ec_set_gpe_wake_mask(ACPI_GPE_DISABLE);
