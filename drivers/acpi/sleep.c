@@ -825,6 +825,7 @@ void acpi_s2idle_restore(void)
 	acpi_enable_all_runtime_gpes();
 
 	acpi_disable_wakeup_devices(ACPI_STATE_S0);
+	acpi_leave_sleep_state(ACPI_STATE_S0);
 
 	if (acpi_sci_irq_valid()) {
 		acpi_ec_set_gpe_wake_mask(ACPI_GPE_DISABLE);
