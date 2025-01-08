@@ -99,7 +99,7 @@ endif
 ifndef RHJOBS
   RHJOBS=$(shell j=$$(echo $(MAKEFLAGS) | grep -Eo "(^|[ ])-j[0-9]*" | xargs ); \
 	  if [ -z "$${j}" ]; then \
-	  	echo "1"; \
+		echo "4"; \
 	  else \
 	  	j=$$(echo "$${j}" | tr -d "\-j"); \
 	  	[ -z "$${j}" ] && nproc || echo $${j}; \
