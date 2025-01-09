@@ -1,3 +1,7 @@
+* Thu Jan 09 2025 Augusto Caringi <acaringi@redhat.com> [6.12.9-0]
+- Linux v6.12.9
+Resolves: 
+
 * Thu Jan 02 2025 Augusto Caringi <acaringi@redhat.com> [6.12.8-0]
 - Fix up last of fallout from ZRAM Backend churn (Justin M. Forbes)
 - Add more missing config items for ZRAM backend (Justin M. Forbes)
