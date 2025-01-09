@@ -1,3 +1,7 @@
+* Thu Jan 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc6.eea6e4b4dfb8.50]
+- Linux v6.13.0-0.rc6.eea6e4b4dfb8
+Resolves: 
+
 * Wed Jan 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc6.09a0fa92e5b4.49]
 - redhat/kernel.spec.template: Require kernel-tools-libs in rtla (Tomas Glozar)
 - redhat: make kernel-debug-uki-virt installable without kernel-debug-core (Vitaly Kuznetsov)
