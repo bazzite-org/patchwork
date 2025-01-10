@@ -1,3 +1,9 @@
+* Fri Jan 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc6.2144da25584e.51]
+- RHEL: Set correct config option for CRYPTO_HMAC_S390 (Mete Durlu) [RHEL-24137]
+- redhat/kernel.spec: add iputils to the requires list for selftests-internal (Brian Masney)
+- Linux v6.13.0-0.rc6.2144da25584e
+Resolves: RHEL-24137
+
 * Thu Jan 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc6.eea6e4b4dfb8.50]
 - Linux v6.13.0-0.rc6.eea6e4b4dfb8
 Resolves: 
