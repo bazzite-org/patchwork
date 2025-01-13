@@ -6,6 +6,9 @@ include Makefile.variables
 # This section is intentionally left at the top of the Makefile so it won't be ignored.
 #
 
+# Variables do not have to be configured for help output.
+ifeq ($(filter dist-full-help dist-help dist-help-% dist-helper-%,$(MAKECMDGOALS)),)
+
 # These entries are 'duplicates' of variables specified in Makefile.variables
 # that are used in the SPEC file.  Specifying these with a SPEC prefix indicates
 # that the value is passed through to the spec file.
@@ -103,7 +106,6 @@ ifndef RHJOBS
 	  fi)
 endif
 
-ifeq ($(filter dist-full-help dist-help dist-help-% dist-helper-%,$(MAKECMDGOALS)),)
 LOCVERFILE:=../localversion
 # create an empty localversion file if you don't want a local buildid
 ifneq ($(wildcard $(LOCVERFILE)),)
@@ -118,7 +120,6 @@ else
   ifeq (,$(findstring s,$(firstword -$(MAKEFLAGS))))
     $(info DISTLOCALVERSION is "$(DISTLOCALVERSION)".)
   endif
-endif
 endif
 
 # options for process_configs.sh script
@@ -365,6 +366,8 @@ else
     YSTREAM_FLAG = yes
   endif
 endif
+
+endif # Variables do not have to be configured for help output.
 
 include Makefile.cross
 
@@ -865,9 +868,10 @@ dist-git-test: export RH_DIST_GIT_TEST="1"
 dist-git-test: dist-git
 
 dist-git: dist-srpm $(KABI_TARBALL) $(KABIDW_TARBALL)
-ifeq ("$(RHDISTGIT_BRANCH)", "")
- $(error RHDISTGIT_BRANCH unset)
-endif
+	@if [ -z "$(RHDISTGIT_BRANCH)" ]; then \
+		echo "RHDISTGIT_BRANCH is unset"; \
+		exit 1; \
+	fi
 	$(REDHAT)/scripts/rh-dist-git.sh
 
 dist-headers-srpm:
@@ -878,9 +882,10 @@ dist-headers-srpm:
 	$(RPMBUILD) --define "_sourcedir $(SOURCES)" --define "_builddir $(RPM)/BUILD" --define "_srcrpmdir $(RPM)/SRPMS" --define "_rpmdir $(RPM)/RPMS" --define "_specdir $(RPM)/SPECS" --define "dist $(DIST)" --nodeps -bs $(RPM)/SOURCES/kernel-headers.spec
 
 dist-git-headers: dist-headers-srpm
-ifeq ("$(RHDISTGIT_BRANCH)", "")
- $(error RHDISTGIT_BRANCH unset)
-endif
+	@if [ -z "$(RHDISTGIT_BRANCH)" ]; then \
+		echo "RHDISTGIT_BRANCH is unset"; \
+		exit 1; \
+	fi
 	SPECPACKAGE_NAME=kernel-headers SRPM=$(SRPMS)/kernel-headers-$(BASEVERSION)$(DIST).src.rpm $(REDHAT)/scripts/rh-headers-dist-git.sh
 
 dist-git-headers-test: export RH_DIST_GIT_TEST="1"
