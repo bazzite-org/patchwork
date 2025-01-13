@@ -151,6 +151,7 @@ rules:
   - drivers/message/fusion/.*: modules
   - drivers/message/.*: modules-core
   - drivers/mfd/dln2.*: modules-extra
+  - drivers/misc/misc_minor_kunit.*: modules-internal
   - drivers/misc/.*: modules-core
   - drivers/mux/.*: modules-core
 
