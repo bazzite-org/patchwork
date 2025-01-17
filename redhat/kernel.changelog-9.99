@@ -1,3 +1,13 @@
+* Fri Jan 17 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc7.9bffa1ad25b8.58]
+- configs: move pending RT configs into rhel/rt/generic (Clark Williams)
+- Turn on PROVE_RAW_LOCK_NESTING for RHEL debug builds (Justin M. Forbes)
+- redhat/Makefile: Fix long dist-full-help execution time (Prarit Bhargava)
+- redhat/self-test: Update data to add HELP_TYPES variable (Prarit Bhargava)
+- redhat/Makefile: Add new dist-help functionality (Prarit Bhargava)
+- Makefile: Do not output LOCALVERSION message for help commands (Prarit Bhargava)
+- Linux v6.13.0-0.rc7.9bffa1ad25b8
+Resolves: 
+
 * Thu Jan 16 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc7.619f0b6fad52.57]
 - Fedora 6.13 configs part 2 (Justin M. Forbes)
 - Fedora 6.13 configs part 1 (Justin M. Forbes)
