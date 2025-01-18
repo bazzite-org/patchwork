@@ -1,3 +1,7 @@
+* Sat Jan 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc7.595523945be0.59]
+- Linux v6.13.0-0.rc7.595523945be0
+Resolves: 
+
 * Fri Jan 17 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc7.9bffa1ad25b8.58]
 - configs: move pending RT configs into rhel/rt/generic (Clark Williams)
 - Turn on PROVE_RAW_LOCK_NESTING for RHEL debug builds (Justin M. Forbes)
