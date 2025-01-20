@@ -1,3 +1,10 @@
+* Mon Jan 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-61]
+- redhat/configs: Disable deprecated CONFIG_LCS option on s390 (Mete Durlu) [RHEL-68296]
+- redhat/configs: make modular/disable NFS support (Dorinda Bassey)
+- redhat/configs: Disable unsafe queuing disciplines (Dorinda Bassey)
+- Linux v6.13.0
+Resolves: RHEL-68296
+
 * Sun Jan 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.13.0-0.rc7.fda5e3f28400.60]
 - Linux v6.13.0-0.rc7.fda5e3f28400
 Resolves: 
