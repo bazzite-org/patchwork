@@ -1,3 +1,8 @@
+* Wed Jan 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.c4b9570cfb63.2]
+- Reset rhelver and trim changelog for 6.14 (Justin M. Forbes)
+- Linux v6.14.0-0.rc0.c4b9570cfb63
+Resolves: 
+
 * Tue Jan 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.95ec54a420b8.62]
 - Turn off CONFIG_ARM_TIMER_SP804 for automotive (Justin M. Forbes)
 - Set ARM_TIMER_SP804 (Justin M. Forbes)
