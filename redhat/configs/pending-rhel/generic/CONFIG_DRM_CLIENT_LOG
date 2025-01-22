@@ -1,0 +1,17 @@
+# Symbol: DRM_CLIENT_LOG [=n]
+# Type  : bool
+# Defined at drivers/gpu/drm/clients/Kconfig:74
+#   Prompt: Print the kernel boot message on the screen
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_CLIENT_SELECTION [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Supported DRM clients
+#             -> Print the kernel boot message on the screen (DRM_CLIENT_LOG [=n])
+# Selects: DRM_CLIENT [=y] && DRM_CLIENT_SETUP [=y] && DRM_DRAW [=n] && FONT_SUPPORT [=y]
+# 
+# 
+# 
+# Commit: f7b42442c4ac (drm/log: Introduce a new boot logger to draw the kmsg on the screen)
+# CONFIG_DRM_CLIENT_LOG is not set
