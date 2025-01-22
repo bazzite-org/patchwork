@@ -1,0 +1,17 @@
+# Symbol: ROCKCHIP_DW_MIPI_DSI2 [=n]
+# Type  : bool
+# Defined at drivers/gpu/drm/rockchip/Kconfig:86
+#   Prompt: Rockchip specific extensions for Synopsys DW MIPI DSI2
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_ROCKCHIP [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> DRM Support for Rockchip (DRM_ROCKCHIP [=m])
+#             -> Rockchip specific extensions for Synopsys DW MIPI DSI2 (ROCKCHIP_DW_MIPI_DSI2 [=n])
+# Selects: GENERIC_PHY_MIPI_DPHY [=y]
+# 
+# 
+# 
+# Commit: 9f1e1e14f59d (drm/rockchip: Add MIPI DSI2 glue driver for RK3588)
+# CONFIG_ROCKCHIP_DW_MIPI_DSI2 is not set
