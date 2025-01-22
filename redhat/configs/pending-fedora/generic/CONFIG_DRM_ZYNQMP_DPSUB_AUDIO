@@ -1,0 +1,17 @@
+# Symbol: DRM_ZYNQMP_DPSUB_AUDIO [=n]
+# Type  : bool
+# Defined at drivers/gpu/drm/xlnx/Kconfig:21
+#   Prompt: ZynqMP DisplayPort Audio Support
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_ZYNQMP_DPSUB [=m] && SND [=m] && SND_SOC [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> ZynqMP DisplayPort Controller Driver (DRM_ZYNQMP_DPSUB [=m])
+#             -> ZynqMP DisplayPort Audio Support (DRM_ZYNQMP_DPSUB_AUDIO [=n])
+# Selects: SND_SOC_GENERIC_DMAENGINE_PCM [=y]
+# 
+# 
+# 
+# Commit: 3ec5c1579305 (drm: xlnx: zynqmp_dpsub: Add DP audio support)
+# CONFIG_DRM_ZYNQMP_DPSUB_AUDIO is not set
