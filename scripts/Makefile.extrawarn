@@ -20,6 +20,10 @@ KBUILD_CFLAGS += $(call cc-disable-warning, address-of-packed-member)
 KBUILD_CFLAGS += -Wmissing-declarations
 KBUILD_CFLAGS += -Wmissing-prototypes
 
+# temporarily disable a warning to allow compiling with gcc15, as suggested by
+# Jakub Jelinek in https://bugzilla.redhat.com/show_bug.cgi?id=2338533#c7
+KBUILD_CFLAGS += $(call cc-option,-Wno-error=unterminated-string-initialization)
+
 ifneq ($(CONFIG_FRAME_WARN),0)
 KBUILD_CFLAGS += -Wframe-larger-than=$(CONFIG_FRAME_WARN)
 endif
