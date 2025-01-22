@@ -1964,7 +1964,7 @@ prepare_after_cross:
 
 PHONY += prepare_after_cross scripts_build
 
-$(MODORDER): $(build-dir)
+modules.order: $(build-dir)
 	@:
 
 # KBUILD_MODPOST_NOFINAL can be set to skip the final link of modules.
