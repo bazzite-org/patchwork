@@ -1,0 +1,15 @@
+# Symbol: RCU_TORTURE_TEST_CHK_RDR_STATE [=n]
+# Type  : tristate
+# Defined at kernel/rcu/Kconfig.debug:56
+#   Prompt: Check rcutorture reader state
+#   Depends on: RCU_TORTURE_TEST [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> RCU Debugging
+#         -> torture tests for RCU (RCU_TORTURE_TEST [=m])
+#           -> Check rcutorture reader state (RCU_TORTURE_TEST_CHK_RDR_STATE [=n])
+# 
+# 
+# 
+# Commit: ec9d6356bfda (rcutorture: Make rcutorture_one_extend() check reader state)
+# CONFIG_RCU_TORTURE_TEST_CHK_RDR_STATE is not set

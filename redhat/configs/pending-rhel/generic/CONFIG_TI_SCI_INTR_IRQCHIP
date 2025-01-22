@@ -1,0 +1,15 @@
+# Symbol: TI_SCI_INTR_IRQCHIP [=n]
+# Type  : tristate
+# Defined at drivers/irqchip/Kconfig:536
+#   Prompt: TI SCI INTR Interrupt Controller
+#   Depends on: TI_SCI_PROTOCOL [=y] && (ARCH_K3 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> IRQ chip support
+#         -> TI SCI INTR Interrupt Controller (TI_SCI_INTR_IRQCHIP [=n])
+# Selects: IRQ_DOMAIN_HIERARCHY [=y]
+# 
+# 
+# 
+# Commit: cd844b0715ce (irqchip/ti-sci-intr: Add support for Interrupt Router driver)
+# CONFIG_TI_SCI_INTR_IRQCHIP is not set
