@@ -1,0 +1,16 @@
+# Symbol: SM_LPASSCC_6115 [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:1281
+#   Prompt: SM6115 Low Power Audio Subsystem (LPASS) Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> SM6115 Low Power Audio Subsystem (LPASS) Clock Controller (SM_LPASSCC_6115 [=n])
+# Selects: SM_GCC_6115 [=n]
+# 
+# 
+# 
+# Commit: b076b995e225 (clk: qcom: Add SM6115 LPASSCC)
+# CONFIG_SM_LPASSCC_6115 is not set
