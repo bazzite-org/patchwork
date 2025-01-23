@@ -1,0 +1,15 @@
+# Symbol: MFD_QNAP_MCU [=n]
+# Type  : tristate
+# Defined at drivers/mfd/Kconfig:2389
+#   Prompt: QNAP microcontroller unit core driver
+#   Depends on: HAS_IOMEM [=y] && SERIAL_DEV_BUS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Multifunction device drivers
+#         -> QNAP microcontroller unit core driver (MFD_QNAP_MCU [=n])
+# Selects: MFD_CORE [=y]
+# 
+# 
+# 
+# Commit: 998f70d1806b (mfd: Add base driver for qnap-mcu devices)
+# CONFIG_MFD_QNAP_MCU is not set

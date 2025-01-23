@@ -1,0 +1,16 @@
+# Symbol: CRC_BENCHMARK [=n]
+# Type  : bool
+# Defined at lib/Kconfig.debug:2855
+#   Prompt: Benchmark for the CRC functions
+#   Depends on: RUNTIME_TESTING_MENU [=y] && CRC_KUNIT_TEST [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> KUnit tests for CRC functions (CRC_KUNIT_TEST [=m])
+#             -> Benchmark for the CRC functions (CRC_BENCHMARK [=n])
+# 
+# 
+# 
+# Commit: e47d9b1a76ed (lib/crc_kunit.c: add KUnit test suite for CRC library functions)
+# CONFIG_CRC_BENCHMARK is not set
