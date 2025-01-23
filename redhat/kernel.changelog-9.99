@@ -1,3 +1,9 @@
+* Thu Jan 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.d0d106a2bd21.3]
+- Fix up CONFIG_CRC_T10DIF_IMPL_GENERIC mismatch (Justin M. Forbes)
+- Fix mismatches for 6.13 merge window (Justin M. Forbes)
+- Linux v6.14.0-0.rc0.d0d106a2bd21
+Resolves: 
+
 * Wed Jan 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.c4b9570cfb63.2]
 - Reset rhelver and trim changelog for 6.14 (Justin M. Forbes)
 - Linux v6.14.0-0.rc0.c4b9570cfb63
