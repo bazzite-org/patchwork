@@ -1,0 +1,15 @@
+# Symbol: CRC_T10DIF_IMPL_ARCH [=y]
+# Type  : bool
+# Defined at lib/Kconfig:176
+#   Prompt: Architecture-optimized
+#   Depends on: CRC_T10DIF [=y]
+#   Visible if: CRC_T10DIF [=y] && ARCH_HAS_CRC_T10DIF [=y]
+#   Location:
+#     -> Library routines
+#       -> CRC-T10DIF implementation (<choice> [=n])
+#         -> Architecture-optimized (CRC_T10DIF_IMPL_ARCH [=y])
+# 
+# 
+# 
+# Commit: 0961c3bcefa6 (lib/crc-t10dif: add support for arch overrides)
+CONFIG_CRC_T10DIF_IMPL_ARCH=y

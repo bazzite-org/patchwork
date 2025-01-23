@@ -1,0 +1,14 @@
+# Symbol: CRC_T10DIF_IMPL_GENERIC [=n]
+# Type  : bool
+# Defined at lib/Kconfig:183
+#   Prompt: Generic implementation
+#   Depends on: CRC_T10DIF [=y]
+#   Location:
+#     -> Library routines
+#       -> CRC-T10DIF implementation (<choice> [=n])
+#         -> Generic implementation (CRC_T10DIF_IMPL_GENERIC [=n])
+# 
+# 
+# 
+# Commit: 0961c3bcefa6 (lib/crc-t10dif: add support for arch overrides)
+# CONFIG_CRC_T10DIF_IMPL_GENERIC is not set
