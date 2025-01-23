@@ -1,0 +1,15 @@
+# Symbol: KUNIT_AUTORUN_ENABLED [=y]
+# Type  : bool
+# Defined at lib/kunit/Kconfig:84
+#   Prompt: Default value of kunit.autorun
+#   Depends on: KUNIT [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> KUnit - Enable support for unit tests (KUNIT [=m])
+#           -> Default value of kunit.autorun (KUNIT_AUTORUN_ENABLED [=y])
+# 
+# 
+# 
+# Commit: 31691914c392 (kunit: Introduce autorun option)
+CONFIG_KUNIT_AUTORUN_ENABLED=y

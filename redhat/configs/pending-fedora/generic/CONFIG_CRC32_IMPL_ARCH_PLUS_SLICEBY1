@@ -1,0 +1,15 @@
+# Symbol: CRC32_IMPL_ARCH_PLUS_SLICEBY1 [=n]
+# Type  : bool
+# Defined at lib/Kconfig:245
+#   Prompt: Arch-optimized, with fallback to slice-by-1
+#   Depends on: CRC32 [=y]
+#   Visible if: CRC32 [=y] && ARCH_HAS_CRC32 [=y]
+#   Location:
+#     -> Library routines
+#       -> CRC32 implementation (<choice> [=n])
+#         -> Arch-optimized, with fallback to slice-by-1 (CRC32_IMPL_ARCH_PLUS_SLICEBY1 [=n])
+# 
+# 
+# 
+# Commit: d36cebe03c3a (lib/crc32: improve support for arch-specific overrides)
+# CONFIG_CRC32_IMPL_ARCH_PLUS_SLICEBY1 is not set
