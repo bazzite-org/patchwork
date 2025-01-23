@@ -1,0 +1,15 @@
+# Symbol: SENSORS_TPS25990 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/pmbus/Kconfig:522
+#   Prompt: TI TPS25990
+#   Depends on: HWMON [=y] && PMBUS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> PMBus support (PMBUS [=m])
+#           -> TI TPS25990 (SENSORS_TPS25990 [=n])
+# 
+# 
+# 
+# Commit: 339bca4ffdaa (hwmon: (pmbus/tps25990) Add initial support)
+# CONFIG_SENSORS_TPS25990 is not set

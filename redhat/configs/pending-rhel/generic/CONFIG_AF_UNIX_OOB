@@ -1,0 +1,15 @@
+# Symbol: AF_UNIX_OOB [=y]
+# Type  : bool
+# Defined at net/unix/Kconfig:19
+#   Prompt: UNIX: out-of-bound messages
+#   Depends on: NET [=y] && UNIX [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Unix domain sockets (UNIX [=y])
+#           -> UNIX: out-of-bound messages (AF_UNIX_OOB [=y])
+# 
+# 
+# 
+# Commit: 314001f0bf92 (af_unix: Add OOB support)
+CONFIG_AF_UNIX_OOB=y
