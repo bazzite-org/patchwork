@@ -1,0 +1,16 @@
+# Symbol: INTEL_THC_HID [=n]
+# Type  : tristate
+# Defined at drivers/hid/intel-thc-hid/Kconfig:7
+#   Prompt: Intel Touch Host Controller
+#   Depends on: HID_SUPPORT [=y] && X86_64 [=y] && PCI [=y] && ACPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> HID bus support (HID_SUPPORT [=y])
+#         -> Intel THC HID Support
+#           -> Intel Touch Host Controller (INTEL_THC_HID [=n])
+# Selects: HID [=y]
+# 
+# 
+# 
+# Commit: 1b2d05384c29 (HID: intel-thc-hid: Add basic THC driver skeleton)
+# CONFIG_INTEL_THC_HID is not set

@@ -1,0 +1,15 @@
+# Symbol: SPI_KSPI2 [=n]
+# Type  : tristate
+# Defined at drivers/spi/Kconfig:545
+#   Prompt: Support for KEBA SPI master type 2 hardware
+#   Depends on: SPI [=y] && SPI_MASTER [=y] && HAS_IOMEM [=y] && (KEBA_CP500 [=m] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> SPI support (SPI [=y])
+#         -> Support for KEBA SPI master type 2 hardware (SPI_KSPI2 [=n])
+# Selects: AUXILIARY_BUS [=y]
+# 
+# 
+# 
+# Commit: 1a90aae3b25b (spi: spi-kspi2: Add KEBA SPI controller support)
+# CONFIG_SPI_KSPI2 is not set

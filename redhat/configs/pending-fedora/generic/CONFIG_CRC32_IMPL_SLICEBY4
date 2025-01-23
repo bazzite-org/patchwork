@@ -1,0 +1,14 @@
+# Symbol: CRC32_IMPL_SLICEBY4 [=n]
+# Type  : bool
+# Defined at lib/Kconfig:261
+#   Prompt: Slice by 4 bytes
+#   Depends on: CRC32 [=y]
+#   Location:
+#     -> Library routines
+#       -> CRC32 implementation (<choice> [=n])
+#         -> Slice by 4 bytes (CRC32_IMPL_SLICEBY4 [=n])
+# 
+# 
+# 
+# Commit: d36cebe03c3a (lib/crc32: improve support for arch-specific overrides)
+# CONFIG_CRC32_IMPL_SLICEBY4 is not set
