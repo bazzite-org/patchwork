@@ -1,0 +1,15 @@
+# Symbol: IPQ_CMN_PLL [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:202
+#   Prompt: IPQ CMN PLL Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> IPQ CMN PLL Clock Controller (IPQ_CMN_PLL [=n])
+# 
+# 
+# 
+# Commit: f81715a4c87c (clk: qcom: Add CMN PLL clock controller driver for IPQ SoC)
+# CONFIG_IPQ_CMN_PLL is not set
