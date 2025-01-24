@@ -1,3 +1,8 @@
+* Fri Jan 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.bc8198dc7ebc.4]
+- redhat: fix modules.order target (Scott Weaver)
+- Linux v6.14.0-0.rc0.bc8198dc7ebc
+Resolves: 
+
 * Thu Jan 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.d0d106a2bd21.3]
 - Fix up CONFIG_CRC_T10DIF_IMPL_GENERIC mismatch (Justin M. Forbes)
 - Fix mismatches for 6.13 merge window (Justin M. Forbes)
