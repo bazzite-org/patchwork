@@ -747,6 +747,10 @@ int hibernate(void)
 	bool snapshot_test = false;
 	unsigned int sleep_flags;
 	int error;
+	bool powered_down = false;
+#ifdef CONFIG_SUSPEND
+	standby_state_t previous_standby;
+#endif
 
 	if (!hibernation_available()) {
 		pm_pr_dbg("Hibernation not available.\n");
@@ -772,6 +776,13 @@ int hibernate(void)
 	}
 
 	pr_info("hibernation entry\n");
+
+#if CONFIG_SUSPEND
+	/* Correct state to enter hibernation is screen_off. */ 
+	previous_standby = pm_standby_state();
+	pm_standby_transition(PM_STANDBY_SCREEN_OFF, false);
+#endif
+
 	pm_prepare_console();
 	error = pm_notifier_call_chain_robust(PM_HIBERNATION_PREPARE, PM_POST_HIBERNATION);
 	if (error)
@@ -822,8 +833,10 @@ int hibernate(void)
 		if (!error) {
 			if (hibernation_mode == HIBERNATION_TEST_RESUME)
 				snapshot_test = true;
-			else
+			else {
+				powered_down = true;
 				power_down();
+			}
 		}
 		in_suspend = 0;
 		pm_restore_gfp_mask();
@@ -848,6 +861,19 @@ int hibernate(void)
  Exit:
 	pm_notifier_call_chain(PM_POST_HIBERNATION);
  Restore:
+#if CONFIG_SUSPEND
+	/*
+	 * If we powered down, system will restore to the active state but
+	 * the suspend module will remember the previous state so we need
+	 * to sync it. If the hibernation fails or we performed a snapshot
+	 * test, we need to restore userspace's standby state.
+	 */
+	if (powered_down)
+		pm_standby_transition(PM_STANDBY_ACTIVE, true);
+	else
+		pm_standby_transition(previous_standby, false);
+#endif
+
 	pm_restore_console();
 	hibernate_release();
  Unlock:
