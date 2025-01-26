@@ -1,0 +1,17 @@
+**/*
+!*/
+!Makefile
+!Kconfig
+!**/Makefile
+!**/Kconfig
+# Fragments for nvidia-open
+!nvidia_open/.Kbuild
+!**/*.Kbuild
+# hals for wifi drifers
+!**/hal/**
+**/hal/**/*.cmd
+**/hal/**/*.o
+!**/*.c
+**/*.mod.c
+!**/*.h
+!download.sh
