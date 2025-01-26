@@ -1,0 +1,15 @@
+# Symbol: ARM_SMMU_MMU_500_CPRE_ERRATA [=y]
+# Type  : bool
+# Defined at drivers/iommu/Kconfig:370
+#   Prompt: Enable errata workaround for CPRE in SMMU reset path
+#   Depends on: IOMMU_SUPPORT [=y] && ARM_SMMU [=y]
+#   Location:
+#     -> Device Drivers
+#       -> IOMMU Hardware Support (IOMMU_SUPPORT [=y])
+#         -> ARM Ltd. System MMU (SMMU) Support (ARM_SMMU [=y])
+#           -> Enable errata workaround for CPRE in SMMU reset path (ARM_SMMU_MMU_500_CPRE_ERRATA [=y])
+# 
+# 
+# 
+# Commit: ef4144b1b47d (iommu/arm-smmu: Re-enable context caching in smmu reset operation)
+CONFIG_ARM_SMMU_MMU_500_CPRE_ERRATA=y
