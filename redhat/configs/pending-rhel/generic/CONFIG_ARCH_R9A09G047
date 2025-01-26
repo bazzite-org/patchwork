@@ -1,0 +1,15 @@
+# Symbol: ARCH_R9A09G047 [=n]
+# Type  : bool
+# Defined at drivers/soc/renesas/Kconfig:348
+#   Prompt: ARM64 Platform support for RZ/G3E
+#   Depends on: SOC_RENESAS [=y] && ARM64 [=y]
+#   Location:
+#     -> Device Drivers
+#       -> SOC (System On Chip) specific Drivers
+#         -> Renesas SoC driver support (SOC_RENESAS [=y])
+#           -> ARM64 Platform support for RZ/G3E (ARCH_R9A09G047 [=n])
+# 
+# 
+# 
+# Commit: 12e0bd600e3c (soc: renesas: Add RZ/G3E (R9A09G047) config option)
+# CONFIG_ARCH_R9A09G047 is not set

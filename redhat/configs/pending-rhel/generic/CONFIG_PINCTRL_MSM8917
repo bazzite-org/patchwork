@@ -1,0 +1,15 @@
+# Symbol: PINCTRL_MSM8917 [=n]
+# Type  : tristate
+# Defined at drivers/pinctrl/qcom/Kconfig.msm:140
+#   Prompt: Qualcomm 8917 pin controller driver
+#   Depends on: PINCTRL [=y] && (ARCH_QCOM [=y] || COMPILE_TEST [=n]) && PINCTRL_MSM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Pin controllers (PINCTRL [=y])
+#         -> Qualcomm core pin controller driver (PINCTRL_MSM [=y])
+#           -> Qualcomm 8917 pin controller driver (PINCTRL_MSM8917 [=n])
+# 
+# 
+# 
+# Commit: ff5eb00255eb (pinctrl: qcom: Add MSM8917 tlmm pinctrl driver)
+# CONFIG_PINCTRL_MSM8917 is not set

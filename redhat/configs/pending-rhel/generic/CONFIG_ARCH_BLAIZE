@@ -1,0 +1,12 @@
+# Symbol: ARCH_BLAIZE [=n]
+# Type  : bool
+# Defined at arch/arm64/Kconfig.platforms:104
+#   Prompt: Blaize SoC Platforms
+#   Location:
+#     -> Platform selection
+#       -> Blaize SoC Platforms (ARCH_BLAIZE [=n])
+# 
+# 
+# 
+# Commit: c0b454a51755 (arm64: Add Blaize BLZP1600 SoC family)
+# CONFIG_ARCH_BLAIZE is not set
