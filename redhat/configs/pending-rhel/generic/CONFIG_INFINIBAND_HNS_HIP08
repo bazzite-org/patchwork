@@ -1,0 +1,14 @@
+# Symbol: INFINIBAND_HNS_HIP08 [=n]
+# Type  : tristate
+# Defined at drivers/infiniband/hw/hns/Kconfig:2
+#   Prompt: Hisilicon Hip08 Family RoCE support
+#   Depends on: INFINIBAND [=m] && (INFINIBAND_USER_ACCESS [=m] || !INFINIBAND_USER_ACCESS [=m]) && !UML && (ARM64 [=y] || COMPILE_TEST [=n] && 64BIT [=y]) && PCI [=y] && HNS3 [=m]
+#   Location:
+#     -> Device Drivers
+#       -> InfiniBand support (INFINIBAND [=m])
+#         -> Hisilicon Hip08 Family RoCE support (INFINIBAND_HNS_HIP08 [=n])
+# 
+# 
+# 
+# Commit: dd74282df573 (RDMA/hns: Initialize the PCI device for hip08 RoCE)
+# CONFIG_INFINIBAND_HNS_HIP08 is not set

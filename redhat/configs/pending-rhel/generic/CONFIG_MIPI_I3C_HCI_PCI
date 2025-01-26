@@ -1,0 +1,15 @@
+# Symbol: MIPI_I3C_HCI_PCI [=n]
+# Type  : tristate
+# Defined at drivers/i3c/master/Kconfig:61
+#   Prompt: MIPI I3C Host Controller Interface PCI support
+#   Depends on: I3C [=m] && MIPI_I3C_HCI [=m] && PCI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> I3C support (I3C [=m])
+#         -> MIPI I3C Host Controller Interface driver (EXPERIMENTAL) (MIPI_I3C_HCI [=m])
+#           -> MIPI I3C Host Controller Interface PCI support (MIPI_I3C_HCI_PCI [=n])
+# 
+# 
+# 
+# Commit: 30bb1ce71215 (i3c: mipi-i3c-hci: Add support for MIPI I3C HCI on PCI bus)
+# CONFIG_MIPI_I3C_HCI_PCI is not set
