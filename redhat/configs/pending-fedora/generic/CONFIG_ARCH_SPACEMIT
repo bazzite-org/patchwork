@@ -1,0 +1,12 @@
+# Symbol: ARCH_SPACEMIT [=n]
+# Type  : bool
+# Defined at arch/riscv/Kconfig.socs:27
+#   Prompt: SpacemiT SoCs
+#   Location:
+#     -> SoC selection
+#       -> SpacemiT SoCs (ARCH_SPACEMIT [=n])
+# 
+# 
+# 
+# Commit: 8814aa123adb (riscv: add SpacemiT SoC family Kconfig support)
+# CONFIG_ARCH_SPACEMIT is not set
