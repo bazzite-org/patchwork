@@ -1,3 +1,8 @@
+* Sun Jan 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.aa22f4da2a46.5]
+- Fix up CONFIG_REGMAP mismatch (Scott Weaver)
+- Linux v6.14.0-0.rc0.aa22f4da2a46
+Resolves: 
+
 * Fri Jan 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.bc8198dc7ebc.4]
 - redhat: fix modules.order target (Scott Weaver)
 - Linux v6.14.0-0.rc0.bc8198dc7ebc
