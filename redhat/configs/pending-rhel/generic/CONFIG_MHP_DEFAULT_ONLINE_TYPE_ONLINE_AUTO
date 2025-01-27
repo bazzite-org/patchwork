@@ -1,0 +1,15 @@
+# Symbol: MHP_DEFAULT_ONLINE_TYPE_ONLINE_AUTO [=n]
+# Type  : bool
+# Defined at mm/Kconfig:582
+#   Prompt: auto
+#   Depends on: MEMORY_HOTPLUG [=y]
+#   Location:
+#     -> Memory Management options
+#       -> Memory hotplug (MEMORY_HOTPLUG [=y])
+#         -> Memory Hotplug Default Online Type (<choice> [=n])
+#           -> auto (MHP_DEFAULT_ONLINE_TYPE_ONLINE_AUTO [=n])
+# 
+# 
+# 
+# Commit: 44d46b76c3a4 (mm: add build-time option for hotplug memory default online type)
+# CONFIG_MHP_DEFAULT_ONLINE_TYPE_ONLINE_AUTO is not set
