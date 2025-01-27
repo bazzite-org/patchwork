@@ -1,0 +1,16 @@
+# Symbol: INT_SQRT_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:3188
+#   Prompt: Integer square root test
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> Integer square root test (INT_SQRT_KUNIT_TEST [=m])
+# 
+# 
+# 
+# Commit: 0fafc9e1563f (lib/math: add int_sqrt test suite)
+CONFIG_INT_SQRT_KUNIT_TEST=m
