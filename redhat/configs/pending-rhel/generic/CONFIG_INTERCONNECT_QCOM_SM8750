@@ -1,0 +1,15 @@
+# Symbol: INTERCONNECT_QCOM_SM8750 [=n]
+# Type  : tristate
+# Defined at drivers/interconnect/qcom/Kconfig:340
+#   Prompt: Qualcomm SM8750 interconnect driver
+#   Depends on: INTERCONNECT [=y] && INTERCONNECT_QCOM_RPMH_POSSIBLE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> On-Chip Interconnect management support (INTERCONNECT [=y])
+#         -> Qualcomm SM8750 interconnect driver (INTERCONNECT_QCOM_SM8750 [=n])
+# Selects: INTERCONNECT_QCOM_RPMH [=y] && INTERCONNECT_QCOM_BCM_VOTER [=y]
+# 
+# 
+# 
+# Commit: 5e0db3c2cd2c (interconnect: qcom: Add interconnect provider driver for SM8750)
+# CONFIG_INTERCONNECT_QCOM_SM8750 is not set
