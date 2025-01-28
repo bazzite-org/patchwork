@@ -1,0 +1,16 @@
+# Symbol: TEST_MISC_MINOR [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:2495
+#   Prompt: Basic misc minor Kunit test
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> Basic misc minor Kunit test (TEST_MISC_MINOR [=m])
+# 
+# 
+# 
+# Commit: 37df9043329b (misc:minor basic kunit tests)
+CONFIG_TEST_MISC_MINOR=m

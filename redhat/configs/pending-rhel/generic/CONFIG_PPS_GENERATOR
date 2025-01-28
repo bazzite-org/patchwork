@@ -1,0 +1,14 @@
+# Symbol: PPS_GENERATOR [=n]
+# Type  : tristate
+# Defined at drivers/pps/generators/Kconfig:6
+#   Prompt: PPS generators support
+#   Depends on: PPS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PPS support (PPS [=y])
+#         -> PPS generators support (PPS_GENERATOR [=n])
+# 
+# 
+# 
+# Commit: 86b525bed275 (drivers pps: add PPS generators support)
+# CONFIG_PPS_GENERATOR is not set
