@@ -1,0 +1,13 @@
+# Symbol: NTSYNC [=n]
+# Type  : tristate
+# Defined at drivers/misc/Kconfig:518
+#   Prompt: NT synchronization primitive emulation
+#   Location:
+#     -> Device Drivers
+#       -> Misc devices
+#         -> NT synchronization primitive emulation (NTSYNC [=n])
+# 
+# 
+# 
+# Commit: 25b9cadb1ee3 (ntsync: Introduce the ntsync driver and character device.)
+# CONFIG_NTSYNC is not set
