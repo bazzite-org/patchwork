@@ -1,0 +1,16 @@
+# Symbol: CROS_EC_UCSI [=m]
+# Type  : tristate
+# Defined at drivers/usb/typec/ucsi/Kconfig:72
+#   Prompt: UCSI Driver for ChromeOS EC
+#   Depends on: USB_SUPPORT [=y] && TYPEC [=m] && TYPEC_UCSI [=m] && MFD_CROS_EC_DEV [=m] && CROS_USBPD_NOTIFY [=m] && !EXTCON_TCSS_CROS_EC
+#   Location:
+#     -> Device Drivers
+#       -> USB support (USB_SUPPORT [=y])
+#         -> USB Type-C Support (TYPEC [=m])
+#           -> USB Type-C Connector System Software Interface driver (TYPEC_UCSI [=m])
+#             -> UCSI Driver for ChromeOS EC (CROS_EC_UCSI [=m])
+# 
+# 
+# 
+# Commit: f1a2241778d9 (usb: typec: ucsi: Implement ChromeOS UCSI driver)
+CONFIG_CROS_EC_UCSI=m
