@@ -1,0 +1,16 @@
+# Symbol: TYPEC_TBT_ALTMODE [=n]
+# Type  : tristate
+# Defined at drivers/usb/typec/altmodes/Kconfig:26
+#   Prompt: Thunderbolt3 Alternate Mode driver
+#   Depends on: USB_SUPPORT [=y] && TYPEC [=m]
+#   Location:
+#     -> Device Drivers
+#       -> USB support (USB_SUPPORT [=y])
+#         -> USB Type-C Support (TYPEC [=m])
+#           -> USB Type-C Alternate Mode drivers
+#             -> Thunderbolt3 Alternate Mode driver (TYPEC_TBT_ALTMODE [=n])
+# 
+# 
+# 
+# Commit: 100e25738659 (usb: typec: Add driver for Thunderbolt 3 Alternate Mode)
+# CONFIG_TYPEC_TBT_ALTMODE is not set
