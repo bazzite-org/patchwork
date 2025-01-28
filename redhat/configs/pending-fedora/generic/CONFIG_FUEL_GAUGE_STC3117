@@ -1,0 +1,15 @@
+# Symbol: FUEL_GAUGE_STC3117 [=n]
+# Type  : tristate
+# Defined at drivers/power/supply/Kconfig:921
+#   Prompt: STMicroelectronics STC3117 fuel gauge driver
+#   Depends on: POWER_SUPPLY [=y] && CRC8 [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Power supply class support (POWER_SUPPLY [=y])
+#         -> STMicroelectronics STC3117 fuel gauge driver (FUEL_GAUGE_STC3117 [=n])
+# Selects: REGMAP_I2C [=y]
+# 
+# 
+# 
+# Commit: 74e3f6208523 (power: supply: Add STC3117 fuel gauge unit driver)
+# CONFIG_FUEL_GAUGE_STC3117 is not set

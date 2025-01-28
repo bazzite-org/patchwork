@@ -1,0 +1,16 @@
+# Symbol: OPT4060 [=n]
+# Type  : tristate
+# Defined at drivers/iio/light/Kconfig:478
+#   Prompt: Texas Instruments OPT4060 RGBW Color Sensor
+#   Depends on: IIO [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Light sensors
+#           -> Texas Instruments OPT4060 RGBW Color Sensor (OPT4060 [=n])
+# Selects: REGMAP_I2C [=y] && IIO_BUFFER [=y] && IIO_TRIGGERED_BUFFER [=m]
+# 
+# 
+# 
+# Commit: 0c6db4506ad0 (iio: light: Add support for TI OPT4060 color sensor)
+# CONFIG_OPT4060 is not set
