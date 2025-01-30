@@ -1,3 +1,9 @@
+* Thu Jan 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.72deda0abee6.10]
+- redhat/configs: disable CONFIG_AF_UNIX_OOB on RHEL (Marcelo Ricardo Leitner)
+- redhat/configs: automotive: Disable wireless network and it's dependencies (Dorinda Bassey)
+- Linux v6.14.0-0.rc0.72deda0abee6
+Resolves: 
+
 * Wed Jan 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.05dbaf8dd8bf.9]
 - Linux v6.14.0-0.rc0.05dbaf8dd8bf
 Resolves: 
