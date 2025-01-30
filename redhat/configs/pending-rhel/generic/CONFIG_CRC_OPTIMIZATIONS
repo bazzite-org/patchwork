@@ -1,0 +1,13 @@
+# Symbol: CRC_OPTIMIZATIONS [=y]
+# Type  : bool
+# Defined at lib/Kconfig:243
+#   Prompt: Enable optimized CRC implementations
+#   Visible if: EXPERT [=y]
+#   Location:
+#     -> Library routines
+#       -> Enable optimized CRC implementations (CRC_OPTIMIZATIONS [=y])
+# 
+# 
+# 
+# Commit: b0430f39de08 (lib/crc: simplify the kconfig options for CRC implementations)
+CONFIG_CRC_OPTIMIZATIONS=y
