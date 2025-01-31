@@ -19,6 +19,7 @@
 #include <linux/device.h>
 #include <linux/dmi.h>
 #include <linux/delay.h>
+#include <linux/power_supply.h>
 #include <linux/suspend.h>
 
 #include "../sleep.h"
@@ -55,6 +56,7 @@ static const struct acpi_device_id lps0_device_ids[] = {
 #define ACPI_LPS0_DISPLAY_OFF_AMD   4
 #define ACPI_LPS0_DISPLAY_ON_AMD    5
 
+static struct acpi_device *lps0_device;
 static acpi_handle lps0_device_handle;
 static guid_t lps0_dsm_guid;
 static int lps0_dsm_func_mask;
@@ -64,6 +66,7 @@ static int lps0_dsm_func_mask_microsoft;
 static int lps0_dsm_state;
 static bool lps0_dsm_in_display_off;
 static bool lps0_dsm_in_sleep;
+static int lps0_ac_state;
 
 /* Device constraint entry structure */
 struct lpi_device_info {
@@ -97,6 +100,7 @@ struct s2idle_delay_quirks {
 	int delay_sleep_entry;
 	int delay_sleep_exit;
 	int delay_display_on;
+	bool wake_on_ac;
 };
 
 /*
@@ -112,9 +116,15 @@ struct s2idle_delay_quirks {
 static const struct s2idle_delay_quirks rog_ally_quirks = {
 	.delay_display_off = 350,
 	.delay_sleep_entry = 150,
+	.wake_on_ac = true,
+};
+
+static const struct s2idle_delay_quirks legion_go_s_quirks = {
+	.wake_on_ac = true,
 };
 
 static const struct dmi_system_id s2idle_delay_quirks[] = {
+	/* ROG Ally */
 	{
 		.matches = {
 			DMI_MATCH(DMI_BOARD_NAME, "RC71L"),
@@ -126,6 +136,31 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
 		},
 		.driver_data = (void *)&rog_ally_quirks
+	},
+	/* Legion Go S */
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83L3"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83N6"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83Q2"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83Q3"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
 	},
 	{}
 };
@@ -554,6 +589,8 @@ static int lps0_device_attach(struct acpi_device *adev,
 		return 0; //function evaluation failed
 
 	lps0_device_handle = adev->handle;
+	lps0_device = adev;
+	device_set_wakeup_capable(&adev->dev, true);
 
 	if (acpi_s2idle_vendor_amd())
 		lpi_device_get_constraints_amd();
@@ -582,6 +619,8 @@ static int lps0_device_attach(struct acpi_device *adev,
 	const struct dmi_system_id *s2idle_sysid =
 		dmi_first_match(s2idle_delay_quirks);
 	delay_quirks = s2idle_sysid ? s2idle_sysid->driver_data : NULL;
+	if (delay_quirks && delay_quirks->wake_on_ac)
+		device_set_wakeup_enable(&lps0_device->dev, true);
 	unlock_system_sleep(sleep_flags);
 
 	return 0;
@@ -724,6 +763,26 @@ static int acpi_s2idle_display_on(void)
 	return 0;
 }
 
+static void acpi_s2idle_check_ac(void)
+{
+	/* if configured, wake system from AC adapter changes */
+	if (device_may_wakeup(&lps0_device->dev) &&
+	    power_supply_is_system_supplied() != lps0_ac_state) {
+		if (pm_debug_messages_on)
+			acpi_handle_info(lps0_device_handle,
+					 "AC adapter state changed\n");
+		acpi_pm_wakeup_event(&lps0_device->dev);
+	}
+}
+
+static int acpi_s2idle_begin_wrap(void)
+{
+	/* capture AC adapter state */
+	lps0_ac_state = power_supply_is_system_supplied();
+
+	return acpi_s2idle_begin();
+}
+
 int acpi_s2idle_prepare_late(void)
 {
 	struct acpi_s2idle_dev_ops *handler;
@@ -733,6 +792,8 @@ int acpi_s2idle_prepare_late(void)
 
 	if (pm_debug_messages_on)
 		lpi_check_constraints();
+
+	acpi_s2idle_check_ac();
 
 	/* LPS0 entry */
 	if (lps0_dsm_func_mask > 0 && acpi_s2idle_vendor_amd())
@@ -766,6 +827,8 @@ void acpi_s2idle_check(void)
 		if (handler->check)
 			handler->check();
 	}
+
+	acpi_s2idle_check_ac();
 }
 
 void acpi_s2idle_restore_early(void)
@@ -794,7 +857,7 @@ void acpi_s2idle_restore_early(void)
 static const struct platform_s2idle_ops acpi_s2idle_ops_lps0 = {
 	.display_off = acpi_s2idle_display_off,
 	.sleep_entry = acpi_s2idle_sleep_entry,
-	.begin = acpi_s2idle_begin,
+	.begin = acpi_s2idle_begin_wrap,
 	.prepare = acpi_s2idle_prepare,
 	.prepare_late = acpi_s2idle_prepare_late,
 	.check = acpi_s2idle_check,
