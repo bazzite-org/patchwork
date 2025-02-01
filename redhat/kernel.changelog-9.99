@@ -1,3 +1,13 @@
+* Sat Feb 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.60c828cf80c0.12]
+- Move CONFIG_PCI_REALLOC_ENABLE_AUTO out of common as they have diverged (Justin M. Forbes)
+- fedora: arm64: enable Silicon Mitus SM5502 Extcon driver (Sam Day)
+- fedora: arm64: enable Richtek RT5033 MFD+charger+regulator modules (Sam Day)
+- configs/fedora: Enable CONFIG_PCI_REALLOC_ENABLE_AUTO (Yanko Kaneti)
+- Enable CONFIG_INTEL_MEI_PXP and CONFIG_DRM_I915_PXP on rhel (Jocelyn Falempe)
+- Enable Intel Xe Graphics (Mika Penttilä)
+- Linux v6.14.0-0.rc0.60c828cf80c0
+Resolves: 
+
 * Fri Jan 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.69e858e0b8b2.11]
 - Turn on CONFIG_DRM_ACCEL_AMDXDNA for Fedora (Justin M. Forbes)
 - Linux v6.14.0-0.rc0.69e858e0b8b2
