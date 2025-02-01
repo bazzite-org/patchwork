@@ -1,0 +1,15 @@
+# Symbol: GENDWARFKSYMS [=n]
+# Type  : bool
+# Defined at kernel/module/Kconfig:188
+#   Prompt: gendwarfksyms (from debugging information)
+#   Depends on: MODULES [=y] && MODVERSIONS [=y] && DEBUG_INFO [=y] && !DEBUG_INFO_REDUCED [=n] && !DEBUG_INFO_SPLIT [=n] && !LTO [=n]
+#   Location:
+#     -> Enable loadable module support (MODULES [=y])
+#       -> Module versioning support (MODVERSIONS [=y])
+#         -> Module versioning implementation (<choice> [=n])
+#           -> gendwarfksyms (from debugging information) (GENDWARFKSYMS [=n])
+# 
+# 
+# 
+# Commit: f28568841ae0 (tools: Add gendwarfksyms)
+# CONFIG_GENDWARFKSYMS is not set
