@@ -1,0 +1,15 @@
+# Symbol: EXTENDED_MODVERSIONS [=n]
+# Type  : bool
+# Defined at kernel/module/Kconfig:210
+#   Prompt: Extended Module Versioning Support
+#   Depends on: MODULES [=y] && MODVERSIONS [=y]
+#   Location:
+#     -> Enable loadable module support (MODULES [=y])
+#       -> Extended Module Versioning Support (EXTENDED_MODVERSIONS [=n])
+# Selected by [n]:
+#   - RUST [=n] && HAVE_RUST [=y] && RUST_IS_AVAILABLE [=y] && (!MODVERSIONS [=y] || GENDWARFKSYMS [=n]) && !GCC_PLUGIN_RANDSTRUCT [=n] && !RANDSTRUCT [=n] && (!DEBUG_INFO_BTF [=y] || PAHOLE_HAS_LANG_EXCLUDE [=y]) && (!CFI_CLANG [=n] || HAVE_CFI_ICALL_NORMALIZE_INTEGERS_RUSTC [=y]) && (!CALL_PADDING [=y] || RUSTC_VERSION [=108400]>=108100) && !KASAN_SW_TAGS [=n] && (!MITIGATION_RETHUNK [=y] || !KASAN [=n] || RUSTC_VERSION [=108400]>=108300) && MODVERSIONS [=y]
+# 
+# 
+# 
+# Commit: fc7d5e3210ae (modpost: Produce extended MODVERSIONS information)
+# CONFIG_EXTENDED_MODVERSIONS is not set
