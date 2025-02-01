@@ -1,0 +1,14 @@
+# Symbol: ERRATA_THEAD_GHOSTWRITE [=y]
+# Type  : bool
+# Defined at arch/riscv/Kconfig.errata:122
+#   Prompt: Apply T-Head Ghostwrite errata
+#   Depends on: ERRATA_THEAD [=y] && RISCV_ISA_XTHEADVECTOR [=y]
+#   Location:
+#     -> CPU errata selection
+#       -> T-HEAD errata (ERRATA_THEAD [=y])
+#         -> Apply T-Head Ghostwrite errata (ERRATA_THEAD_GHOSTWRITE [=y])
+# 
+# 
+# 
+# Commit: 4bf97069239b (riscv: Add ghostwrite vulnerability)
+CONFIG_ERRATA_THEAD_GHOSTWRITE=y
