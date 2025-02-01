@@ -1,0 +1,15 @@
+# Symbol: GENKSYMS [=y]
+# Type  : bool
+# Defined at kernel/module/Kconfig:180
+#   Prompt: genksyms (from source code)
+#   Depends on: MODULES [=y] && MODVERSIONS [=y]
+#   Location:
+#     -> Enable loadable module support (MODULES [=y])
+#       -> Module versioning support (MODVERSIONS [=y])
+#         -> Module versioning implementation (<choice> [=n])
+#           -> genksyms (from source code) (GENKSYMS [=y])
+# 
+# 
+# 
+# Commit: 9c3681f9b9fd (kbuild: Add gendwarfksyms as an alternative to genksyms)
+CONFIG_GENKSYMS=y
