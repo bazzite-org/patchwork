@@ -1,3 +1,7 @@
+* Sun Feb 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.a86bf2283d2c.13]
+- Linux v6.14.0-0.rc0.a86bf2283d2c
+Resolves: 
+
 * Sat Feb 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc0.60c828cf80c0.12]
 - Move CONFIG_PCI_REALLOC_ENABLE_AUTO out of common as they have diverged (Justin M. Forbes)
 - fedora: arm64: enable Silicon Mitus SM5502 Extcon driver (Sam Day)
