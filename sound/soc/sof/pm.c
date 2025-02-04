@@ -8,9 +8,20 @@
 // Author: Liam Girdwood <liam.r.girdwood@linux.intel.com>
 //
 
+#include <linux/dmi.h>
 #include "ops.h"
 #include "sof-priv.h"
 #include "sof-audio.h"
+
+static const struct dmi_system_id is_steamdeck_oled[] = {
+	{	/* Valve Steam Deck OLED (Galileo) */
+		.matches = {
+			DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Galileo"),
+		},
+	},
+	{}
+};
 
 /*
  * Helper function to determine the target DSP state during
@@ -135,7 +146,9 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 		return ret;
 	}
 
-	msleep(150);
+	if (dmi_first_match(is_steamdeck_oled))
+		msleep(150);
+
 	sof_set_fw_state(sdev, SOF_FW_BOOT_IN_PROGRESS);
 
 	/*
@@ -150,7 +163,9 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 		sof_set_fw_state(sdev, SOF_FW_BOOT_FAILED);
 		return ret;
 	}
-	msleep(150);
+
+	if (dmi_first_match(is_steamdeck_oled))
+		msleep(150);
 
 	/* resume DMA trace */
 	ret = sof_fw_trace_resume(sdev);
@@ -160,7 +175,9 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 			 "warning: failed to init trace after resume %d\n",
 			 ret);
 	}
-	msleep(150);
+
+	if (dmi_first_match(is_steamdeck_oled))
+		msleep(150);
 
 	/* restore pipelines */
 	if (tplg_ops && tplg_ops->set_up_all_pipelines) {
@@ -169,12 +186,16 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 			dev_err(sdev->dev, "Failed to restore pipeline after resume %d\n", ret);
 			goto setup_fail;
 		}
-		msleep(150);
+
+		if (dmi_first_match(is_steamdeck_oled))
+			msleep(150);
 	}
 
 	/* Notify clients not managed by pm framework about core resume */
 	sof_resume_clients(sdev);
-	msleep(150);
+
+	if (dmi_first_match(is_steamdeck_oled))
+		msleep(150);
 
 	/* notify DSP of system resume */
 	if (pm_ops && pm_ops->ctx_restore) {
