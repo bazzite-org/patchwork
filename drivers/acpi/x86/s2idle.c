@@ -100,6 +100,7 @@ struct s2idle_delay_quirks {
 	int delay_sleep_entry;
 	int delay_sleep_exit;
 	int delay_display_on;
+	int delay_begin;
 	bool wake_on_ac;
 };
 
@@ -118,6 +119,10 @@ static const struct s2idle_delay_quirks rog_ally_quirks = {
 	.delay_sleep_entry = 150,
 };
 
+static const struct s2idle_delay_quirks legion_go_s_quirks = {
+	.delay_begin = 500,
+};
+
 static const struct dmi_system_id s2idle_delay_quirks[] = {
 	/* ROG Ally */
 	{
@@ -131,6 +136,31 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 			DMI_MATCH(DMI_BOARD_NAME, "RC72L"),
 		},
 		.driver_data = (void *)&rog_ally_quirks
+	},
+	/* Legion Go S */
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83L3"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83N6"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83Q2"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "83Q3"),
+		},
+		.driver_data = (void *)&legion_go_s_quirks
 	},
 	{}
 };
@@ -749,6 +779,10 @@ static int acpi_s2idle_begin_wrap(void)
 {
 	/* capture AC adapter state */
 	lps0_ac_state = power_supply_is_system_supplied();
+
+	/* Add a bit of delay to let TDP come down after userspace freeze */
+	if (delay_quirks && delay_quirks->delay_begin)
+		msleep(delay_quirks->delay_begin);
 
 	return acpi_s2idle_begin();
 }
