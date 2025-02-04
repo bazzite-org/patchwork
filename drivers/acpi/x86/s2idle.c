@@ -97,6 +97,7 @@ struct s2idle_delay_quirks {
 	int delay_sleep_entry;
 	int delay_sleep_exit;
 	int delay_display_on;
+	int delay_begin;
 };
 
 /*
@@ -112,6 +113,10 @@ struct s2idle_delay_quirks {
 static const struct s2idle_delay_quirks rog_ally_quirks = {
 	.delay_display_off = 350,
 	.delay_sleep_entry = 150,
+};
+
+static const struct s2idle_delay_quirks legion_go_s_quirks = {
+	.delay_begin = 500,
 };
 
 static const struct dmi_system_id s2idle_delay_quirks[] = {
@@ -722,6 +727,15 @@ static int acpi_s2idle_display_on(void)
 	acpi_scan_lock_release();
 
 	return 0;
+}
+
+static int acpi_s2idle_begin_wrap(void)
+{
+	/* Add a bit of delay to let TDP come down after userspace freeze */
+	if (delay_quirks && delay_quirks->delay_begin)
+		msleep(delay_quirks->delay_begin);
+
+	return acpi_s2idle_begin();
 }
 
 int acpi_s2idle_prepare_late(void)
