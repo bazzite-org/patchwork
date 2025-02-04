@@ -89,6 +89,8 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 	u32 old_state = sdev->dsp_power_state.state;
 	int ret;
 
+	bool is_galileo = (bool)dmi_first_match(is_steamdeck_oled);
+
 	/* do nothing if dsp resume callbacks are not set */
 	if (!runtime_resume && !sof_ops(sdev)->resume)
 		return 0;
@@ -146,7 +148,7 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 		return ret;
 	}
 
-	if (dmi_first_match(is_steamdeck_oled))
+	if (is_galileo)
 		msleep(150);
 
 	sof_set_fw_state(sdev, SOF_FW_BOOT_IN_PROGRESS);
@@ -164,7 +166,7 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 		return ret;
 	}
 
-	if (dmi_first_match(is_steamdeck_oled))
+	if (is_galileo)
 		msleep(150);
 
 	/* resume DMA trace */
@@ -176,7 +178,7 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 			 ret);
 	}
 
-	if (dmi_first_match(is_steamdeck_oled))
+	if (is_galileo)
 		msleep(150);
 
 	/* restore pipelines */
@@ -187,14 +189,14 @@ static int sof_resume(struct device *dev, bool runtime_resume)
 			goto setup_fail;
 		}
 
-		if (dmi_first_match(is_steamdeck_oled))
+		if (is_galileo)
 			msleep(150);
 	}
 
 	/* Notify clients not managed by pm framework about core resume */
 	sof_resume_clients(sdev);
 
-	if (dmi_first_match(is_steamdeck_oled))
+	if (is_galileo)
 		msleep(150);
 
 	/* notify DSP of system resume */
