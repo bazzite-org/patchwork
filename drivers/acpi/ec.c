@@ -2142,6 +2142,7 @@ static bool acpi_ec_work_in_progress(struct acpi_ec *ec)
 bool acpi_ec_dispatch_gpe(void)
 {
 	bool work_in_progress = false;
+	bool wake_pending = false;
 
 	if (!first_ec)
 		return acpi_any_gpe_status_set(U32_MAX);
@@ -2163,6 +2164,12 @@ bool acpi_ec_dispatch_gpe(void)
 	 */
 	pm_system_cancel_wakeup();
 
+handle_ec:
+	/*
+	 * Start query processing to handle Queries stemming from GPEs
+	 */
+	acpi_ec_leave_noirq(first_ec);
+
 	/*
 	 * Dispatch the EC GPE in-band, but do not report wakeup in any case
 	 * to allow the caller to process events properly after that.
@@ -2178,8 +2185,10 @@ bool acpi_ec_dispatch_gpe(void)
 
 	spin_unlock_irq(&first_ec->lock);
 
-	if (!work_in_progress)
+	if (!work_in_progress) {
+		acpi_ec_enter_noirq(first_ec);
 		return false;
+	}
 
 	pm_pr_dbg("ACPI EC GPE dispatched\n");
 
@@ -2194,7 +2203,19 @@ bool acpi_ec_dispatch_gpe(void)
 		work_in_progress = acpi_ec_work_in_progress(first_ec);
 
 		spin_unlock_irq(&first_ec->lock);
-	} while (work_in_progress && !pm_wakeup_pending());
+
+		wake_pending = pm_wakeup_pending();
+	} while (work_in_progress && !wake_pending);
+
+	acpi_ec_enter_noirq(first_ec);
+	/*
+	 * Here, there is a race condition. We disable IRQ but there is a
+	 * change more work came in as we disabled them. Therefore, perform 
+	 * the check again.
+	 */
+	work_in_progress = acpi_ec_work_in_progress(first_ec);
+	if (work_in_progress && !wake_pending)
+		goto handle_ec;
 
 	return false;
 }
