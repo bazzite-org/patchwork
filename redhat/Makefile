@@ -124,8 +124,8 @@ endif
 
 # options for process_configs.sh script
 ifdef NO_CONFIGCHECKS
-   PROCESS_CONFIGS_OPTS=
-   PROCESS_CONFIGS_CHECK_OPTS=
+   PROCESS_CONFIGS_CHECK_OPTS=-w -n -c -i -t
+   PROCESS_CONFIGS_OPTS=-w -n -c -i
    BUILDOPTS += -configchecks
 else
    PROCESS_CONFIGS_CHECK_OPTS=-n -t -c
