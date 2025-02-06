@@ -2074,9 +2074,9 @@ done
 
 %{log_msg "Set process_configs.sh $OPTS"}
 cp %{SOURCE81} .
-OPTS=""
-%if %{with_configchecks}
-	OPTS="$OPTS -w -n -c"
+OPTS="-w -n -c"
+%if !%{with_configchecks}
+	OPTS="$OPTS -i"
 %endif
 %if %{with clang_lto}
 for opt in %{clang_make_opts}; do
