@@ -1,3 +1,8 @@
+* Fri Feb 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc1.bb066fe812d6.18]
+- fedora: enable USB device USB5744 (Peter Robinson)
+- Linux v6.14.0-0.rc1.bb066fe812d6
+Resolves: 
+
 * Thu Feb 06 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc1.92514ef226f5.17]
 - Linux v6.14.0-0.rc1.92514ef226f5
 Resolves: 
