@@ -1,3 +1,9 @@
+* Sat Feb 08 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.13.2-0]
+- Fix up configs for CONFIG_USB_ONBOARD_DEV_USB5744 (Justin M. Forbes)
+- fedora: enable USB device USB5744 (Peter Robinson)
+- Linux v6.13.2
+Resolves: 
+
 * Sat Feb 01 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.13.1-0]
 - media: ov08x40: Don't log ov08x40_check_hwcfg() errors twice (Hans de Goede)
 - media: ov08x40: Add missing '\n' to ov08x40_check_hwcfg() error messages (Hans de Goede)
