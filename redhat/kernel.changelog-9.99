@@ -1,3 +1,7 @@
+* Sun Feb 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc1.9946eaf552b1.20]
+- Linux v6.14.0-0.rc1.9946eaf552b1
+Resolves: 
+
 * Sat Feb 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc1.8f6629c004b1.19]
 - redhat/configs: amend USB_ONBOARD_DEV_USB5744 (Eric Chanudet)
 - redhat/configs: automotive: Disable SYSIPC and MQUEUE configs (Dorinda Bassey)
