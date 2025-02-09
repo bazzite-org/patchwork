@@ -904,7 +904,7 @@ dist-get-latest: ##misc Returns the latest "known good" kernel from brew. This s
 dist-os-version: ##misc Displays the current Red Hat Enterprise Linux version target used by the current branch/tree.
 	@echo "OSVERSION: $(RHEL_MAJOR).$(RHEL_MINOR)"
 
-dist-dump-variables:
+dist-dump-variables: ##misc Dump makefile variables.
 	$(eval VARS:=$(sort $(shell cat Makefile.variables | sed '/^#/d; /^$$/d; s/[ ]*[?:]=.*//')))
 	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment default automatic, $(origin $V)),$(info $V=$($V)),$(if $(filter $(VARS),$(V)),$(info $V=$($V)))))
 
