@@ -160,8 +160,8 @@ static const struct edid_quirk {
 	EDID_QUIRK('E', 'P', 'I', 8232, EDID_QUIRK_PREFER_LARGE_60),
 
 	/* Funai Electronics PM36B */
-	EDID_QUIRK('F', 'C', 'M', 13600, EDID_QUIRK_PREFER_LARGE_75 |
-				       EDID_QUIRK_DETAILED_IN_CM),
+	EDID_QUIRK('F', 'C', 'M', 13600,
+		   EDID_QUIRK_PREFER_LARGE_75 | EDID_QUIRK_DETAILED_IN_CM),
 
 	/* LG 27GP950 */
 	EDID_QUIRK('G', 'S', 'M', 0x5bbf, EDID_QUIRK_CAP_DSC_15BPP),
@@ -199,6 +199,9 @@ static const struct edid_quirk {
 
 	/* Rotel RSX-1058 forwards sink's EDID but only does HDMI 1.1*/
 	EDID_QUIRK('E', 'T', 'R', 13896, EDID_QUIRK_FORCE_8BPC),
+
+	/* Bigscreen Beyond Headset */
+	EDID_QUIRK('B', 'I', 'G', 0x1234, EDID_QUIRK_NON_DESKTOP),
 
 	/* Valve Index Headset */
 	EDID_QUIRK('V', 'L', 'V', 0x91a8, EDID_QUIRK_NON_DESKTOP),
