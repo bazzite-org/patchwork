@@ -36,6 +36,8 @@
 #include "pinctrl-utils.h"
 #include "pinctrl-amd.h"
 
+static struct amd_gpio *pinctrl_dev_check;
+
 static int amd_gpio_get_direction(struct gpio_chip *gc, unsigned offset)
 {
 	unsigned long flags;
@@ -908,6 +910,42 @@ static bool amd_gpio_should_save(struct amd_gpio *gpio_dev, unsigned int pin)
 	return false;
 }
 
+static void amd_gpio_clear_pending(void)
+{
+	struct amd_gpio *gpio_dev = pinctrl_dev_check;
+	struct pinctrl_desc *desc = gpio_dev->pctrl->desc;
+	unsigned long flags;
+	u32 reg;
+	int i;
+
+	for (i = 0; i < desc->npins; i++) {
+		int pin = desc->pins[i].number;
+		u32 tmp;
+
+		if (!amd_gpio_should_save(gpio_dev, pin))
+			continue;
+
+		raw_spin_lock_irqsave(&gpio_dev->lock, flags);
+		tmp = readl(gpio_dev->base + pin * 4);
+		if (!(gpio_dev->saved_regs[i] & WAKE_SOURCE) && (tmp & PIN_IRQ_PENDING)) {
+			pm_pr_dbg("Clearing GPIO #%d status.\n", pin);
+			writel(tmp & ~PIN_IRQ_PENDING, gpio_dev->base + pin * 4);
+		}
+		raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
+	}
+
+	pm_pr_dbg("Setting EOI mask.\n");
+	raw_spin_lock_irqsave(&gpio_dev->lock, flags);
+	reg = readl(gpio_dev->base + WAKE_INT_MASTER_REG);
+	reg |= EOI_MASK;
+	writel(reg, gpio_dev->base + WAKE_INT_MASTER_REG);
+	raw_spin_unlock_irqrestore(&gpio_dev->lock, flags);
+}
+
+static struct acpi_s2idle_dev_ops pinctrl_amd_s2idle_dev_ops = {
+	.check = amd_gpio_clear_pending,
+};
+
 static int amd_gpio_suspend(struct device *dev)
 {
 	struct amd_gpio *gpio_dev = dev_get_drvdata(dev);
@@ -1166,6 +1204,11 @@ static int amd_gpio_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, gpio_dev);
 	acpi_register_wakeup_handler(gpio_dev->irq, amd_gpio_check_wake, gpio_dev);
 
+	pinctrl_dev_check = gpio_dev;
+	ret = acpi_register_lps0_dev(&pinctrl_amd_s2idle_dev_ops);
+	if (ret)
+		dev_warn(&pdev->dev, "Failed to register LPs0 sleep handler: %d\n", ret);
+
 	dev_dbg(&pdev->dev, "amd gpio driver loaded\n");
 	return ret;
 
@@ -1183,6 +1226,7 @@ static void amd_gpio_remove(struct platform_device *pdev)
 
 	gpiochip_remove(&gpio_dev->gc);
 	acpi_unregister_wakeup_handler(amd_gpio_check_wake, gpio_dev);
+	acpi_unregister_lps0_dev(&pinctrl_amd_s2idle_dev_ops);
 }
 
 #ifdef CONFIG_ACPI
