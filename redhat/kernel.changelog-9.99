@@ -1,3 +1,9 @@
+* Wed Feb 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.09fbf3d50205.23]
+- redhat: automotive: define CONFIG_RH_AUTOMOTIVE (Scott Weaver)
+- redhat/configs: disable CONFIG_TCP_AO on RHEL (Sabrina Dubroca)
+- Linux v6.14.0-0.rc2.09fbf3d50205
+Resolves: 
+
 * Tue Feb 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.febbc555cf0f.22]
 - Linux v6.14.0-0.rc2.febbc555cf0f
 Resolves: 
