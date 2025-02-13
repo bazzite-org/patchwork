@@ -1,3 +1,27 @@
+* Thu Feb 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.4dc1d1bec898.24]
+- Revert "nvme: Return BLK_STS_TARGET if the DNR bit is set" (Benjamin Marzinski)
+- Revert "nvme: allow local retry and proper failover for REQ_FAILFAST_TRANSPORT" (Benjamin Marzinski)
+- Revert "nvme: decouple basic ANA log page re-read support from native multipathing" (Benjamin Marzinski)
+- Revert "nvme: nvme_mpath_init remove multipath check" (Benjamin Marzinski)
+- redhat/configs: automotive: Disable CONFIG_FS_DAX config (Dorinda Bassey)
+- config: update CONFIG_LSM to match upstream (Ryan Sullivan)
+- redhat: configs: enable CONFIG_INTEL_ISH_FIRMWARE_DOWNLOADER for RHEL (David Arcari)
+- redhat/Makefile: Add help text for target dist-dump-variables (Eder Zulian)
+- media: ov08x40: Don't log ov08x40_check_hwcfg() errors twice (Hans de Goede)
+- media: ov08x40: Add missing '\n' to ov08x40_check_hwcfg() error messages (Hans de Goede)
+- media: ov08x40: Add missing ov08x40_identify_module() call on stream-start (Hans de Goede)
+- media: ov08x40: Improve ov08x40_[read|write]_reg() error returns (Hans de Goede)
+- media: ov08x40: Improve ov08x40_identify_module() error logging (Hans de Goede)
+- media: ov08x40: Move ov08x40_identify_module() function up (Hans de Goede)
+- media: ov08x40: Get clock on ACPI platforms too (Hans de Goede)
+- media: ov08x40: Get reset GPIO and regulators on ACPI platforms too (Hans de Goede)
+- media: ov08x40: Move fwnode_graph_get_next_endpoint() call up (Hans de Goede)
+- media: ov08x40: Properly turn sensor on/off when runtime-suspended (Hans de Goede)
+- redhat: update self-test-data for new default RHJOBS value (Patrick Talbert)
+- set a more reasonable default for number of jobs (Thorsten Leemhuis)
+- Linux v6.14.0-0.rc2.4dc1d1bec898
+Resolves: 
+
 * Wed Feb 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.09fbf3d50205.23]
 - redhat: automotive: define CONFIG_RH_AUTOMOTIVE (Scott Weaver)
 - redhat/configs: disable CONFIG_TCP_AO on RHEL (Sabrina Dubroca)
