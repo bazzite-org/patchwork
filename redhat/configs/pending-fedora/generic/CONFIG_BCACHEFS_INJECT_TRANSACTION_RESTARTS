@@ -1,0 +1,15 @@
+# Symbol: BCACHEFS_INJECT_TRANSACTION_RESTARTS [=n]
+# Type  : bool
+# Defined at fs/bcachefs/Kconfig:64
+#   Prompt: Randomly inject transaction restarts
+#   Depends on: BLOCK [=y] && BCACHEFS_DEBUG [=y]
+#   Location:
+#     -> File systems
+#       -> bcachefs filesystem support (EXPERIMENTAL) (BCACHEFS_FS [=m])
+#         -> bcachefs debugging (BCACHEFS_DEBUG [=y])
+#           -> Randomly inject transaction restarts (BCACHEFS_INJECT_TRANSACTION_RESTARTS [=n])
+# 
+# 
+# 
+# Commit: 9cf6b84b71ad (bcachefs: CONFIG_BCACHEFS_INJECT_TRANSACTION_RESTARTS)
+# CONFIG_BCACHEFS_INJECT_TRANSACTION_RESTARTS is not set
