@@ -1,3 +1,8 @@
+* Fri Feb 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.128c8f96eb86.25]
+- fedora: arm64: enable RT5616 codec (Marcin Juszkiewicz)
+- Linux v6.14.0-0.rc2.128c8f96eb86
+Resolves: 
+
 * Thu Feb 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.4dc1d1bec898.24]
 - Revert "nvme: Return BLK_STS_TARGET if the DNR bit is set" (Benjamin Marzinski)
 - Revert "nvme: allow local retry and proper failover for REQ_FAILFAST_TRANSPORT" (Benjamin Marzinski)
