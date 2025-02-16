@@ -1,3 +1,7 @@
+* Sun Feb 16 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.ad1b832bf1cf.27]
+- Linux v6.14.0-0.rc2.ad1b832bf1cf
+Resolves: 
+
 * Sat Feb 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc2.7ff71e6d9239.26]
 - fedora: Update vbox drivers (Peter Robinson)
 - Drop the s390x CONFIG_REGMAP from RHEL pending as upstream removed the dep (Justin M. Forbes)
