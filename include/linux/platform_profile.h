@@ -32,6 +32,7 @@ struct platform_profile_handler {
 	struct device *dev;
 	struct device *class_dev;
 	int minor;
+	bool secondary;
 	unsigned long choices[BITS_TO_LONGS(PLATFORM_PROFILE_LAST)];
 	int (*profile_get)(struct platform_profile_handler *pprof,
 				enum platform_profile_option *profile);
