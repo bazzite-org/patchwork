@@ -1,3 +1,9 @@
+* Mon Feb 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.35]
+- redhat/configs: Enable Mediatek Bluetooth USB drivers (Bastien Nocera)
+- redhat/configs: Disable CONFIG_PKEY for zfcpdump configs (Mete Durlu) [RHEL-78341]
+- Linux v6.14.0-0.rc4
+Resolves: RHEL-78341
+
 * Sun Feb 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc3.27102b38b8ca.34]
 - Linux v6.14.0-0.rc3.27102b38b8ca
 Resolves: 
