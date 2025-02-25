@@ -1,3 +1,12 @@
+* Tue Feb 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.36]
+- Revert "Merge: redhat/configs: automotive: Disable POSIX_MQUEUE config (Dorinda Bassey)
+- redhat/configs: enable in kernel compression/decompression of compressed modules (Herton R. Krzesinski)
+- redhat: change compression flags for xz (Herton R. Krzesinski)
+- redhat/configs: automotive: Turn off ACPI Processor package for aarch64 (Enric Balletbo i Serra)
+- redhat/configs: automotive: Disable L2TP Protocol (Dorinda Bassey)
+- redhat/configs: automotive: Disable TIPC Protocol (Dorinda Bassey)
+Resolves: 
+
 * Mon Feb 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.35]
 - redhat/configs: Enable Mediatek Bluetooth USB drivers (Bastien Nocera)
 - redhat/configs: Disable CONFIG_PKEY for zfcpdump configs (Mete Durlu) [RHEL-78341]
