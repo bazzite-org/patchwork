@@ -1,3 +1,7 @@
+* Wed Feb 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.ac9c34d1e45a.37]
+- Linux v6.14.0-0.rc4.ac9c34d1e45a
+Resolves: 
+
 * Tue Feb 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.36]
 - Revert "Merge: redhat/configs: automotive: Disable POSIX_MQUEUE config (Dorinda Bassey)
 - redhat/configs: enable in kernel compression/decompression of compressed modules (Herton R. Krzesinski)
