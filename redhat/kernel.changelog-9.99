@@ -1,3 +1,7 @@
+* Fri Feb 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.76544811c850.39]
+- Linux v6.14.0-0.rc4.76544811c850
+Resolves: 
+
 * Thu Feb 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc4.dd83757f6e68.38]
 - kernel.spec: add missing tools-libs on s390x (Jan Stancek)
 - arch/x86/kernel/setup.c: fix rh_check_supported (Tomas Henzl)
