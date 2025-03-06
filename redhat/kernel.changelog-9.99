@@ -1,3 +1,7 @@
+* Thu Mar 06 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc5.848e07631744.45]
+- Linux v6.14.0-0.rc5.848e07631744
+Resolves: 
+
 * Wed Mar 05 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc5.48a5eed9ad58.44]
 - redhat/configs: enable CONFIG_ARM_SMMU_MMU_500_CPRE_ERRATA (Jerry Snitselaar)
 - redhat/configs: enable CONFIG_ARM_SMMU_V3_IOMMUFD (Jerry Snitselaar)
