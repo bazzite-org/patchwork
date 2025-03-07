@@ -37,6 +37,9 @@
 
 #include "ttm_module.h"
 
+static unsigned long ttm_pages_min;
+MODULE_PARM_DESC(pages_min, "Minimum calculated limit for the allocated pages");
+module_param_named(pages_min, ttm_pages_min, ulong, 0644);
 /*
  * ttm_global_mutex - protecting the global state
  */
@@ -87,6 +90,9 @@ static int ttm_global_init(void)
 	 */
 	num_pages = ((u64)si.totalram * si.mem_unit) >> PAGE_SHIFT;
 	num_pages /= 2;
+
+	/* Ensure it meats minimum */
+	num_pages = max(num_pages, ttm_pages_min);
 
 	/* But for DMA32 we limit ourself to only use 2GiB maximum. */
 	num_dma32 = (u64)(si.totalram - si.totalhigh) * si.mem_unit
