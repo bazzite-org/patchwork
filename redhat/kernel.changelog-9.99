@@ -1,3 +1,8 @@
+* Mon Mar 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc6.48]
+- redhat/configs: Disable rest of the CONFIG_PKEY_ options on s390 (Mete Durlu) [RHEL-78341]
+- Linux v6.14.0-0.rc6
+Resolves: RHEL-78341
+
 * Sat Mar 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc5.2a520073e74f.47]
 - Fix up some debug module loading issues due to BTF mismatch (Justin M. Forbes)
 - Linux v6.14.0-0.rc5.2a520073e74f
