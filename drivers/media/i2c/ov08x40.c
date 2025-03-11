@@ -1341,7 +1341,7 @@ static int ov08x40_power_on(struct device *dev)
 	}
 
 	gpiod_set_value_cansleep(ov08x->reset_gpio, 0);
-	usleep_range(1500, 1800);
+	usleep_range(5000, 5500);
 
 	return 0;
 
@@ -1955,6 +1955,7 @@ static int ov08x40_identify_module(struct ov08x40 *ov08x)
 		return -ENXIO;
 	}
 
+	dev_dbg(&client->dev, "chip id 0x%x\n", val);
 	ov08x->identified = true;
 
 	return 0;
@@ -2167,7 +2168,7 @@ static int ov08x40_check_hwcfg(struct ov08x40 *ov08x, struct device *dev)
 		return dev_err_probe(dev, ret, "parsing endpoint failed\n");
 
 	ov08x->reset_gpio = devm_gpiod_get_optional(dev, "reset",
-						    GPIOD_OUT_LOW);
+						    GPIOD_OUT_HIGH);
 	if (IS_ERR(ov08x->reset_gpio)) {
 		ret = dev_err_probe(dev, PTR_ERR(ov08x->reset_gpio),
 				    "getting reset GPIO\n");
