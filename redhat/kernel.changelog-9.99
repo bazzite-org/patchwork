@@ -1,3 +1,8 @@
+* Tue Mar 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc6.4d872d51bc9d.49]
+- Fedora configs for 6.14 (Justin M. Forbes)
+- Linux v6.14.0-0.rc6.4d872d51bc9d
+Resolves: 
+
 * Mon Mar 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc6.48]
 - redhat/configs: Disable rest of the CONFIG_PKEY_ options on s390 (Mete Durlu) [RHEL-78341]
 - Linux v6.14.0-0.rc6
