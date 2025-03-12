@@ -1,3 +1,10 @@
+* Wed Mar 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc6.0fed89a961ea.50]
+- redhat: Update CONFIG_STRICT_DEVMEM settings (enable it on s390x) (Thomas Huth)
+- redhat: Consolidate CONFIG_VIRTIO_MEM and enable it also for s390x (Thomas Huth)
+- Remove no longer necessary pending entry (Justin M. Forbes)
+- Linux v6.14.0-0.rc6.0fed89a961ea
+Resolves: 
+
 * Tue Mar 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc6.4d872d51bc9d.49]
 - Fedora configs for 6.14 (Justin M. Forbes)
 - Linux v6.14.0-0.rc6.4d872d51bc9d
