@@ -1,3 +1,12 @@
+* Thu Mar 13 2025 Augusto Caringi <acaringi@redhat.com> [6.13.7-0]
+- Set CONFIG_FW_CACHE=y for rhel to avoid config mismatch issues (Augusto Caringi)
+- media: ov08x40: Extend sleep after reset to 5 ms (Hans de Goede)
+- media: ov08x40: Log chip ID when identifying the chip (Hans de Goede)
+- media: ov08x40: Fix value of reset GPIO when requesting it (Hans de Goede)
+- ASoC: rt712-sdca: Add FU05 playback switch control (Shuming Fan) [2350689]
+- Linux v6.13.7
+Resolves: rhbz#2350689
+
 * Fri Mar 07 2025 Augusto Caringi <acaringi@redhat.com> [6.13.6-0]
 - Fix up some debug module loading issues due to BTF mismatch (Justin M. Forbes)
 - Linux v6.13.6
