@@ -809,7 +809,13 @@ dist-release: dist-clean-sources
 dist-get-tag: ##misc Returns the latest release tag.
 	$(info $(DISTRELEASETAG))
 
-dist-release-tag:
+dist-check-release:
+	@if ! $(GIT) log -1 --format=%s | grep -q "\[redhat\] $(DISTRELEASETAG)"; then \
+		echo -e "Error: Check git tree, HEAD is expected to contain release commit."; \
+		exit 1; \
+	fi
+
+dist-release-tag: dist-check-release
 	@$(GIT) tag -a -m "$(DISTRELEASETAG)" $(DISTRELEASETAG)
 
 git-tree-check:
@@ -867,7 +873,7 @@ _distg-brew _distg-koji: _distg-%: dist-vr-check
 dist-git-test: export RH_DIST_GIT_TEST="1"
 dist-git-test: dist-git
 
-dist-git: dist-srpm $(KABI_TARBALL) $(KABIDW_TARBALL)
+dist-git: dist-srpm $(KABI_TARBALL) $(KABIDW_TARBALL) dist-check-release
 	@if [ -z "$(RHDISTGIT_BRANCH)" ]; then \
 		echo "RHDISTGIT_BRANCH is unset"; \
 		exit 1; \
