@@ -1,0 +1,16 @@
+# Symbol: BT_HCIBTUSB_AUTO_ISOC_ALT [=y]
+# Type  : bool
+# Defined at drivers/bluetooth/Kconfig:59
+#   Prompt: Automatically adjust alternate setting for Isoc endpoints
+#   Depends on: NET [=y] && BT [=m] && BT_HCIBTUSB [=m]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Bluetooth subsystem support (BT [=m])
+#         -> Bluetooth device drivers
+#           -> HCI USB driver (BT_HCIBTUSB [=m])
+#             -> Automatically adjust alternate setting for Isoc endpoints (BT_HCIBTUSB_AUTO_ISOC_ALT [=y])
+# 
+# 
+# 
+# Commit: 75ddcd5ad40e (Bluetooth: btusb: Configure altsetting for HCI_USER_CHANNEL)
+CONFIG_BT_HCIBTUSB_AUTO_ISOC_ALT=y
