@@ -810,10 +810,12 @@ dist-get-tag: ##misc Returns the latest release tag.
 	$(info $(DISTRELEASETAG))
 
 dist-check-release:
+ifeq ($(CHECK_FOR_RELEASE_COMMIT),1)
 	@if ! $(GIT) log -1 --format=%s | grep -q "\[redhat\] $(DISTRELEASETAG)"; then \
 		echo -e "Error: Check git tree, HEAD is expected to contain release commit."; \
 		exit 1; \
 	fi
+endif
 
 dist-release-tag: dist-check-release
 	@$(GIT) tag -a -m "$(DISTRELEASETAG)" $(DISTRELEASETAG)

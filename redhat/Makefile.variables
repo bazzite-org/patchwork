@@ -38,6 +38,11 @@ BUILD_TARGET ?=
 # when you expect every build to use a different base kernel version.
 BUMP_RELEASE:=yes
 
+# For dist-release-tag and dist-git check that tree is in expected
+# state and has release commit as HEAD commit. Meant to be used
+# by downstream distros.
+CHECK_FOR_RELEASE_COMMIT ?= 0
+
 # This is the dist release suffix used in the package release, eg. .fc34,
 # .el8 etc. In a different branch this may be set to a fixed value.
 DIST ?=
