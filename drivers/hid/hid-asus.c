@@ -1156,7 +1156,7 @@ static int asus_probe(struct hid_device *hdev, const struct hid_device_id *id)
 
 	if (drvdata->tp) {
 		drvdata->input->name = "Asus TouchPad";
-	} else {
+	} else if (!(drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD)) {
 		drvdata->input->name = "Asus Keyboard";
 	}
 
