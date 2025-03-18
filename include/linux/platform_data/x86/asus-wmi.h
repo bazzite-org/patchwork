@@ -174,6 +174,12 @@ struct asus_brt_listener {
 	void (*notify)(struct asus_brt_listener *listener, int brightness);
 };
 
+enum asus_brt_event {
+	ASUS_BRT_UP,
+	ASUS_BRT_DOWN,
+	ASUS_BRT_TOGGLE,
+};
+
 #if IS_REACHABLE(CONFIG_ASUS_WMI)
 int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval);
 int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval);
@@ -181,6 +187,7 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval);
 
 int asus_brt_register_listener(struct asus_brt_listener *cdev);
 void asus_brt_unregister_listener(struct asus_brt_listener *cdev);
+int asus_brt_event(enum asus_brt_event event);
 #else
 static inline int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval)
 {
@@ -201,6 +208,9 @@ static inline int asus_brt_register_listener(struct asus_brt_listener *bdev)
 	return -ENODEV;
 }
 static inline void asus_brt_unregister_listener(struct asus_brt_listener *bdev)
+{
+}
+static inline void asus_brt_event(enum asus_brt_event event)
 {
 }
 #endif

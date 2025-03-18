@@ -1563,6 +1563,39 @@ void asus_brt_unregister_listener(struct asus_brt_listener *bdev)
 }
 EXPORT_SYMBOL_GPL(asus_brt_unregister_listener);
 
+static void kbd_led_set_by_kbd(struct asus_wmi *asus, enum led_brightness value);
+
+int asus_brt_event(enum asus_brt_event event) {
+	int brightness;
+
+	mutex_lock(&asus_brt_lock);
+	if (!asus_brt_ref || !asus_brt_ref->kbd_led_registered) {
+		mutex_unlock(&asus_brt_lock);
+		return -EBUSY;
+	}
+	brightness = asus_brt_ref->kbd_led_wk;
+	mutex_unlock(&asus_brt_lock);
+
+	switch (event) {
+	case ASUS_BRT_UP:
+		brightness += 1;
+		break;
+	case ASUS_BRT_DOWN:
+		brightness -= 1;
+		break;
+	case ASUS_BRT_TOGGLE:
+		if (brightness >= 3)
+			brightness = 0;
+		else
+			brightness += 1;
+		break;
+	}
+
+	kbd_led_set_by_kbd(asus_brt_ref, brightness);
+	return 0;
+}
+EXPORT_SYMBOL_GPL(asus_brt_event);
+
 /*
  * These functions actually update the LED's, and are called from a
  * workqueue. By doing this as separate work rather than when the LED
