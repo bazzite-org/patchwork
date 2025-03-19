@@ -1,3 +1,10 @@
+* Wed Mar 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.81e4f8d68c66.57]
+- redhat: configs: fedora: enable CONFIG_I2C_HID_OF=m on x86 (Hans de Goede)
+- redhat: move dist-relase-check behind new variable (Jan Stancek)
+- Set last minute config item for 6.14 for Fedora (Justin M. Forbes)
+- Linux v6.14.0-0.rc7.81e4f8d68c66
+Resolves: 
+
 * Tue Mar 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.76b6905c11fd.56]
 - redhat/configs: automotive: Disable CONFIG_USERFAULTFD config (Dorinda Bassey)
 - Revert "be2iscsi: remove unsupported device IDs" (Scott Weaver)
