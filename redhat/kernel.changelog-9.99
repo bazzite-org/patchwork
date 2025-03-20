@@ -1,3 +1,7 @@
+* Thu Mar 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.a7f2e10ecd8f.58]
+- Linux v6.14.0-0.rc7.a7f2e10ecd8f
+Resolves: 
+
 * Wed Mar 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.81e4f8d68c66.57]
 - redhat: configs: fedora: enable CONFIG_I2C_HID_OF=m on x86 (Hans de Goede)
 - redhat: move dist-relase-check behind new variable (Jan Stancek)
