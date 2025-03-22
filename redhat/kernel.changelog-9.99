@@ -1,3 +1,9 @@
+* Sat Mar 22 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.13.8-0]
+- Add to BugsFixed (Justin M. Forbes)
+- EDAC/igen6: Fix the flood of invalid error reports (Qiuxu Zhuo)
+- Linux v6.13.8
+Resolves: 
+
 * Thu Mar 13 2025 Augusto Caringi <acaringi@redhat.com> [6.13.7-0]
 - Set CONFIG_FW_CACHE=y for rhel to avoid config mismatch issues (Augusto Caringi)
 - media: ov08x40: Extend sleep after reset to 5 ms (Hans de Goede)
