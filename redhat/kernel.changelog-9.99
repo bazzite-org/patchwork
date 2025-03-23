@@ -1,3 +1,7 @@
+* Sun Mar 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.586de92313fc.61]
+- Linux v6.14.0-0.rc7.586de92313fc
+Resolves: 
+
 * Sat Mar 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.88d324e69ea9.60]
 - Consolidate configs into common for 6.14 (Justin M. Forbes)
 - Turn VIRTIO_BLK and VIRTIO_CONSOLE inline for Fedora (Justin M. Forbes)
