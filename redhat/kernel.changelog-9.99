@@ -1,3 +1,19 @@
+* Mon Mar 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-62]
+- arm64: cleanup and de-dupe erratum (Peter Robinson)
+- arm64: cleanup and de-dupe configs (Peter Robinson)
+- cleanup: x86: cleanup some x86_32 leftovers (Peter Robinson)
+- all: cleanup CAN_ROCKCHIP_CANFD (Peter Robinson)
+- aarch64: Options required for UEFI HTTP boot on SystemReady-DT (Peter Robinson)
+- common: Move ZONE_DEVICE to generic (Peter Robinson)
+- common: Cleanup BTT (Peter Robinson)
+- cleanup: move DEV_DAX_PMEM to common/generic (Peter Robinson)
+- generic: cleanup the NVDIMM options (Peter Robinson)
+- cleanup: move OF_PMEM to common/generic (Peter Robinson)
+- cleanup: Remove DEV_DAX_PMEM_COMPAT option (Peter Robinson)
+- mei: vsc: Fix fortify-panic caused by invalid counted_by() use (Hans de Goede)
+- Linux v6.14.0
+Resolves: 
+
 * Sun Mar 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.14.0-0.rc7.586de92313fc.61]
 - Linux v6.14.0-0.rc7.586de92313fc
 Resolves: 
