@@ -1,0 +1,14 @@
+# Symbol: OBJTOOL_WERROR [=n]
+# Type  : bool
+# Defined at lib/Kconfig.debug:548
+#   Prompt: Upgrade objtool warnings to errors
+#   Depends on: OBJTOOL [=y] && !COMPILE_TEST [=n]
+#   Location:
+#     -> Kernel hacking
+#       -> Compile-time checks and compiler options
+#         -> Upgrade objtool warnings to errors (OBJTOOL_WERROR [=n])
+# 
+# 
+# 
+# Commit: 36799069b481 (objtool: Add CONFIG_OBJTOOL_WERROR)
+# CONFIG_OBJTOOL_WERROR is not set
