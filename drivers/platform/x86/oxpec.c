@@ -86,8 +86,6 @@ static enum oxp_board board;
 #define OXP_MINI_TURBO_TAKE_VAL        0x01 /* Mini AO7 */
 #define OXP_TURBO_TAKE_VAL             0x40 /* All other models */
 
-#define OXP_TURBO_RETURN_VAL           0x00 /* Common return val */
-
 /* Battery bypass settings */
 #define EC_CHARGE_CONTROL_BEHAVIOURS_X1	(BIT(POWER_SUPPLY_CHARGE_BEHAVIOUR_AUTO)             | \
 					 BIT(POWER_SUPPLY_CHARGE_BEHAVIOUR_INHIBIT_CHARGE)    | \
@@ -249,6 +247,20 @@ static const struct dmi_system_id dmi_table[] = {
 	{
 		.matches = {
 			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER G1 A"),
+		},
+		.driver_data = (void *)oxp_x1,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
+			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER G1 i"),
+		},
+		.driver_data = (void *)oxp_x1,
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_VENDOR, "ONE-NETBOOK"),
 			DMI_EXACT_MATCH(DMI_BOARD_NAME, "ONEXPLAYER mini A07"),
 		},
 		.driver_data = (void *)oxp_mini_amd_a07,
@@ -331,61 +343,6 @@ static int write_to_ec(u8 reg, u8 value)
 	return ret;
 }
 
-/* Turbo button toggle functions */
-static int tt_toggle_enable(void)
-{
-	u8 reg;
-	u8 val;
-
-	switch (board) {
-	case oxp_mini_amd_a07:
-		reg = OXP_MINI_TURBO_SWITCH_REG;
-		val = OXP_MINI_TURBO_TAKE_VAL;
-		break;
-	case aok_zoe_a1:
-	case oxp_fly:
-	case oxp_mini_amd_pro:
-		reg = OXP_TURBO_SWITCH_REG;
-		val = OXP_TURBO_TAKE_VAL;
-		break;
-	case oxp_2:
-	case oxp_x1:
-		reg = OXP_2_TURBO_SWITCH_REG;
-		val = OXP_TURBO_TAKE_VAL;
-		break;
-	default:
-		return -EINVAL;
-	}
-	return write_to_ec(reg, val);
-}
-
-static int tt_toggle_disable(void)
-{
-	u8 reg;
-	u8 val;
-
-	switch (board) {
-	case oxp_mini_amd_a07:
-		reg = OXP_MINI_TURBO_SWITCH_REG;
-		val = OXP_TURBO_RETURN_VAL;
-		break;
-	case aok_zoe_a1:
-	case oxp_fly:
-	case oxp_mini_amd_pro:
-		reg = OXP_TURBO_SWITCH_REG;
-		val = OXP_TURBO_RETURN_VAL;
-		break;
-	case oxp_2:
-	case oxp_x1:
-		reg = OXP_2_TURBO_SWITCH_REG;
-		val = OXP_TURBO_RETURN_VAL;
-		break;
-	default:
-		return -EINVAL;
-	}
-	return write_to_ec(reg, val);
-}
-
 /* Callbacks for turbo toggle attribute */
 static umode_t tt_toggle_is_visible(struct kobject *kobj,
 				    struct attribute *attr, int n)
@@ -408,20 +365,48 @@ static ssize_t tt_toggle_store(struct device *dev,
 			       struct device_attribute *attr, const char *buf,
 			       size_t count)
 {
-	bool value;
-	int rval;
+	u8 reg, mask, val;
+	long raw_val;
+	bool enable;
+	int ret;
 
-	rval = kstrtobool(buf, &value);
-	if (rval)
-		return rval;
+	ret = kstrtobool(buf, &enable);
+	if (ret)
+		return ret;
 
-	if (value) {
-		rval = tt_toggle_enable();
-	} else {
-		rval = tt_toggle_disable();
+	switch (board) {
+	case oxp_mini_amd_a07:
+		reg = OXP_MINI_TURBO_SWITCH_REG;
+		mask = OXP_MINI_TURBO_TAKE_VAL;
+		break;
+	case aok_zoe_a1:
+	case oxp_fly:
+	case oxp_mini_amd_pro:
+		reg = OXP_TURBO_SWITCH_REG;
+		mask = OXP_TURBO_TAKE_VAL;
+		break;
+	case oxp_2:
+	case oxp_x1:
+		reg = OXP_2_TURBO_SWITCH_REG;
+		mask = OXP_TURBO_TAKE_VAL;
+		break;
+	default:
+		return -EINVAL;
 	}
-	if (rval)
-		return rval;
+
+	ret = read_from_ec(reg, 1, &raw_val);
+	if (ret)
+		return ret;
+
+	val = raw_val;
+	if (enable)
+		val |= mask;
+	else
+		val &= ~mask;
+
+	ret = write_to_ec(reg, val);
+	if (ret)
+		return ret;
 
 	return count;
 }
@@ -429,22 +414,25 @@ static ssize_t tt_toggle_store(struct device *dev,
 static ssize_t tt_toggle_show(struct device *dev,
 			      struct device_attribute *attr, char *buf)
 {
+	u8 reg, mask;
 	int retval;
 	long val;
-	u8 reg;
 
 	switch (board) {
 	case oxp_mini_amd_a07:
 		reg = OXP_MINI_TURBO_SWITCH_REG;
+		mask = OXP_MINI_TURBO_TAKE_VAL;
 		break;
 	case aok_zoe_a1:
 	case oxp_fly:
 	case oxp_mini_amd_pro:
 		reg = OXP_TURBO_SWITCH_REG;
+		mask = OXP_TURBO_TAKE_VAL;
 		break;
 	case oxp_2:
 	case oxp_x1:
 		reg = OXP_2_TURBO_SWITCH_REG;
+		mask = OXP_TURBO_TAKE_VAL;
 		break;
 	default:
 		return -EINVAL;
@@ -454,7 +442,7 @@ static ssize_t tt_toggle_show(struct device *dev,
 	if (retval)
 		return retval;
 
-	return sysfs_emit(buf, "%d\n", !!val);
+	return sysfs_emit(buf, "%d\n", !!(val & mask));
 }
 
 static DEVICE_ATTR_RW(tt_toggle);
