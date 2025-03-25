@@ -1,0 +1,15 @@
+# Symbol: UBSAN_INTEGER_WRAP [=y]
+# Type  : bool
+# Defined at lib/Kconfig.ubsan:119
+#   Prompt: Perform checking for integer arithmetic wrap-around
+#   Depends on: UBSAN [=y] && !COMPILE_TEST [=n]
+#   Location:
+#     -> Kernel hacking
+#       -> Generic Kernel Debugging Instruments
+#         -> Undefined behaviour sanity checker (UBSAN [=y])
+#           -> Perform checking for integer arithmetic wrap-around (UBSAN_INTEGER_WRAP [=y])
+# 
+# 
+# 
+# Commit: ed2b548f1017 (ubsan/overflow: Rework integer overflow sanitizer option to turn on everything)
+CONFIG_UBSAN_INTEGER_WRAP=y
