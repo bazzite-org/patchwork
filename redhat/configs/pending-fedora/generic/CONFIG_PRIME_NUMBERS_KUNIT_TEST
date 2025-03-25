@@ -1,0 +1,17 @@
+# Symbol: PRIME_NUMBERS_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:3261
+#   Prompt: Prime number generator test
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> Prime number generator test (PRIME_NUMBERS_KUNIT_TEST [=m])
+# Selects: PRIME_NUMBERS [=m]
+# 
+# 
+# 
+# Commit: 313b38a6ecb4 (lib/prime_numbers: convert self-test to KUnit)
+CONFIG_PRIME_NUMBERS_KUNIT_TEST=m
