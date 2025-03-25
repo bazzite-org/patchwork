@@ -95,6 +95,7 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
 #define QUIRK_ROG_ALLY_XPAD		BIT(13)
 #define QUIRK_SKIP_REPORT_FIXUP		BIT(14)
 #define QUIRK_ROG_NKEY_RGB		BIT(15)
+#define QUIRK_ROG_NKEY_LEGACY		BIT(16)
 
 #define I2C_KEYBOARD_QUIRKS			(QUIRK_FIX_NOTEBOOK_REPORT | \
 						 QUIRK_NO_INIT_REPORTS | \
@@ -744,11 +745,24 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
 	struct usb_device *udev;
 	unsigned char kbd_func;
 	struct asus_kbd_leds *leds;
+	bool rgb_init = true;
 	int ret;
 
 	ret = asus_kbd_init(hdev, FEATURE_KBD_REPORT_ID);
 	if (ret < 0)
 		return ret;
+
+	if (drvdata->quirks & QUIRK_ROG_NKEY_LEGACY) {
+		/*
+		 * These keyboards might need 0x5d for shortcuts to work.
+		 * As it has been more than 5 years, it is hard to verify.
+		 */
+		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID1);
+		if (ret < 0)
+			return ret;
+
+		rgb_init = false;
+	}
 
 	/* Get keyboard functions */
 	ret = asus_kbd_get_functions(hdev, &kbd_func, FEATURE_KBD_REPORT_ID);
@@ -787,7 +801,7 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
 	leds->rgb_colors[0] = 0;
 	leds->rgb_colors[1] = 0;
 	leds->rgb_colors[2] = 0;
-	leds->rgb_init = true;
+	leds->rgb_init = rgb_init;
 	leds->rgb_set = false;
 	leds->mc_led.led_cdev.name = devm_kasprintf(&hdev->dev, GFP_KERNEL,
 					"asus-%s:rgb:peripheral",
@@ -1514,10 +1528,10 @@ static const struct hid_device_id asus_devices[] = {
 	  QUIRK_USE_KBD_BACKLIGHT },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
 	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD),
-	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
+	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD | QUIRK_ROG_NKEY_LEGACY },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
 	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD2),
-	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
+	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD | QUIRK_ROG_NKEY_LEGACY },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
 	    USB_DEVICE_ID_ASUSTEK_ROG_Z13_LIGHTBAR),
 	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD | QUIRK_ROG_NKEY_RGB },
