@@ -1,0 +1,15 @@
+# Symbol: FORCE_NEED_SRCU_NMI_SAFE [=n]
+# Type  : bool
+# Defined at kernel/rcu/Kconfig:68
+#   Prompt: Force selection of NEED_SRCU_NMI_SAFE
+#   Depends on: !TINY_SRCU [=n]
+#   Location:
+#     -> General setup
+#       -> RCU Subsystem
+#         -> Force selection of NEED_SRCU_NMI_SAFE (FORCE_NEED_SRCU_NMI_SAFE [=n])
+# Selects: NEED_SRCU_NMI_SAFE [=n]
+# 
+# 
+# 
+# Commit: 536e8b9b80bc (srcu: Add FORCE_NEED_SRCU_NMI_SAFE Kconfig for testing)
+# CONFIG_FORCE_NEED_SRCU_NMI_SAFE is not set

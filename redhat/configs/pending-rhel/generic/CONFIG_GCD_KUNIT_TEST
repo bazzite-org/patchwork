@@ -1,0 +1,16 @@
+# Symbol: GCD_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:3248
+#   Prompt: Greatest common divisor test
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> Greatest common divisor test (GCD_KUNIT_TEST [=m])
+# 
+# 
+# 
+# Commit: 9ab61886ac68 (lib/math: Add Kunit test suite for gcd())
+CONFIG_GCD_KUNIT_TEST=m
