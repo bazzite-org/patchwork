@@ -1,0 +1,14 @@
+# Symbol: EDAC_SCRUB [=n]
+# Type  : bool
+# Defined at drivers/edac/Kconfig:78
+#   Prompt: EDAC scrub feature
+#   Depends on: EDAC [=y]
+#   Location:
+#     -> Device Drivers
+#       -> EDAC (Error Detection And Correction) reporting (EDAC [=y])
+#         -> EDAC scrub feature (EDAC_SCRUB [=n])
+# 
+# 
+# 
+# Commit: f90b738166fe (EDAC: Add scrub control feature)
+# CONFIG_EDAC_SCRUB is not set

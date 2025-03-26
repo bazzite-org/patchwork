@@ -1,0 +1,17 @@
+# Symbol: HID_APPLETB_KBD [=n]
+# Type  : tristate
+# Defined at drivers/hid/Kconfig:161
+#   Prompt: Apple Touch Bar Keyboard Mode
+#   Depends on: HID_SUPPORT [=y] && HID [=y] && USB_HID [=y] && BACKLIGHT_CLASS_DEVICE [=y] && INPUT [=y]
+#   Location:
+#     -> Device Drivers
+#       -> HID bus support (HID_SUPPORT [=y])
+#         -> HID bus core support (HID [=y])
+#           -> Special HID drivers
+#             -> Apple Touch Bar Keyboard Mode (HID_APPLETB_KBD [=n])
+# Selects: INPUT_SPARSEKMAP [=m] && HID_APPLETB_BL [=n]
+# 
+# 
+# 
+# Commit: 8e9b9152cfbd (HID: hid-appletb-kbd: add driver for the keyboard mode of Apple Touch Bars)
+# CONFIG_HID_APPLETB_KBD is not set
