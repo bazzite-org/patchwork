@@ -1,3 +1,9 @@
+* Wed Mar 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.f6e0150b2003.3]
+- Fix up mismatches in the 6.15 merge window (Scott Weaver)
+- Reset log for 6.15 cycle (Justin M. Forbes)
+- Linux v6.15.0-0.rc0.f6e0150b2003
+Resolves: 
+
 * Tue Mar 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.2df0c02dab82.2]
 - Reset RHEL_RELEASE for 6.15 cycle (Justin M. Forbes)
 - arm64: cleanup and de-dupe erratum (Peter Robinson)
