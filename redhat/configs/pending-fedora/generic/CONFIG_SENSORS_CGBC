@@ -1,0 +1,14 @@
+# Symbol: SENSORS_CGBC [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/Kconfig:466
+#   Prompt: Congatec Board Controller Sensors
+#   Depends on: HWMON [=y] && MFD_CGBC [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> Congatec Board Controller Sensors (SENSORS_CGBC [=n])
+# 
+# 
+# 
+# Commit: 08ebc9def79f (hwmon: Add Congatec Board Controller monitoring driver)
+# CONFIG_SENSORS_CGBC is not set
