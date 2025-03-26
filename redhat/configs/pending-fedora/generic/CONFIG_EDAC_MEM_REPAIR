@@ -1,0 +1,14 @@
+# Symbol: EDAC_MEM_REPAIR [=n]
+# Type  : bool
+# Defined at drivers/edac/Kconfig:96
+#   Prompt: EDAC memory repair feature
+#   Depends on: EDAC [=y]
+#   Location:
+#     -> Device Drivers
+#       -> EDAC (Error Detection And Correction) reporting (EDAC [=y])
+#         -> EDAC memory repair feature (EDAC_MEM_REPAIR [=n])
+# 
+# 
+# 
+# Commit: 699ea5219c4b (EDAC: Add a memory repair control feature)
+# CONFIG_EDAC_MEM_REPAIR is not set

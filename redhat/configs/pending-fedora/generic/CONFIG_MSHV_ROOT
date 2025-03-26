@@ -1,0 +1,15 @@
+# Symbol: MSHV_ROOT [=n]
+# Type  : tristate
+# Defined at drivers/hv/Kconfig:58
+#   Prompt: Microsoft Hyper-V root partition support
+#   Depends on: HYPERV [=m] && (X86_64 [=y] || ARM64) && !HYPERV_VTL_MODE [=n] && PAGE_SIZE_4KB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Microsoft Hyper-V guest support
+#         -> Microsoft Hyper-V root partition support (MSHV_ROOT [=n])
+# Selects: EVENTFD [=y]
+# 
+# 
+# 
+# Commit: 461fbbd036b1 (hyperv: Add CONFIG_MSHV_ROOT to gate root partition support)
+# CONFIG_MSHV_ROOT is not set
