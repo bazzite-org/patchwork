@@ -1,0 +1,18 @@
+# Symbol: HID_APPLETB_BL [=n]
+# Type  : tristate
+# Defined at drivers/hid/Kconfig:151
+#   Prompt: Apple Touch Bar Backlight
+#   Depends on: HID_SUPPORT [=y] && HID [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> HID bus support (HID_SUPPORT [=y])
+#         -> HID bus core support (HID [=y])
+#           -> Special HID drivers
+#             -> Apple Touch Bar Backlight (HID_APPLETB_BL [=n])
+# Selected by [n]:
+#   - HID_APPLETB_KBD [=n] && HID_SUPPORT [=y] && HID [=y] && USB_HID [=y] && BACKLIGHT_CLASS_DEVICE [=y] && INPUT [=y]
+# 
+# 
+# 
+# Commit: 1fd41e5e3d7c (HID: hid-appletb-bl: add driver for the backlight of Apple Touch Bars)
+# CONFIG_HID_APPLETB_BL is not set

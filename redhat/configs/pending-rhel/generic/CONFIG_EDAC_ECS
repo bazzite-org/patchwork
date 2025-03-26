@@ -1,0 +1,14 @@
+# Symbol: EDAC_ECS [=n]
+# Type  : bool
+# Defined at drivers/edac/Kconfig:87
+#   Prompt: EDAC ECS (Error Check Scrub) feature
+#   Depends on: EDAC [=y]
+#   Location:
+#     -> Device Drivers
+#       -> EDAC (Error Detection And Correction) reporting (EDAC [=y])
+#         -> EDAC ECS (Error Check Scrub) feature (EDAC_ECS [=n])
+# 
+# 
+# 
+# Commit: bcbd069b11b0 (EDAC: Add a Error Check Scrub control feature)
+# CONFIG_EDAC_ECS is not set

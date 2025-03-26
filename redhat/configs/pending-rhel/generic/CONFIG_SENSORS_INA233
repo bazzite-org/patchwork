@@ -1,0 +1,15 @@
+# Symbol: SENSORS_INA233 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/pmbus/Kconfig:136
+#   Prompt: Texas Instruments INA233 and compatibles
+#   Depends on: HWMON [=y] && PMBUS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> PMBus support (PMBUS [=m])
+#           -> Texas Instruments INA233 and compatibles (SENSORS_INA233 [=n])
+# 
+# 
+# 
+# Commit: b64b6cb163f1 (hwmon: Add driver for TI INA233 Current and Power Monitor)
+# CONFIG_SENSORS_INA233 is not set

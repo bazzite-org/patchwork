@@ -1,0 +1,15 @@
+# Symbol: REGULATOR_PF9453 [=n]
+# Type  : tristate
+# Defined at drivers/regulator/Kconfig:984
+#   Prompt: NXP PF9453 regulator driver
+#   Depends on: REGULATOR [=y] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Voltage and Current Regulator Support (REGULATOR [=y])
+#         -> NXP PF9453 regulator driver (REGULATOR_PF9453 [=n])
+# Selects: REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 0959b6706325 (regulator: pf9453: add PMIC PF9453 support)
+# CONFIG_REGULATOR_PF9453 is not set
