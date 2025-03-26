@@ -1,0 +1,19 @@
+# Symbol: SND_SOC_SOF_IMX9 [=n]
+# Type  : tristate
+# Defined at sound/soc/sof/imx/Kconfig:35
+#   Prompt: SOF support for i.MX9
+#   Depends on: SOUND [=m] && SND [=m] && SND_SOC [=m] && SND_SOC_SOF_TOPLEVEL [=y] && SND_SOC_SOF_IMX_TOPLEVEL [=y] && IMX_DSP [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> ALSA for SoC audio support (SND_SOC [=m])
+#             -> Sound Open Firmware Support (SND_SOC_SOF_TOPLEVEL [=y])
+#               -> SOF support for NXP i.MX audio DSPs (SND_SOC_SOF_IMX_TOPLEVEL [=y])
+#                 -> SOF support for i.MX9 (SND_SOC_SOF_IMX9 [=n])
+# Selects: SND_SOC_SOF_IMX_COMMON [=m]
+# 
+# 
+# 
+# Commit: 6cf5df1040ba (ASoC: SOF: imx: add driver for the imx95 chip)
+# CONFIG_SND_SOC_SOF_IMX9 is not set
