@@ -1,3 +1,7 @@
+* Thu Mar 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.1a9239bb4253.4]
+- Linux v6.15.0-0.rc0.1a9239bb4253
+Resolves: 
+
 * Wed Mar 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.f6e0150b2003.3]
 - Fix up mismatches in the 6.15 merge window (Scott Weaver)
 - Reset log for 6.15 cycle (Justin M. Forbes)
