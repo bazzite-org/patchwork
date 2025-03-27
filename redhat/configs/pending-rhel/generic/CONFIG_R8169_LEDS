@@ -1,0 +1,17 @@
+# Symbol: R8169_LEDS [=n]
+# Type  : bool
+# Defined at drivers/net/ethernet/realtek/Kconfig:116
+#   Prompt: Support for controlling the NIC LEDs
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_REALTEK [=y] && R8169 [=m] && LEDS_TRIGGER_NETDEV [=m] && (R8169 [=m]!=y [=y] || LEDS_CLASS [=y]!=m [=m])
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> Realtek devices (NET_VENDOR_REALTEK [=y])
+#             -> Realtek 8169/8168/8101/8125 ethernet support (R8169 [=m])
+#               -> Support for controlling the NIC LEDs (R8169_LEDS [=n])
+# 
+# 
+# 
+# Commit: a2634a5ffcaf (r8169: fix building with CONFIG_LEDS_CLASS=m)
+# CONFIG_R8169_LEDS is not set
