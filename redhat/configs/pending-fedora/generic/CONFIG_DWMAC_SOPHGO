@@ -1,0 +1,18 @@
+# Symbol: DWMAC_SOPHGO [=m]
+# Type  : tristate
+# Defined at drivers/net/ethernet/stmicro/stmmac/Kconfig:184
+#   Prompt: Sophgo dwmac support
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_STMICRO [=y] && STMMAC_ETH [=m] && STMMAC_PLATFORM [=m] && OF [=y] && (ARCH_SOPHGO [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> STMicroelectronics devices (NET_VENDOR_STMICRO [=y])
+#             -> STMicroelectronics Multi-Gigabit Ethernet driver (STMMAC_ETH [=m])
+#               -> STMMAC Platform bus support (STMMAC_PLATFORM [=m])
+#                 -> Sophgo dwmac support (DWMAC_SOPHGO [=m])
+# 
+# 
+# 
+# Commit: a22221ef5dee (net: stmmac: Add glue layer for Sophgo SG2044 SoC)
+CONFIG_DWMAC_SOPHGO=m
