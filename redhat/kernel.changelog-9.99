@@ -1,3 +1,9 @@
+* Fri Mar 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.acb4f33713b9.5]
+- kernel.spec.template: cpupower: adjust lib versioning (Thorsten Leemhuis)
+- redhat/configs: automotive: builtin virtio-mmio (Eric Chanudet)
+- Linux v6.15.0-0.rc0.acb4f33713b9
+Resolves: 
+
 * Thu Mar 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.1a9239bb4253.4]
 - Linux v6.15.0-0.rc0.1a9239bb4253
 Resolves: 
