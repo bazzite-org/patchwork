@@ -1,0 +1,14 @@
+# Symbol: PPC_MICROWATT [=n]
+# Type  : bool
+# Defined at arch/powerpc/platforms/microwatt/Kconfig:2
+#   Prompt: Microwatt SoC platform
+#   Depends on: PPC_BOOK3S_64 [=y]
+#   Location:
+#     -> Platform support
+#       -> Microwatt SoC platform (PPC_MICROWATT [=n])
+# Selects: PPC_XICS [=y] && PPC_ICS_NATIVE [=n] && PPC_ICP_NATIVE [=y] && PPC_UDBG_16550 [=y] && COMMON_CLK [=y]
+# 
+# 
+# 
+# Commit: 53d143fe08c2 (powerpc: Add Microwatt platform)
+# CONFIG_PPC_MICROWATT is not set
