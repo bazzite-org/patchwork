@@ -1,0 +1,15 @@
+# Symbol: SUN55I_A523_R_CCU [=y]
+# Type  : tristate
+# Defined at drivers/clk/sunxi-ng/Kconfig:60
+#   Prompt: Support for the Allwinner A523/T527 PRCM CCU
+#   Depends on: COMMON_CLK [=y] && SUNXI_CCU [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Clock support for Allwinner SoCs (SUNXI_CCU [=y])
+#           -> Support for the Allwinner A523/T527 PRCM CCU (SUN55I_A523_R_CCU [=y])
+# 
+# 
+# 
+# Commit: 8cea339cfb81 (clk: sunxi-ng: add support for the A523/T527 PRCM CCU)
+CONFIG_SUN55I_A523_R_CCU=y

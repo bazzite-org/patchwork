@@ -1,0 +1,15 @@
+# Symbol: CXL_FEATURES [=n]
+# Type  : bool
+# Defined at drivers/cxl/Kconfig:106
+#   Prompt: CXL: Features
+#   Depends on: CXL_BUS [=m] && CXL_PCI [=m]
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> CXL (Compute Express Link) Devices Support (CXL_BUS [=m])
+#           -> CXL: Features (CXL_FEATURES [=n])
+# 
+# 
+# 
+# Commit: f0e6a2329bf9 (cxl: Add Get Supported Features command for kernel usage)
+# CONFIG_CXL_FEATURES is not set

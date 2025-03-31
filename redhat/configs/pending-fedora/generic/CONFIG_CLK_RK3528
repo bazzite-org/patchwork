@@ -1,0 +1,15 @@
+# Symbol: CLK_RK3528 [=y]
+# Type  : bool
+# Defined at drivers/clk/rockchip/Kconfig:96
+#   Prompt: Rockchip RK3528 clock controller support
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_ROCKCHIP [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Rockchip clock controller common support (COMMON_CLK_ROCKCHIP [=y])
+#           -> Rockchip RK3528 clock controller support (CLK_RK3528 [=y])
+# 
+# 
+# 
+# Commit: 5d0eb375e685 (clk: rockchip: Add clock controller driver for RK3528 SoC)
+CONFIG_CLK_RK3528=y

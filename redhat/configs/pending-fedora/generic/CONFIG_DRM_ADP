@@ -1,0 +1,16 @@
+# Symbol: DRM_ADP [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/adp/Kconfig:2
+#   Prompt: DRM Support for pre-DCP Apple display controllers
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && OF [=y] && ARM64 [=y] && (ARCH_APPLE [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> DRM Support for pre-DCP Apple display controllers (DRM_ADP [=n])
+# Selects: DRM_KMS_HELPER [=y] && DRM_BRIDGE_CONNECTOR [=y] && DRM_DISPLAY_HELPER [=m] && DRM_KMS_DMA_HELPER && DRM_GEM_DMA_HELPER [=m] && DRM_PANEL_BRIDGE [=y] && VIDEOMODE_HELPERS [=y] && DRM_MIPI_DSI [=y]
+# 
+# 
+# 
+# Commit: 332122eba628 (drm: adp: Add Apple Display Pipe driver)
+# CONFIG_DRM_ADP is not set

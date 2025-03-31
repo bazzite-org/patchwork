@@ -1,0 +1,17 @@
+# Symbol: PCIE_AMD_MDB [=n]
+# Type  : bool
+# Defined at drivers/pci/controller/dwc/Kconfig:40
+#   Prompt: AMD MDB Versal2 PCIe controller
+#   Depends on: PCI [=y] && OF [=y] && (ARM64 [=y] || COMPILE_TEST [=n]) && PCI_MSI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> PCI controller drivers
+#           -> DesignWare-based PCIe controllers
+#             -> AMD MDB Versal2 PCIe controller (PCIE_AMD_MDB [=n])
+# Selects: PCIE_DW_HOST [=y]
+# 
+# 
+# 
+# Commit: 5f3de23d858e (PCI: amd-mdb: Add AMD MDB Root Port driver)
+# CONFIG_PCIE_AMD_MDB is not set

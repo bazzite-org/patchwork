@@ -1,0 +1,15 @@
+# Symbol: CLK_RK3562 [=y]
+# Type  : bool
+# Defined at drivers/clk/rockchip/Kconfig:103
+#   Prompt: Rockchip RK3562 clock controller support
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_ROCKCHIP [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Rockchip clock controller common support (COMMON_CLK_ROCKCHIP [=y])
+#           -> Rockchip RK3562 clock controller support (CLK_RK3562 [=y])
+# 
+# 
+# 
+# Commit: f863d4cc79a7 (clk: rockchip: Add clock controller for the RK3562)
+CONFIG_CLK_RK3562=y
