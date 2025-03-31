@@ -1,3 +1,8 @@
+* Mon Mar 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.4e82c87058f4.6]
+- redhat: make ENABLE_WERROR enable also KVM_WERROR (Jan Stancek)
+- Linux v6.15.0-0.rc0.4e82c87058f4
+Resolves: 
+
 * Fri Mar 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.acb4f33713b9.5]
 - kernel.spec.template: cpupower: adjust lib versioning (Thorsten Leemhuis)
 - redhat/configs: automotive: builtin virtio-mmio (Eric Chanudet)
