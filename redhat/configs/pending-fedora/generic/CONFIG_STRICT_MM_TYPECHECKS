@@ -1,0 +1,14 @@
+# Symbol: STRICT_MM_TYPECHECKS [=n]
+# Type  : bool
+# Defined at arch/s390/Kconfig.debug:16
+#   Prompt: Strict Memory Management Type Checks
+#   Depends on: DEBUG_KERNEL [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> s390 Debugging
+#         -> Strict Memory Management Type Checks (STRICT_MM_TYPECHECKS [=n])
+# 
+# 
+# 
+# Commit: 03544866df1b (s390/mm: Add configurable STRICT_MM_TYPECHECKS)
+# CONFIG_STRICT_MM_TYPECHECKS is not set

@@ -1,0 +1,14 @@
+# Symbol: NOVA_CORE [=n]
+# Type  : tristate
+# Defined at drivers/gpu/nova-core/Kconfig:1
+#   Prompt: Nova Core GPU driver
+#   Depends on: HAS_IOMEM [=y] && PCI [=y] && RUST [=y] && RUST_FW_LOADER_ABSTRACTIONS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Nova Core GPU driver (NOVA_CORE [=n])
+# 
+# 
+# 
+# Commit: 54e6baf123fd (gpu: nova-core: add initial driver stub)
+# CONFIG_NOVA_CORE is not set
