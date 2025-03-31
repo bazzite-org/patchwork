@@ -1,0 +1,16 @@
+# Symbol: DRM_NOUVEAU_SIL164 [=m]
+# Type  : tristate
+# Defined at drivers/gpu/drm/nouveau/Kconfig:124
+#   Prompt: Silicon Image sil164 TMDS transmitter
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_NOUVEAU [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Nouveau (NVIDIA) cards (DRM_NOUVEAU [=m])
+#             -> Silicon Image sil164 TMDS transmitter (DRM_NOUVEAU_SIL164 [=m])
+# 
+# 
+# 
+# Commit: 9a0dfe9bacef (drm/nouveau: incorporate I2C TV encoder drivers)
+CONFIG_DRM_NOUVEAU_SIL164=m

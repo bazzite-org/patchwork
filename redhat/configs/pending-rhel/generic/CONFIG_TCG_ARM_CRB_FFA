@@ -1,0 +1,16 @@
+# Symbol: TCG_ARM_CRB_FFA [=m]
+# Type  : tristate
+# Defined at drivers/char/tpm/Kconfig:213
+#   Prompt: TPM CRB over Arm FF-A Transport
+#   Depends on: TCG_TPM [=y] && ARM_FFA_TRANSPORT [=m] && TCG_CRB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Character devices
+#         -> TPM Hardware Support (TCG_TPM [=y])
+#           -> TPM 2.0 CRB Interface (TCG_CRB [=y])
+#             -> TPM CRB over Arm FF-A Transport (TCG_ARM_CRB_FFA [=m])
+# 
+# 
+# 
+# Commit: eb93f0734ef1 (tpm_crb: ffa_tpm: Implement driver compliant to CRB over FF-A)
+CONFIG_TCG_ARM_CRB_FFA=m

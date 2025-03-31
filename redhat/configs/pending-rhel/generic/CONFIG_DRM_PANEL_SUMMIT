@@ -1,0 +1,16 @@
+# Symbol: DRM_PANEL_SUMMIT [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/panel/Kconfig:938
+#   Prompt: Apple Summit display panel
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_PANEL [=y] && OF [=y] && DRM_MIPI_DSI [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Display Panels
+#             -> Apple Summit display panel (DRM_PANEL_SUMMIT [=n])
+# 
+# 
+# 
+# Commit: 40115947b59f (drm: panel: Add a panel driver for the Summit display)
+# CONFIG_DRM_PANEL_SUMMIT is not set
