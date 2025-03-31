@@ -1,0 +1,16 @@
+# Symbol: PCIE_DW_DEBUGFS [=n]
+# Type  : bool
+# Defined at drivers/pci/controller/dwc/Kconfig:9
+#   Prompt: DesignWare PCIe debugfs entries
+#   Depends on: PCI [=y] && DEBUG_FS [=y] && (PCIE_DW_HOST [=y] || PCIE_DW_EP [=n])
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> PCI controller drivers
+#           -> DesignWare-based PCIe controllers
+#             -> DesignWare PCIe debugfs entries (PCIE_DW_DEBUGFS [=n])
+# 
+# 
+# 
+# Commit: 4fbfa17f9a07 (PCI: dwc: Add debugfs based Silicon Debug support for DWC)
+# CONFIG_PCIE_DW_DEBUGFS is not set
