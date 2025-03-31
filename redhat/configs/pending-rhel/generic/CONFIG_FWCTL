@@ -1,0 +1,14 @@
+# Symbol: FWCTL [=n]
+# Type  : tristate
+# Defined at drivers/fwctl/Kconfig:2
+#   Prompt: fwctl device firmware access framework
+#   Location:
+#     -> Device Drivers
+#       -> fwctl device firmware access framework (FWCTL [=n])
+# Selected by [n]:
+#   - CXL_BUS [=m] && PCI [=y] && CXL_FEATURES [=n]
+# 
+# 
+# 
+# Commit: 2e4986cf2d52 (fwctl: Add basic structure for a class subsystem with a cdev)
+# CONFIG_FWCTL is not set
