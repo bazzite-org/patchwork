@@ -1,0 +1,15 @@
+# Symbol: PINCTRL_AMDISP [=n]
+# Type  : tristate
+# Defined at drivers/pinctrl/Kconfig:52
+#   Prompt: AMDISP GPIO pin control
+#   Depends on: PINCTRL [=y] && (DRM_AMD_ISP [=y] || COMPILE_TEST [=n]) && HAS_IOMEM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Pin controllers (PINCTRL [=y])
+#         -> AMDISP GPIO pin control (PINCTRL_AMDISP [=n])
+# Selects: GPIOLIB [=y] && PINCONF [=y] && GENERIC_PINCONF [=y]
+# 
+# 
+# 
+# Commit: e97435ab09f3 (pinctrl: amd: isp411: Add amdisp GPIO pinctrl)
+# CONFIG_PINCTRL_AMDISP is not set

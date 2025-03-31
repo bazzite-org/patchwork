@@ -1,0 +1,15 @@
+# Symbol: PCI_PWRCTL_SLOT [=n]
+# Type  : tristate
+# Defined at drivers/pci/pwrctrl/Kconfig:14
+#   Prompt: PCI Power Control driver for PCI slots
+#   Depends on: PCI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> PCI Power Control driver for PCI slots (PCI_PWRCTL_SLOT [=n])
+# Selects: PCI_PWRCTL [=n]
+# 
+# 
+# 
+# Commit: 75996c92f4de (PCI/pwrctrl: Add pwrctrl driver for PCI slots)
+# CONFIG_PCI_PWRCTL_SLOT is not set
