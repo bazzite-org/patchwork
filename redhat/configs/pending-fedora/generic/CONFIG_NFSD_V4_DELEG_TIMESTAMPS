@@ -1,0 +1,14 @@
+# Symbol: NFSD_V4_DELEG_TIMESTAMPS [=n]
+# Type  : bool
+# Defined at fs/nfsd/Kconfig:179
+#   Prompt: Support delegated timestamps
+#   Depends on: NETWORK_FILESYSTEMS [=y] && NFSD_V4 [=y]
+#   Location:
+#     -> File systems
+#       -> Network File Systems (NETWORK_FILESYSTEMS [=y])
+#         -> Support delegated timestamps (NFSD_V4_DELEG_TIMESTAMPS [=n])
+# 
+# 
+# 
+# Commit: 26a80762153b (NFSD: Add a Kconfig setting to enable delegated timestamps)
+# CONFIG_NFSD_V4_DELEG_TIMESTAMPS is not set
