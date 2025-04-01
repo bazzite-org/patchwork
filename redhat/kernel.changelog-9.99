@@ -1,3 +1,11 @@
+* Tue Apr 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.08733088b566.7]
+- redhat/kernel.spec: list python3-wheel explicitly for Fedora<42 (Jan Stancek)
+- handle man-page for rv-mon-sched in redhat/kernel.spec.template (Thorsten Leemhuis)
+- redhat: find-debuginfo workaround is no longer needed on F42 (Jan Stancek)
+- redhat/kernel.spec: use target versions of tools for debugedit and gdb-add-index (Jan Stancek)
+- Linux v6.15.0-0.rc0.08733088b566
+Resolves: 
+
 * Mon Mar 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.4e82c87058f4.6]
 - redhat: make ENABLE_WERROR enable also KVM_WERROR (Jan Stancek)
 - Linux v6.15.0-0.rc0.4e82c87058f4
