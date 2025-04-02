@@ -1,0 +1,15 @@
+# Symbol: PPS_GENERATOR_TIO [=n]
+# Type  : tristate
+# Defined at drivers/pps/generators/Kconfig:34
+#   Prompt: TIO PPS signal generator
+#   Depends on: PPS [=y] && PPS_GENERATOR [=m] && X86 [=y] && CPU_SUP_INTEL [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PPS support (PPS [=y])
+#         -> PPS generators support (PPS_GENERATOR [=m])
+#           -> TIO PPS signal generator (PPS_GENERATOR_TIO [=n])
+# 
+# 
+# 
+# Commit: c89755d1111f (pps: generators: Add PPS Generator TIO Driver)
+# CONFIG_PPS_GENERATOR_TIO is not set

@@ -1,0 +1,16 @@
+# Symbol: AD4030 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:36
+#   Prompt: Analog Devices AD4030 ADC Driver
+#   Depends on: IIO [=m] && SPI [=y] && GPIOLIB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Analog Devices AD4030 ADC Driver (AD4030 [=n])
+# Selects: REGMAP [=y] && IIO_BUFFER [=y] && IIO_TRIGGERED_BUFFER [=m]
+# 
+# 
+# 
+# Commit: 0cb8b324852f (iio: adc: ad4030: add driver for ad4030-24)
+# CONFIG_AD4030 is not set

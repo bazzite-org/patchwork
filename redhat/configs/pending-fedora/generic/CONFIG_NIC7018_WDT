@@ -1,0 +1,15 @@
+# Symbol: NIC7018_WDT [=n]
+# Type  : tristate
+# Defined at drivers/watchdog/Kconfig:1744
+#   Prompt: NIC7018 Watchdog
+#   Depends on: WATCHDOG [=y] && HAS_IOPORT [=y] && (ACPI [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Watchdog Timer Support (WATCHDOG [=y])
+#         -> NIC7018 Watchdog (NIC7018_WDT [=n])
+# Selects: WATCHDOG_CORE [=y]
+# 
+# 
+# 
+# Commit: 98078ca34a0a (watchdog: nic7018_wdt: Add NIC7018 watchdog driver)
+# CONFIG_NIC7018_WDT is not set
