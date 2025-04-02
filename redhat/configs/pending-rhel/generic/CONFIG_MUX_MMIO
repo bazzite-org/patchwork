@@ -1,0 +1,21 @@
+# Symbol: MUX_MMIO [=m]
+# Type  : tristate
+# Defined at drivers/mux/Kconfig:48
+#   Prompt: MMIO/Regmap register bitfield-controlled Multiplexer
+#   Depends on: MULTIPLEXER [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Multiplexer drivers
+#         -> MMIO/Regmap register bitfield-controlled Multiplexer (MUX_MMIO [=m])
+# Selected by [m]:
+#   - PHY_J721E_WIZ [=m] && OF [=y] && (ARCH_K3 [=y] || COMPILE_TEST [=n]) && HAS_IOMEM [=y] && OF_ADDRESS [=y] && COMMON_CLK [=y]
+# Selected by [n]:
+#   - MTD_PHYSMAP_BT1_ROM [=n] && MTD [=y] && HAS_IOMEM [=y] && MTD_PHYSMAP_OF [=y] && (MIPS_BAIKAL_T1 || COMPILE_TEST [=n])
+#   - PHY_AM654_SERDES [=n] && OF [=y] && (ARCH_K3 [=y] || COMPILE_TEST [=n]) && COMMON_CLK [=y]
+# Implied by [n]:
+#   - HBMC_AM654 [=n] && MTD [=y] && MTD_HYPERBUS [=n] && (ARCH_K3 [=y] || COMPILE_TEST [=n])
+# 
+# 
+# 
+# Commit: 73726380a26f (mux: mmio-based syscon mux controller)
+CONFIG_MUX_MMIO=m
