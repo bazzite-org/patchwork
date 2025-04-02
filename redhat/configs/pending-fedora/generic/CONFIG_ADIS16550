@@ -1,0 +1,16 @@
+# Symbol: ADIS16550 [=n]
+# Type  : tristate
+# Defined at drivers/iio/imu/Kconfig:55
+#   Prompt: Analog Devices ADIS16550 and similar IMU driver
+#   Depends on: IIO [=m] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Inertial measurement units
+#           -> Analog Devices ADIS16550 and similar IMU driver (ADIS16550 [=n])
+# Selects: IIO_ADIS_LIB [=m] && IIO_ADIS_LIB_BUFFER [=y] && CRC32 [=y]
+# 
+# 
+# 
+# Commit: bac4368fab62 (iio: imu: adis16550: add adis16550 support)
+# CONFIG_ADIS16550 is not set

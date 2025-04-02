@@ -1,0 +1,15 @@
+# Symbol: CORESIGHT_CTCU [=n]
+# Type  : tristate
+# Defined at drivers/hwtracing/coresight/Kconfig:136
+#   Prompt: CoreSight TMC Control Unit driver
+#   Depends on: CORESIGHT [=m] && CORESIGHT_LINK_AND_SINK_TMC [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> arm64 Debugging
+#         -> CoreSight Tracing Support (CORESIGHT [=m])
+#           -> CoreSight TMC Control Unit driver (CORESIGHT_CTCU [=n])
+# 
+# 
+# 
+# Commit: f78d206f3d73 (Coresight: Add Coresight TMC Control Unit driver)
+# CONFIG_CORESIGHT_CTCU is not set
