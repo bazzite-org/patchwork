@@ -1,0 +1,15 @@
+# Symbol: PHY_QCOM_UNIPHY_PCIE_28LP [=n]
+# Type  : bool
+# Defined at drivers/phy/qualcomm/Kconfig:157
+#   Prompt: PCIE UNIPHY 28LP PHY driver
+#   Depends on: ARCH_QCOM [=y] && COMMON_CLK [=y] && HAS_IOMEM [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PHY Subsystem
+#         -> PCIE UNIPHY 28LP PHY driver (PHY_QCOM_UNIPHY_PCIE_28LP [=n])
+# Selects: GENERIC_PHY [=y]
+# 
+# 
+# 
+# Commit: 74badb8b0b14 (phy: qcom: Introduce PCIe UNIPHY 28LP driver)
+# CONFIG_PHY_QCOM_UNIPHY_PCIE_28LP is not set
