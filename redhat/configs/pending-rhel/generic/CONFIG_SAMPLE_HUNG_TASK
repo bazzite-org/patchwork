@@ -1,0 +1,14 @@
+# Symbol: SAMPLE_HUNG_TASK [=n]
+# Type  : tristate
+# Defined at samples/Kconfig:303
+#   Prompt: Hung task detector test code
+#   Depends on: SAMPLES [=y] && DETECT_HUNG_TASK [=y] && DEBUG_FS [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> Sample kernel code (SAMPLES [=y])
+#         -> Hung task detector test code (SAMPLE_HUNG_TASK [=n])
+# 
+# 
+# 
+# Commit: 2158599a4b6d (samples: add hung_task detector mutex blocking sample)
+# CONFIG_SAMPLE_HUNG_TASK is not set

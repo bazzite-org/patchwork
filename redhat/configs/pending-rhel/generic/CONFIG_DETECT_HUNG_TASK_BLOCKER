@@ -1,0 +1,15 @@
+# Symbol: DETECT_HUNG_TASK_BLOCKER [=y]
+# Type  : bool
+# Defined at lib/Kconfig.debug:1283
+#   Prompt: Dump Hung Tasks Blocker
+#   Depends on: DETECT_HUNG_TASK [=y] && !PREEMPT_RT [=n]
+#   Location:
+#     -> Kernel hacking
+#       -> Debug Oops, Lockups and Hangs
+#         -> Detect Hung Tasks (DETECT_HUNG_TASK [=y])
+#           -> Dump Hung Tasks Blocker (DETECT_HUNG_TASK_BLOCKER [=y])
+# 
+# 
+# 
+# Commit: 3cf67d61ff98 (hung_task: show the blocker task if the task is hung on mutex)
+CONFIG_DETECT_HUNG_TASK_BLOCKER=y
