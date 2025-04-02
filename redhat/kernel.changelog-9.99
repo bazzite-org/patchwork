@@ -1,3 +1,8 @@
+* Wed Apr 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.acc4d5ff0b61.8]
+- Switch ZSWAP_ZPOOL_DEFAULT to ZSMALLOC as ZBUD has been removed (Justin M. Forbes)
+- Linux v6.15.0-0.rc0.acc4d5ff0b61
+Resolves: 
+
 * Tue Apr 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc0.08733088b566.7]
 - redhat/kernel.spec: list python3-wheel explicitly for Fedora<42 (Jan Stancek)
 - handle man-page for rv-mon-sched in redhat/kernel.spec.template (Thorsten Leemhuis)
