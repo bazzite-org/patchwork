@@ -1,0 +1,14 @@
+# Symbol: NO_PAGE_MAPCOUNT [=n]
+# Type  : bool
+# Defined at mm/Kconfig:894
+#   Prompt: No per-page mapcount (EXPERIMENTAL)
+#   Depends on: TRANSPARENT_HUGEPAGE [=y]
+#   Location:
+#     -> Memory Management options
+#       -> Transparent Hugepage Support (TRANSPARENT_HUGEPAGE [=y])
+#         -> No per-page mapcount (EXPERIMENTAL) (NO_PAGE_MAPCOUNT [=n])
+# 
+# 
+# 
+# Commit: e63ee43e3eda (mm: CONFIG_NO_PAGE_MAPCOUNT to prepare for not maintain per-page mapcounts in large folios)
+# CONFIG_NO_PAGE_MAPCOUNT is not set

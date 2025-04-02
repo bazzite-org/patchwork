@@ -1,0 +1,15 @@
+# Symbol: LENOVO_SE30_WDT [=n]
+# Type  : tristate
+# Defined at drivers/watchdog/Kconfig:282
+#   Prompt: Lenovo SE30 Watchdog
+#   Depends on: WATCHDOG [=y] && (X86 [=y] && DMI [=y] || COMPILE_TEST [=n]) && HAS_IOPORT [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Watchdog Timer Support (WATCHDOG [=y])
+#         -> Lenovo SE30 Watchdog (LENOVO_SE30_WDT [=n])
+# Selects: WATCHDOG_CORE [=y]
+# 
+# 
+# 
+# Commit: c284153a2c55 (watchdog: lenovo_se30_wdt: Watchdog driver for Lenovo SE30 platform)
+# CONFIG_LENOVO_SE30_WDT is not set

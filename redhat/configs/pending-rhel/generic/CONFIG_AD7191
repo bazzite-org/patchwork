@@ -1,0 +1,16 @@
+# Symbol: AD7191 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:145
+#   Prompt: Analog Devices AD7191 ADC driver
+#   Depends on: IIO [=m] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Analog Devices AD7191 ADC driver (AD7191 [=n])
+# Selects: AD_SIGMA_DELTA [=n]
+# 
+# 
+# 
+# Commit: 2e3ae10c3591 (iio: adc: ad7191: add AD7191)
+# CONFIG_AD7191 is not set

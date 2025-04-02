@@ -1,0 +1,16 @@
+# Symbol: AD4851 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:80
+#   Prompt: Analog Device AD4851 DAS Driver
+#   Depends on: IIO [=m] && SPI [=y] && PWM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Analog Device AD4851 DAS Driver (AD4851 [=n])
+# Selects: REGMAP_SPI [=m] && IIO_BACKEND [=n]
+# 
+# 
+# 
+# Commit: 6250803fe2ec (iio: adc: ad4851: add ad485x driver)
+# CONFIG_AD4851 is not set
