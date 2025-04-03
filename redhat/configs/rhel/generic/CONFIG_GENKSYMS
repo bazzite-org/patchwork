@@ -1,1 +1,1 @@
-CONFIG_GENKSYMS=y
+# CONFIG_GENKSYMS is not set
