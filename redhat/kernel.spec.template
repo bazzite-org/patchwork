@@ -694,9 +694,7 @@ BuildRequires: bzip2, xz, findutils, m4, perl-interpreter, perl-Carp, perl-devel
 BuildRequires: zstd
 %endif
 BuildRequires: gcc, binutils, redhat-rpm-config, hmaccalc, bison, flex, gcc-c++
-%if 0%{?fedora}
-BuildRequires: rust, rust-src, bindgen, rustfmt
-%endif
+BuildRequires: rust, rust-src, bindgen, rustfmt, clippy
 BuildRequires: net-tools, hostname, bc, elfutils-devel
 BuildRequires: dwarves
 BuildRequires: python3
