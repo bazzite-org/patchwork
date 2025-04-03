@@ -1,0 +1,17 @@
+# Symbol: SERIAL_TEGRA_UTC [=n]
+# Type  : tristate
+# Defined at drivers/tty/serial/Kconfig:290
+#   Prompt: NVIDIA Tegra UART Trace Controller
+#   Depends on: TTY [=y] && HAS_IOMEM [=y] && (ARCH_TEGRA [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Character devices
+#         -> Enable TTY (TTY [=y])
+#           -> Serial drivers
+#             -> NVIDIA Tegra UART Trace Controller (SERIAL_TEGRA_UTC [=n])
+# Selects: SERIAL_CORE [=y]
+# 
+# 
+# 
+# Commit: eb07e3a94679 (serial: tegra-utc: Add driver for Tegra UART Trace Controller (UTC))
+# CONFIG_SERIAL_TEGRA_UTC is not set
