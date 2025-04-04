@@ -16,6 +16,7 @@
 #include <linux/dmi.h>
 #include <linux/errno.h>
 #include <linux/fixp-arith.h>
+#include <linux/platform_profile.h>
 #include <linux/hwmon.h>
 #include <linux/hwmon-sysfs.h>
 #include <linux/kernel.h>
@@ -58,6 +59,16 @@
 #define MSI_PLATFORM_AP_FAN_FLAGS_OFFSET	1
 #define MSI_PLATFORM_AP_ENABLE_FAN_TABLES	BIT(7)
 
+/* Get_Data() and Set_Data() Shift Mode Register */
+#define MSI_PLATFORM_SHIFT_ADDR		0xd2
+#define MSI_PLATFORM_SHIFT_DISABLE	BIT(7)
+#define MSI_PLATFORM_SHIFT_ENABLE	(BIT(7) | BIT(6))
+#define MSI_PLATFORM_SHIFT_SPORT	(MSI_PLATFORM_SHIFT_ENABLE + 4)
+#define MSI_PLATFORM_SHIFT_COMFORT 	(MSI_PLATFORM_SHIFT_ENABLE + 0)
+#define MSI_PLATFORM_SHIFT_GREEN	(MSI_PLATFORM_SHIFT_ENABLE + 1)
+#define MSI_PLATFORM_SHIFT_ECO		(MSI_PLATFORM_SHIFT_ENABLE + 2)
+#define MSI_PLATFORM_SHIFT_USER		(MSI_PLATFORM_SHIFT_ENABLE + 3)
+
 /* Get_WMI() WMI method */
 #define MSI_PLATFORM_WMI_MAJOR_OFFSET		1
 #define MSI_PLATFORM_WMI_MINOR_OFFSET		2
@@ -99,11 +110,14 @@ enum msi_wmi_platform_method {
 };
 
 struct msi_wmi_platform_quirk {
+	bool shift_mode;	/* Shift mode is supported */
 };
 
 struct msi_wmi_platform_data {
 	struct wmi_device *wdev;
 	struct msi_wmi_platform_quirk *quirks;
+	struct platform_profile_handler platform_profile_handler;
+	bool platform_profile_support;
 	struct mutex write_lock;
 };
 
@@ -149,8 +163,10 @@ static const char * const msi_wmi_platform_debugfs_names[] = {
 
 static struct msi_wmi_platform_quirk quirk_default = {};
 static struct msi_wmi_platform_quirk quirk_gen1 = {
+	.shift_mode = true
 };
 static struct msi_wmi_platform_quirk quirk_gen2 = {
+	.shift_mode = true
 };
 
 static const struct dmi_system_id msi_quirks[] = {
@@ -542,6 +558,76 @@ static const struct hwmon_chip_info msi_wmi_platform_chip_info = {
 	.info = msi_wmi_platform_info,
 };
 
+static int msi_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+					enum platform_profile_option *profile)
+{
+	struct msi_wmi_platform_data *data = container_of(pprof, struct msi_wmi_platform_data,
+						 platform_profile_handler);
+	
+	u8 buffer[32] = { };
+
+	buffer[0] = MSI_PLATFORM_SHIFT_ADDR;
+
+	int ret = msi_wmi_platform_query(data->wdev, MSI_PLATFORM_GET_DATA, buffer, sizeof(buffer));
+	if (ret < 0)
+		return ret;
+	
+	if (buffer[0] != 1)
+		return -EINVAL;
+	
+	switch (buffer[1]) {
+	case MSI_PLATFORM_SHIFT_SPORT:
+		*profile = PLATFORM_PROFILE_PERFORMANCE;
+		return 0;
+	case MSI_PLATFORM_SHIFT_COMFORT:
+		*profile = PLATFORM_PROFILE_BALANCED_PERFORMANCE;
+		return 0;
+	case MSI_PLATFORM_SHIFT_GREEN:
+		*profile = PLATFORM_PROFILE_BALANCED;
+		return 0;
+	case MSI_PLATFORM_SHIFT_ECO:
+		*profile = PLATFORM_PROFILE_LOW_POWER;
+		return 0;
+	case MSI_PLATFORM_SHIFT_USER:
+		*profile = PLATFORM_PROFILE_CUSTOM;
+		return 0;
+	default:
+		return -EINVAL;
+	}
+}
+
+static int msi_wmi_platform_profile_set(struct platform_profile_handler *pprof,
+					enum platform_profile_option profile)
+{
+	struct msi_wmi_platform_data *data = container_of(pprof, struct msi_wmi_platform_data,
+						 platform_profile_handler);
+	u8 buffer[32] = { };
+
+	buffer[0] = MSI_PLATFORM_SHIFT_ADDR;
+
+	switch (profile) {
+	case PLATFORM_PROFILE_PERFORMANCE:
+		buffer[1] = MSI_PLATFORM_SHIFT_SPORT;
+		break;
+	case PLATFORM_PROFILE_BALANCED_PERFORMANCE:
+		buffer[1] = MSI_PLATFORM_SHIFT_COMFORT;
+		break;
+	case PLATFORM_PROFILE_BALANCED:
+		buffer[1] = MSI_PLATFORM_SHIFT_GREEN;
+		break;
+	case PLATFORM_PROFILE_LOW_POWER:
+		buffer[1] = MSI_PLATFORM_SHIFT_ECO;
+		break;
+	case PLATFORM_PROFILE_CUSTOM:
+		buffer[1] = MSI_PLATFORM_SHIFT_USER;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return msi_wmi_platform_query(data->wdev, MSI_PLATFORM_SET_DATA, buffer, sizeof(buffer));
+}
+
 static ssize_t msi_wmi_platform_debugfs_write(struct file *fp, const char __user *input,
 					      size_t length, loff_t *offset)
 {
@@ -718,6 +804,35 @@ static int msi_wmi_platform_init(struct wmi_device *wdev)
 	return 0;
 }
 
+static int msi_wmi_platform_profile_setup(struct msi_wmi_platform_data *data)
+{
+	int err;
+
+	if (!data->quirks->shift_mode)
+		return 0;
+
+	data->platform_profile_handler.name = "msi-wmi-platform";
+	data->platform_profile_handler.dev = &data->wdev->dev;
+	set_bit(PLATFORM_PROFILE_LOW_POWER,
+		data->platform_profile_handler.choices);
+	set_bit(PLATFORM_PROFILE_BALANCED,
+		data->platform_profile_handler.choices);
+	set_bit(PLATFORM_PROFILE_BALANCED_PERFORMANCE,
+		data->platform_profile_handler.choices);
+	set_bit(PLATFORM_PROFILE_PERFORMANCE,
+		data->platform_profile_handler.choices);
+	data->platform_profile_handler.profile_get = msi_wmi_platform_profile_get;
+	data->platform_profile_handler.profile_set = msi_wmi_platform_profile_set;
+
+	err = platform_profile_register(&data->platform_profile_handler);
+	if (err)
+		return err;
+
+	data->platform_profile_support = true;
+
+	return 0;
+}
+
 static int msi_wmi_platform_probe(struct wmi_device *wdev, const void *context)
 {
 	struct msi_wmi_platform_data *data;
@@ -749,9 +864,23 @@ static int msi_wmi_platform_probe(struct wmi_device *wdev, const void *context)
 	if (ret < 0)
 		return ret;
 
+	ret = msi_wmi_platform_hwmon_init(data);
+	if (ret < 0)
+		return ret;
+
+	msi_wmi_platform_profile_setup(data);
+
 	msi_wmi_platform_debugfs_init(wdev);
 
-	return msi_wmi_platform_hwmon_init(data);
+	return 0;
+}
+
+static void msi_wmi_platform_remove(struct wmi_device *wdev)
+{
+	struct msi_wmi_platform_data *data = dev_get_drvdata(&wdev->dev);
+
+	if (data->platform_profile_support)
+		platform_profile_remove(&data->platform_profile_handler);
 }
 
 static const struct wmi_device_id msi_wmi_platform_id_table[] = {
@@ -767,6 +896,7 @@ static struct wmi_driver msi_wmi_platform_driver = {
 	},
 	.id_table = msi_wmi_platform_id_table,
 	.probe = msi_wmi_platform_probe,
+	.remove = msi_wmi_platform_remove,
 	.no_singleton = true,
 };
 module_wmi_driver(msi_wmi_platform_driver);
