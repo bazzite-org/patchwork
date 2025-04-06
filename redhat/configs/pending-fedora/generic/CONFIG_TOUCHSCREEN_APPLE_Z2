@@ -1,0 +1,16 @@
+# Symbol: TOUCHSCREEN_APPLE_Z2 [=y]
+# Type  : tristate
+# Defined at drivers/input/touchscreen/Kconfig:106
+#   Prompt: Apple Z2 touchscreens
+#   Depends on: INPUT [=y] && INPUT_TOUCHSCREEN [=y] && SPI [=y] && (ARCH_APPLE [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Input device support
+#         -> Generic input layer (needed for keyboard, mouse, ...) (INPUT [=y])
+#           -> Touchscreens (INPUT_TOUCHSCREEN [=y])
+#             -> Apple Z2 touchscreens (TOUCHSCREEN_APPLE_Z2 [=y])
+# 
+# 
+# 
+# Commit: 471a92f8a21a (Input: apple_z2 - add a driver for Apple Z2 touchscreens)
+CONFIG_TOUCHSCREEN_APPLE_Z2=y
