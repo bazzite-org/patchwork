@@ -311,6 +311,7 @@ static void hid_irq_in(struct urb *urb)
 	case -EPROTO:		/* protocol error or unplug */
 	case -ETIME:		/* protocol error or unplug */
 	case -ETIMEDOUT:	/* Should never happen, but... */
+	case -EOVERFLOW:	/* Claw weirdness, force disconnect... */
 		usbhid_mark_busy(usbhid);
 		clear_bit(HID_IN_RUNNING, &usbhid->iofl);
 		hid_io_error(hid);
