@@ -1,3 +1,40 @@
+* Mon Apr 07 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.1-0]
+- Config updates for 6.14.1 (Justin M. Forbes)
+- redhat/kernel.spec: list python3-wheel explicitly for Fedora<42 (Jan Stancek)
+- serial: 8250_dma: terminate correct DMA in tx_dma_flush() (John Keeping)
+- serial: stm32: do not deassert RS485 RTS GPIO prematurely (Cheick Traore)
+- perf tools: Fix up some comments and code to properly use the event_source bus (Greg Kroah-Hartman)
+- memstick: rtsx_usb_ms: Fix slab-use-after-free in rtsx_usb_ms_drv_remove (Luo Qiu)
+- usb: xhci: Apply the link chain quirk on NEC isoc endpoints (Michal Pecio)
+- usb: xhci: Don't skip on Stopped - Length Invalid (Michal Pecio)
+- net: usb: usbnet: restore usb%%d name exception for local mac addresses (Dominique Martinet)
+- net: usb: qmi_wwan: add Telit Cinterion FE990B composition (Fabio Porcedda)
+- net: usb: qmi_wwan: add Telit Cinterion FN990B composition (Fabio Porcedda)
+- tty: serial: fsl_lpuart: disable transmitter before changing RS485 related registers (Sherry Sun)
+- tty: serial: 8250: Add Brainboxes XC devices (Cameron Williams)
+- tty: serial: 8250: Add some more device IDs (Cameron Williams)
+- counter: microchip-tcb-capture: Fix undefined counter channel state on probe (William Breathitt Gray)
+- counter: stm32-lptimer-cnt: fix error handling when enabling (Fabrice Gasnier)
+- ALSA: hda/realtek: Bass speaker fixup for ASUS UM5606KA (Andres Traumann)
+- ALSA: hda/realtek: Support mute LED on HP Laptop 15s-du3xxx (Dhruv Deshpande)
+- netfilter: socket: Lookup orig tuple for IPv6 SNAT (Maxim Mikityanskiy)
+- cgroup/rstat: Fix forceidle time in cpu.stat (Abel Wu)
+- atm: Fix NULL pointer dereference (Minjoong Kim)
+- HID: hid-plantronics: Add mic mute mapping and generalize quirks (Terry Junge)
+- ALSA: usb-audio: Add quirk for Plantronics headsets to fix control names (Terry Junge)
+- Documentation/powerpc/fadump: add additional parameter feature details (Mamatha Inamdar) [RHEL-70827]
+- powerpc: increase MIN RMA size for CAS negotiation (Mamatha Inamdar) [RHEL-70827]
+- powerpc/fadump: fix additional param memory reservation for HASH MMU (Mamatha Inamdar) [RHEL-70827]
+- powerpc: export MIN RMA size (Mamatha Inamdar) [RHEL-70827]
+- fedora: arm64: move some TI drivers to modular (Peter Robinson)
+- fedora: minor cleanups for 6.14 (Peter Robinson)
+- Initial setup for stable Fedora releases (Justin M. Forbes)
+- powerpc64/ftrace: fix module loading without patchable function entries (Anthony Iliopoulos)
+- x86/insn_decoder_test: allow longer symbol-names (David Rheinsberg)
+- apply -Wno-error=unterminated-string-initialization temporarily (Thorsten Leemhuis)
+- Linux v6.14.1
+Resolves: RHEL-70827
+
 * Mon Mar 24 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.0-1]
 - Reset RHEL_RELEASE for 6.15 cycle (Justin M. Forbes)
 Resolves: 
