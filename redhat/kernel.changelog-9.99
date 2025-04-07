@@ -1,3 +1,7 @@
+* Mon Apr 07 2025 Augusto Caringi <acaringi@redhat.com> [6.13.10-0]
+- Linux v6.13.10
+Resolves: 
+
 * Fri Mar 28 2025 Augusto Caringi <acaringi@redhat.com> [6.13.9-0]
 - powerpc64/ftrace: fix module loading without patchable function entries (Anthony Iliopoulos)
 - Linux v6.13.9
