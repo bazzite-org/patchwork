@@ -1,3 +1,9 @@
+* Wed Apr 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc1.a24588245776.16]
+- Fix up CONFIG_CRC_ITU_T mismatch (Scott Weaver)
+- Fix up CONFIG_CRC16 mismatch (Scott Weaver)
+- Linux v6.15.0-0.rc1.a24588245776
+Resolves: 
+
 * Wed Apr 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc1.15]
 - redhat: remove kernel-ipaclones-internal package (Joe Lawrence)
 - redhat/kernel.spec.template: add net packetdrill selftests (Hangbin Liu)
