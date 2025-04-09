@@ -642,7 +642,7 @@ dist-git-version-check:
 
 dist-get-buildreqs: ##misc returns list of packages listed as build requirements for this kernel.
 dist-get-buildreqs: setup-source
-	@PKGLIST="rpm-build $$(rpmspec -q --buildrequires $(SOURCES)/$(SPECFILE) | cut -d ' ' -f 1)"; \
+	@PKGLIST="rpm-build $$(rpmspec -q --buildrequires $(SOURCES)/$(SPECFILE) | cut -d ' ' -f 1 | sed 's/^(//' )"; \
 	MISSING=""; \
 	for pkg in $$PKGLIST; do \
 		rpm -q --whatprovides $$pkg >/dev/null || MISSING="$$MISSING $$pkg"; \
