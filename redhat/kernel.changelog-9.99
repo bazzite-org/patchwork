@@ -1,3 +1,8 @@
+* Thu Apr 10 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.2-0]
+- Config update for 6.14.2 (Justin M. Forbes)
+- Linux v6.14.2
+Resolves: 
+
 * Mon Apr 07 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.1-0]
 - Config updates for 6.14.1 (Justin M. Forbes)
 - redhat/kernel.spec: list python3-wheel explicitly for Fedora<42 (Jan Stancek)
