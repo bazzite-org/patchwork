@@ -121,7 +121,7 @@ static const char *sd_cache_types[] = {
 	"write back, no read (daft)"
 };
 
-static const char *sd_probe_types[] = { "async", "sync" };
+// static const char * sd_probe_types[] = { "async", "sync" };
 
 static char sd_probe_type[6] = "async";
 module_param_string(probe, sd_probe_type, sizeof(sd_probe_type),
