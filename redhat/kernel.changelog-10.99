@@ -1,3 +1,8 @@
+* Fri Apr 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc2.fc96b232f8e7.25]
+- Turn on USB Gadget for Fedora x86 (Justin M. Forbes)
+- Linux v6.15.0-0.rc2.fc96b232f8e7
+Resolves: 
+
 * Thu Apr 17 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc2.cfb2e2c57aef.24]
 - redhat: enable drm panic screen with a QR code (Scott Weaver)
 - redhat: enable Rust code in ELN (Scott Weaver)
