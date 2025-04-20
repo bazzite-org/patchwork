@@ -1,3 +1,7 @@
+* Sun Apr 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc2.6fea5fabd332.27]
+- Linux v6.15.0-0.rc2.6fea5fabd332
+Resolves: 
+
 * Sat Apr 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc2.8560697b23dc.26]
 - uki: Add weak dependency on 'uki-direct' (Vitaly Kuznetsov)
 - redhat/kernel.spec: fix duplicate packaging of ynl headers (Jan Stancek)
