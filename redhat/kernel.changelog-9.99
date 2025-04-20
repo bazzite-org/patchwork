@@ -1,3 +1,10 @@
+* Sun Apr 20 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.3-0]
+- New configs for stable update (Justin M. Forbes)
+- Enable FunctionFS on aarch64 + x86 (Sam Day)
+- Turn on USB Gadget for Fedora x86 (Justin M. Forbes)
+- Linux v6.14.3
+Resolves: 
+
 * Thu Apr 10 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.2-0]
 - Config update for 6.14.2 (Justin M. Forbes)
 - Linux v6.14.2
