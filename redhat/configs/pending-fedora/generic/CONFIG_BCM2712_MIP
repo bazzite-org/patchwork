@@ -1,15 +1,1 @@
-# Symbol: BCM2712_MIP [=m]
-# Type  : tristate
-# Defined at drivers/irqchip/Kconfig:115
-#   Prompt: Broadcom BCM2712 MSI-X Interrupt Peripheral support
-#   Depends on: (ARCH_BRCMSTB [=n] || ARCH_BCM2835 [=y] || COMPILE_TEST [=n]) && ARM_GIC [=y]
-#   Location:
-#     -> Device Drivers
-#       -> IRQ chip support
-#         -> Broadcom BCM2712 MSI-X Interrupt Peripheral support (BCM2712_MIP [=m])
-# Selects: GENERIC_IRQ_CHIP [=y] && IRQ_DOMAIN_HIERARCHY [=y] && GENERIC_MSI_IRQ [=y] && IRQ_MSI_LIB [=y]
-# 
-# 
-# 
-# Commit: 32c6c054661a (irqchip: Add Broadcom BCM2712 MSI-X interrupt controller)
-CONFIG_BCM2712_MIP=m
+CONFIG_BCM2712_MIP=y
