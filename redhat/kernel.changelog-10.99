@@ -1,3 +1,9 @@
+* Tue Apr 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.a33b5a08cbbd.29]
+- fedora: updates for 6.15 (Peter Robinson)
+- redhat/configs: Disable CONFIG_COMPAT option on s390 (Mete Durlu) [RHEL-24047]
+- Linux v6.15.0-0.rc3.a33b5a08cbbd
+Resolves: RHEL-24047
+
 * Mon Apr 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.9d7a0577c9db.28]
 - Linux v6.15.0-0.rc3.9d7a0577c9db
 Resolves: 
