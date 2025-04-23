@@ -4708,6 +4708,36 @@ static int amdgpu_dm_mode_config_init(struct amdgpu_device *adev)
 	return 0;
 }
 
+static const struct dmi_system_id vrr_funny_quirks[] = {
+	{	/* Valve Steam Deck (Galileo) */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "Valve"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "Galileo"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "1"),
+		},
+	},
+	{	/* F1 Pro OLED */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1Pro"),
+		},
+	},
+	{	/* F1 Pro Limited Edition */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "ONE-NETBOOK"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "ONEXPLAYER F1 EVA-02"),
+		},
+	
+	},
+	{	/* Lenovo Legion Go 8APU1 */
+		.matches = {
+		  DMI_EXACT_MATCH(DMI_SYS_VENDOR, "LENOVO"),
+		  DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "Legion Go 8APU1"),
+		},
+	},
+	{}
+};
+
 #define AMDGPU_DM_DEFAULT_MIN_BACKLIGHT 12
 #define AMDGPU_DM_DEFAULT_MAX_BACKLIGHT 255
 #define AMDGPU_DM_MIN_SPREAD ((AMDGPU_DM_DEFAULT_MAX_BACKLIGHT - AMDGPU_DM_DEFAULT_MIN_BACKLIGHT) / 2)
@@ -9462,7 +9492,7 @@ static void amdgpu_dm_commit_planes(struct drm_atomic_state *state,
 	}
 
 	if (pflip_present) {
-		if (!vrr_active) {
+		if (!vrr_active && !dmi_check_system(vrr_funny_quirks)) {
 			/* Use old throttling in non-vrr fixed refresh rate mode
 			 * to keep flip scheduling based on target vblank counts
 			 * working in a backwards compatible way, e.g., for
