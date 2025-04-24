@@ -1,3 +1,11 @@
+* Thu Apr 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.a79be02bba5c.31]
+- redhat: drop Y issues from changelog (Jan Stancek)
+- redhat/configs: Update the CONFIG_KERNEL_IMAGE_BASE kernel config option (Thomas Huth)
+- redhat/configs: Remove the obsolete CONFIG_ZCRYPT_DEBUG switches (Thomas Huth)
+- redhat/configs: Consolidate the CONFIG_AP switch (Thomas Huth)
+- Linux v6.15.0-0.rc3.a79be02bba5c
+Resolves: 
+
 * Wed Apr 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.bc3372351d0c.30]
 - Linux v6.15.0-0.rc3.bc3372351d0c
 Resolves: 
