@@ -274,6 +274,16 @@ workflow:
     rpmbuild_with: arm64_64k debug
     package_name: kernel-64k-debug
     architectures: aarch64
+.eln_rt_64k:
+  variables:
+    rpmbuild_with: realtime_arm64_64k base
+    package_name: kernel-rt-64k
+    architectures: aarch64
+.eln_rt_64k_debug:
+  variables:
+    rpmbuild_with: realtime_arm64_64k debug
+    package_name: kernel-rt-64k-debug
+    architectures: aarch64
 .eln_automotive:
   variables:
     rpmbuild_with: automotive base
@@ -417,6 +427,14 @@ eln_64k_debug_merge_request:
   extends: [.merge_request, .trigger_eln, .no_tests, .merge_ark_latest, .manual_for_bot,
             .eln_64k_debug]
 
+eln_realtime_64k_merge_request:
+  extends: [.merge_request, .trigger_eln, .no_tests, .merge_ark_latest, .manual_for_bot,
+            .eln_rt_64k]
+
+eln_realtime_64k_debug_merge_request:
+  extends: [.merge_request, .trigger_eln, .no_tests, .merge_ark_latest, .manual_for_bot,
+            .eln_rt_64k_debug]
+
 # ELN baselines
 eln_baseline:
   extends: [.baseline, .trigger_eln, .reported_tests, .ark_latest_head,
@@ -450,6 +468,14 @@ eln_64k_debug_baseline:
   extends: [.baseline, .trigger_eln, .reported_tests, .ark_latest_head,
             .eln_64k_debug]
 
+eln_realtime_64k_baseline:
+  extends: [.baseline, .trigger_eln, .reported_tests, .ark_latest_head,
+            .eln_rt_64k]
+
+eln_realtime_64k_debug_baseline:
+  extends: [.baseline, .trigger_eln, .reported_tests, .ark_latest_head,
+            .eln_rt_64k_debug]
+
 # ELN CKI container image gating
 eln_cki_gating:
   extends: [.baseline, .trigger_eln, .no_tests, .cki_gating_head,
@@ -478,6 +504,14 @@ eln_realtime_debug_cki_gating:  # no tests as realtime code not present upstream
 eln_64k_cki_gating:
   extends: [.baseline, .trigger_eln, .no_tests, .cki_gating_head,
             .eln_64k, .cki_gating_overrides]
+
+eln_realtime_64k_debug_cki_gating:
+  extends: [.baseline, .trigger_eln, .no_tests, .cki_gating_head,
+            .eln_rt_64k_debug, .cki_gating_overrides]
+
+eln_realtime_64k_cki_gating:
+  extends: [.baseline, .trigger_eln, .no_tests, .cki_gating_head,
+            .eln_rt_64k, .cki_gating_overrides]
 
 eln_64k_debug_cki_gating:
   extends: [.baseline, .trigger_eln, .no_tests, .cki_gating_head,
@@ -524,6 +558,14 @@ c10s_64k_debug_merge_request:
   extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
             .eln_64k_debug]
 
+c10s_realtime_64k_merge_request:
+  extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
+            .eln_rt_64k]
+
+c10s_realtime_64k_debug_merge_request:
+  extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
+            .eln_rt_64k_debug]
+
 c10s_automotive_merge_request:
   extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
             .eln_automotive]
@@ -565,6 +607,14 @@ c10s_64k_debug_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_64k_debug]
 
+c10s_realtime_64k_baseline:
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
+            .eln_rt_64k]
+
+c10s_realtime_64k_debug_baseline:
+  extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
+            .eln_rt_64k_debug]
+
 c10s_automotive_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
             .eln_automotive]
@@ -605,6 +655,14 @@ c10s_64k_cki_gating:
 c10s_64k_debug_cki_gating:
   extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
             .eln_64k_debug, .cki_gating_overrides]
+
+c10s_realtime_64k_cki_gating:
+  extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
+            .eln_rt_64k, .cki_gating_overrides]
+
+c10s_realtime_64k_debug_cki_gating:
+  extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
+            .eln_rt_64k_debug, .cki_gating_overrides]
 
 c10s_automotive_cki_gating:
   extends: [.baseline, .trigger_c10s, .no_tests, .cki_gating_head,
