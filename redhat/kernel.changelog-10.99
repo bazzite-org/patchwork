@@ -1,3 +1,9 @@
+* Fri Apr 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.02ddfb981de8.32]
+- gitlab-ci: enable pipelines for rt-64k (Clark Williams)
+- rt-64k:  Enable building 64k page-size RT kernel (Clark Williams)
+- Linux v6.15.0-0.rc3.02ddfb981de8
+Resolves: 
+
 * Thu Apr 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc3.a79be02bba5c.31]
 - redhat: drop Y issues from changelog (Jan Stancek)
 - redhat/configs: Update the CONFIG_KERNEL_IMAGE_BASE kernel config option (Thomas Huth)
