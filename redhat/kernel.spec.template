@@ -768,7 +768,7 @@ BuildRequires: (python3-wheel if python3-setuptools < 70)
 BuildRequires: openssl-devel
 %endif
 %if %{with_selftests}
-BuildRequires: clang llvm-devel fuse-devel zlib-devel binutils-devel
+BuildRequires: clang llvm-devel fuse-devel zlib-devel binutils-devel python3-docutils python3-jsonschema
 %ifarch x86_64 riscv64
 BuildRequires: lld
 %endif
