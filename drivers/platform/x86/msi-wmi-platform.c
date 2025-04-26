@@ -173,7 +173,7 @@ static int msi_wmi_platform_read(struct device *dev, enum hwmon_sensor_types typ
 	struct wmi_device *wdev = dev_get_drvdata(dev);
 	u8 input[32] = { 0 };
 	u8 output[32];
-	u16 value;
+	u16 data;
 	int ret;
 
 	ret = msi_wmi_platform_query(wdev, MSI_PLATFORM_GET_FAN, input, sizeof(input), output,
@@ -181,11 +181,11 @@ static int msi_wmi_platform_read(struct device *dev, enum hwmon_sensor_types typ
 	if (ret < 0)
 		return ret;
 
-	value = get_unaligned_be16(&output[channel * 2 + 1]);
-	if (!value)
+	data = get_unaligned_be16(&output[channel * 2 + 1]);
+	if (!data)
 		*val = 0;
 	else
-		*val = 480000 / value;
+		*val = 480000 / data;
 
 	return 0;
 }
