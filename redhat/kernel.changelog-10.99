@@ -1,3 +1,10 @@
+* Tue Apr 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.ca91b9500108.36]
+- redhat/spec: fix selftests dependencies (Gregory Bell) [RHEL-88228]
+- redhat: add namespace selftests to kernel-modules-internal package (Joel Savitz) [RHEL-88635]
+- Turn off CONFIG_PCI_REALLOC_ENABLE_AUTO for Fedora (Justin M. Forbes)
+- Linux v6.15.0-0.rc4.ca91b9500108
+Resolves: RHEL-88228, RHEL-88635
+
 * Mon Apr 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.35]
 - Linux v6.15.0-0.rc4
 Resolves: 
