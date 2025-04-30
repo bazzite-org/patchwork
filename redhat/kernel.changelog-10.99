@@ -1,3 +1,8 @@
+* Wed Apr 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.b6ea1680d0ac.37]
+- redhat/configs: Adjust CONFIG_TUNE for s390x (Mete Durlu)
+- Linux v6.15.0-0.rc4.b6ea1680d0ac
+Resolves: 
+
 * Tue Apr 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.ca91b9500108.36]
 - redhat/spec: fix selftests dependencies (Gregory Bell) [RHEL-88228]
 - redhat: add namespace selftests to kernel-modules-internal package (Joel Savitz) [RHEL-88635]
