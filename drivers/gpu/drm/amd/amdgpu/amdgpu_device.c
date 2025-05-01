@@ -4839,6 +4839,7 @@ static int amdgpu_device_pm_notifier(struct notifier_block *nb, unsigned long mo
 				     void *data)
 {
 	struct amdgpu_device *adev = container_of(nb, struct amdgpu_device, pm_nb);
+	int r;
 
 	switch (mode) {
 	case PM_HIBERNATION_PREPARE:
@@ -4846,6 +4847,18 @@ static int amdgpu_device_pm_notifier(struct notifier_block *nb, unsigned long mo
 		break;
 	case PM_POST_HIBERNATION:
 		adev->in_s4 = false;
+		break;
+	case PM_HIBERNATION_POST_FREEZE:
+	case PM_SUSPEND_POST_FREEZE:
+		/*
+		 * Perform a pre-eviction of resources because at this point
+		 * swap is still accessible. This is considered non-fatal
+		 * because amdgpu_device_prepare() will fatally evict resources.
+		 * See https://gitlab.freedesktop.org/drm/amd/-/issues/3781
+		 */
+		r = amdgpu_device_evict_resources(adev);
+		if (r)
+			drm_warn(adev_to_drm(adev), "Failed to evict resources, freeze active processes if problems occur: %d\n", r);
 		break;
 	}
 
