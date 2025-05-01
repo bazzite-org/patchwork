@@ -1,3 +1,12 @@
+* Thu May 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.4f79eaa2ceac.38]
+- redhat: remove kernel-rt-kvm package (Clark Williams)
+- redhat: introduce modules-extra-matched meta package (Jan Stancek)
+- Fix up some Netfilter configs for Fedora (Justin M. Forbes)
+- Turn NF_CT_NETLINK_TIMEOUT for Fedora (Justin M. Forbes)
+- Turn on NF_CONNTRACK_TIMEOUT for Fedora (Justin M. Forbes)
+- Linux v6.15.0-0.rc4.4f79eaa2ceac
+Resolves: 
+
 * Wed Apr 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.b6ea1680d0ac.37]
 - redhat/configs: Adjust CONFIG_TUNE for s390x (Mete Durlu)
 - Linux v6.15.0-0.rc4.b6ea1680d0ac
