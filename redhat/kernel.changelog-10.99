@@ -1,3 +1,8 @@
+* Fri May 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.ebd297a2affa.39]
+- redhat/configs: aarch64: Enable Apple touchbar display driver for Fedora (Neal Gompa)
+- Linux v6.15.0-0.rc4.ebd297a2affa
+Resolves: 
+
 * Thu May 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.4f79eaa2ceac.38]
 - redhat: remove kernel-rt-kvm package (Clark Williams)
 - redhat: introduce modules-extra-matched meta package (Jan Stancek)
