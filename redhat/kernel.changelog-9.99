@@ -1,3 +1,9 @@
+* Fri May 02 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.5-0]
+- Fix up configs for 6.14.5 merge (Justin M. Forbes)
+- Turn off CONFIG_PCI_REALLOC_ENABLE_AUTO for Fedora (Justin M. Forbes)
+- Linux v6.14.5
+Resolves: 
+
 * Fri Apr 25 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.14.4-0]
 - Add F41 and F40 to release targets (Justin M. Forbes)
 - Linux v6.14.4
