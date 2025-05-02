@@ -777,6 +777,7 @@ sources-rh: $(TARBALL) $(KABI_TARBALL) $(KABIDW_TARBALL) generate-testpatch-tmp 
 		../Makefile.rhelver \
 		README.rst \
 		kernel-local \
+		kernel.sbat.template \
 		dracut-virt.conf \
 		$(SOURCES)/
 	@changelog_glob="$(SPECPACKAGE_NAME).changelog-*"; \
