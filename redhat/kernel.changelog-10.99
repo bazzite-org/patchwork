@@ -1,3 +1,9 @@
+* Sat May 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.95d3481af6dc.40]
+- Turn on ACPI_DEBUG for Fedora (Justin M. Forbes)
+- redhat: fix kernel-rt-kvm package removal for Fedora (Thorsten Leemhuis)
+- Linux v6.15.0-0.rc4.95d3481af6dc
+Resolves: 
+
 * Fri May 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.ebd297a2affa.39]
 - redhat/configs: aarch64: Enable Apple touchbar display driver for Fedora (Neal Gompa)
 - Linux v6.15.0-0.rc4.ebd297a2affa
