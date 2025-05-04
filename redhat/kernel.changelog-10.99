@@ -1,3 +1,7 @@
+* Sun May 04 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.e8ab83e34bdc.41]
+- Linux v6.15.0-0.rc4.e8ab83e34bdc
+Resolves: 
+
 * Sat May 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc4.95d3481af6dc.40]
 - Turn on ACPI_DEBUG for Fedora (Justin M. Forbes)
 - redhat: fix kernel-rt-kvm package removal for Fedora (Thorsten Leemhuis)
