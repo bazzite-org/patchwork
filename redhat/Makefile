@@ -229,8 +229,8 @@ else ifeq ($(VERSION_ON_UPSTREAM),1)
       UPSTREAMBUILD:=$(UPSTREAMBUILD)$(MARKER).
     else
       # Obtain the date that HEAD was committed (not the snapshot commit).
-      HEAD_DATE:=$(shell $(GIT) show -s --format=%cd --date=format:%Y%m%d $(HEAD))
-      UPSTREAMBUILD:=$(UPSTREAMBUILD)$(HEAD_DATE)git$(MARKER).
+      HEAD_DATE:=$(shell $(GIT) show -s --format=%cd --date=format:%y%m%d $(HEAD))
+      UPSTREAMBUILD:=$(UPSTREAMBUILD)$(HEAD_DATE)g$(MARKER).
     endif
     UPSTREAM_TARBALL_NAME:=$(patsubst v%,%,$(_TAG))
   endif
