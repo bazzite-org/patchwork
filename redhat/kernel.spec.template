@@ -251,6 +251,8 @@ Summary: The Linux kernel
 %define with_rtonly    %{?_with_rtonly:       1} %{?!_with_rtonly:       0}
 # Only build the automotive kernel (--with automotiveonly):%
 %define with_automotiveonly %{?_with_automotiveonly:       1} %{?!_with_automotiveonly:       0}
+# Only build the tools package
+%define with_toolsonly %{?_with_toolsonly:    1} %{?!_with_toolsonly:    0}
 # Control whether we perform a compat. check against published ABI.
 %define with_kabichk   %{?_without_kabichk:   0} %{?!_without_kabichk:   1}
 # Temporarily disable kabi checks until RC.
@@ -423,6 +425,33 @@ Summary: The Linux kernel
 %define with_debuginfo 0
 %define with_vdso_install 0
 %define with_selftests 1
+%endif
+
+# if requested, only build tools
+%if %{with_toolsonly}
+%define with_tools 1
+%define with_up 0
+%define with_base 0
+%define with_debug 0
+%define with_realtime 0
+%define with_realtime_arm64_64k 0
+%define with_arm64_16k 0
+%define with_arm64_64k 0
+%define with_automotive 0
+%define with_cross_headers 0
+%define with_doc 0
+%define with_selftests 0
+%define with_headers 0
+%define with_efiuki 0
+%define with_zfcpdump 0
+%define with_vdso_install 0
+%define with_kabichk 0
+%define with_kabidwchk 0
+%define with_kabidw_base 0
+%define with_kernel_abi_stablelists 0
+%define with_selftests 0
+%define with_vdso_install 0
+%define with_configchecks 0
 %endif
 
 # RT and Automotive kernels are only built on x86_64 and aarch64
