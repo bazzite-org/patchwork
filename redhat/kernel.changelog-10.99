@@ -1,3 +1,12 @@
+* Fri May 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc5.9c69f8884904.46]
+- Enable the gs_usb CAN bus driver in RHEL (Radu Rendec)
+- Stop disabling some modules needed to run on Azure (Pierre-Yves Chibon)
+- redhat/configs: enable ACPI_DEBUG on non-debug kernels (Mark Langsdorf)
+- specfile:  add with_toolsonly variable to build only tools packages (Clark Williams)
+- redhat/configs: Enable CONFIG_TYPEC_TBT_ALTMODE in RHEL (Desnes Nunes) [RHEL-78931]
+- Linux v6.15.0-0.rc5.9c69f8884904
+Resolves: RHEL-78931
+
 * Thu May 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc5.d76bb1ebb558.45]
 - Linux v6.15.0-0.rc5.d76bb1ebb558
 Resolves: 
