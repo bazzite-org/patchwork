@@ -121,6 +121,7 @@ enum msi_wmi_platform_method {
 struct msi_wmi_platform_quirk {
 	bool shift_mode;	/* Shift mode is supported */
 	bool charge_threshold;	/* Charge threshold is supported */
+	bool dual_fans;		/* For devices with two hwmon fans */
 	int ppt_min;		/* Minimum PLx value */
 	int ppt_pl1_spl_max;	/* Maximum PL1/SPL value */
 	int ppt_pl2_sppt_max;	/* Maximum PL2/SPPT value */
@@ -220,6 +221,7 @@ static struct msi_wmi_platform_quirk quirk_default = {};
 static struct msi_wmi_platform_quirk quirk_gen1 = {
 	.shift_mode = true,
 	.charge_threshold = true,
+	.dual_fans = true,
 	.ppt_min = 8,
 	.ppt_pl1_spl_max = 43,
 	.ppt_pl2_sppt_max = 45
@@ -227,6 +229,7 @@ static struct msi_wmi_platform_quirk quirk_gen1 = {
 static struct msi_wmi_platform_quirk quirk_gen2 = {
 	.shift_mode = true,
 	.charge_threshold = true,
+	.dual_fans = true,
 	.ppt_min = 8,
 	.ppt_pl1_spl_max = 30,
 	.ppt_pl2_sppt_max = 37,
@@ -234,6 +237,7 @@ static struct msi_wmi_platform_quirk quirk_gen2 = {
 static struct msi_wmi_platform_quirk quirk_amd = {
 	.shift_mode = true,
 	.charge_threshold = true,
+	.dual_fans = true,
 	.ppt_min = 4,
 	.ppt_pl1_spl_max = 28,
 	.ppt_pl2_sppt_max = 45,
@@ -653,6 +657,23 @@ static const struct hwmon_channel_info * const msi_wmi_platform_info[] = {
 static const struct hwmon_chip_info msi_wmi_platform_chip_info = {
 	.ops = &msi_wmi_platform_ops,
 	.info = msi_wmi_platform_info,
+};
+
+static const struct hwmon_channel_info * const msi_wmi_platform_info_dual[] = {
+	HWMON_CHANNEL_INFO(fan,
+			   HWMON_F_INPUT,
+			   HWMON_F_INPUT
+			   ),
+	HWMON_CHANNEL_INFO(pwm,
+			   HWMON_PWM_ENABLE,
+			   HWMON_PWM_ENABLE
+			   ),
+	NULL
+};
+
+static const struct hwmon_chip_info msi_wmi_platform_chip_info_dual = {
+	.ops = &msi_wmi_platform_ops,
+	.info = msi_wmi_platform_info_dual,
 };
 
 static int msi_wmi_platform_profile_probe(void *drvdata, unsigned long *choices)
@@ -1256,9 +1277,11 @@ static int msi_wmi_platform_hwmon_init(struct msi_wmi_platform_data *data)
 {
 	struct device *hdev;
 
-	hdev = devm_hwmon_device_register_with_info(&data->wdev->dev, "msi_wmi_platform", data,
-						    &msi_wmi_platform_chip_info,
-						    msi_wmi_platform_hwmon_groups);
+	hdev = devm_hwmon_device_register_with_info(
+		&data->wdev->dev, "msi_wmi_platform", data,
+		data->quirks->dual_fans ? &msi_wmi_platform_chip_info_dual :
+					&msi_wmi_platform_chip_info,
+		msi_wmi_platform_hwmon_groups);
 
 	return PTR_ERR_OR_ZERO(hdev);
 }
