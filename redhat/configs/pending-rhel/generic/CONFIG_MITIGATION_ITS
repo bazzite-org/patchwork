@@ -1,0 +1,14 @@
+# Symbol: MITIGATION_ITS [=y]
+# Type  : bool
+# Defined at arch/x86/Kconfig:2714
+#   Prompt: Enable Indirect Target Selection mitigation
+#   Depends on: CPU_MITIGATIONS [=y] && CPU_SUP_INTEL [=y] && X86_64 [=y] && MITIGATION_RETPOLINE [=y] && MITIGATION_RETHUNK [=y]
+#   Location:
+#     -> Mitigations for CPU vulnerabilities (CPU_MITIGATIONS [=y])
+#       -> Enable Indirect Target Selection mitigation (MITIGATION_ITS [=y])
+# Selects: EXECMEM [=y]
+# 
+# 
+# 
+# Commit: 8754e67ad4ac (x86/its: Add support for ITS-safe indirect thunk)
+CONFIG_MITIGATION_ITS=y
