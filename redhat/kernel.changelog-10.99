@@ -1,3 +1,8 @@
+* Tue May 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.e9565e23cd89.50]
+- Set Fedora configs for 6.15 (Justin M. Forbes)
+- Linux v6.15.0-0.rc6.e9565e23cd89
+Resolves: 
+
 * Mon May 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.49]
 - Shorten the uname for git snapshots (Justin M. Forbes)
 - Linux v6.15.0-0.rc6
