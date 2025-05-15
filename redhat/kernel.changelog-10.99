@@ -1,3 +1,9 @@
+* Thu May 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.9f35e33144ae.52]
+- Move MITIGATION_ITS to the x86 directory (Justin M. Forbes)
+- Set MITIGATION_ITS for Fedora (Justin M. Forbes)
+- Fedora: arm: Updates for QCom devices (Souradeep Chowdhury)
+Resolves: 
+
 * Wed May 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.9f35e33144ae.51]
 - redhat/configs: Explicitly disable CONFIG_VIRTIO_MEM on powerpc in RHEL (Thomas Huth)
 - redhat/configs: Consolidate the CONFIG_AP_DEBUG config switch (Thomas Huth)
