@@ -6166,10 +6166,10 @@ static int usb_reset_and_verify_device(struct usb_device *udev)
 	bos = udev->bos;
 	udev->bos = NULL;
 
+	mutex_lock(hcd->address0_mutex);
+
 	if (udev->reset_resume)
 		hub_hc_release_resources(udev);
-
-	mutex_lock(hcd->address0_mutex);
 
 	for (i = 0; i < PORT_INIT_TRIES; ++i) {
 		if (hub_port_stop_enumerate(parent_hub, port1, i)) {
