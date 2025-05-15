@@ -1,3 +1,8 @@
+* Thu May 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.088d13246a46.53]
+- Flip GENKSYMS for RHEL (Justin M. Forbes)
+- Linux v6.15.0-0.rc6.088d13246a46
+Resolves: 
+
 * Thu May 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.9f35e33144ae.52]
 - Move MITIGATION_ITS to the x86 directory (Justin M. Forbes)
 - Set MITIGATION_ITS for Fedora (Justin M. Forbes)
