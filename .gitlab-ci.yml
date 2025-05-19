@@ -289,11 +289,16 @@ workflow:
     rpmbuild_with: automotive base
     package_name: kernel-automotive
     architectures: x86_64 aarch64
+    srpm_make_target: AUTOMOTIVE_BUILD=1 dist-srpm
 .eln_automotive_debug:
   variables:
     rpmbuild_with: automotive debug
     package_name: kernel-automotive
     architectures: x86_64 aarch64
+    srpm_make_target: AUTOMOTIVE_BUILD=1 dist-srpm
+.c10s_automotive_disttag:
+  variables:
+    disttag_override: '.el10iv'
 
 # Rawhide CI
 rawhide_merge_request:
@@ -568,11 +573,11 @@ c10s_realtime_64k_debug_merge_request:
 
 c10s_automotive_merge_request:
   extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .eln_automotive]
+            .eln_automotive, .c10s_automotive_disttag]
 
 c10s_automotive_debug_merge_request:
   extends: [.merge_request, .trigger_c10s, .no_tests, .merge_ark_latest, .manual_for_bot,
-            .eln_automotive_debug]
+            .eln_automotive_debug, .c10s_automotive_disttag]
 
 # c10s baselines
 c10s_baseline:
@@ -617,11 +622,11 @@ c10s_realtime_64k_debug_baseline:
 
 c10s_automotive_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
-            .eln_automotive]
+            .eln_automotive, .c10s_automotive_disttag]
 
 c10s_automotive_debug_baseline:
   extends: [.baseline, .trigger_c10s, .no_tests, .ark_latest_head,
-            .eln_automotive_debug]
+            .eln_automotive_debug, .c10s_automotive_disttag]
 
 # c10s CKI container image gating
 c10s_cki_gating:
