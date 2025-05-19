@@ -1,3 +1,8 @@
+* Mon May 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.57]
+- redhat/configs: remove CRC16 config files (Scott Weaver)
+- Linux v6.15.0-0.rc7
+Resolves: 
+
 * Sun May 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc6.5723cc3450bc.56]
 - Revert CONFIG_GENKSYMS in pending for x86 (Justin M. Forbes)
 - Linux v6.15.0-0.rc6.5723cc3450bc
