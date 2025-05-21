@@ -1,3 +1,14 @@
+* Wed May 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.4a95bc121ccd.58]
+- redhat/configs: automotive: enable MHI_BUS_EP (Eric Chanudet)
+- Fix PHYSICAL_ALIGN for x86 Fedora (Justin M. Forbes)
+- Switch ZSWAP_ZPOOL_DEFAULT to ZSMALLOC as ZBUD has been removed (Justin M. Forbes)
+- redhat: configs: rhel: Enable CX231XX drivers (Kate Hsuan)
+- configs: add redhat/configs/common/generic/CONFIG_OBJTOOL_WERROR (Ryan Sullivan) [RHEL-85301]
+- redhat: make ENABLE_WERROR also enable OBJTOOL_WERROR (Ryan Sullivan) [RHEL-85301]
+- redhat/configs: Enable CONFIG_X86_POSTED_MSI (Jerry Snitselaar)
+- Linux v6.15.0-0.rc7.4a95bc121ccd
+Resolves: RHEL-85301
+
 * Mon May 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.57]
 - redhat/configs: remove CRC16 config files (Scott Weaver)
 - Linux v6.15.0-0.rc7
