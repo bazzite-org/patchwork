@@ -1,3 +1,7 @@
+* Thu May 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.d608703fcdd9.59]
+- Linux v6.15.0-0.rc7.d608703fcdd9
+Resolves: 
+
 * Wed May 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.4a95bc121ccd.58]
 - redhat/configs: automotive: enable MHI_BUS_EP (Eric Chanudet)
 - Fix PHYSICAL_ALIGN for x86 Fedora (Justin M. Forbes)
