@@ -1,3 +1,8 @@
+* Mon May 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-60]
+- Consolidate configs to common for 6.15 (Justin M. Forbes)
+- Linux v6.15.0
+Resolves: 
+
 * Thu May 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-0.rc7.d608703fcdd9.59]
 - Linux v6.15.0-0.rc7.d608703fcdd9
 Resolves: 
