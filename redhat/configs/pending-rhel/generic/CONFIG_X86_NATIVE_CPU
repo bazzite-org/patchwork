@@ -1,0 +1,13 @@
+# Symbol: X86_NATIVE_CPU [=n]
+# Type  : bool
+# Defined at arch/x86/Kconfig.cpu:258
+#   Prompt: Build and optimize for local/native CPU
+#   Depends on: X86_64 [=y] && CC_HAS_MARCH_NATIVE [=y]
+#   Location:
+#     -> Processor type and features
+#       -> Build and optimize for local/native CPU (X86_NATIVE_CPU [=n])
+# 
+# 
+# 
+# Commit: ea1dcca1de12 (x86/kbuild/64: Add the CONFIG_X86_NATIVE_CPU option to locally optimize the kernel with '-march=native')
+# CONFIG_X86_NATIVE_CPU is not set
