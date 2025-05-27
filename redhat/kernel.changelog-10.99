@@ -1,3 +1,11 @@
+* Tue May 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-1]
+- Reset RHEL_RELEASE for the 6.16 cycle (Justin M. Forbes)
+- fedora: add 'fedora' SBAT suffix for UKI addons (Li Tian)
+- redhat: add downstream SBAT for UKI addons (Emanuele Giuseppe Esposito)
+- uki_addons: provide custom SBAT as input parameter (Emanuele Giuseppe Esposito)
+- uki_addons: remove completely sbat/sbat.conf (Emanuele Giuseppe Esposito)
+Resolves: 
+
 * Mon May 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.15.0-60]
 - Consolidate configs to common for 6.15 (Justin M. Forbes)
 - Linux v6.15.0
