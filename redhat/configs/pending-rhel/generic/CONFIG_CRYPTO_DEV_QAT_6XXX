@@ -1,0 +1,15 @@
+# Symbol: CRYPTO_DEV_QAT_6XXX [=n]
+# Type  : tristate
+# Defined at drivers/crypto/intel/qat/Kconfig:73
+#   Prompt: Support for Intel(R) QuickAssist Technology QAT_6XXX
+#   Depends on: CRYPTO [=y] && CRYPTO_HW [=y] && (X86 [=y] || COMPILE_TEST [=n]) && PCI [=y]
+#   Location:
+#     -> Cryptographic API (CRYPTO [=y])
+#       -> Hardware crypto devices (CRYPTO_HW [=y])
+#         -> Support for Intel(R) QuickAssist Technology QAT_6XXX (CRYPTO_DEV_QAT_6XXX [=n])
+# Selects: CRYPTO_DEV_QAT [=m]
+# 
+# 
+# 
+# Commit: 17fd7514ae68 (crypto: qat - add qat_6xxx driver)
+# CONFIG_CRYPTO_DEV_QAT_6XXX is not set
