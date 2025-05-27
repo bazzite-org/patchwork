@@ -1,0 +1,16 @@
+# Symbol: EROFS_FS_ZIP_ACCEL [=n]
+# Type  : bool
+# Defined at fs/erofs/Kconfig:147
+#   Prompt: EROFS hardware decompression support
+#   Depends on: MISC_FILESYSTEMS [=y] && EROFS_FS_ZIP [=y]
+#   Location:
+#     -> File systems
+#       -> Miscellaneous filesystems (MISC_FILESYSTEMS [=y])
+#         -> EROFS filesystem support (EROFS_FS [=m])
+#           -> EROFS Data Compression Support (EROFS_FS_ZIP [=y])
+#             -> EROFS hardware decompression support (EROFS_FS_ZIP_ACCEL [=n])
+# 
+# 
+# 
+# Commit: b4a29efc5146 (erofs: support DEFLATE decompression by using Intel QAT)
+# CONFIG_EROFS_FS_ZIP_ACCEL is not set
