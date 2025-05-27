@@ -1,0 +1,14 @@
+# Symbol: BCACHEFS_ASYNC_OBJECT_LISTS [=n]
+# Type  : bool
+# Defined at fs/bcachefs/Kconfig:110
+#   Prompt: Keep async objects on fast_lists for debugfs visibility
+#   Depends on: BLOCK [=y] && BCACHEFS_FS [=m] && DEBUG_FS [=y]
+#   Location:
+#     -> File systems
+#       -> bcachefs filesystem support (EXPERIMENTAL) (BCACHEFS_FS [=m])
+#         -> Keep async objects on fast_lists for debugfs visibility (BCACHEFS_ASYNC_OBJECT_LISTS [=n])
+# 
+# 
+# 
+# Commit: 0499a82b18b5 (bcachefs: Async object debugging)
+# CONFIG_BCACHEFS_ASYNC_OBJECT_LISTS is not set

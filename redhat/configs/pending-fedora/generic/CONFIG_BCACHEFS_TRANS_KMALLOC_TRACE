@@ -1,0 +1,14 @@
+# Symbol: BCACHEFS_TRANS_KMALLOC_TRACE [=n]
+# Type  : bool
+# Defined at fs/bcachefs/Kconfig:106
+#   Prompt: Trace bch2_trans_kmalloc() calls
+#   Depends on: BLOCK [=y] && BCACHEFS_FS [=m]
+#   Location:
+#     -> File systems
+#       -> bcachefs filesystem support (EXPERIMENTAL) (BCACHEFS_FS [=m])
+#         -> Trace bch2_trans_kmalloc() calls (BCACHEFS_TRANS_KMALLOC_TRACE [=n])
+# 
+# 
+# 
+# Commit: d02755b8c5f3 (bcachefs: trace bch2_trans_kmalloc())
+# CONFIG_BCACHEFS_TRANS_KMALLOC_TRACE is not set
