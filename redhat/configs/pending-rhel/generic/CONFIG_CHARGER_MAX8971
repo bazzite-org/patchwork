@@ -1,0 +1,15 @@
+# Symbol: CHARGER_MAX8971 [=n]
+# Type  : tristate
+# Defined at drivers/power/supply/Kconfig:620
+#   Prompt: Maxim MAX8971 battery charger driver
+#   Depends on: POWER_SUPPLY [=y] && I2C [=y] && (EXTCON [=n] || !EXTCON [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Power supply class support (POWER_SUPPLY [=y])
+#         -> Maxim MAX8971 battery charger driver (CHARGER_MAX8971 [=n])
+# Selects: REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 60cd40eee4f4 (power: supply: Add support for Maxim MAX8971 charger)
+# CONFIG_CHARGER_MAX8971 is not set

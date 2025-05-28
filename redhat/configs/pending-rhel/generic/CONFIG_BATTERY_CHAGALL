@@ -1,0 +1,14 @@
+# Symbol: BATTERY_CHAGALL [=n]
+# Type  : tristate
+# Defined at drivers/power/supply/Kconfig:110
+#   Prompt: Pegatron Chagall battery driver
+#   Depends on: POWER_SUPPLY [=y] && I2C [=y] && LEDS_CLASS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Power supply class support (POWER_SUPPLY [=y])
+#         -> Pegatron Chagall battery driver (BATTERY_CHAGALL [=n])
+# 
+# 
+# 
+# Commit: fbc1d056d3f3 (power: supply: Add driver for Pegatron Chagall battery)
+# CONFIG_BATTERY_CHAGALL is not set
