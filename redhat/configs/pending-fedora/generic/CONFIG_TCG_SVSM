@@ -1,0 +1,15 @@
+# Symbol: TCG_SVSM [=n]
+# Type  : tristate
+# Defined at drivers/char/tpm/Kconfig:237
+#   Prompt: SNP SVSM vTPM interface
+#   Depends on: TCG_TPM [=y] && AMD_MEM_ENCRYPT [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Character devices
+#         -> TPM Hardware Support (TCG_TPM [=y])
+#           -> SNP SVSM vTPM interface (TCG_SVSM [=n])
+# 
+# 
+# 
+# Commit: 93b7c6b3ce91 (tpm: Add SNP SVSM vTPM driver)
+# CONFIG_TCG_SVSM is not set
