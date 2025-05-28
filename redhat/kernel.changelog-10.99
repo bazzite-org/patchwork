@@ -1,3 +1,7 @@
+* Wed May 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.914873bc7df9.3]
+- Reset changelog for 6.16 cycle (Justin M. Forbes)
+Resolves: 
+
 * Tue May 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.914873bc7df9.2]
 - Fix up CRYPTO_SHA256 configs for mismatch (Justin M. Forbes)
 - Reset RHEL_RELEASE for the 6.16 cycle (Justin M. Forbes)
