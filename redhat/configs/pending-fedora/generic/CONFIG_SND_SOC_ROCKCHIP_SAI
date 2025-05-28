@@ -1,0 +1,18 @@
+# Symbol: SND_SOC_ROCKCHIP_SAI [=n]
+# Type  : tristate
+# Defined at sound/soc/rockchip/Kconfig:40
+#   Prompt: Rockchip SAI Controller Driver
+#   Depends on: SOUND [=m] && SND [=m] && SND_SOC [=m] && HAVE_CLK [=y] && SND_SOC_ROCKCHIP [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> ALSA for SoC audio support (SND_SOC [=m])
+#             -> ASoC support for Rockchip (SND_SOC_ROCKCHIP [=m])
+#               -> Rockchip SAI Controller Driver (SND_SOC_ROCKCHIP_SAI [=n])
+# Selects: SND_SOC_GENERIC_DMAENGINE_PCM [=y]
+# 
+# 
+# 
+# Commit: cc78d1eaabad (ASoC: rockchip: add Serial Audio Interface (SAI) driver)
+# CONFIG_SND_SOC_ROCKCHIP_SAI is not set

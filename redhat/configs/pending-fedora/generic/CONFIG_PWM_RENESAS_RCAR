@@ -1,0 +1,14 @@
+# Symbol: PWM_RENESAS_RCAR [=n]
+# Type  : tristate
+# Defined at drivers/pwm/Kconfig:537
+#   Prompt: Renesas R-Car PWM support
+#   Depends on: PWM [=y] && (ARCH_RENESAS [=y] || COMPILE_TEST [=n]) && HAS_IOMEM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Pulse-Width Modulation (PWM) Support (PWM [=y])
+#         -> Renesas R-Car PWM support (PWM_RENESAS_RCAR [=n])
+# 
+# 
+# 
+# Commit: 25ac4834cae9 (pwm: Tidyup PWM menu for Renesas)
+# CONFIG_PWM_RENESAS_RCAR is not set
