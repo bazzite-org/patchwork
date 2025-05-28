@@ -1,0 +1,18 @@
+# Symbol: SND_SOC_INTEL_AVS_CARDNAME_OBSOLETE [=n]
+# Type  : bool
+# Defined at sound/soc/intel/avs/boards/Kconfig:7
+#   Prompt: Use obsolete card names
+#   Depends on: SOUND [=m] && SND [=m] && SND_SOC [=m] && SND_SOC_INTEL_AVS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> ALSA for SoC audio support (SND_SOC [=m])
+#             -> Intel AVS driver (SND_SOC_INTEL_AVS [=m])
+#               -> Intel AVS Machine drivers
+#                 -> Use obsolete card names (SND_SOC_INTEL_AVS_CARDNAME_OBSOLETE [=n])
+# 
+# 
+# 
+# Commit: 1581d5c68208 (ASoC: Intel: avs: boards: Add Kconfig option for obsolete card names)
+# CONFIG_SND_SOC_INTEL_AVS_CARDNAME_OBSOLETE is not set
