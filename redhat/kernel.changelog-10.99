@@ -1,3 +1,8 @@
+* Wed May 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.feacb1774bd5.4]
+- Turn CROS_EC_PROTO to m for Fedora to avoid mismatch (Justin M. Forbes)
+- Linux v6.16.0-0.rc0.feacb1774bd5
+Resolves: 
+
 * Wed May 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.914873bc7df9.3]
 - Reset changelog for 6.16 cycle (Justin M. Forbes)
 Resolves: 
