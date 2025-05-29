@@ -1,3 +1,9 @@
+* Thu May 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.90b83efa6701.5]
+- Fix up mismatches for RHEL s390 zfpcdump (Justin M. Forbes)
+- More mismatch fixes for 6.16 (Justin M. Forbes)
+- Linux v6.16.0-0.rc0.90b83efa6701
+Resolves: 
+
 * Wed May 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.feacb1774bd5.4]
 - Turn CROS_EC_PROTO to m for Fedora to avoid mismatch (Justin M. Forbes)
 - Linux v6.16.0-0.rc0.feacb1774bd5
