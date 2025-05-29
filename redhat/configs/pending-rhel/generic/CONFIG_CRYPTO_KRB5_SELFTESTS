@@ -1,0 +1,14 @@
+# Symbol: CRYPTO_KRB5_SELFTESTS [=n]
+# Type  : bool
+# Defined at crypto/krb5/Kconfig:21
+#   Prompt: Kerberos 5 crypto selftests
+#   Depends on: CRYPTO [=y] && CRYPTO_KRB5 [=m]
+#   Location:
+#     -> Cryptographic API (CRYPTO [=y])
+#       -> Kerberos 5 crypto (CRYPTO_KRB5 [=m])
+#         -> Kerberos 5 crypto selftests (CRYPTO_KRB5_SELFTESTS [=n])
+# 
+# 
+# 
+# Commit: fc0cf10c04f4 (crypto/krb5: Implement crypto self-testing)
+# CONFIG_CRYPTO_KRB5_SELFTESTS is not set

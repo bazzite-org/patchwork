@@ -1,0 +1,17 @@
+# Symbol: VIDEO_VD55G1 [=n]
+# Type  : tristate
+# Defined at drivers/media/i2c/Kconfig:715
+#   Prompt: ST VD55G1 sensor support
+#   Depends on: MEDIA_SUPPORT [=m] && VIDEO_DEV [=m] && VIDEO_CAMERA_SENSOR [=y] && GPIOLIB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Multimedia support (MEDIA_SUPPORT [=m])
+#         -> Media ancillary drivers
+#           -> Camera sensor devices (VIDEO_CAMERA_SENSOR [=y])
+#             -> ST VD55G1 sensor support (VIDEO_VD55G1 [=n])
+# Selects: V4L2_CCI_I2C [=n]
+# 
+# 
+# 
+# Commit: e56616d7b23c (media: i2c: Add driver for ST VD55G1 camera sensor)
+# CONFIG_VIDEO_VD55G1 is not set

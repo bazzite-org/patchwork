@@ -1,0 +1,17 @@
+# Symbol: DRM_VKMS_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at drivers/gpu/drm/vkms/Kconfig:18
+#   Prompt: KUnit tests for VKMS
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_VKMS [=m] && KUNIT [=m]
+#   Visible if: HAS_IOMEM [=y] && DRM [=y] && DRM_VKMS [=m] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Virtual KMS (EXPERIMENTAL) (DRM_VKMS [=m])
+#             -> KUnit tests for VKMS (DRM_VKMS_KUNIT_TEST [=m])
+# 
+# 
+# 
+# Commit: 5b5a56d9a2d6 (drm/vkms: Add KUnit test scaffolding)
+CONFIG_DRM_VKMS_KUNIT_TEST=m
