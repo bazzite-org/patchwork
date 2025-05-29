@@ -1,0 +1,16 @@
+# Symbol: DRM_ST7735R [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/sitronix/Kconfig:35
+#   Prompt: DRM support for Sitronix ST7715R/ST7735R display panels
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> DRM support for Sitronix ST7715R/ST7735R display panels (DRM_ST7735R [=n])
+# Selects: DRM_CLIENT_SELECTION [=y] && DRM_KMS_HELPER [=y] && DRM_GEM_DMA_HELPER [=m] && DRM_MIPI_DBI [=m] && BACKLIGHT_CLASS_DEVICE [=y]
+# 
+# 
+# 
+# Commit: 9b8f32002cdd (drm/sitronix: move tiny Sitronix drivers to their own subdir)
+# CONFIG_DRM_ST7735R is not set

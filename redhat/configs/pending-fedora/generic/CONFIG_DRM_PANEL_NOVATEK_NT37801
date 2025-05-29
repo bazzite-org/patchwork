@@ -1,0 +1,16 @@
+# Symbol: DRM_PANEL_NOVATEK_NT37801 [=n]
+# Type  : tristate
+# Defined at drivers/gpu/drm/panel/Kconfig:520
+#   Prompt: Novatek NT37801/NT37810 AMOLED DSI panel
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && DRM_PANEL [=y] && OF [=y] && DRM_MIPI_DSI [=y] && BACKLIGHT_CLASS_DEVICE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> Display Panels
+#             -> Novatek NT37801/NT37810 AMOLED DSI panel (DRM_PANEL_NOVATEK_NT37801 [=n])
+# 
+# 
+# 
+# Commit: 4fca6849864d (drm/panel: Add Novatek NT37801 panel driver)
+# CONFIG_DRM_PANEL_NOVATEK_NT37801 is not set

@@ -1,0 +1,15 @@
+# Symbol: NET_SCH_BPF [=n]
+# Type  : bool
+# Defined at net/sched/Kconfig:406
+#   Prompt: BPF-based Qdisc
+#   Depends on: NET [=y] && NET_SCHED [=y] && BPF_SYSCALL [=y] && BPF_JIT [=y] && DEBUG_INFO_BTF [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> QoS and/or fair queueing (NET_SCHED [=y])
+#           -> BPF-based Qdisc (NET_SCH_BPF [=n])
+# 
+# 
+# 
+# Commit: c8240344956e (bpf: net_sched: Support implementation of Qdisc_ops in bpf)
+# CONFIG_NET_SCH_BPF is not set
