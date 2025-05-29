@@ -1,0 +1,16 @@
+# Symbol: RANDSTRUCT_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:2866
+#   Prompt: Test randstruct structure layout randomization at runtime
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> Test randstruct structure layout randomization at runtime (RANDSTRUCT_KUNIT_TEST [=m])
+# 
+# 
+# 
+# Commit: b370f7eacdcf (lib/tests: Add randstruct KUnit test)
+CONFIG_RANDSTRUCT_KUNIT_TEST=m
