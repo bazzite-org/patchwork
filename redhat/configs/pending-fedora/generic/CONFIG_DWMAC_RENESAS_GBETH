@@ -1,0 +1,18 @@
+# Symbol: DWMAC_RENESAS_GBETH [=m]
+# Type  : tristate
+# Defined at drivers/net/ethernet/stmicro/stmmac/Kconfig:135
+#   Prompt: Renesas RZ/V2H(P) GBETH support
+#   Depends on: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_STMICRO [=y] && STMMAC_ETH [=m] && STMMAC_PLATFORM [=m] && OF [=y] && (ARCH_RENESAS [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> Ethernet driver support (ETHERNET [=y])
+#           -> STMicroelectronics devices (NET_VENDOR_STMICRO [=y])
+#             -> STMicroelectronics Multi-Gigabit Ethernet driver (STMMAC_ETH [=m])
+#               -> STMMAC Platform bus support (STMMAC_PLATFORM [=m])
+#                 -> Renesas RZ/V2H(P) GBETH support (DWMAC_RENESAS_GBETH [=m])
+# 
+# 
+# 
+# Commit: 461f6529e594 (net: stmmac: Add DWMAC glue layer for Renesas GBETH)
+CONFIG_DWMAC_RENESAS_GBETH=m

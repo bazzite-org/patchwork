@@ -1,0 +1,17 @@
+# Symbol: VIDEO_C3_ISP [=n]
+# Type  : tristate
+# Defined at drivers/media/platform/amlogic/c3/isp/Kconfig:3
+#   Prompt: Amlogic C3 Image Signal Processor (ISP) driver
+#   Depends on: MEDIA_SUPPORT [=m] && MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] && (ARCH_MESON [=y] || COMPILE_TEST [=n]) && VIDEO_DEV [=m] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Multimedia support (MEDIA_SUPPORT [=m])
+#         -> Media drivers
+#           -> Media platform devices (MEDIA_PLATFORM_DRIVERS [=y])
+#             -> Amlogic C3 Image Signal Processor (ISP) driver (VIDEO_C3_ISP [=n])
+# Selects: MEDIA_CONTROLLER [=y] && V4L2_FWNODE [=m] && VIDEO_V4L2_SUBDEV_API [=y] && VIDEOBUF2_DMA_CONTIG [=m] && VIDEOBUF2_VMALLOC [=m]
+# 
+# 
+# 
+# Commit: fb2e135208f3 (media: platform: Add C3 ISP driver)
+# CONFIG_VIDEO_C3_ISP is not set

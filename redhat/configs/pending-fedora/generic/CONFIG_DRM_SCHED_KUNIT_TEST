@@ -1,0 +1,18 @@
+# Symbol: DRM_SCHED_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at drivers/gpu/drm/Kconfig.debug:103
+#   Prompt: KUnit tests for the DRM scheduler
+#   Depends on: HAS_IOMEM [=y] && DRM [=y] && KUNIT [=m]
+#   Visible if: HAS_IOMEM [=y] && DRM [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Graphics support
+#         -> Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (DRM [=y])
+#           -> DRM debugging options
+#             -> KUnit tests for the DRM scheduler (DRM_SCHED_KUNIT_TEST [=m])
+# Selects: DRM_SCHED [=m]
+# 
+# 
+# 
+# Commit: 5a99350794fe (drm/sched: Add scheduler unit testing infrastructure and some basic tests)
+CONFIG_DRM_SCHED_KUNIT_TEST=m

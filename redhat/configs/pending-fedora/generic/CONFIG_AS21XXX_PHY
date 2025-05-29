@@ -1,0 +1,15 @@
+# Symbol: AS21XXX_PHY [=n]
+# Type  : tristate
+# Defined at drivers/net/phy/Kconfig:79
+#   Prompt: Aeonsemi AS21xxx PHYs
+#   Depends on: NETDEVICES [=y] && PHYLIB [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Network device support (NETDEVICES [=y])
+#         -> PHY Device support and infrastructure (PHYLIB [=y])
+#           -> Aeonsemi AS21xxx PHYs (AS21XXX_PHY [=n])
+# 
+# 
+# 
+# Commit: 830877d89edc (net: phy: Add support for Aeonsemi AS21xxx PHYs)
+# CONFIG_AS21XXX_PHY is not set
