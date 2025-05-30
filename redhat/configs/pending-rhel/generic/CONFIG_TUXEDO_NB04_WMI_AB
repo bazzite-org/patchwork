@@ -1,0 +1,14 @@
+# Symbol: TUXEDO_NB04_WMI_AB [=n]
+# Type  : tristate
+# Defined at drivers/platform/x86/tuxedo/nb04/Kconfig:8
+#   Prompt: TUXEDO NB04 WMI AB Platform Driver
+#   Depends on: X86_PLATFORM_DEVICES [=y] && ACPI_WMI [=m] && HID [=y]
+#   Location:
+#     -> Device Drivers
+#       -> X86 Platform Specific Device Drivers (X86_PLATFORM_DEVICES [=y])
+#         -> TUXEDO NB04 WMI AB Platform Driver (TUXEDO_NB04_WMI_AB [=n])
+# 
+# 
+# 
+# Commit: cfd84b3f419b (platform/x86/tuxedo: Add virtual LampArray for TUXEDO NB04 devices)
+# CONFIG_TUXEDO_NB04_WMI_AB is not set
