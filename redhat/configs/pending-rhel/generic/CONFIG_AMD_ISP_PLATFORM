@@ -1,0 +1,14 @@
+# Symbol: AMD_ISP_PLATFORM [=n]
+# Type  : tristate
+# Defined at drivers/platform/x86/amd/Kconfig:36
+#   Prompt: AMD ISP4 platform driver
+#   Depends on: X86_PLATFORM_DEVICES [=y] && I2C [=y] && X86_64 [=y] && ACPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> X86 Platform Specific Device Drivers (X86_PLATFORM_DEVICES [=y])
+#         -> AMD ISP4 platform driver (AMD_ISP_PLATFORM [=n])
+# 
+# 
+# 
+# Commit: 90b85567e457 (platform/x86: Add AMD ISP platform config for OV05C10)
+# CONFIG_AMD_ISP_PLATFORM is not set

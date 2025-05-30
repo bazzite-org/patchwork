@@ -1,0 +1,15 @@
+# Symbol: SAMPLE_TSM_MR [=n]
+# Type  : tristate
+# Defined at samples/Kconfig:187
+#   Prompt: TSM measurement sample
+#   Depends on: SAMPLES [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> Sample kernel code (SAMPLES [=y])
+#         -> TSM measurement sample (SAMPLE_TSM_MR [=n])
+# Selects: TSM_MEASUREMENTS [=y] && VIRT_DRIVERS [=y]
+# 
+# 
+# 
+# Commit: f6953f1f9ec4 (tsm-mr: Add tsm-mr sample code)
+# CONFIG_SAMPLE_TSM_MR is not set

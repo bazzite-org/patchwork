@@ -1,0 +1,15 @@
+# Symbol: MLXREG_DPU [=n]
+# Type  : tristate
+# Defined at drivers/platform/mellanox/Kconfig:30
+#   Prompt: Nvidia Data Processor Unit platform driver support
+#   Depends on: MELLANOX_PLATFORM [=y] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Platform support for Mellanox hardware (MELLANOX_PLATFORM [=y])
+#         -> Nvidia Data Processor Unit platform driver support (MLXREG_DPU [=n])
+# Selects: REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: d00f779eb09a (platform/mellanox: mlxreg-dpu: Add initial support for Nvidia DPU)
+# CONFIG_MLXREG_DPU is not set

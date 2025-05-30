@@ -1,0 +1,13 @@
+# Symbol: AMPERE_ERRATUM_AC04_CPU_23 [=y]
+# Type  : bool
+# Defined at arch/arm64/Kconfig:467
+#   Prompt: AmpereOne: AC04_CPU_23:  Failure to synchronize writes to HCR_EL2 may corrupt address translations.
+#   Location:
+#     -> Kernel Features
+#       -> ARM errata workarounds via the alternatives framework
+#         -> AmpereOne: AC04_CPU_23:  Failure to synchronize writes to HCR_EL2 may corrupt address translations. (AMPERE_ERRATUM_AC04_CPU_23 [=y])
+# 
+# 
+# 
+# Commit: fed55f49fad1 (arm64: errata: Work around AmpereOne's erratum AC04_CPU_23)
+CONFIG_AMPERE_ERRATUM_AC04_CPU_23=y
