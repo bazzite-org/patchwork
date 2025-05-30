@@ -1,0 +1,14 @@
+# Symbol: DASHARO_ACPI [=n]
+# Type  : tristate
+# Defined at drivers/platform/x86/Kconfig:1093
+#   Prompt: Dasharo ACPI Platform Driver
+#   Depends on: X86_PLATFORM_DEVICES [=y] && ACPI [=y] && HWMON [=y]
+#   Location:
+#     -> Device Drivers
+#       -> X86 Platform Specific Device Drivers (X86_PLATFORM_DEVICES [=y])
+#         -> Dasharo ACPI Platform Driver (DASHARO_ACPI [=n])
+# 
+# 
+# 
+# Commit: 841bceb53214 (platform/x86: Introduce dasharo-acpi platform driver)
+# CONFIG_DASHARO_ACPI is not set
