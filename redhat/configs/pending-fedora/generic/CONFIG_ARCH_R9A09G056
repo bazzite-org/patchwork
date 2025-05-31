@@ -1,0 +1,16 @@
+# Symbol: ARCH_R9A09G056 [=y]
+# Type  : bool
+# Defined at drivers/soc/renesas/Kconfig:396
+#   Prompt: ARM64 Platform support for RZ/V2N
+#   Depends on: SOC_RENESAS [=y] && ARM64 [=y]
+#   Location:
+#     -> Device Drivers
+#       -> SOC (System On Chip) specific Drivers
+#         -> Renesas SoC driver support (SOC_RENESAS [=y])
+#           -> ARM64 Platform support for RZ/V2N (ARCH_R9A09G056 [=y])
+# Selects: SYS_R9A09G056 [=y]
+# 
+# 
+# 
+# Commit: 31d358e611b7 (soc: renesas: Add config option for RZ/V2N (R9A09G056) SoC)
+CONFIG_ARCH_R9A09G056=y

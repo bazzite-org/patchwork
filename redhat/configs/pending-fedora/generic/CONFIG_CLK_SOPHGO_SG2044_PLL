@@ -1,0 +1,15 @@
+# Symbol: CLK_SOPHGO_SG2044_PLL [=n]
+# Type  : tristate
+# Defined at drivers/clk/sophgo/Kconfig:50
+#   Prompt: Sophgo SG2044 PLL clock controller support
+#   Depends on: COMMON_CLK [=y] && (ARCH_SOPHGO [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Sophgo SG2044 PLL clock controller support (CLK_SOPHGO_SG2044_PLL [=n])
+# Selects: MFD_SYSCON [=y] && REGMAP_MMIO [=y]
+# 
+# 
+# 
+# Commit: ff5240793b04 (clk: sophgo: Add PLL clock controller support for SG2044 SoC)
+# CONFIG_CLK_SOPHGO_SG2044_PLL is not set

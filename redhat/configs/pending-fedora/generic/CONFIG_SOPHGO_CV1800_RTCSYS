@@ -1,0 +1,16 @@
+# Symbol: SOPHGO_CV1800_RTCSYS [=n]
+# Type  : tristate
+# Defined at drivers/soc/sophgo/Kconfig:9
+#   Prompt: Sophgo CV1800 RTC MFD
+#   Depends on: ARCH_SOPHGO [=y] || COMPILE_TEST [=n]
+#   Location:
+#     -> Device Drivers
+#       -> SOC (System On Chip) specific Drivers
+#         -> Sophgo SoC drivers
+#           -> Sophgo CV1800 RTC MFD (SOPHGO_CV1800_RTCSYS [=n])
+# Selects: MFD_CORE [=y]
+# 
+# 
+# 
+# Commit: c8754c7deab4 (soc: sophgo: cv1800: rtcsys: New driver (handling RTC only))
+# CONFIG_SOPHGO_CV1800_RTCSYS is not set
