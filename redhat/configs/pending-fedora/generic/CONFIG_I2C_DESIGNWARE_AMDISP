@@ -1,0 +1,17 @@
+# Symbol: I2C_DESIGNWARE_AMDISP [=n]
+# Type  : tristate
+# Defined at drivers/i2c/busses/Kconfig:595
+#   Prompt: Synopsys DesignWare Platform for AMDISP
+#   Depends on: I2C [=y] && HAS_IOMEM [=y] && (DRM_AMD_ISP [=y] || COMPILE_TEST [=n]) && I2C_DESIGNWARE_CORE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> I2C support
+#         -> I2C support (I2C [=y])
+#           -> I2C Hardware Bus support
+#             -> Synopsys DesignWare I2C adapter (I2C_DESIGNWARE_CORE [=y])
+#               -> Synopsys DesignWare Platform for AMDISP (I2C_DESIGNWARE_AMDISP [=n])
+# 
+# 
+# 
+# Commit: d6263c468a76 (i2c: amd-isp: Add ISP i2c-designware driver)
+# CONFIG_I2C_DESIGNWARE_AMDISP is not set

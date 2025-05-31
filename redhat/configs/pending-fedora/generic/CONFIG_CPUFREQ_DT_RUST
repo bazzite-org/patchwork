@@ -1,0 +1,16 @@
+# Symbol: CPUFREQ_DT_RUST [=n]
+# Type  : tristate
+# Defined at drivers/cpufreq/Kconfig:220
+#   Prompt: Rust based Generic DT based cpufreq driver
+#   Depends on: CPU_FREQ [=y] && HAVE_CLK [=y] && OF [=y] && RUST [=y]
+#   Location:
+#     -> CPU Power Management
+#       -> CPU Frequency scaling
+#         -> CPU Frequency scaling (CPU_FREQ [=y])
+#           -> Rust based Generic DT based cpufreq driver (CPUFREQ_DT_RUST [=n])
+# Selects: CPUFREQ_DT_PLATDEV [=y] && PM_OPP [=y]
+# 
+# 
+# 
+# Commit: 06149d8f2216 (cpufreq: Add Rust-based cpufreq-dt driver)
+# CONFIG_CPUFREQ_DT_RUST is not set

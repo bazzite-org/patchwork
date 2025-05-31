@@ -1,0 +1,17 @@
+# Symbol: IMX_SCMI_CPU_EXT [=y]
+# Type  : tristate
+# Defined at drivers/firmware/arm_scmi/vendors/imx/Kconfig:15
+#   Prompt: i.MX SCMI CPU EXTENSION
+#   Depends on: ARM_SCMI_PROTOCOL [=y] && (ARM_SCMI_PROTOCOL [=y] || COMPILE_TEST [=n] && OF [=y]) && IMX_SCMI_CPU_DRV [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Firmware Drivers
+#         -> ARM System Control and Management Interface Protocol
+#           -> ARM System Control and Management Interface (SCMI) Message Protocol (ARM_SCMI_PROTOCOL [=y])
+#             -> ARM SCMI NXP i.MX Vendor Protocols
+#               -> i.MX SCMI CPU EXTENSION (IMX_SCMI_CPU_EXT [=y])
+# 
+# 
+# 
+# Commit: e68c305bc2f3 (firmware: arm_scmi: imx: Add i.MX95 CPU Protocol)
+CONFIG_IMX_SCMI_CPU_EXT=y
