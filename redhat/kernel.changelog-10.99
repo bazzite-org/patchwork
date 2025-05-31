@@ -1,3 +1,8 @@
+* Sat May 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.4cb6c8af8591.7]
+- Fix up a mismatch for Fedora aarch64 (Justin M. Forbes)
+- Linux v6.16.0-0.rc0.4cb6c8af8591
+Resolves: 
+
 * Fri May 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.f66bc387efbe.6]
 - Linux v6.16.0-0.rc0.f66bc387efbe
 Resolves: 
