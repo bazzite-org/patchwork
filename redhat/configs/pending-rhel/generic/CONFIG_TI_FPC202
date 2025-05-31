@@ -1,0 +1,15 @@
+# Symbol: TI_FPC202 [=n]
+# Type  : tristate
+# Defined at drivers/misc/Kconfig:117
+#   Prompt: TI FPC202 Dual Port Controller
+#   Depends on: I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Misc devices
+#         -> TI FPC202 Dual Port Controller (TI_FPC202 [=n])
+# Selects: GPIOLIB [=y] && I2C_ATR [=n]
+# 
+# 
+# 
+# Commit: 1e5c9b1efa1c (misc: add FPC202 dual port controller driver)
+# CONFIG_TI_FPC202 is not set

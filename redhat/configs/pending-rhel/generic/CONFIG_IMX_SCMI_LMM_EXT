@@ -1,0 +1,17 @@
+# Symbol: IMX_SCMI_LMM_EXT [=y]
+# Type  : tristate
+# Defined at drivers/firmware/arm_scmi/vendors/imx/Kconfig:27
+#   Prompt: i.MX SCMI LMM EXTENSION
+#   Depends on: ARM_SCMI_PROTOCOL [=y] && (ARM_SCMI_PROTOCOL [=y] || COMPILE_TEST [=n] && OF [=y]) && IMX_SCMI_LMM_DRV [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Firmware Drivers
+#         -> ARM System Control and Management Interface Protocol
+#           -> ARM System Control and Management Interface (SCMI) Message Protocol (ARM_SCMI_PROTOCOL [=y])
+#             -> ARM SCMI NXP i.MX Vendor Protocols
+#               -> i.MX SCMI LMM EXTENSION (IMX_SCMI_LMM_EXT [=y])
+# 
+# 
+# 
+# Commit: 34180863e000 (firmware: arm_scmi: imx: Add i.MX95 LMM protocol)
+CONFIG_IMX_SCMI_LMM_EXT=y
