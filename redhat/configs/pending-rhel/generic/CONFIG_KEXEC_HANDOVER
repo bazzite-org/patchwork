@@ -1,0 +1,15 @@
+# Symbol: KEXEC_HANDOVER [=n]
+# Type  : bool
+# Defined at kernel/Kconfig.kexec:97
+#   Prompt: kexec handover
+#   Depends on: ARCH_SUPPORTS_KEXEC_HANDOVER [=y] && ARCH_SUPPORTS_KEXEC_FILE [=y]
+#   Location:
+#     -> General setup
+#       -> Kexec and crash features
+#         -> kexec handover (KEXEC_HANDOVER [=n])
+# Selects: MEMBLOCK_KHO_SCRATCH [=n] && KEXEC_FILE [=y] && DEBUG_FS [=y] && LIBFDT [=n] && CMA [=y]
+# 
+# 
+# 
+# Commit: 4e1d010e3bda (kexec: add config option for KHO)
+# CONFIG_KEXEC_HANDOVER is not set
