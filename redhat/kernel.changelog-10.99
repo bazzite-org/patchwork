@@ -1,3 +1,7 @@
+* Mon Jun 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.cd2e103d57e5.9]
+- Linux v6.16.0-0.rc0.cd2e103d57e5
+Resolves: 
+
 * Sun Jun 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.7d4e49a77d99.8]
 - Fix another mismatch for 6.16 (Justin M. Forbes)
 - Linux v6.16.0-0.rc0.7d4e49a77d99
