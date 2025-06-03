@@ -27,6 +27,7 @@
 #include <linux/io-64-nonatomic-hi-lo.h>
 #include <linux/sed-opal.h>
 #include <linux/pci-p2pdma.h>
+#include <linux/cpuidle_psd.h>
 
 #include "trace.h"
 #include "nvme.h"
@@ -975,6 +976,7 @@ static blk_status_t nvme_queue_rq(struct blk_mq_hw_ctx *hctx,
 	ret = nvme_prep_rq(dev, req);
 	if (unlikely(ret))
 		return ret;
+	prevent_sleep_demotion();
 	spin_lock(&nvmeq->sq_lock);
 	nvme_sq_copy_cmd(nvmeq, &iod->cmd);
 	nvme_write_sq_db(nvmeq, bd->last);
@@ -1020,6 +1022,7 @@ static void nvme_queue_rqs(struct rq_list *rqlist)
 	struct nvme_queue *nvmeq = NULL;
 	struct request *req;
 
+	prevent_sleep_demotion();
 	while ((req = rq_list_pop(rqlist))) {
 		if (nvmeq && nvmeq != req->mq_hctx->driver_data)
 			nvme_submit_cmds(nvmeq, &submit_list);
