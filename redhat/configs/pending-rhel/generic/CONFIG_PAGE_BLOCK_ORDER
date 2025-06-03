@@ -1,0 +1,13 @@
+# Symbol: PAGE_BLOCK_ORDER [=10]
+# Type  : integer
+# Range : [1 10]
+# Defined at mm/Kconfig:1008
+#   Prompt: Page Block Order
+#   Location:
+#     -> Memory Management options
+#       -> Page Block Order (PAGE_BLOCK_ORDER [=10])
+# 
+# 
+# 
+# Commit: e13e7922d034 (mm: add CONFIG_PAGE_BLOCK_ORDER to select page block order)
+CONFIG_PAGE_BLOCK_ORDER=10
