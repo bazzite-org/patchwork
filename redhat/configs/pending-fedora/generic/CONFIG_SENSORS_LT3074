@@ -1,0 +1,15 @@
+# Symbol: SENSORS_LT3074 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/pmbus/Kconfig:221
+#   Prompt: Analog Devices LT3074
+#   Depends on: HWMON [=y] && PMBUS [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> PMBus support (PMBUS [=m])
+#           -> Analog Devices LT3074 (SENSORS_LT3074 [=n])
+# 
+# 
+# 
+# Commit: c66c5bda7f24 (hwmon: (pmbus/lt3074) add support for lt3074)
+# CONFIG_SENSORS_LT3074 is not set
