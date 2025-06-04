@@ -1,3 +1,7 @@
+* Wed Jun 04 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.5abc7438f1e9.11]
+- Linux v6.16.0-0.rc0.5abc7438f1e9
+Resolves: 
+
 * Tue Jun 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.546b1c9e93c2.10]
 - Fix up powerpc mismatch (Justin M. Forbes)
 - Linux v6.16.0-0.rc0.546b1c9e93c2
