@@ -1,0 +1,15 @@
+# Symbol: MFD_SEC_I2C [=n]
+# Type  : tristate
+# Defined at drivers/mfd/Kconfig:1336
+#   Prompt: Samsung Electronics S2MPA/S2MPS1X/S2MPU/S5M series PMICs
+#   Depends on: HAS_IOMEM [=y] && I2C [=y]=y [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Multifunction device drivers
+#         -> Samsung Electronics S2MPA/S2MPS1X/S2MPU/S5M series PMICs (MFD_SEC_I2C [=n])
+# Selects: MFD_SEC_CORE [=n] && REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 680ef57915db (mfd: sec: Split into core and transport (i2c) drivers)
+# CONFIG_MFD_SEC_I2C is not set
