@@ -1,3 +1,10 @@
+* Thu Jun 05 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.ec7714e49479.12]
+- redhat/configs: Enable CONFIG_PCIE_TPH (Ivan Vecera)
+- spec: fix spec warning for /usr/include/ynl (Jan Stancek)
+- redhat/configs: Move CONFIG_PPC_FTRACE_OUT_OF_LINE_NUM_RESERVE to powerpc (Viktor Malik)
+- Linux v6.16.0-0.rc0.ec7714e49479
+Resolves: 
+
 * Wed Jun 04 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.5abc7438f1e9.11]
 - Linux v6.16.0-0.rc0.5abc7438f1e9
 Resolves: 
