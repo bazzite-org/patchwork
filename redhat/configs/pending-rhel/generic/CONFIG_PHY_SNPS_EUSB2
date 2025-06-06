@@ -1,0 +1,15 @@
+# Symbol: PHY_SNPS_EUSB2 [=n]
+# Type  : tristate
+# Defined at drivers/phy/Kconfig:46
+#   Prompt: SNPS eUSB2 PHY Driver
+#   Depends on: OF [=y] && (ARCH_EXYNOS [=n] || ARCH_QCOM [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> PHY Subsystem
+#         -> SNPS eUSB2 PHY Driver (PHY_SNPS_EUSB2 [=n])
+# Selects: GENERIC_PHY [=y]
+# 
+# 
+# 
+# Commit: 8d3b5f637546 (phy: move phy-qcom-snps-eusb2 out of its vendor sub-directory)
+# CONFIG_PHY_SNPS_EUSB2 is not set

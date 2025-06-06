@@ -1,0 +1,15 @@
+# Symbol: ARM_DMA350 [=n]
+# Type  : tristate
+# Defined at drivers/dma/Kconfig:96
+#   Prompt: Arm DMA-350 support
+#   Depends on: DMADEVICES [=y] && (ARM || ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> DMA Engine support (DMADEVICES [=y])
+#         -> Arm DMA-350 support (ARM_DMA350 [=n])
+# Selects: DMA_ENGINE [=y] && DMA_VIRTUAL_CHANNELS [=m]
+# 
+# 
+# 
+# Commit: 5d099706449d (dmaengine: Add Arm DMA-350 driver)
+# CONFIG_ARM_DMA350 is not set
