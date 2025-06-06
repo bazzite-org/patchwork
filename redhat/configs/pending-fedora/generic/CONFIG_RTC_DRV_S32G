@@ -1,0 +1,14 @@
+# Symbol: RTC_DRV_S32G [=n]
+# Type  : tristate
+# Defined at drivers/rtc/Kconfig:2111
+#   Prompt: RTC driver for S32G2/S32G3 SoCs
+#   Depends on: RTC_CLASS [=y] && (ARCH_S32 [=y] || COMPILE_TEST [=n]) && COMMON_CLK [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Real Time Clock (RTC_CLASS [=y])
+#         -> RTC driver for S32G2/S32G3 SoCs (RTC_DRV_S32G [=n])
+# 
+# 
+# 
+# Commit: 818b6709e1cb (rtc: s32g: add NXP S32G2/S32G3 SoC support)
+# CONFIG_RTC_DRV_S32G is not set
