@@ -1,0 +1,15 @@
+# Symbol: USB_XHCI_SIDEBAND [=n]
+# Type  : bool
+# Defined at drivers/usb/host/Kconfig:107
+#   Prompt: xHCI support for sideband
+#   Depends on: USB_SUPPORT [=y] && USB [=y] && USB_XHCI_HCD [=y]
+#   Location:
+#     -> Device Drivers
+#       -> USB support (USB_SUPPORT [=y])
+#         -> xHCI HCD (USB 3.0) support (USB_XHCI_HCD [=y])
+#           -> xHCI support for sideband (USB_XHCI_SIDEBAND [=n])
+# 
+# 
+# 
+# Commit: de66754e9f80 (xhci: sideband: add initial api to register a secondary interrupter entity)
+# CONFIG_USB_XHCI_SIDEBAND is not set
