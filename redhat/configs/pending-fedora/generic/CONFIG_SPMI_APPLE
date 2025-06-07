@@ -1,0 +1,14 @@
+# Symbol: SPMI_APPLE [=n]
+# Type  : tristate
+# Defined at drivers/spmi/Kconfig:14
+#   Prompt: Apple SoC SPMI Controller platform driver
+#   Depends on: SPMI [=y] && (ARCH_APPLE [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> SPMI support (SPMI [=y])
+#         -> Apple SoC SPMI Controller platform driver (SPMI_APPLE [=n])
+# 
+# 
+# 
+# Commit: 77ca75e80c71 (spmi: add a spmi driver for Apple SoC)
+# CONFIG_SPMI_APPLE is not set

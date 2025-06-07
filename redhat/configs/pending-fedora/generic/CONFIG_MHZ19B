@@ -1,0 +1,15 @@
+# Symbol: MHZ19B [=n]
+# Type  : tristate
+# Defined at drivers/iio/chemical/Kconfig:111
+#   Prompt: Winsen MHZ19B CO2 sensor
+#   Depends on: IIO [=m] && SERIAL_DEV_BUS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Chemical Sensors
+#           -> Winsen MHZ19B CO2 sensor (MHZ19B [=n])
+# 
+# 
+# 
+# Commit: 4572a70b3681 (iio: chemical: Add support for Winsen MHZ19B CO2 sensor)
+# CONFIG_MHZ19B is not set

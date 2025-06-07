@@ -1,0 +1,15 @@
+# Symbol: RISCV_ISA_VENDOR_EXT_SIFIVE [=y]
+# Type  : bool
+# Defined at arch/riscv/Kconfig.vendor:20
+#   Prompt: SiFive vendor extension support
+#   Location:
+#     -> Platform type
+#       -> Vendor extensions
+#         -> SiFive
+#           -> SiFive vendor extension support (RISCV_ISA_VENDOR_EXT_SIFIVE [=y])
+# Selects: RISCV_ISA_VENDOR_EXT [=y]
+# 
+# 
+# 
+# Commit: 2d147d77ae6e (riscv: Add SiFive xsfvqmaccdod and xsfvqmaccqoq vendor extensions)
+CONFIG_RISCV_ISA_VENDOR_EXT_SIFIVE=y
