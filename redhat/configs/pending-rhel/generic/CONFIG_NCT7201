@@ -1,0 +1,16 @@
+# Symbol: NCT7201 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:1107
+#   Prompt: Nuvoton Instruments NCT7201 and NCT7202 Power Monitor
+#   Depends on: IIO [=m] && I2C [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Nuvoton Instruments NCT7201 and NCT7202 Power Monitor (NCT7201 [=n])
+# Selects: REGMAP_I2C [=m]
+# 
+# 
+# 
+# Commit: 5aef97a9126e (iio: adc: add support for Nuvoton NCT7201)
+# CONFIG_NCT7201 is not set

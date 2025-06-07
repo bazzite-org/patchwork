@@ -1,0 +1,15 @@
+# Symbol: CORESIGHT_KUNIT_TESTS [=m]
+# Type  : tristate
+# Defined at drivers/hwtracing/coresight/Kconfig:263
+#   Prompt: Enable Coresight unit tests
+#   Depends on: CORESIGHT [=m] && KUNIT [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> arm64 Debugging
+#         -> CoreSight Tracing Support (CORESIGHT [=m])
+#           -> Enable Coresight unit tests (CORESIGHT_KUNIT_TESTS [=m])
+# 
+# 
+# 
+# Commit: b104a941a94e (coresight: Add a KUnit test for coresight_find_default_sink())
+CONFIG_CORESIGHT_KUNIT_TESTS=m
