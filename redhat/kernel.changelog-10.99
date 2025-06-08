@@ -1,3 +1,7 @@
+* Sun Jun 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.8630c59e9936.15]
+- Linux v6.16.0-0.rc0.8630c59e9936
+Resolves: 
+
 * Sat Jun 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.bdc7f8c5adad.14]
 - redhat/configs: disable RZ/V2N in automotive (Eric Chanudet)
 - redhat/configs: Move RZ/G3E config to automotive (Eric Chanudet)
