@@ -154,12 +154,14 @@ parsenewconfigs()
                         split($0, a, " ");
                         symbol="CONFIG_"a[2];
                         outfile=BASE "/fake_"symbol
+                        print "# ~~~" >> outfile;
                 }
                 /-----/ {
 			if (inpatch == 0) {
 				inpatch = 1;
 			}
                         else {
+                                print "# ~~~" >> outfile;
                                 if (symbol != "none") {
                                     print "# Commit: "commit >> outfile
                                     system("cat " outfile " " BASE "/" symbol " > " BASE "/tmpf");
