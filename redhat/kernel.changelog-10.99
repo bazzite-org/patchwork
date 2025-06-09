@@ -1,3 +1,10 @@
+* Mon Jun 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.16]
+- redhat: enable test_kmod, test_module and install kmod selftests (Herton R. Krzesinski)
+- package the newly added cpupower.service (Thorsten Leemhuis)
+- process_configs: always print errors (Thorsten Leemhuis)
+- Linux v6.16.0-0.rc1
+Resolves: 
+
 * Sun Jun 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc0.8630c59e9936.15]
 - Linux v6.16.0-0.rc0.8630c59e9936
 Resolves: 
