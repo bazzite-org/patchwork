@@ -1,3 +1,8 @@
+* Tue Jun 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.f09079bd04a9.17]
+- redhat/configs: add LED kernel configs (Rupinderjit Singh)
+- Linux v6.16.0-0.rc1.f09079bd04a9
+Resolves: 
+
 * Mon Jun 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.16]
 - redhat: enable test_kmod, test_module and install kmod selftests (Herton R. Krzesinski)
 - package the newly added cpupower.service (Thorsten Leemhuis)
