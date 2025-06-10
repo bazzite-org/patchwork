@@ -739,6 +739,8 @@ merge-rt-automotive:
   extends: .maintenance
   script:
     - redhat/scripts/ci/ark-merge-rt.sh
+  rules:
+    - when: never
 
 docs:
   image: quay.io/cki/cki-tools:production
