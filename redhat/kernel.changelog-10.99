@@ -1,3 +1,8 @@
+* Tue Jun 10 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.15.2-0]
+- Revert "drm/amd/display: more liberal vmin/vmax update for freesync" (Justin M. Forbes)
+- Linux v6.15.2
+Resolves: 
+
 * Wed Jun 04 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.15.1-0]
 - arm64: dts: rockchip: Drop assigned-clock* from cpu nodes on rk3588 (Diederik de Haas)
 - arm64: dts: rockchip: Improve LED config for NanoPi R5S (Diederik de Haas)
