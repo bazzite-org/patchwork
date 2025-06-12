@@ -1,15 +1,1 @@
-# Symbol: HYPERV_VTL_MODE [=n]
-# Type  : bool
-# Defined at drivers/hv/Kconfig:17
-#   Prompt: Enable Linux to boot in VTL context
-#   Depends on: (X86_64 || ARM64 [=y]) && HYPERV [=m] && SMP [=y]
-#   Location:
-#     -> Device Drivers
-#       -> Microsoft Hyper-V guest support
-#         -> Microsoft Hyper-V client drivers (HYPERV [=m])
-#           -> Enable Linux to boot in VTL context (HYPERV_VTL_MODE [=n])
-# 
-# 
-# 
-# Commit: d01b9a9f2d01 (Drivers: hv: Kconfig: Add HYPERV_VTL_MODE)
-# CONFIG_HYPERV_VTL_MODE is not set
+CONFIG_HYPERV_VTL_MODE=y
