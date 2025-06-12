@@ -1,3 +1,11 @@
+* Thu Jun 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.2c4a1f3fe03e.19]
+- redhat/kernel.spec: drop modules-extra-matched for noarch (Jan Stancek)
+- redhat/configs: fedora: set some qcom clk, icc, and pinctrl drivers to built in (Brian Masney)
+- fedora: disable SND_OSSEMUL (Peter Robinson)
+- fedora: disable OSS sound for real HW (Peter Robinson)
+- Linux v6.16.0-0.rc1.2c4a1f3fe03e
+Resolves: 
+
 * Wed Jun 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.aef17cb3d3c4.18]
 - gitlab-ci: disable merge-rt-automotive (Scott Weaver)
 - redhat/configs: automotive: enable j784s4evm DSP remoteproc configs (Jared Kangas) [RHEL-95436]
