@@ -1,3 +1,14 @@
+* Fri Jun 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.27605c8c0f69.20]
+- kernel.spec: fedora automotive build is not supported (Scott Weaver)
+- gitignore: kernel-automotive generated files (Scott Weaver)
+- gitlab-ci: use AUTOMOTIVE_BUILD with dist-srpm (Scott Weaver)
+- redhat/self-test: update for new automotive variables (Scott Weaver)
+- redhat/Makefile: introduce AUTOMOTIVE_BUILD (Scott Weaver)
+- kernel.spec: updates for automotive-only build (Scott Weaver)
+- fedora: Updates for the 6.16 merge window (Peter Robinson)
+- Linux v6.16.0-0.rc1.27605c8c0f69
+Resolves: 
+
 * Thu Jun 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.2c4a1f3fe03e.19]
 - redhat/kernel.spec: drop modules-extra-matched for noarch (Jan Stancek)
 - redhat/configs: fedora: set some qcom clk, icc, and pinctrl drivers to built in (Brian Masney)
