@@ -857,6 +857,16 @@ BuildRequires: binutils-%{_build_arch}-linux-gnu, gcc-%{_build_arch}-linux-gnu
 # debugedit-5.1-5 in F42 added support to override tools with target versions.
 %undefine _include_gdb_index
 %endif
+
+%if 0%{?rhel}%{?centos}
+%ifarch riscv64
+# Temporary workaround to avoid using find-debuginfo and gdb.minimal.
+# The current c10s version of gdb-minimal (14.2-4.el10) crashes when given some
+# riscv64 kernel modules (see RHEL-91586). Not building the gdb index avoids
+# breaking CI for now.
+%undefine _include_gdb_index
+%endif
+%endif
 %endif
 
 # These below are required to build man pages
