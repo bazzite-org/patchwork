@@ -1051,6 +1051,7 @@ struct ath12k_base {
 		size_t m3_len;
 
 		DECLARE_BITMAP(fw_features, ATH12K_FW_FEATURE_COUNT);
+		bool fw_features_valid;
 	} fw;
 
 	const struct hal_rx_ops *hal_rx_ops;
@@ -1087,6 +1088,9 @@ struct ath12k_base {
 	struct ath12k_wsi_info wsi_info;
 	enum ath12k_firmware_mode fw_mode;
 	struct ath12k_ftm_event_obj ftm_event_obj;
+
+	/* Denote whether MLO is possible within the device */
+	bool single_chip_mlo_support;
 
 	/* must be last */
 	u8 drv_priv[] __aligned(sizeof(void *));
