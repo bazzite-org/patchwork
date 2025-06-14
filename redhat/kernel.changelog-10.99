@@ -1,3 +1,8 @@
+* Sat Jun 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.4774cfe3543a.21]
+- redhat/configs: enable IWLMLD for rhel (Jose Ignacio Tornos Martinez)
+- Linux v6.16.0-0.rc1.4774cfe3543a
+Resolves: 
+
 * Fri Jun 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.27605c8c0f69.20]
 - kernel.spec: fedora automotive build is not supported (Scott Weaver)
 - gitignore: kernel-automotive generated files (Scott Weaver)
