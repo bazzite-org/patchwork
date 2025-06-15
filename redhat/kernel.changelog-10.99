@@ -1,3 +1,7 @@
+* Sun Jun 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.8c6bc74c7f89.22]
+- Linux v6.16.0-0.rc1.8c6bc74c7f89
+Resolves: 
+
 * Sat Jun 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc1.4774cfe3543a.21]
 - redhat/configs: enable IWLMLD for rhel (Jose Ignacio Tornos Martinez)
 - Linux v6.16.0-0.rc1.4774cfe3543a
