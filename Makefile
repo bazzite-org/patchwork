@@ -22,18 +22,6 @@ $(if $(filter __%, $(MAKECMDGOALS)), \
 PHONY := __all
 __all:
 
-# Set RHEL variables
-# Note that this ifdef'ery is required to handle when building with
-# the O= mechanism (relocate the object file results) due to upstream
-# commit 67d7c302 which broke our RHEL include file
-ifneq ($(realpath source),)
-include $(realpath source)/Makefile.rhelver
-else
-ifneq ($(realpath Makefile.rhelver),)
-include Makefile.rhelver
-endif
-endif
-
 # We are using a recursive build, so we need to do a little thinking
 # to get the ordering right.
 #
@@ -1328,6 +1316,8 @@ uapi-asm-generic:
 
 # Generate some files
 # ---------------------------------------------------------------------------
+
+include $(srctree)/Makefile.rhelver
 
 # KERNELRELEASE can change from a few different places, meaning version.h
 # needs to be updated, so this check is forced on all builds
