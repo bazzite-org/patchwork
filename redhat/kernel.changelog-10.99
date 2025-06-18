@@ -1,3 +1,8 @@
+* Wed Jun 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.52da431bf03b.25]
+- redhat/configs/common/generic: enable vgem module via CONFIG_DRM_VGEM (Alexander Kanavin)
+- Linux v6.16.0-0.rc2.52da431bf03b
+Resolves: 
+
 * Tue Jun 17 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.9afe652958c3.24]
 - Linux v6.16.0-0.rc2.9afe652958c3
 Resolves: 
