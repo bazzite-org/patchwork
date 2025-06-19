@@ -1,3 +1,10 @@
+* Thu Jun 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.fb4d33ab452e.26]
+- redhat/configs: enable CONFIG_TCG_SVSM (Stefano Garzarella)
+- redhat: enable CONFIG_CRASH_DM_CRYPT and CONFIG_KEXEC_HANDOVER for all (Coiby Xu)
+- Simplify include Makefile.rhelver (Don Zickus)
+- Linux v6.16.0-0.rc2.fb4d33ab452e
+Resolves: 
+
 * Wed Jun 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.52da431bf03b.25]
 - redhat/configs/common/generic: enable vgem module via CONFIG_DRM_VGEM (Alexander Kanavin)
 - Linux v6.16.0-0.rc2.52da431bf03b
