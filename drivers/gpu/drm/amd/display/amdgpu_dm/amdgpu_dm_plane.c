@@ -1268,7 +1268,8 @@ static int amdgpu_dm_plane_atomic_async_check(struct drm_plane *plane,
 	struct dm_crtc_state *dm_new_crtc_state;
 
 	if (flip) {
-		if (plane->type != DRM_PLANE_TYPE_OVERLAY)
+		if (plane->type != DRM_PLANE_TYPE_OVERLAY &&
+		    plane->type != DRM_PLANE_TYPE_CURSOR)
 			return -EINVAL;
 	} else if (plane->type != DRM_PLANE_TYPE_CURSOR) {
 		return -EINVAL;
