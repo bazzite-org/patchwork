@@ -154,6 +154,7 @@ static void s2idle_loop(void)
 	 * Wakeups during the noirq suspend of devices may be spurious, so try
 	 * to avoid them upfront.
 	 */
+	unsigned long curr, previous = 0;
 	for (;;) {
 		if (s2idle_ops && s2idle_ops->wake) {
 			if (s2idle_ops->wake())
@@ -165,7 +166,14 @@ static void s2idle_loop(void)
 		if (s2idle_ops && s2idle_ops->check)
 			s2idle_ops->check();
 
+		curr = jiffies;
+		if (previous && !time_after(curr, previous + msecs_to_jiffies(1000))) {
+			// Ensure we spin at least 1 second in the idle loop
+			msleep(1000 - jiffies_to_msecs(curr - previous));
+		}
+		
 		s2idle_enter();
+		previous = jiffies;
 	}
 
 	pm_pr_dbg("resume from suspend-to-idle\n");
