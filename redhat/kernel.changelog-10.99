@@ -1,3 +1,8 @@
+* Fri Jun 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.75f5f23f8787.27]
+- aarch64: Switch TI_SCI_CLK and TI_SCI_PM_DOMAINS symbols to built-in (Peter Robinson)
+- Linux v6.16.0-0.rc2.75f5f23f8787
+Resolves: 
+
 * Thu Jun 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.fb4d33ab452e.26]
 - redhat/configs: enable CONFIG_TCG_SVSM (Stefano Garzarella)
 - redhat: enable CONFIG_CRASH_DM_CRYPT and CONFIG_KEXEC_HANDOVER for all (Coiby Xu)
