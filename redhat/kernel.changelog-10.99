@@ -1,3 +1,7 @@
+* Sun Jun 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.739a6c93cc75.29]
+- Linux v6.16.0-0.rc2.739a6c93cc75
+Resolves: 
+
 * Sat Jun 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc2.3f75bfff44be.28]
 - Fedora configs for 6.16 (Justin M. Forbes)
 - Linux v6.16.0-0.rc2.3f75bfff44be
