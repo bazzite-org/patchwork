@@ -1,3 +1,8 @@
+* Tue Jun 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.78f4e737a53e.31]
+- redhat/configs: enable fwctl for RHEL (Michal Schmidt) [RHEL-96987]
+- Linux v6.16.0-0.rc3.78f4e737a53e
+Resolves: RHEL-96987
+
 * Mon Jun 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.30]
 - Linux v6.16.0-0.rc3
 Resolves: 
