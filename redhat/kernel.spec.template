@@ -3246,7 +3246,7 @@ pushd tools/testing/selftests
 %endif
 
 %{log_msg "main selftests compile"}
-%{make} %{?_smp_mflags} ARCH=$Arch V=1 TARGETS="bpf cgroup kmod mm net net/forwarding net/mptcp net/netfilter net/packetdrill tc-testing memfd drivers/net/bonding iommu cachestat pid_namespace rlimits timens pidfd" SKIP_TARGETS="" $force_targets INSTALL_PATH=%{buildroot}%{_libexecdir}/kselftests VMLINUX_H="${RPM_VMLINUX_H}" install
+%{make} %{?_smp_mflags} ARCH=$Arch V=1 TARGETS="bpf cgroup kmod mm net net/forwarding net/mptcp net/netfilter net/packetdrill tc-testing memfd drivers/net drivers/net/hw iommu cachestat pid_namespace rlimits timens pidfd" SKIP_TARGETS="" $force_targets INSTALL_PATH=%{buildroot}%{_libexecdir}/kselftests VMLINUX_H="${RPM_VMLINUX_H}" install
 
 %ifarch %{klptestarches}
 	# kernel livepatching selftest test_modules will build against
@@ -3569,11 +3569,23 @@ find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/cgroup/{} \;
 find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/cgroup/{} \;
 find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/cgroup/{} \;
 popd
+# install drivers/net selftests
+pushd tools/testing/selftests/drivers/net
+find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/drivers/net/{} \;
+find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/{} \;
+find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/{} \;
+popd
 # install drivers/net/mlxsw selftests
 pushd tools/testing/selftests/drivers/net/mlxsw
 find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/drivers/net/mlxsw/{} \;
 find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/mlxsw/{} \;
 find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/mlxsw/{} \;
+popd
+# install drivers/net/hw selftests
+pushd tools/testing/selftests/drivers/net/hw
+find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/drivers/net/hw/{} \;
+find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/hw/{} \;
+find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/drivers/net/hw/{} \;
 popd
 # install drivers/net/netdevsim selftests
 pushd tools/testing/selftests/drivers/net/netdevsim
