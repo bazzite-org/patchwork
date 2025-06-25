@@ -1,3 +1,8 @@
+* Wed Jun 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.7595b66ae9de.32]
+- redhat/configs: Move CONFIG_MITIGATION_ITS to common/generic/x86 (Waiman Long)
+- Linux v6.16.0-0.rc3.7595b66ae9de
+Resolves: 
+
 * Tue Jun 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.78f4e737a53e.31]
 - redhat/configs: enable fwctl for RHEL (Michal Schmidt) [RHEL-96987]
 - Linux v6.16.0-0.rc3.78f4e737a53e
