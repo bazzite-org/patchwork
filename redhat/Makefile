@@ -603,6 +603,10 @@ dist-configs-commit: dist-configs-prep
 	+@cd $(REDHAT)/configs; ./generate_all_configs.sh 1;\
 	./process_configs.sh -z "$(SPECRPMVERSION)" "$(FLAVOR)"
 
+dist-configs-commit-mismatches: dist-configs-prep
+	+@cd $(REDHAT)/configs; ./generate_all_configs.sh 1;\
+	./process_configs.sh -M "$(SPECRPMVERSION)" "$(FLAVOR)"
+
 dist-configs: ##configuration Create RHEL config files in redhat/config/.
 dist-configs: dist-configs-prep
 	+@cd $(REDHAT)/configs; ./generate_all_configs.sh 1;\
