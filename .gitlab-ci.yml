@@ -60,6 +60,9 @@ workflow:
   only-ark-latest-head: &only-ark-latest-head
     if: $CI_COMMIT_BRANCH != "ark-latest" || $CI_PIPELINE_SOURCE !~ /push|web/
     when: never
+  only-os-build-next-head: &only-os-build-next-head
+    if: $CI_COMMIT_BRANCH != "os-build-next" || $CI_PIPELINE_SOURCE !~ /push|web/
+    when: never
   only-ark-latest-head-mr: &only-ark-latest-head-mr
     if: ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "os-build") &&
         ($CI_COMMIT_BRANCH != "ark-latest" || $CI_PIPELINE_SOURCE !~ /push|web/)
@@ -172,6 +175,11 @@ workflow:
 .ark_latest_head:
   rules:
     - *only-ark-latest-head
+    - *on-success
+
+.os_build_next_head:
+  rules:
+    - *only-os-build-next-head
     - *on-success
 
 .cki_gating_head:
@@ -369,6 +377,10 @@ rawhide_clanglto_debug_baseline:
   extends: [.baseline, .trigger_rawhide, .reported_tests_clang, .ark_latest_head,
             .rawhide_clanglto_up_debug]
 
+rawhide_next_baseline:
+  extends: [.baseline, .trigger_rawhide, .reported_tests, .os_build_next_head,
+            .rawhide_up]
+
 # Rawhide CKI container image gating
 rawhide_cki_gating:
   extends: [.baseline, .trigger_rawhide, .no_tests, .cki_gating_head,
@@ -451,6 +463,10 @@ eln_baseline:
 eln_debug_baseline:
   extends: [.baseline, .trigger_eln, .reported_tests, .ark_latest_head,
             .eln_up_debug]
+
+eln_next_baseline:
+  extends: [.baseline, .trigger_eln, .reported_tests, .os_build_next_head,
+            .eln_up]
 
 # eln_clang_baseline:
 #   extends: [.baseline, .trigger_eln, .reported_tests_clang, .ark_latest_head,
@@ -697,6 +713,7 @@ c10s_automotive_debug_cki_gating:
     # set up and fetch all remotes and expected branches
     # needed by the merge-rt-automotive job which has been disabled
     # git remote add linux-rt-devel git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git
+    git remote add linux-next git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
     git remote add gitlab https://gitlab.com/cki-project/kernel-ark.git
     git remote set-url --push gitlab git@gitlab.com:cki-project/kernel-ark.git
     git fetch --all
@@ -751,6 +768,11 @@ merge-rt-automotive:
     - redhat/scripts/ci/ark-merge-rt.sh
   rules:
     - when: never
+
+merge-linux-next:
+  extends: .maintenance
+  script:
+    - redhat/scripts/ci/ark-linux-next.sh
 
 docs:
   image: quay.io/cki/cki-tools:production
