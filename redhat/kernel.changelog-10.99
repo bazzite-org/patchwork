@@ -1,3 +1,9 @@
+* Fri Jun 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.67a993863163.34]
+- redhat/kernel.spec.template: add drivers/net and drivers/net/hw selftest (Hangbin Liu)
+- uki: enable FIPS mode (Vitaly Kuznetsov)
+- Linux v6.16.0-0.rc3.67a993863163
+Resolves: 
+
 * Thu Jun 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc3.ee88bddf7f2f.33]
 - Linux v6.16.0-0.rc3.ee88bddf7f2f
 Resolves: 
