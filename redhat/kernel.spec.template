@@ -644,9 +644,6 @@ Summary: The Linux kernel
 %define cpupowerarchs i686 x86_64 ppc64le aarch64 riscv64
 %endif
 
-# Architectures we build kernel livepatching selftests on
-%define klptestarches x86_64 ppc64le s390x
-
 %if 0%{?use_vdso}
 %define _use_vdso 1
 %else
@@ -3262,13 +3259,6 @@ pushd tools/testing/selftests
 %{log_msg "main selftests compile"}
 %{make} %{?_smp_mflags} ARCH=$Arch V=1 TARGETS="bpf cgroup kmod mm net net/forwarding net/mptcp net/netfilter net/packetdrill tc-testing memfd drivers/net drivers/net/hw iommu cachestat pid_namespace rlimits timens pidfd" SKIP_TARGETS="" $force_targets INSTALL_PATH=%{buildroot}%{_libexecdir}/kselftests VMLINUX_H="${RPM_VMLINUX_H}" install
 
-%ifarch %{klptestarches}
-	# kernel livepatching selftest test_modules will build against
-	# /lib/modules/$(shell uname -r)/build tree unless KDIR is set
-	export KDIR=$(realpath $(pwd)/../../..)
-	%{make} %{?_smp_mflags} ARCH=$Arch V=1 TARGETS="livepatch" SKIP_TARGETS="" $force_targets INSTALL_PATH=%{buildroot}%{_libexecdir}/kselftests VMLINUX_H="${RPM_VMLINUX_H}" install || true
-%endif
-
 # 'make install' for bpf is broken and upstream refuses to fix it.
 # Install the needed files manually.
 %{log_msg "install selftests"}
@@ -3630,12 +3620,6 @@ pushd tools/testing/selftests/tc-testing
 find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/tc-testing/{} \;
 find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/tc-testing/{} \;
 find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/tc-testing/{} \;
-popd
-# install livepatch selftests
-pushd tools/testing/selftests/livepatch
-find -type d -exec install -d %{buildroot}%{_libexecdir}/kselftests/livepatch/{} \;
-find -type f -executable -exec install -D -m755 {} %{buildroot}%{_libexecdir}/kselftests/livepatch/{} \;
-find -type f ! -executable -exec install -D -m644 {} %{buildroot}%{_libexecdir}/kselftests/livepatch/{} \;
 popd
 # install net/netfilter selftests
 pushd tools/testing/selftests/net/netfilter
