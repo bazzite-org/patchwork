@@ -1,3 +1,11 @@
+* Wed Jul 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc4.66701750d556.39]
+- livepatch: no need to build kselftests with kernel (Radomir Vrbovsky)
+- redhat: Restore the status quo wrt memory onlining (Vitaly Kuznetsov) [2375049]
+- redhat/spec: Disable gdb index for riscv cross-compile (Jennifer Berringer)
+- gitlab-ci: Enable CI for riscv64 on centos/eln (Jennifer Berringer)
+- redhat: Enable RISC-V arch for centos/eln (Jennifer Berringer)
+Resolves: rhbz#2375049
+
 * Tue Jul 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc4.66701750d556.38]
 - Linux v6.16.0-0.rc4.66701750d556
 Resolves: 
