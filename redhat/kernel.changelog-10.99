@@ -1,3 +1,10 @@
+* Thu Jul 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc4.b4911fb0b060.40]
+- redhat/configs: CONFIG_WWAN enough as a module (Jose Ignacio Tornos Martinez)
+- redhat/configs: Enable CONFIG_NET_SCH_BPF on RHEL (Viktor Malik)
+- config: new config in drivers/phy (Izabela Bakollari)
+- Linux v6.16.0-0.rc4.b4911fb0b060
+Resolves: 
+
 * Wed Jul 02 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc4.66701750d556.39]
 - livepatch: no need to build kselftests with kernel (Radomir Vrbovsky)
 - redhat: Restore the status quo wrt memory onlining (Vitaly Kuznetsov) [2375049]
