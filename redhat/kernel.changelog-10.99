@@ -1,3 +1,8 @@
+* Sun Jul 06 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.15.5-0]
+- io_uring: gate REQ_F_ISREG on !S_ANON_INODE as well (Jens Axboe)
+- Linux v6.15.5
+Resolves: 
+
 * Fri Jun 27 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.15.4-0]
 - redhat: Restore the status quo wrt memory onlining (Vitaly Kuznetsov) [2375049]
 - Linux v6.15.4
