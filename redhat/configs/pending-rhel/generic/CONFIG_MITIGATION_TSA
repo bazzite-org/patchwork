@@ -1,0 +1,15 @@
+# ~~~
+# Symbol: MITIGATION_TSA [=y]
+# Type  : bool
+# Defined at arch/x86/Kconfig:2698
+#   Prompt: Mitigate Transient Scheduler Attacks
+#   Depends on: CPU_MITIGATIONS [=y] && CPU_SUP_AMD [=y]
+#   Location:
+#     -> Mitigations for CPU vulnerabilities (CPU_MITIGATIONS [=y])
+#       -> Mitigate Transient Scheduler Attacks (MITIGATION_TSA [=y])
+# 
+# 
+# 
+# ~~~
+# Commit: d8010d4ba43e (x86/bugs: Add a Transient Scheduler Attacks mitigation)
+CONFIG_MITIGATION_TSA=y
