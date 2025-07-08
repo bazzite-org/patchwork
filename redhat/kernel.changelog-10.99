@@ -1,3 +1,8 @@
+* Tue Jul 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc5.d006330be3f7.45]
+- Turn on TSA Mitigation for Fedora (Justin M. Forbes)
+- Linux v6.16.0-0.rc5.d006330be3f7
+Resolves: 
+
 * Mon Jul 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc5.44]
 - Linux v6.16.0-0.rc5
 Resolves: 
