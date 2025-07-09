@@ -1,0 +1,8 @@
+# ARK git merge driver dependencies
+# Install with: pip install -r requirements.txt
+
+# Anthropic AI API client
+anthropic>=0.59.0
+
+# Google Gemini AI API client
+google-generativeai>=0.7.0
