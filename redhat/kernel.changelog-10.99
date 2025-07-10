@@ -1,3 +1,9 @@
+* Thu Jul 10 2025 Augusto Caringi <acaringi@redhat.com> [6.15.6-0]
+- Turn on MITIGATION_TSA for RHEL configs (Augusto Caringi)
+- Turn on TSA Mitigation for Fedora (Justin M. Forbes)
+- Linux v6.15.6
+Resolves: 
+
 * Sun Jul 06 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.15.5-0]
 - io_uring: gate REQ_F_ISREG on !S_ANON_INODE as well (Jens Axboe)
 - Linux v6.15.5
