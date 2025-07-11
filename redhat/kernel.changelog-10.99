@@ -1,3 +1,9 @@
+* Fri Jul 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc5.bc9ff192a6c9.48]
+- kernel.spec: honor packaging flags (Scott Weaver)
+- Fix FIPS mode for Fedora (Justin M. Forbes)
+- Linux v6.16.0-0.rc5.bc9ff192a6c9
+Resolves: 
+
 * Thu Jul 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc5.8c2e52ebbe88.47]
 - Linux v6.16.0-0.rc5.8c2e52ebbe88
 Resolves: 
