@@ -1,3 +1,16 @@
+* Mon Jul 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.51]
+- kernel.spec: use %%{name} in partner/internal modules (Scott Weaver)
+- kernel.spec: introduce with_automotive_build (Scott Weaver)
+- kernel.spec: fix kernel-automotive packaging (Scott Weaver)
+- kernel.spec: add a few macro option comments (Scott Weaver)
+- kernel.spec: add conditional to include rhel trusted certificates (Eric Chanudet)
+- kernel.spec: Always BuildRequire openssl-devel (Eric Chanudet)
+- kernel.spec: automotive: disable kernel signature by default (Eric Chanudet)
+- redhat/configs: automotive: enable extra system cert (Eric Chanudet)
+- redhat/configs: automotive: Disable module signature with modules_install (Eric Chanudet)
+- Linux v6.16.0-0.rc6
+Resolves: 
+
 * Sun Jul 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc5.3f31a806a62e.50]
 - Linux v6.16.0-0.rc5.3f31a806a62e
 Resolves: 
