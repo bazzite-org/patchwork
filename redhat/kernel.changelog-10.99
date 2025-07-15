@@ -1,3 +1,7 @@
+* Tue Jul 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.155a3c003e55.52]
+- Linux v6.16.0-0.rc6.155a3c003e55
+Resolves: 
+
 * Mon Jul 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.51]
 - kernel.spec: use %%{name} in partner/internal modules (Scott Weaver)
 - kernel.spec: introduce with_automotive_build (Scott Weaver)
