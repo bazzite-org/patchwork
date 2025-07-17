@@ -983,7 +983,7 @@ static int steam_register(struct steam_device *steam)
 	}
 
 	spin_lock_irqsave(&steam->lock, flags);
-	client_opened = steam->client_opened;
+	client_opened = 0;
 	spin_unlock_irqrestore(&steam->lock, flags);
 
 	if (!client_opened) {
@@ -1079,7 +1079,7 @@ static void steam_work_unregister_cb(struct work_struct *work)
 	bool opened;
 
 	spin_lock_irqsave(&steam->lock, flags);
-	opened = steam->client_opened;
+	opened = 0;
 	connected = steam->connected;
 	spin_unlock_irqrestore(&steam->lock, flags);
 
@@ -1770,8 +1770,6 @@ static int steam_raw_event(struct hid_device *hdev,
 
 	switch (data[2]) {
 	case ID_CONTROLLER_STATE:
-		if (steam->client_opened)
-			return 0;
 		rcu_read_lock();
 		input = rcu_dereference(steam->input);
 		if (likely(input))
@@ -1779,8 +1777,6 @@ static int steam_raw_event(struct hid_device *hdev,
 		rcu_read_unlock();
 		break;
 	case ID_CONTROLLER_DECK_STATE:
-		if (steam->client_opened)
-			return 0;
 		rcu_read_lock();
 		input = rcu_dereference(steam->input);
 		if (likely(input))
