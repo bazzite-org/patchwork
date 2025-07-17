@@ -986,11 +986,11 @@ static int steam_register(struct steam_device *steam)
 	client_opened = steam->client_opened;
 	spin_unlock_irqrestore(&steam->lock, flags);
 
+	ret = steam_input_register(steam);
+	if (ret != 0)
+		goto steam_register_input_fail;
 	if (!client_opened) {
 		steam_set_lizard_mode(steam, lizard_mode);
-		ret = steam_input_register(steam);
-		if (ret != 0)
-			goto steam_register_input_fail;
 		ret = steam_sensors_register(steam);
 		if (ret != 0)
 			goto steam_register_sensors_fail;
@@ -1084,12 +1084,11 @@ static void steam_work_unregister_cb(struct work_struct *work)
 	spin_unlock_irqrestore(&steam->lock, flags);
 
 	if (connected) {
+		steam_input_register(steam);
 		if (opened) {
 			steam_sensors_unregister(steam);
-			steam_input_unregister(steam);
 		} else {
 			steam_set_lizard_mode(steam, lizard_mode);
-			steam_input_register(steam);
 			steam_sensors_register(steam);
 		}
 	}
@@ -1618,9 +1617,6 @@ static void steam_do_deck_input_event(struct steam_device *steam,
 		schedule_delayed_work(&steam->mode_switch, 45 * HZ / 100);
 	}
 
-	if (!steam->gamepad_mode && lizard_mode)
-		return;
-
 	lpad_touched = b10 & BIT(3);
 	rpad_touched = b10 & BIT(4);
 
@@ -1770,8 +1766,6 @@ static int steam_raw_event(struct hid_device *hdev,
 
 	switch (data[2]) {
 	case ID_CONTROLLER_STATE:
-		if (steam->client_opened)
-			return 0;
 		rcu_read_lock();
 		input = rcu_dereference(steam->input);
 		if (likely(input))
@@ -1779,14 +1773,12 @@ static int steam_raw_event(struct hid_device *hdev,
 		rcu_read_unlock();
 		break;
 	case ID_CONTROLLER_DECK_STATE:
-		if (steam->client_opened)
-			return 0;
 		rcu_read_lock();
 		input = rcu_dereference(steam->input);
 		if (likely(input))
 			steam_do_deck_input_event(steam, input, data);
 		sensors = rcu_dereference(steam->sensors);
-		if (likely(sensors))
+		if (!steam->client_opened && likely(sensors))
 			steam_do_deck_sensors_event(steam, sensors, data);
 		rcu_read_unlock();
 		break;
