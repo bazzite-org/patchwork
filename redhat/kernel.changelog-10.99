@@ -1,3 +1,10 @@
+* Fri Jul 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.6832a9317eee.54]
+- kernel.spec: always provide kernel-devel-uname-r (Scott Weaver)
+- kernel.spec: always provide kernel (Scott Weaver)
+- kernel.spec: dynamically set provides/requires name (Scott Weaver)
+- Linux v6.16.0-0.rc6.6832a9317eee
+Resolves: 
+
 * Thu Jul 17 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.e2291551827f.53]
 - Linux v6.16.0-0.rc6.e2291551827f
 Resolves: 
