@@ -1,3 +1,8 @@
+* Sat Jul 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.4871b7cb27f4.55]
+- arm64: enable SND_HDA_ACPI as a module (Marcin Juszkiewicz)
+- Linux v6.16.0-0.rc6.4871b7cb27f4
+Resolves: 
+
 * Fri Jul 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.6832a9317eee.54]
 - kernel.spec: always provide kernel-devel-uname-r (Scott Weaver)
 - kernel.spec: always provide kernel (Scott Weaver)
