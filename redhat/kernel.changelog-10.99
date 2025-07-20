@@ -1,3 +1,7 @@
+* Sun Jul 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.f4a40a4282f4.56]
+- Linux v6.16.0-0.rc6.f4a40a4282f4
+Resolves: 
+
 * Sat Jul 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc6.4871b7cb27f4.55]
 - arm64: enable SND_HDA_ACPI as a module (Marcin Juszkiewicz)
 - Linux v6.16.0-0.rc6.4871b7cb27f4
