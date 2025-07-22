@@ -1,3 +1,12 @@
+* Tue Jul 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.58]
+- rhel/aarch64: enable CONFIG_TCG_ARM_CRB_FFA as a module (Marcin Juszkiewicz)
+- redhat/configs: Move CONFIG_MITIGATION_TSA under common/generic/x86 (Waiman Long)
+- Set CONFIG_TEST_VMALLOC to off for s390 zfcpdump (Justin M. Forbes)
+- Revert "redhat/configs: automotive: Turn off ACPI Processor package for aarch64" (Enric Balletbo i Serra)
+- redhat/configs: automotive: Disable CONFIG_NUMA config (Dorinda Bassey)
+- Consolidate configs to common for 6.16 (Justin M. Forbes)
+Resolves: 
+
 * Mon Jul 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.57]
 - Linux v6.16.0-0.rc7
 Resolves: 
