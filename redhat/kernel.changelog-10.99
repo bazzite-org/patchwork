@@ -1,3 +1,7 @@
+* Thu Jul 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.25fae0b93d1d.60]
+- Linux v6.16.0-0.rc7.25fae0b93d1d
+Resolves: 
+
 * Wed Jul 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.59]
 - fedora: minor cleanups (Peter Robinson)
 - fedora: aarch64: enable a couple of brcmstb reset drivers (Peter Robinson)
