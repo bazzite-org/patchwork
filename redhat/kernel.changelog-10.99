@@ -1,3 +1,15 @@
+* Sat Jul 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.5f33ebd2018c.62]
+- redhat/spec: package full bpftool in selftests (Gregory Bell)
+- selftests/bpf: Remove ksyms_weak_lskel test (Artem Savkov)
+- redhat/spec: Add libxml2-devel dependency for selftests build (Viktor Malik)
+- redhat/spec: Bypass check-rpaths for kselftests/bpf/urandom_read (Viktor Malik)
+- redhat/spec: Do not use source fortification for C++ selftest binaries (Viktor Malik)
+- redhat/spec: Do not use source fortification for selftests (Viktor Malik)
+- redhat/spec: Fix BPF selftests build with PIE (Viktor Malik)
+- redhat/spec: Add EXTRA_CXXFLAGS to bpf samples and selftests make (Artem Savkov)
+- Linux v6.16.0-0.rc7.5f33ebd2018c
+Resolves: 
+
 * Fri Jul 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.2942242dde89.61]
 - Linux v6.16.0-0.rc7.2942242dde89
 Resolves: 
