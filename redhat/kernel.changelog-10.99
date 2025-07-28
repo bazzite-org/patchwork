@@ -1,3 +1,7 @@
+* Mon Jul 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-64]
+- Linux v6.16.0
+Resolves: 
+
 * Sun Jul 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-0.rc7.ec2df4364666.63]
 - Linux v6.16.0-0.rc7.ec2df4364666
 Resolves: 
