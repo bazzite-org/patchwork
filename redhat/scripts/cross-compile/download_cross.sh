@@ -26,7 +26,7 @@ fi
 
 # if we're not root, all we can do now is see what's installed
 if [ "$(whoami)" != "root" ]; then
-	echo "Checking for RHEL/Centos Stream cross compile packages.  If this fails, run \"make dist-cross-download\" as root."
+	echo "Checking for RHEL/Centos Stream cross compile packages.  If this fails, run \"make dist-cross-setup\" as root."
 	if rpm -q "$@" >& /dev/null; then
 		echo "Compilers found."
 		exit 0
