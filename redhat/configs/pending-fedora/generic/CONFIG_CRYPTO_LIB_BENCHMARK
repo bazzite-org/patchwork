@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: CRYPTO_LIB_BENCHMARK [=n]
+# Type  : bool
+# Defined at lib/crypto/tests/Kconfig:49
+#   Prompt: Include benchmarks in KUnit tests for cryptographic functions
+#   Depends on: CRYPTO_LIB_BENCHMARK_VISIBLE [=y]
+#   Location:
+#     -> Library routines
+#       -> Crypto library routines
+#         -> Include benchmarks in KUnit tests for cryptographic functions (CRYPTO_LIB_BENCHMARK [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 4dcf6caddaa0 (lib/crypto: tests: Add KUnit tests for SHA-224 and SHA-256)
+# CONFIG_CRYPTO_LIB_BENCHMARK is not set

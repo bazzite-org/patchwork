@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: SND_HDA_CODEC_HDMI_NVIDIA_MCP [=n]
+# Type  : tristate
+# Defined at sound/hda/codecs/hdmi/Kconfig:56
+#   Prompt: Legacy Nvidia HDMI/DisplayPort HD-audio codec support
+#   Depends on: SOUND [=m] && SND [=m] && SND_HDA [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> HD-Audio
+#             -> Legacy Nvidia HDMI/DisplayPort HD-audio codec support (SND_HDA_CODEC_HDMI_NVIDIA_MCP [=n])
+# Selects: SND_HDA_CODEC_HDMI_SIMPLE [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 73cd0490819d (ALSA: hda/hdmi: Split vendor codec drivers)
+# CONFIG_SND_HDA_CODEC_HDMI_NVIDIA_MCP is not set

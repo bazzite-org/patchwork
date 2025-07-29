@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: ACPI_WMI_LEGACY_DEVICE_NAMES [=n]
+# Type  : bool
+# Defined at drivers/platform/x86/Kconfig:40
+#   Prompt: Use legacy WMI device naming scheme
+#   Depends on: X86_PLATFORM_DEVICES [=y] && ACPI_WMI [=m]
+#   Location:
+#     -> Device Drivers
+#       -> X86 Platform Specific Device Drivers (X86_PLATFORM_DEVICES [=y])
+#         -> WMI (ACPI_WMI [=m])
+#           -> Use legacy WMI device naming scheme (ACPI_WMI_LEGACY_DEVICE_NAMES [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 73f0f2b52c5e (platform/x86: wmi: Fix WMI device naming issue)
+# CONFIG_ACPI_WMI_LEGACY_DEVICE_NAMES is not set

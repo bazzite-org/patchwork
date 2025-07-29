@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: SND_HDA_CODEC_CM9825 [=n]
+# Type  : tristate
+# Defined at sound/hda/codecs/Kconfig:102
+#   Prompt: Build C-Media CM9825 HD-audio codec support
+#   Depends on: SOUND [=m] && SND [=m] && SND_HDA [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> HD-Audio
+#             -> Build C-Media CM9825 HD-audio codec support (SND_HDA_CODEC_CM9825 [=n])
+# Selects: SND_HDA_GENERIC [=m]
+# 
+# 
+# 
+# ~~~
+# Commit: 0f1e8306dcbe (ALSA: hda/cmedia: Rewrite to new probe method)
+# CONFIG_SND_HDA_CODEC_CM9825 is not set

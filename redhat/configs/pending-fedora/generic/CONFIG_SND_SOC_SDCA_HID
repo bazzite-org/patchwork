@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: SND_SOC_SDCA_HID [=y]
+# Type  : bool
+# Defined at sound/soc/sdca/Kconfig:11
+#   Prompt: SDCA HID support
+#   Depends on: SOUND [=m] && SND [=m] && SND_SOC [=m] && SND_SOC_SDCA [=m] && (HID [=y]=y [=y] || HID [=y]=SND_SOC_SDCA [=m])
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> ALSA for SoC audio support (SND_SOC [=m])
+#             -> SoundWire (SDCA)
+#               -> SDCA HID support (SND_SOC_SDCA_HID [=y])
+# 
+# 
+# 
+# ~~~
+# Commit: ac558015dfd8 (ASoC: SDCA: add a HID device for HIDE entity)
+CONFIG_SND_SOC_SDCA_HID=y

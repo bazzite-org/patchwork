@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: POWER_SEQUENCING_TH1520_GPU [=n]
+# Type  : tristate
+# Defined at drivers/power/sequencing/Kconfig:30
+#   Prompt: T-HEAD TH1520 GPU power sequencing driver
+#   Depends on: POWER_SEQUENCING [=m] && (ARCH_THEAD [=y] && AUXILIARY_BUS [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Power Sequencing support (POWER_SEQUENCING [=m])
+#         -> T-HEAD TH1520 GPU power sequencing driver (POWER_SEQUENCING_TH1520_GPU [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: d4c2d9b5b7ce (power: sequencing: Add T-HEAD TH1520 GPU power sequencer driver)
+# CONFIG_POWER_SEQUENCING_TH1520_GPU is not set

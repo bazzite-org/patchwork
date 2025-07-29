@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: MFD_MACSMC [=n]
+# Type  : tristate
+# Defined at drivers/mfd/Kconfig:288
+#   Prompt: Apple Silicon System Management Controller (SMC)
+#   Depends on: HAS_IOMEM [=y] && (ARCH_APPLE [=y] || COMPILE_TEST [=n]) && OF [=y] && APPLE_RTKIT [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Multifunction device drivers
+#         -> Apple Silicon System Management Controller (SMC) (MFD_MACSMC [=n])
+# Selects: MFD_CORE [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: e038d985c982 (mfd: Add Apple Silicon System Management Controller)
+# CONFIG_MFD_MACSMC is not set

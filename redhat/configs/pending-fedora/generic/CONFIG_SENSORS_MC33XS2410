@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: SENSORS_MC33XS2410 [=n]
+# Type  : tristate
+# Defined at drivers/hwmon/Kconfig:703
+#   Prompt: MC33XS2410 HWMON support
+#   Depends on: HWMON [=y] && PWM_MC33XS2410 [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Hardware Monitoring support (HWMON [=y])
+#         -> MC33XS2410 HWMON support (SENSORS_MC33XS2410 [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: a02b105fe9f2 (hwmon: add support for MC33XS2410 hardware monitoring)
+# CONFIG_SENSORS_MC33XS2410 is not set

@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: CRYPTO_LIB_SHA1_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/crypto/tests/Kconfig:12
+#   Prompt: KUnit tests for SHA-1
+#   Depends on: KUNIT [=m]
+#   Visible if: KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Library routines
+#       -> Crypto library routines
+#         -> KUnit tests for SHA-1 (CRYPTO_LIB_SHA1_KUNIT_TEST [=m])
+# Selects: CRYPTO_LIB_BENCHMARK_VISIBLE [=y] && CRYPTO_LIB_SHA1 [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 66b130607908 (lib/crypto: tests: Add KUnit tests for SHA-1 and HMAC-SHA1)
+CONFIG_CRYPTO_LIB_SHA1_KUNIT_TEST=m

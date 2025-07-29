@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: SPI_OFFLOAD_TRIGGER_ADI_UTIL_SD [=n]
+# Type  : tristate
+# Defined at drivers/spi/Kconfig:1375
+#   Prompt: SPI offload trigger using ADI sigma-delta utility
+#   Depends on: SPI [=y] && SPI_OFFLOAD [=y]
+#   Location:
+#     -> Device Drivers
+#       -> SPI support (SPI [=y])
+#         -> SPI offload trigger using ADI sigma-delta utility (SPI_OFFLOAD_TRIGGER_ADI_UTIL_SD [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 3fcd3d2fe44d (spi: offload trigger: add ADI Util Sigma-Delta SPI driver)
+# CONFIG_SPI_OFFLOAD_TRIGGER_ADI_UTIL_SD is not set
