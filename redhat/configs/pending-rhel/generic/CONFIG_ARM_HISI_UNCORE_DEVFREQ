@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: ARM_HISI_UNCORE_DEVFREQ [=n]
+# Type  : tristate
+# Defined at drivers/devfreq/Kconfig:93
+#   Prompt: HiSilicon uncore DEVFREQ Driver
+#   Depends on: PM_DEVFREQ [=y] && ACPI [=y] && ACPI_PPTT [=y] && PCC [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Generic Dynamic Voltage and Frequency Scaling (DVFS) support (PM_DEVFREQ [=y])
+#         -> HiSilicon uncore DEVFREQ Driver (ARM_HISI_UNCORE_DEVFREQ [=n])
+# Selects: DEVFREQ_GOV_PERFORMANCE [=n] && DEVFREQ_GOV_USERSPACE [=m]
+# 
+# 
+# 
+# ~~~
+# Commit: 7da2fdaaa1e6 (PM / devfreq: Add HiSilicon uncore frequency scaling driver)
+# CONFIG_ARM_HISI_UNCORE_DEVFREQ is not set

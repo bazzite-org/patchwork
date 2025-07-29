@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: PWM_ARGON_FAN_HAT [=n]
+# Type  : tristate
+# Defined at drivers/pwm/Kconfig:69
+#   Prompt: Argon40 Fan HAT support
+#   Depends on: PWM [=y] && I2C [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Pulse-Width Modulation (PWM) Support (PWM [=y])
+#         -> Argon40 Fan HAT support (PWM_ARGON_FAN_HAT [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 0191c80e8a28 (pwm: argon-fan-hat: Add Argon40 Fan HAT support)
+# CONFIG_PWM_ARGON_FAN_HAT is not set

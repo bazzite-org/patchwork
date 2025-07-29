@@ -1,0 +1,20 @@
+# ~~~
+# Symbol: SND_SOC_MIKROE_PROTO [=n]
+# Type  : tristate
+# Defined at sound/soc/atmel/Kconfig:102
+#   Prompt: Support for Mikroe-PROTO board
+#   Depends on: SOUND [=m] && SND [=m] && SND_SOC [=m] && HAS_IOMEM [=y] && OF [=y] && SND_SOC_I2C_AND_SPI [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> ALSA for SoC audio support (SND_SOC [=m])
+#             -> Atmel
+#               -> Support for Mikroe-PROTO board (SND_SOC_MIKROE_PROTO [=n])
+# Selects: SND_SOC_WM8731 [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: a45f8853a5f9 (ASoC: Add driver for PROTO Audio CODEC (with a WM8731))
+# CONFIG_SND_SOC_MIKROE_PROTO is not set

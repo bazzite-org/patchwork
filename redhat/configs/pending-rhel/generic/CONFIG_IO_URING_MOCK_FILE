@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: IO_URING_MOCK_FILE [=n]
+# Type  : tristate
+# Defined at init/Kconfig:1808
+#   Prompt: Enable io_uring mock files (Experimental)
+#   Depends on: IO_URING [=y]
+#   Visible if: IO_URING [=y] && EXPERT [=y]
+#   Location:
+#     -> General setup
+#       -> Configure standard kernel features (expert users) (EXPERT [=y])
+#         -> Enable IO uring support (IO_URING [=y])
+#           -> Enable io_uring mock files (Experimental) (IO_URING_MOCK_FILE [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 3a0ae385f69e (io_uring/mock: add basic infra for test mock files)
+# CONFIG_IO_URING_MOCK_FILE is not set

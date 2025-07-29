@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: SND_HDA_CODEC_HDMI_ATI [=n]
+# Type  : tristate
+# Defined at sound/hda/codecs/hdmi/Kconfig:42
+#   Prompt: AMD/ATI HDMI/DisplayPort HD-audio codec support
+#   Depends on: SOUND [=m] && SND [=m] && SND_HDA [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Sound card support (SOUND [=m])
+#         -> Advanced Linux Sound Architecture (SND [=m])
+#           -> HD-Audio
+#             -> AMD/ATI HDMI/DisplayPort HD-audio codec support (SND_HDA_CODEC_HDMI_ATI [=n])
+# Selects: SND_HDA_CODEC_HDMI [=m]
+# 
+# 
+# 
+# ~~~
+# Commit: 73cd0490819d (ALSA: hda/hdmi: Split vendor codec drivers)
+# CONFIG_SND_HDA_CODEC_HDMI_ATI is not set

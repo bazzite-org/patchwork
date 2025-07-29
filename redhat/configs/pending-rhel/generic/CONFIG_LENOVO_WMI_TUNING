@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: LENOVO_WMI_TUNING [=n]
+# Type  : tristate
+# Defined at drivers/platform/x86/lenovo/Kconfig:263
+#   Prompt: Lenovo Other Mode WMI Driver
+#   Depends on: X86_PLATFORM_DEVICES [=y] && ACPI_WMI [=m]
+#   Location:
+#     -> Device Drivers
+#       -> X86 Platform Specific Device Drivers (X86_PLATFORM_DEVICES [=y])
+#         -> Lenovo Other Mode WMI Driver (LENOVO_WMI_TUNING [=n])
+# Selects: FW_ATTR_CLASS [=m] && LENOVO_WMI_DATA01 [=n] && LENOVO_WMI_EVENTS [=n] && LENOVO_WMI_HELPERS [=n]
+# Selected by [n]:
+#   - LENOVO_WMI_GAMEZONE [=n] && X86_PLATFORM_DEVICES [=y] && ACPI_WMI [=m] && DMI [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: edc4b183b794 (platform/x86: Add Lenovo Other Mode WMI Driver)
+# CONFIG_LENOVO_WMI_TUNING is not set
