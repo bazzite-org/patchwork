@@ -1,3 +1,9 @@
+* Wed Jul 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.4b290aae788e.2]
+- redhat/configs: Disable CRYPTO_KRB5 for zfcpdump (Vladis Dronov)
+- Trim changelog after rebase (Justin M. Forbes)
+- Linux v6.17.0-0.rc0.4b290aae788e
+Resolves: 
+
 * Tue Jul 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.86aa72182095.1]
 - Flip TEGRA124_CPUFREQ to m for config mismatch (Justin M. Forbes)
 - Reset RHEL_RELEASE for the 6.17 cycle (Justin M. Forbes)
