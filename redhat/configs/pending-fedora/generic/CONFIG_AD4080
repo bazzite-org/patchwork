@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: AD4080 [=n]
+# Type  : tristate
+# Defined at drivers/iio/adc/Kconfig:60
+#   Prompt: Analog Devices AD4080 high speed ADC
+#   Depends on: IIO [=m] && SPI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Industrial I/O support (IIO [=m])
+#         -> Analog to digital converters
+#           -> Analog Devices AD4080 high speed ADC (AD4080 [=n])
+# Selects: REGMAP_SPI [=m] && IIO_BACKEND [=m]
+# 
+# 
+# 
+# ~~~
+# Commit: 6b31ba1811b6 (iio: adc: ad4080: add driver support)
+# CONFIG_AD4080 is not set

@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: RATELIMIT_KUNIT_TEST [=m]
+# Type  : tristate
+# Defined at lib/Kconfig.debug:3217
+#   Prompt: KUnit Test for correctness and stress of ratelimit
+#   Depends on: RUNTIME_TESTING_MENU [=y] && KUNIT [=m]
+#   Visible if: RUNTIME_TESTING_MENU [=y] && KUNIT [=m] && !KUNIT_ALL_TESTS [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> Runtime Testing (RUNTIME_TESTING_MENU [=y])
+#           -> KUnit Test for correctness and stress of ratelimit (RATELIMIT_KUNIT_TEST [=m])
+# 
+# 
+# 
+# ~~~
+# Commit: d19e9fa61f60 (lib: Add trivial kunit test for ratelimit)
+CONFIG_RATELIMIT_KUNIT_TEST=m

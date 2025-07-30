@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: IMX_AIPSTZ [=n]
+# Type  : tristate
+# Defined at drivers/bus/Kconfig:90
+#   Prompt: Support for IMX Secure AHB to IP Slave bus (AIPSTZ) bridge
+#   Depends on: ARCH_MXC [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Bus devices
+#         -> Support for IMX Secure AHB to IP Slave bus (AIPSTZ) bridge (IMX_AIPSTZ [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 796cba2dd4d9 (bus: add driver for IMX AIPSTZ bridge)
+# CONFIG_IMX_AIPSTZ is not set

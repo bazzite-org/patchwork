@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: KUNIT_DEFAULT_TIMEOUT [=300]
+# Type  : integer
+# Defined at lib/kunit/Kconfig:96
+#   Prompt: Default value of the timeout module parameter
+#   Depends on: KUNIT [=m]
+#   Location:
+#     -> Kernel hacking
+#       -> Kernel Testing and Coverage
+#         -> KUnit - Enable support for unit tests (KUNIT [=m])
+#           -> Default value of the timeout module parameter (KUNIT_DEFAULT_TIMEOUT [=300])
+# 
+# 
+# 
+# ~~~
+# Commit: 5ac244b9cc8f (kunit: Make default kunit_test timeout configurable via both a module parameter and a Kconfig option)
+CONFIG_KUNIT_DEFAULT_TIMEOUT=300

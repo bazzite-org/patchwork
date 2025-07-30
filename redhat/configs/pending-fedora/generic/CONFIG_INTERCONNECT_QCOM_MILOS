@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: INTERCONNECT_QCOM_MILOS [=n]
+# Type  : tristate
+# Defined at drivers/interconnect/qcom/Kconfig:286
+#   Prompt: Qualcomm Milos interconnect driver
+#   Depends on: INTERCONNECT [=y] && INTERCONNECT_QCOM_RPMH_POSSIBLE [=y]
+#   Location:
+#     -> Device Drivers
+#       -> On-Chip Interconnect management support (INTERCONNECT [=y])
+#         -> Qualcomm Milos interconnect driver (INTERCONNECT_QCOM_MILOS [=n])
+# Selects: INTERCONNECT_QCOM_RPMH [=y] && INTERCONNECT_QCOM_BCM_VOTER [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 4781dbbfa5fe (interconnect: qcom: Add Milos interconnect provider driver)
+# CONFIG_INTERCONNECT_QCOM_MILOS is not set

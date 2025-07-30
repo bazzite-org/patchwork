@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: MISC_RP1 [=n]
+# Type  : tristate
+# Defined at drivers/misc/rp1/Kconfig:6
+#   Prompt: RaspberryPi RP1 misc device
+#   Depends on: OF_IRQ [=y] && OF_OVERLAY [=y] && PCI_MSI [=y] && PCI_QUIRKS [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Misc devices
+#         -> RaspberryPi RP1 misc device (MISC_RP1 [=n])
+# Selects: PCI_DYNAMIC_OF_NODES [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 49d63971f963 (misc: rp1: RaspberryPi RP1 misc driver)
+# CONFIG_MISC_RP1 is not set
