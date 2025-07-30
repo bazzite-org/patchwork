@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: POSIX_AUX_CLOCKS [=n]
+# Type  : bool
+# Defined at kernel/time/Kconfig:213
+#   Prompt: Enable auxiliary POSIX clocks
+#   Depends on: POSIX_TIMERS [=y]
+#   Location:
+#     -> General setup
+#       -> Timers subsystem
+#         -> Enable auxiliary POSIX clocks (POSIX_AUX_CLOCKS [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 9094c72c3d81 (time: Introduce auxiliary POSIX clocks)
+# CONFIG_POSIX_AUX_CLOCKS is not set

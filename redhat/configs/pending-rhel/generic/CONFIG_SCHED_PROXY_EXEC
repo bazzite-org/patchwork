@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: SCHED_PROXY_EXEC [=n]
+# Type  : bool
+# Defined at init/Kconfig:881
+#   Prompt: Proxy Execution
+#   Depends on: !PREEMPT_RT [=n] && !SCHED_CLASS_EXT [=n] && EXPERT [=y]
+#   Location:
+#     -> General setup
+#       -> Scheduler features
+#         -> Proxy Execution (SCHED_PROXY_EXEC [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 25c411fce735 (sched: Add CONFIG_SCHED_PROXY_EXEC & boot argument to enable/disable)
+# CONFIG_SCHED_PROXY_EXEC is not set

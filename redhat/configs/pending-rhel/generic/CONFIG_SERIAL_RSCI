@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: SERIAL_RSCI [=n]
+# Type  : tristate
+# Defined at drivers/tty/serial/Kconfig:678
+#   Prompt: Support for Renesas RZ/T2H SCI variant
+#   Depends on: TTY [=y] && HAS_IOMEM [=y] && SERIAL_SH_SCI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Character devices
+#         -> Enable TTY (TTY [=y])
+#           -> Serial drivers
+#             -> SuperH SCI(F) serial port support (SERIAL_SH_SCI [=y])
+#               -> Support for Renesas RZ/T2H SCI variant (SERIAL_RSCI [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 0666e3fe95ab (serial: sh-sci: Add support for RZ/T2H SCI)
+# CONFIG_SERIAL_RSCI is not set

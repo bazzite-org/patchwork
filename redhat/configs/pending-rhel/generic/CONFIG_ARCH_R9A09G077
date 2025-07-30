@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: ARCH_R9A09G077 [=y]
+# Type  : bool
+# Defined at drivers/soc/renesas/Kconfig:411
+#   Prompt: ARM64 Platform support for R9A09G077 (RZ/T2H)
+#   Depends on: SOC_RENESAS [=y] && ARM64 [=y]
+#   Location:
+#     -> Device Drivers
+#       -> SOC (System On Chip) specific Drivers
+#         -> Renesas SoC driver support (SOC_RENESAS [=y])
+#           -> ARM64 Platform support for R9A09G077 (RZ/T2H) (ARCH_R9A09G077 [=y])
+# 
+# 
+# 
+# ~~~
+# Commit: b19376dee3da (soc: renesas: Add RZ/T2H (R9A09G077) config option)
+CONFIG_ARCH_R9A09G077=y

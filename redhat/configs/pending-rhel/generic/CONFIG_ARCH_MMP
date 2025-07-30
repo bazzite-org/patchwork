@@ -1,0 +1,15 @@
+# ~~~
+# Symbol: ARCH_MMP [=n]
+# Type  : bool
+# Defined at arch/arm64/Kconfig.platforms:189
+#   Prompt: Marvell MMP SoC Family
+#   Location:
+#     -> Platform selection
+#       -> Marvell MMP SoC Family (ARCH_MMP [=n])
+# Selects: PINCTRL [=y] && PINCTRL_SINGLE [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 1eb07e99ef39 (arm64: Kconfig.platforms: Add config for Marvell PXA1908 platform)
+# CONFIG_ARCH_MMP is not set

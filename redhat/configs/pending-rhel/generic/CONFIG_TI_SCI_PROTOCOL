@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: TI_SCI_PROTOCOL [=y]
+# Type  : tristate
+# Defined at drivers/firmware/Kconfig:224
+#   Prompt: TI System Control Interface (TISCI) Message Protocol
+#   Depends on: TI_MESSAGE_MANAGER [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Firmware Drivers
+#         -> TI System Control Interface (TISCI) Message Protocol (TI_SCI_PROTOCOL [=y])
+# 
+# 
+# 
+# ~~~
+# Commit: aa276781a64a (firmware: Add basic support for TI System Control Interface (TI-SCI) protocol)
+CONFIG_TI_SCI_PROTOCOL=y

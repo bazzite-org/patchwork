@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: ARCH_ANDES [=n]
+# Type  : bool
+# Defined at arch/riscv/Kconfig.socs:3
+#   Prompt: Andes SoCs
+#   Depends on: MMU [=y] && !XIP_KERNEL [=n]
+#   Location:
+#     -> SoC selection
+#       -> Andes SoCs (ARCH_ANDES [=n])
+# Selects: ERRATA_ANDES [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 00dba19aa005 (riscv: add Andes SoC family Kconfig support)
+# CONFIG_ARCH_ANDES is not set

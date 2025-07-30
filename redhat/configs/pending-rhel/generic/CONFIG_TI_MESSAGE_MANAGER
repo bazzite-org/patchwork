@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: TI_MESSAGE_MANAGER [=y]
+# Type  : tristate
+# Defined at drivers/mailbox/Kconfig:149
+#   Prompt: Texas Instruments Message Manager Driver
+#   Depends on: MAILBOX [=y] && (ARCH_KEYSTONE || ARCH_K3 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Mailbox Hardware Support (MAILBOX [=y])
+#         -> Texas Instruments Message Manager Driver (TI_MESSAGE_MANAGER [=y])
+# 
+# 
+# 
+# ~~~
+# Commit: aace66b170ce (mailbox: Introduce TI message manager driver)
+CONFIG_TI_MESSAGE_MANAGER=y
