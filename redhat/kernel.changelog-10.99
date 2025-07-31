@@ -1,3 +1,9 @@
+* Thu Jul 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.260f6f4fda93.4]
+- fedora: Updates for 6.17 merge (Peter Robinson)
+- Fix a mismatch, needs further investigation (Justin M. Forbes)
+- Linux v6.17.0-0.rc0.260f6f4fda93
+Resolves: 
+
 * Thu Jul 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.4b290aae788e.3]
 - Turn off TEST_MISC_MINOR as its deps are no longer met (Justin M. Forbes)
 Resolves: 
