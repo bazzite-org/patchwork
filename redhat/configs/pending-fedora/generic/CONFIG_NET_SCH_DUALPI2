@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: NET_SCH_DUALPI2 [=n]
+# Type  : tristate
+# Defined at net/sched/Kconfig:418
+#   Prompt: Dual Queue PI Square (DUALPI2) scheduler
+#   Depends on: NET [=y] && NET_SCHED [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> QoS and/or fair queueing (NET_SCHED [=y])
+#           -> Dual Queue PI Square (DUALPI2) scheduler (NET_SCH_DUALPI2 [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 8f9516daedd6 (sched: Add enqueue/dequeue of dualpi2 qdisc)
+# CONFIG_NET_SCH_DUALPI2 is not set
