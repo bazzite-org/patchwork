@@ -1,3 +1,7 @@
+* Thu Jul 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.4b290aae788e.3]
+- Turn off TEST_MISC_MINOR as its deps are no longer met (Justin M. Forbes)
+Resolves: 
+
 * Wed Jul 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.4b290aae788e.2]
 - redhat/configs: Disable CRYPTO_KRB5 for zfcpdump (Vladis Dronov)
 - Trim changelog after rebase (Justin M. Forbes)
