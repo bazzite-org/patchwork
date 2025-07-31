@@ -1,0 +1,21 @@
+# ~~~
+# Symbol: NETFILTER_XT_TARGET_NETMAP [=n]
+# Type  : tristate
+# Defined at net/netfilter/Kconfig:996
+#   Prompt: "NETMAP" target support
+#   Depends on: NET [=y] && INET [=y] && NETFILTER [=y] && NETFILTER_XTABLES [=y] && NF_NAT [=m]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Network packet filtering framework (Netfilter) (NETFILTER [=y])
+#           -> Core Netfilter Configuration
+#             -> Netfilter Xtables support (required for ip_tables) (NETFILTER_XTABLES [=y])
+#               -> "NETMAP" target support (NETFILTER_XT_TARGET_NETMAP [=n])
+# Selected by [n]:
+#   - IP_NF_TARGET_NETMAP [=n] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m] && IP_NF_NAT [=n] && NETFILTER_ADVANCED [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: b3d54b3e406b (netfilter: combine ipt_NETMAP and ip6t_NETMAP)
+# CONFIG_NETFILTER_XT_TARGET_NETMAP is not set

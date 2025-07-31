@@ -1,0 +1,22 @@
+# ~~~
+# Symbol: NETFILTER_XT_TARGET_HL [=n]
+# Type  : tristate
+# Defined at net/netfilter/Kconfig:903
+#   Prompt: "HL" hoplimit target support
+#   Depends on: NET [=y] && INET [=y] && NETFILTER [=y] && NETFILTER_XTABLES [=y] && (IP_NF_MANGLE [=n] || IP6_NF_MANGLE [=n] || NFT_COMPAT [=m]) && NETFILTER_ADVANCED [=y]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Network packet filtering framework (Netfilter) (NETFILTER [=y])
+#           -> Core Netfilter Configuration
+#             -> Netfilter Xtables support (required for ip_tables) (NETFILTER_XTABLES [=y])
+#               -> "HL" hoplimit target support (NETFILTER_XT_TARGET_HL [=n])
+# Selected by [n]:
+#   - IP_NF_TARGET_TTL [=n] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m] && NETFILTER_ADVANCED [=y] && IP_NF_MANGLE [=n]
+#   - IP6_NF_TARGET_HL [=n] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m] && NETFILTER_ADVANCED [=y] && IP6_NF_MANGLE [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 563d36eb3fb2 (netfilter: Combine ipt_TTL and ip6t_HL source)
+# CONFIG_NETFILTER_XT_TARGET_HL is not set

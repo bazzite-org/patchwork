@@ -1,0 +1,22 @@
+# ~~~
+# Symbol: NETFILTER_XT_NAT [=n]
+# Type  : tristate
+# Defined at net/netfilter/Kconfig:988
+#   Prompt: "SNAT and DNAT" targets support
+#   Depends on: NET [=y] && INET [=y] && NETFILTER [=y] && NETFILTER_XTABLES [=y] && NF_NAT [=m]
+#   Location:
+#     -> Networking support (NET [=y])
+#       -> Networking options
+#         -> Network packet filtering framework (Netfilter) (NETFILTER [=y])
+#           -> Core Netfilter Configuration
+#             -> Netfilter Xtables support (required for ip_tables) (NETFILTER_XTABLES [=y])
+#               -> "SNAT and DNAT" targets support (NETFILTER_XT_NAT [=n])
+# Selected by [n]:
+#   - IP_NF_NAT [=n] && NET [=y] && INET [=y] && NETFILTER [=y] && IP_NF_IPTABLES [=m] && NF_CONNTRACK [=m] && IP_NF_IPTABLES_LEGACY [=n]
+#   - IP6_NF_NAT [=n] && NET [=y] && INET [=y] && IPV6 [=y] && NETFILTER [=y] && IP6_NF_IPTABLES [=m] && NF_CONNTRACK [=m] && NETFILTER_ADVANCED [=y] && IP6_NF_IPTABLES_LEGACY [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 84a59ca55f69 (netfilter: add explicit Kconfig for NETFILTER_XT_NAT)
+# CONFIG_NETFILTER_XT_NAT is not set

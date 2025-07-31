@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: RV_PER_TASK_MONITORS [=2]
+# Type  : integer
+# Range : [1 8]
+# Defined at kernel/trace/rv/Kconfig:40
+#   Prompt: Maximum number of per-task monitor
+#   Depends on: FTRACE [=y] && RV [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> Tracers (FTRACE [=y])
+#         -> Runtime Verification (RV [=y])
+#           -> Maximum number of per-task monitor (RV_PER_TASK_MONITORS [=2])
+# 
+# 
+# 
+# ~~~
+# Commit: fac5493251a6 (rv: Allow to configure the number of per-task monitor)
+CONFIG_RV_PER_TASK_MONITORS=2
