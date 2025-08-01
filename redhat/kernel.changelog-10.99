@@ -1,3 +1,7 @@
+* Fri Aug 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.260f6f4fda93.5]
+- redhat/kernel.spec: fix leftover typo in Provides line (Jan Stancek)
+Resolves: 
+
 * Thu Jul 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.260f6f4fda93.4]
 - fedora: Updates for 6.17 merge (Peter Robinson)
 - Fix a mismatch, needs further investigation (Justin M. Forbes)
