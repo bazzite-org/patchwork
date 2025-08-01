@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: VIDEO_INTEL_IPU7 [=n]
+# Type  : tristate
+# Defined at drivers/staging/media/ipu7/Kconfig:1
+#   Prompt: Intel IPU7 driver
+#   Depends on: STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && (ACPI [=y] || COMPILE_TEST [=n]) && VIDEO_DEV [=m] && X86 [=y] && HAS_DMA [=y] && (IPU_BRIDGE [=m] || !IPU_BRIDGE [=m]) && PCI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Staging drivers (STAGING [=y])
+#         -> Media staging drivers (STAGING_MEDIA [=y])
+#           -> Intel IPU7 driver (VIDEO_INTEL_IPU7 [=n])
+# Selects: AUXILIARY_BUS [=y] && IOMMU_IOVA [=y] && VIDEO_V4L2_SUBDEV_API [=y] && MEDIA_CONTROLLER [=y] && VIDEOBUF2_DMA_SG [=m] && V4L2_FWNODE [=m]
+# 
+# 
+# 
+# ~~~
+# Commit: c5ddd03bc5c4 (media: staging/ipu7: add Makefile, Kconfig and to-do file for IPU7)
+# CONFIG_VIDEO_INTEL_IPU7 is not set

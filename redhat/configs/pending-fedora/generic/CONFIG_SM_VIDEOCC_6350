@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: SM_VIDEOCC_6350 [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:1413
+#   Prompt: SM6350 Video Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> SM6350 Video Clock Controller (SM_VIDEOCC_6350 [=n])
+# Selects: SM_GCC_6350 [=n] && QCOM_GDSC [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 720b1e8f2004 (clk: qcom: Add video clock controller driver for SM6350)
+# CONFIG_SM_VIDEOCC_6350 is not set

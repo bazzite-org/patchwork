@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: SC_CAMCC_8180X [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:587
+#   Prompt: SC8180X Camera Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> SC8180X Camera Clock Controller (SC_CAMCC_8180X [=n])
+# Selects: SC_GCC_8180X [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: 691f3413baa4 (clk: qcom: camcc-sc8180x: Add SC8180X camera clock controller driver)
+# CONFIG_SC_CAMCC_8180X is not set

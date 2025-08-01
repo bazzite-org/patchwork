@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: SM_VIDEOCC_MILOS [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:1432
+#   Prompt: Milos Video Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> Milos Video Clock Controller (SM_VIDEOCC_MILOS [=n])
+# Selects: SM_GCC_MILOS [=n] && QCOM_GDSC [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 633a81bead86 (clk: qcom: Add Video Clock controller (VIDEOCC) driver for Milos)
+# CONFIG_SM_VIDEOCC_MILOS is not set

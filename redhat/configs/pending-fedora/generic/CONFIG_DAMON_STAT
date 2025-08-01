@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: DAMON_STAT [=n]
+# Type  : bool
+# Defined at mm/damon/Kconfig:97
+#   Prompt: Build data access monitoring stat (DAMON_STAT)
+#   Depends on: DAMON_PADDR [=y]
+#   Location:
+#     -> Memory Management options
+#       -> Data Access Monitoring
+#         -> Build data access monitoring stat (DAMON_STAT) (DAMON_STAT [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 369c415e6073 (mm/damon: introduce DAMON_STAT module)
+# CONFIG_DAMON_STAT is not set

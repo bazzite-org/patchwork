@@ -1,0 +1,15 @@
+# ~~~
+# Symbol: PAGE_BLOCK_MAX_ORDER [=10]
+# Type  : integer
+# Range : [1 10]
+# Defined at mm/Kconfig:1015
+#   Prompt: Page Block Order Upper Limit
+#   Location:
+#     -> Memory Management options
+#       -> Page Block Order Upper Limit (PAGE_BLOCK_MAX_ORDER [=10])
+# 
+# 
+# 
+# ~~~
+# Commit: 3800d5525097 (mm: rename CONFIG_PAGE_BLOCK_ORDER to CONFIG_PAGE_BLOCK_MAX_ORDER)
+CONFIG_PAGE_BLOCK_MAX_ORDER=10

@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: QCS_DISPCC_615 [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:496
+#   Prompt: QCS615 Display Clock Controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> QCS615 Display Clock Controller (QCS_DISPCC_615 [=n])
+# Selects: QCM_GCC_615
+# 
+# 
+# 
+# ~~~
+# Commit: 9b47105f5434 (clk: qcom: dispcc-qcs615: Add QCS615 display clock controller driver)
+# CONFIG_QCS_DISPCC_615 is not set
