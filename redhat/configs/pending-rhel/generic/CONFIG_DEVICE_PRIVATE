@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: DEVICE_PRIVATE [=n]
+# Type  : bool
+# Defined at mm/Kconfig:1159
+#   Prompt: Unaddressable device memory (GPU memory, ...)
+#   Depends on: ZONE_DEVICE [=y]
+#   Location:
+#     -> Memory Management options
+#       -> Unaddressable device memory (GPU memory, ...) (DEVICE_PRIVATE [=n])
+# Selects: GET_FREE_REGION [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 5042db43cc26 (mm/ZONE_DEVICE: new type of ZONE_DEVICE for unaddressable memory)
+# CONFIG_DEVICE_PRIVATE is not set

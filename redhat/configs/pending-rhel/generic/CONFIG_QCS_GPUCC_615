@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: QCS_GPUCC_615 [=n]
+# Type  : tristate
+# Defined at drivers/clk/qcom/Kconfig:551
+#   Prompt: QCS615 Graphics clock controller
+#   Depends on: COMMON_CLK [=y] && COMMON_CLK_QCOM [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Common Clock Framework (COMMON_CLK [=y])
+#         -> Support for Qualcomm's clock controllers (COMMON_CLK_QCOM [=y])
+#           -> QCS615 Graphics clock controller (QCS_GPUCC_615 [=n])
+# Selects: QCS_GCC_615 [=n]
+# 
+# 
+# 
+# ~~~
+# Commit: f4b5b40805ab (clk: qcom: gpucc-qcs615: Add QCS615 graphics clock controller driver)
+# CONFIG_QCS_GPUCC_615 is not set
