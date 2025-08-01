@@ -1,3 +1,9 @@
+* Fri Aug 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.89748acdf226.6]
+- Add to pending to fix precendence and avoid mismatch (Justin M. Forbes)
+- CONFIG_PAGE_BLOCK_ORDER is now CONFIG_PAGE_BLOCK_MAX_ORDER (Justin M. Forbes)
+- Linux v6.17.0-0.rc0.89748acdf226
+Resolves: 
+
 * Fri Aug 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.260f6f4fda93.5]
 - redhat/kernel.spec: fix leftover typo in Provides line (Jan Stancek)
 Resolves: 
