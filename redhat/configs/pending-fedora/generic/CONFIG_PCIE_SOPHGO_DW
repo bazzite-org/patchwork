@@ -1,0 +1,19 @@
+# ~~~
+# Symbol: PCIE_SOPHGO_DW [=n]
+# Type  : bool
+# Defined at drivers/pci/controller/dwc/Kconfig:407
+#   Prompt: Sophgo DesignWare PCIe controller (host mode)
+#   Depends on: PCI [=y] && (ARCH_SOPHGO [=y] || COMPILE_TEST [=n]) && PCI_MSI [=y] && OF [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> PCI controller drivers
+#           -> DesignWare-based PCIe controllers
+#             -> Sophgo DesignWare PCIe controller (host mode) (PCIE_SOPHGO_DW [=n])
+# Selects: PCIE_DW_HOST [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 467d9c0348d6 (PCI: dwc: Add Sophgo SG2044 PCIe controller driver in Root Complex mode)
+# CONFIG_PCIE_SOPHGO_DW is not set

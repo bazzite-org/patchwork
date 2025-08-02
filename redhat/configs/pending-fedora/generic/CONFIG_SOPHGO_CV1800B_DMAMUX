@@ -1,0 +1,16 @@
+# ~~~
+# Symbol: SOPHGO_CV1800B_DMAMUX [=n]
+# Type  : tristate
+# Defined at drivers/dma/Kconfig:574
+#   Prompt: Sophgo CV1800/SG2000 series SoC DMA multiplexer support
+#   Depends on: DMADEVICES [=y] && MFD_SYSCON [=y] && (ARCH_SOPHGO [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> DMA Engine support (DMADEVICES [=y])
+#         -> Sophgo CV1800/SG2000 series SoC DMA multiplexer support (SOPHGO_CV1800B_DMAMUX [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: db7d07b5add4 (dmaengine: add driver for Sophgo CV18XX/SG200X dmamux)
+# CONFIG_SOPHGO_CV1800B_DMAMUX is not set

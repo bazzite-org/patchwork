@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: AT_XDMAC [=n]
+# Type  : tristate
+# Defined at drivers/dma/Kconfig:111
+#   Prompt: Atmel XDMA support
+#   Depends on: DMADEVICES [=y] && ARCH_MICROCHIP [=y]
+#   Location:
+#     -> Device Drivers
+#       -> DMA Engine support (DMADEVICES [=y])
+#         -> Atmel XDMA support (AT_XDMAC [=n])
+# Selects: DMA_ENGINE [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: e1f7c9eee707 (dmaengine: at_xdmac: creation of the atmel eXtended DMA Controller driver)
+# CONFIG_AT_XDMAC is not set
