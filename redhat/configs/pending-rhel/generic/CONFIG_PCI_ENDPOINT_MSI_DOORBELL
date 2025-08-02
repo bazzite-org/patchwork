@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: PCI_ENDPOINT_MSI_DOORBELL [=n]
+# Type  : bool
+# Defined at drivers/pci/endpoint/Kconfig:31
+#   Prompt: PCI Endpoint MSI Doorbell Support
+#   Depends on: PCI [=y] && PCI_ENDPOINT [=y] && GENERIC_MSI_IRQ [=y]
+#   Location:
+#     -> Device Drivers
+#       -> PCI support (PCI [=y])
+#         -> PCI Endpoint
+#           -> PCI Endpoint Support (PCI_ENDPOINT [=y])
+#             -> PCI Endpoint MSI Doorbell Support (PCI_ENDPOINT_MSI_DOORBELL [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 1c3b002c6bf6 (PCI: endpoint: Add RC-to-EP doorbell support using platform MSI controller)
+# CONFIG_PCI_ENDPOINT_MSI_DOORBELL is not set

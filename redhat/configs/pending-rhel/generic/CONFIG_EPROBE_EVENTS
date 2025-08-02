@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: EPROBE_EVENTS [=y]
+# Type  : bool
+# Defined at kernel/trace/Kconfig:796
+#   Prompt: Enable event-based dynamic events
+#   Depends on: FTRACE [=y] && TRACING [=y] && HAVE_REGS_AND_STACK_ACCESS_API [=y]
+#   Location:
+#     -> Kernel hacking
+#       -> Tracers (FTRACE [=y])
+#         -> Enable event-based dynamic events (EPROBE_EVENTS [=y])
+# Selects: PROBE_EVENTS [=y] && DYNAMIC_EVENTS [=y]
+# 
+# 
+# 
+# ~~~
+# Commit: 0dd1274a053f (tracing: Have eprobes have their own config option)
+CONFIG_EPROBE_EVENTS=y
