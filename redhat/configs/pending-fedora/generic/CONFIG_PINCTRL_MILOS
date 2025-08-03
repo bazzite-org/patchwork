@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: PINCTRL_MILOS [=n]
+# Type  : tristate
+# Defined at drivers/pinctrl/qcom/Kconfig.msm:374
+#   Prompt: Qualcomm Technologies Inc Milos pin controller driver
+#   Depends on: PINCTRL [=y] && (ARCH_QCOM [=y] || COMPILE_TEST [=n]) && PINCTRL_MSM [=y] && (ARM64 [=y] || COMPILE_TEST [=n])
+#   Location:
+#     -> Device Drivers
+#       -> Pin controllers (PINCTRL [=y])
+#         -> Qualcomm core pin controller driver (PINCTRL_MSM [=y])
+#           -> Qualcomm Technologies Inc Milos pin controller driver (PINCTRL_MILOS [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 620d3d102558 (pinctrl: qcom: Add Milos pinctrl driver)
+# CONFIG_PINCTRL_MILOS is not set
