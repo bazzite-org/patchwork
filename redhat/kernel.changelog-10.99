@@ -1,3 +1,8 @@
+* Mon Aug 04 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.d2eedaa3909b.9]
+- Remove CONFIG_TEST_MISC_MINOR as deps are no longer met (Justin M. Forbes)
+- Linux v6.17.0-0.rc0.d2eedaa3909b
+Resolves: 
+
 * Sun Aug 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.186f3edfdd41.8]
 - Linux v6.17.0-0.rc0.186f3edfdd41
 Resolves: 
