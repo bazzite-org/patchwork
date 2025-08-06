@@ -1,3 +1,7 @@
+* Wed Aug 06 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.479058002c32.11]
+- Linux v6.17.0-0.rc0.479058002c32
+Resolves: 
+
 * Tue Aug 05 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.7e161a991ea7.10]
 - rename CONFIG_PAGE_BLOCK_ORDER to CONFIG_PAGE_BLOCK_MAX_ORDER (Justin M. Forbes)
 - kernel.spec: add '-e' option to %%preun for kernel-core and kernel-uki-virt (Xuemin Li)
