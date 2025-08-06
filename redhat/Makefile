@@ -800,6 +800,9 @@ dist-test-patch: ##build Create a diff against HEAD and put it in linux-kernel-t
 dist-test-patch: generate-testpatch-tmp
 	@mv $(TESTPATCH).tmp $(TESTPATCH);
 
+dist-spec: ##build Create just the spec file in redhat/rpm/SOURCES/.
+dist-spec: setup-source
+
 do-rpmbuild: dist-sources
 	$(RPMBUILD) --define "_sourcedir $(SOURCES)" --define "_builddir $(RPM)/BUILD" --define "_srcrpmdir $(RPM)/SRPMS" --define "_rpmdir $(RPM)/RPMS" --define "_specdir $(RPM)/SPECS" --define "dist $(DIST)" $(RPMBUILDOPTS) $(RPM)/SOURCES/$(SPECFILE)
 
