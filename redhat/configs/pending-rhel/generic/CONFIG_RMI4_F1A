@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: RMI4_F1A [=n]
+# Type  : bool
+# Defined at drivers/input/rmi4/Kconfig:85
+#   Prompt: RMI4 Function 1A (0D pointing)
+#   Depends on: INPUT [=y] && RMI4_CORE [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Input device support
+#         -> Generic input layer (needed for keyboard, mouse, ...) (INPUT [=y])
+#           -> Synaptics RMI4 bus support (RMI4_CORE [=m])
+#             -> RMI4 Function 1A (0D pointing) (RMI4_F1A [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: 4619b6b97553 (Input: synaptics-rmi4 - add support for F1A)
+# CONFIG_RMI4_F1A is not set

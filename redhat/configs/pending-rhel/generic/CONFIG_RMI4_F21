@@ -1,0 +1,18 @@
+# ~~~
+# Symbol: RMI4_F21 [=n]
+# Type  : bool
+# Defined at drivers/input/rmi4/Kconfig:92
+#   Prompt: RMI4 Function 21 (PRESSURE)
+#   Depends on: INPUT [=y] && RMI4_CORE [=m]
+#   Location:
+#     -> Device Drivers
+#       -> Input device support
+#         -> Generic input layer (needed for keyboard, mouse, ...) (INPUT [=y])
+#           -> Synaptics RMI4 bus support (RMI4_CORE [=m])
+#             -> RMI4 Function 21 (PRESSURE) (RMI4_F21 [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: a9c95d17dc13 (Input: synaptics-rmi4 - add support for Forcepads (F21))
+# CONFIG_RMI4_F21 is not set
