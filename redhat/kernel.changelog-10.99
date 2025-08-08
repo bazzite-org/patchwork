@@ -1,3 +1,7 @@
+* Fri Aug 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.37816488247d.13]
+- Linux v6.17.0-0.rc0.37816488247d
+Resolves: 
+
 * Thu Aug 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.6e64f4580381.12]
 - Fix up some networking configs to make docker work again (Justin M. Forbes)
 - Linux v6.17.0-0.rc0.6e64f4580381
