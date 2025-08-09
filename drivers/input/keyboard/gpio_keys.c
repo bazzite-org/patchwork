@@ -357,7 +357,7 @@ static struct attribute *gpio_keys_attrs[] = {
 };
 ATTRIBUTE_GROUPS(gpio_keys);
 
-static void gpio_keys_gpio_report_event(struct gpio_button_data *bdata)
+static void gpio_keys_gpio_report_event(struct gpio_button_data *bdata, bool check)
 {
 	const struct gpio_keys_button *button = bdata->button;
 	struct input_dev *input = bdata->input;
@@ -376,6 +376,8 @@ static void gpio_keys_gpio_report_event(struct gpio_button_data *bdata)
 	if (type == EV_ABS) {
 		if (state)
 			input_event(input, type, button->code, button->value);
+	} else if (check && type == EV_KEY && *bdata->code == KEY_POWER && state) {
+		input_event(input, EV_KEY, KEY_POWER, 0);
 	} else {
 		input_event(input, type, *bdata->code, state);
 	}
@@ -383,7 +385,7 @@ static void gpio_keys_gpio_report_event(struct gpio_button_data *bdata)
 
 static void gpio_keys_debounce_event(struct gpio_button_data *bdata)
 {
-	gpio_keys_gpio_report_event(bdata);
+	gpio_keys_gpio_report_event(bdata, false);
 	input_sync(bdata->input);
 
 	if (bdata->button->wakeup)
@@ -712,7 +714,7 @@ static void gpio_keys_report_state(struct gpio_keys_drvdata *ddata)
 	for (i = 0; i < ddata->pdata->nbuttons; i++) {
 		struct gpio_button_data *bdata = &ddata->data[i];
 		if (bdata->gpiod)
-			gpio_keys_gpio_report_event(bdata);
+			gpio_keys_gpio_report_event(bdata, true);
 	}
 	input_sync(input);
 }
