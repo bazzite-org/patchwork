@@ -377,7 +377,15 @@ static void gpio_keys_gpio_report_event(struct gpio_button_data *bdata)
 		if (state)
 			input_event(input, type, button->code, button->value);
 	} else {
-		input_event(input, type, *bdata->code, state);
+		if (type == EV_KEY && *bdata->code == KEY_POWER) {
+			// Make KEY_POWER instant to avoid it making the
+			// device sleep again
+			if (state) {
+				input_event(input, EV_KEY, KEY_POWER, 1);
+				input_event(input, EV_KEY, KEY_POWER, 0);
+			}
+		} else
+			input_event(input, type, *bdata->code, state);
 	}
 }
 
