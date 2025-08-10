@@ -1,0 +1,17 @@
+# ~~~
+# Symbol: OVMF_DEBUG_LOG [=n]
+# Type  : bool
+# Defined at drivers/firmware/efi/Kconfig:266
+#   Prompt: Expose OVMF firmware debug log via sysfs
+#   Depends on: EFI [=y]
+#   Location:
+#     -> Device Drivers
+#       -> Firmware Drivers
+#         -> EFI (Extensible Firmware Interface) Support
+#           -> Expose OVMF firmware debug log via sysfs (OVMF_DEBUG_LOG [=n])
+# 
+# 
+# 
+# ~~~
+# Commit: f393a761763c (efi: add ovmf debug log driver)
+# CONFIG_OVMF_DEBUG_LOG is not set
