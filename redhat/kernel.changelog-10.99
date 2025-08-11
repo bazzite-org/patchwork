@@ -1,3 +1,13 @@
+* Mon Aug 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.16]
+- redhat/script: Fix instructions for dist-cross-setup (Thomas Huth)
+- redhat/configs: Fix location of the S390_MODULES_SANITY_TEST switch (Thomas Huth)
+- redhat/configs: Fix location of the CONFIG_S390_KPROBES_SANITY_TEST switch (Thomas Huth)
+- redhat/configs: Remove superfluous generic CONFIG_TUNE_Z16 switch (Thomas Huth)
+- redhat/configs: Consolidate the CONFIG_TUNE_Z17 switch (Thomas Huth)
+- redhat/configs: Consolidate the CONFIG_RANDOMIZE_IDENTITY_BASE switch (Thomas Huth)
+- Linux v6.17.0-0.rc1
+Resolves: 
+
 * Sun Aug 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc0.2b38afce25c4.15]
 - Linux v6.17.0-0.rc0.2b38afce25c4
 Resolves: 
