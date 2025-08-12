@@ -1,3 +1,9 @@
+* Tue Aug 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.53e760d89498.17]
+- specfile: change conditionals for realtime for fedora (Clark Williams)
+- redhat/configs: Disable TPM2 HMAC sessions (Štěpán Horáček) [RHEL-82779]
+- Linux v6.17.0-0.rc1.53e760d89498
+Resolves: RHEL-82779
+
 * Mon Aug 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.16]
 - redhat/script: Fix instructions for dist-cross-setup (Thomas Huth)
 - redhat/configs: Fix location of the S390_MODULES_SANITY_TEST switch (Thomas Huth)
