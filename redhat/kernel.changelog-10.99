@@ -1,3 +1,9 @@
+* Wed Aug 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.8742b2d8935f.18]
+- Enable PHY drivers required for automotive board (Radu Rendec)
+- fedora: more updates for 6.17 (Peter Robinson)
+- Linux v6.17.0-0.rc1.8742b2d8935f
+Resolves: 
+
 * Tue Aug 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.53e760d89498.17]
 - specfile: change conditionals for realtime for fedora (Clark Williams)
 - redhat/configs: Disable TPM2 HMAC sessions (Štěpán Horáček) [RHEL-82779]
