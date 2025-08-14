@@ -911,12 +911,14 @@ dist-fedora-release: git-tree-check
 dist-fedora-release-push: export DIST_PUSH="1"
 dist-fedora-release-push: dist-fedora-release
 
+# The kernel's UTS_RELEASE has a maximum length of 64 chars and can be exceeded
+# if the DISTLOCALVERSION is too long. Check is based on the worst-case scenario.
 dist-vr-check:
-	@# builds may include a s390x+zfcpdump arch build.  UTS_RELEASE can only have a
-	@# version-release string with max 64 chars.  The version-release for s390x+zfcpdump
-	@# is 29 characters, leaving a maximum of 35 characters for SPECBUILD.
-	@if [ $$(echo -n $(SPECBUILD) | wc -c) -gt 35 ]; then \
+	@VARIANT="aarch64+rt-64k-debug"; \
+	UTS_RELEASE="$(SPECVERSION)-$(SPECBUILD)$(DIST).$$VARIANT"; \
+	if [[ $$(echo -n $$UTS_RELEASE | wc -c) -gt 64 ]]; then \
 		echo "SPECBUILD ($(SPECBUILD)) is too long.  Use a shorter localversion (currently $(DISTLOCALVERSION))"; \
+		echo "UTS_RELEASE will be exceeded for variant: $$UTS_RELEASE"; \
 		exit 1; \
 	fi
 

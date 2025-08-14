@@ -157,7 +157,7 @@ else
   VERSION_ON_UPSTREAM ?= 0
 endif
 
-# Builds may include a s390x+zfcpdump arch build, which results in the build
+# Builds may include an aarch64+rt-64k-debug arch build, which results in the build
 # failing because the UTS_RELEASE field exceeded 64 chars.  This variable can
 # be set to 1 to decrease the kernel UTS_RELEASE and SPECBUILD by 11 characters
 # (YYYYMMDDgit).
