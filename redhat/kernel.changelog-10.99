@@ -1,3 +1,10 @@
+* Thu Aug 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.0cc53520e68b.19]
+- Turn off LIBBPF_DYNAMIC for perf builds (Justin M. Forbes)
+- redhat: Add SBAT information to Linux kernel (Vitaly Kuznetsov)
+- redhat: Add SBAT to the UKI unconditionally (Vitaly Kuznetsov)
+- Linux v6.17.0-0.rc1.0cc53520e68b
+Resolves: 
+
 * Wed Aug 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.8742b2d8935f.18]
 - Enable PHY drivers required for automotive board (Radu Rendec)
 - fedora: more updates for 6.17 (Peter Robinson)
