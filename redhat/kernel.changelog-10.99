@@ -1,3 +1,20 @@
+* Fri Aug 15 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.1-0]
+- Enable CONFIG_VHOST_ENABLE_FORK_OWNER_CONTROL (Justin M. Forbes)
+- Disable NOVA_CORE (Justin M. Forbes)
+- Turn off libbpf dynamic for perf (Justin M. Forbes)
+- Revert some RHEL only crypto changes (Justin M. Forbes)
+- HID: intel-thc-hid: intel-thc: Fix incorrect pointer arithmetic in I2C regs save (Aaron Ma)
+- HID: intel-thc-hid: intel-quicki2c: Fix ACPI dsd ICRS/ISUB length (Aaron Ma)
+- Initial setup for stable Fedora releases (Justin M. Forbes)
+- btrfs: fix log tree replay failure due to file with 0 links and extents (Filipe Manana)
+- Reset RHEL_RELEASE for the 6.17 cycle (Justin M. Forbes)
+- redhat/kernel.spec: fix uname_variant call sites (Jan Stancek) [RHEL-104231]
+- redhat/kernel.spec: fix uname_suffix call sites (Jan Stancek) [RHEL-104231]
+- redhat/configs: Add evaluate_configs.py and documentation (Prarit Bhargava)
+- redhat: Remove old evaluate_configs (Prarit Bhargava)
+- Linux v6.16.1
+Resolves: RHEL-104231
+
 * Mon Jul 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.16.0-64]
 - Linux v6.16.0
 Resolves: 
