@@ -1,3 +1,7 @@
+* Fri Aug 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.d7ee5bdce789.20]
+- Linux v6.17.0-0.rc1.d7ee5bdce789
+Resolves: 
+
 * Thu Aug 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.0cc53520e68b.19]
 - Turn off LIBBPF_DYNAMIC for perf builds (Justin M. Forbes)
 - redhat: Add SBAT information to Linux kernel (Vitaly Kuznetsov)
