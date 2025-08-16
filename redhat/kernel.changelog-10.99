@@ -1,3 +1,8 @@
+* Sat Aug 16 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.dfd4b508c8c6.21]
+- Disable Nova Core until it is useful (Justin M. Forbes)
+- Linux v6.17.0-0.rc1.dfd4b508c8c6
+Resolves: 
+
 * Fri Aug 15 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc1.d7ee5bdce789.20]
 - Linux v6.17.0-0.rc1.d7ee5bdce789
 Resolves: 
