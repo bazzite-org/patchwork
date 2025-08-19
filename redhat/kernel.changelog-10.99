@@ -1,3 +1,10 @@
+* Tue Aug 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.be48bcf004f9.24]
+- redhat/configs: Enable early lockdown for Arm (Mark Salter) [RHEL-1927]
+- arm64: add early lockdown for secure boot (Mark Salter) [RHEL-1927]
+- efi: pass secure boot mode to kernel proper (Mark Salter) [RHEL-1927]
+- Linux v6.17.0-0.rc2.be48bcf004f9
+Resolves: RHEL-1927
+
 * Mon Aug 18 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.23]
 - Linux v6.17.0-0.rc2
 Resolves: 
