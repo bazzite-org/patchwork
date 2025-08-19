@@ -778,6 +778,8 @@ sources-rh: $(TARBALL) $(KABI_TARBALL) $(KABIDW_TARBALL) generate-testpatch-tmp 
 		README.rst \
 		kernel-local \
 		kernel.sbat.template \
+		uki.sbat.template \
+		uki-addons.sbat.template \
 		dracut-virt.conf \
 		$(SOURCES)/
 	@changelog_glob="$(SPECPACKAGE_NAME).changelog-*"; \
