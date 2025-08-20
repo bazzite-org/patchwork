@@ -15,7 +15,7 @@ MODULE=$(basename "$1")
 MODULE=${MODULE%.ko}
 MPATH=$1
 
-make -C /lib/modules/$(uname -r)/build M=$(pwd)/$DIR modules -j $(expr $(nproc) - 2)
+make -C /lib/modules/$(uname -r)/build M=$(pwd)/$DIR $MODULE.ko -j $(expr $(nproc) - 2)
 
 scp $MPATH $DHOST:/tmp/$MODULE.ko
 
