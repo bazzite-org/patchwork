@@ -1,3 +1,7 @@
+* Wed Aug 20 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.2-0]
+- Linux v6.16.2
+Resolves: 
+
 * Fri Aug 15 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.1-0]
 - Enable CONFIG_VHOST_ENABLE_FORK_OWNER_CONTROL (Justin M. Forbes)
 - Disable NOVA_CORE (Justin M. Forbes)
