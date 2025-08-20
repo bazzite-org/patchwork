@@ -1,3 +1,9 @@
+* Wed Aug 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.b19a97d57c15.25]
+- redhat/Makefile: add dist-spec (Scott Weaver)
+- redhat: Switch to implicit enablement of CONFIG_EFI_SBAT_FILE (Vitaly Kuznetsov)
+- Linux v6.17.0-0.rc2.b19a97d57c15
+Resolves: 
+
 * Tue Aug 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.be48bcf004f9.24]
 - redhat/configs: Enable early lockdown for Arm (Mark Salter) [RHEL-1927]
 - arm64: add early lockdown for secure boot (Mark Salter) [RHEL-1927]
