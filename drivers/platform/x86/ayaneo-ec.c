@@ -89,7 +89,6 @@ static const struct ayaneo_ec_quirk quirk_fan = {
 
 static const struct ayaneo_ec_quirk quirk_charge_limit = {
 	.has_fan_control = true,
-	.has_charge_control = true,
 };
 
 static const struct ayaneo_ec_quirk ayaneo3 = {
