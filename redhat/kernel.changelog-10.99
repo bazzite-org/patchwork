@@ -1,3 +1,7 @@
+* Fri Aug 22 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.3957a5720157.27]
+- Linux v6.17.0-0.rc2.3957a5720157
+Resolves: 
+
 * Thu Aug 21 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc2.068a56e56fa8.26]
 - redhat/configs: Remove obsolete CONFIG files - part 1 (Waiman Long)
 - Linux v6.17.0-0.rc2.068a56e56fa8
