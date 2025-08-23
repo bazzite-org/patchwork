@@ -237,6 +237,18 @@ enum dc_status core_link_write_dpcd(
 	uint32_t data_index = 0;
 	enum dc_status status = DC_ERROR_UNEXPECTED;
 
+	char hex_string[128] = {0};
+	uint32_t bytes_to_show = min(16u, size);
+	uint32_t i;
+	
+	for (i = 0; i < bytes_to_show; i++)
+		snprintf(hex_string + (i * 2), 3, "%02x", data[i]);
+	
+	if (size > bytes_to_show)
+		strcat(hex_string, "...");
+		
+	printk("DPCD write: address 0x%06x, data[%d]: %s", address, size, hex_string);
+
 	while (size) {
 		partition_size = dpcd_get_next_partition_size(address, size);
 		status = internal_link_write_dpcd(link, address, &data[data_index], partition_size);
