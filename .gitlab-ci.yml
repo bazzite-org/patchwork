@@ -691,7 +691,8 @@ c10s_automotive_debug_cki_gating:
       ssh-add -q - <<< "${PRIVATE_KEY}"
     fi
     # set up and fetch all remotes and expected branches
-    git remote add linux-rt-devel git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git
+    # needed by the merge-rt-automotive job which has been disabled
+    # git remote add linux-rt-devel git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-rt-devel.git
     git remote add gitlab https://gitlab.com/cki-project/kernel-ark.git
     git remote set-url --push gitlab git@gitlab.com:cki-project/kernel-ark.git
     git fetch --all
