@@ -5124,6 +5124,7 @@ static const struct dev_pm_ops asus_pm_ops = {
 	.restore = asus_hotk_restore,
 	.resume = asus_hotk_resume,
 	.resume_early = asus_hotk_resume_early,
+	.prepare = asus_hotk_prepare,
 };
 
 /* Registration ***************************************************************/
