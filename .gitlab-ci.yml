@@ -679,6 +679,7 @@ c10s_automotive_debug_cki_gating:
 
 .scripts:
   git_setup: |
+    export HOME="$(getent passwd "$(whoami)" | cut -d':' -f6)"
     # global git setup
     git config user.name "Fedora Kernel Team"
     git config user.email "kernel-team@fedoraproject.org"
