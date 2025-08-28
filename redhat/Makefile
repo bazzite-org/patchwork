@@ -416,6 +416,8 @@ include Makefile.cross
 # different types of help targets (for example, dist-help-misc or dist-help-build)
 HELP_TYPES=cleaning build kabi configuration misc
 
+include Makefile.exports
+
 #
 # Targets
 #
@@ -990,8 +992,7 @@ dist-os-version: ##misc Displays the current Red Hat Enterprise Linux version ta
 	@echo "OSVERSION: $(RHEL_MAJOR).$(RHEL_MINOR)"
 
 dist-dump-variables: ##misc Dump makefile variables.
-	$(eval VARS:=$(sort $(shell cat Makefile.variables Makefile.automotive | sed '/^#/d; /^$$/d; s/[ ]*[?:]=.*//')))
-	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment default automatic, $(origin $V)),$(info $V=$($V)),$(if $(filter $(VARS),$(V)),$(info $V=$($V)))))
+	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment default automatic override, $(origin $V)),$(info $V=$($V)),$(if $(filter $(EXPORTED_VARS),$(V)),$(info $V=$($V)))))
 
 dist-self-test: ##misc Runs self-tests from the redhat/self-test directory.
 	@if test -x /usr/bin/bats; then \
@@ -1108,4 +1109,4 @@ dist-help:
 	@echo  -e 'For full list of targets, run `\033[36mmake dist-full-help\033[0m`.'
 	@echo  ''
 
-export
+$(foreach var,$(EXPORTED_VARS),$(eval export $(var)))
