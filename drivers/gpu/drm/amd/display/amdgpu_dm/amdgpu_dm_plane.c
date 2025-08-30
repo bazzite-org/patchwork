@@ -1608,6 +1608,7 @@ dm_atomic_plane_attach_color_mgmt_properties(struct amdgpu_display_manager *dm,
 {
 	struct amdgpu_mode_info mode_info = dm->adev->mode_info;
 	struct dpp_color_caps dpp_color_caps = dm->dc->caps.color.dpp;
+	struct mpc_color_caps mpc_color_caps = dm->dc->caps.color.mpc;
 
 	/* Check HW color pipeline capabilities on DPP block (pre-blending)
 	 * before exposing related properties.
@@ -1629,7 +1630,7 @@ dm_atomic_plane_attach_color_mgmt_properties(struct amdgpu_display_manager *dm,
 				   AMDGPU_HDR_MULT_DEFAULT);
 
 	/* Only enable plane CTM if both DPP and MPC gamut remap is available. */
-	if (dm->dc->caps.color.mpc.gamut_remap)
+	if (mpc_color_caps.gamut_remap)
 		drm_object_attach_property(&plane->base,
 					   dm->adev->mode_info.plane_ctm_property, 0);
 
@@ -1649,7 +1650,7 @@ dm_atomic_plane_attach_color_mgmt_properties(struct amdgpu_display_manager *dm,
 					   MAX_COLOR_3DLUT_SIZE);
 	}
 
-	if (dpp_color_caps.ogam_ram) {
+	if (dpp_color_caps.ogam_ram || mpc_color_caps.ogam_ram) {
 		drm_object_attach_property(&plane->base,
 					   mode_info.plane_blend_lut_property, 0);
 		drm_object_attach_property(&plane->base,
