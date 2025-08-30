@@ -1,3 +1,7 @@
+* Sat Aug 30 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc3.11e7861d680c.33]
+- Linux v6.17.0-0.rc3.11e7861d680c
+Resolves: 
+
 * Fri Aug 29 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc3.07d9df80082b.32]
 - gitlab-ci: set HOME in maintenance jobs (Tales da Aparecida)
 - gitlab-ci: remove fetch of linux-rt-devel (Scott Weaver)
