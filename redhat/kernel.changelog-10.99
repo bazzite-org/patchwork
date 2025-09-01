@@ -1,3 +1,8 @@
+* Mon Sep 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.35]
+- redhat: export only selected variables (Jan Stancek)
+- Linux v6.17.0-0.rc4
+Resolves: 
+
 * Sun Aug 31 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc3.c8bc81a52d5a.34]
 - Linux v6.17.0-0.rc3.c8bc81a52d5a
 Resolves: 
