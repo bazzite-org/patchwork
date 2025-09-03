@@ -1,3 +1,8 @@
+* Wed Sep 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.e6b9dce0aeeb.36]
+- arm64: enable Tegra264 SoC components in RHEL (Marcin Juszkiewicz)
+- Linux v6.17.0-0.rc4.e6b9dce0aeeb
+Resolves: 
+
 * Mon Sep 01 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.35]
 - redhat: export only selected variables (Jan Stancek)
 - Linux v6.17.0-0.rc4
