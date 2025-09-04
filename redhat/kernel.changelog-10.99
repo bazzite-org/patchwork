@@ -1,3 +1,9 @@
+* Thu Sep 04 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.5-0]
+- cpufreq/amd-pstate: Fix a regression leading to EPP 0 after resume (Mario Limonciello (AMD))
+- net: ipv4: fix regression in local-broadcast routes (Oscar Maes)
+- Linux v6.16.5
+Resolves: 
+
 * Thu Aug 28 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.4-0]
 - Linux v6.16.4
 Resolves: 
