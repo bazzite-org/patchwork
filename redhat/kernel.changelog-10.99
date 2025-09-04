@@ -1,3 +1,10 @@
+* Thu Sep 04 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.08b06c30a445.37]
+- Revert "aacraid: Remove depreciated device and vendor PCI id's" (Scott Weaver)
+- rh_messages.h: add missing aacraid device (Scott Weaver)
+- rh_messages.h: update unmaintained drivers (Scott Weaver)
+- Linux v6.17.0-0.rc4.08b06c30a445
+Resolves: 
+
 * Wed Sep 03 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.e6b9dce0aeeb.36]
 - arm64: enable Tegra264 SoC components in RHEL (Marcin Juszkiewicz)
 - Linux v6.17.0-0.rc4.e6b9dce0aeeb
