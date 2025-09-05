@@ -4760,6 +4760,8 @@ static void convert_custom_brightness(const struct amdgpu_dm_backlight_caps *cap
 	u8 prev_signal = 0, prev_lum = 0;
 	int i = 0;
 
+	return;
+
 	if (amdgpu_dc_debug_mask & DC_DISABLE_CUSTOM_BRIGHTNESS_CURVE)
 		return;
 
