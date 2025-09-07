@@ -1,3 +1,7 @@
+* Sun Sep 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.b236920731dd.40]
+- Linux v6.17.0-0.rc4.b236920731dd
+Resolves: 
+
 * Sat Sep 06 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.d1d10cea0895.39]
 - Turn on PHY_ROCKCHIP_SAMSUNG_DCPHY for Fedora (Justin M. Forbes)
 - Linux v6.17.0-0.rc4.d1d10cea0895
