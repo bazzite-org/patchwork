@@ -19,6 +19,7 @@ set -e
 # shellcheck disable=SC1091
 . "$(dirname "$0")"/ark-ci-env.sh
 
+# shellcheck disable=SC2329
 finish()
 {
 	# shellcheck disable=SC2317
