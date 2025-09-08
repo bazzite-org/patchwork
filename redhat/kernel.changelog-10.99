@@ -1,3 +1,8 @@
+* Mon Sep 08 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.41]
+- redhat: scripts: ignore incorrect shellcheck 2329 in trap function (Simone Tollardo)
+- Linux v6.17.0-0.rc5
+Resolves: 
+
 * Sun Sep 07 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc4.b236920731dd.40]
 - Linux v6.17.0-0.rc4.b236920731dd
 Resolves: 
