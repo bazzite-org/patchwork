@@ -98,7 +98,8 @@ workflow:
   trigger:
     branch: rawhide-ark
   variables:
-    name: fedora-rawhide
+    name: fedora-rawhide  # deprecated in favor of kcidb_tree_name
+    kcidb_tree_name: fedora-rawhide
     builder_image: quay.io/cki/builder-rawhide
     native_tools: 'true'
     kpet_tree_name: rawhide
@@ -108,7 +109,8 @@ workflow:
   trigger:
     branch: eln-ark
   variables:
-    name: fedora-eln
+    name: fedora-eln  # deprecated in favor of kcidb_tree_name
+    kcidb_tree_name: fedora-eln
     builder_image: quay.io/cki/builder-eln
     native_tools: 'true'
     kpet_tree_name: eln
@@ -119,7 +121,8 @@ workflow:
   trigger:
     branch: c10s
   variables:
-    name: c10s
+    name: c10s  # deprecated in favor of kcidb_tree_name
+    kcidb_tree_name: c10s
     builder_image: quay.io/cki/builder-stream10
     native_tools: 'true'
     kpet_tree_name: c10s
