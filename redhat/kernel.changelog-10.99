@@ -1,3 +1,12 @@
+* Wed Sep 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.9dd1835ecda5.43]
+- gitlab-ci: add kcidb_tree_name to trees (Tales da Aparecida)
+- Fix packaging for libcpupower python binding debuginfo (Justin M. Forbes)
+- redhat/configs: automotive: enable TI K3 R5F remoteproc driver (Jared Kangas)
+- Move CONFIG_SCHED_PROXY_EXEC to the zfcpdump directory (Justin M. Forbes)
+- Set Fedora configs for 6.17 (Justin M. Forbes)
+- Linux v6.17.0-0.rc5.9dd1835ecda5
+Resolves: 
+
 * Tue Sep 09 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.f777d1112ee5.42]
 - Linux v6.17.0-0.rc5.f777d1112ee5
 Resolves: 
