@@ -1,3 +1,7 @@
+* Thu Sep 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.7aac71907bde.44]
+- Linux v6.17.0-0.rc5.7aac71907bde
+Resolves: 
+
 * Wed Sep 10 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.9dd1835ecda5.43]
 - gitlab-ci: add kcidb_tree_name to trees (Tales da Aparecida)
 - Fix packaging for libcpupower python binding debuginfo (Justin M. Forbes)
