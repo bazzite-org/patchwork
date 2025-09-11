@@ -1,3 +1,8 @@
+* Thu Sep 11 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.16.7-0]
+- Turn on vmscape mitigation for x86 (Justin M. Forbes)
+- Linux v6.16.7
+Resolves: 
+
 * Tue Sep 09 2025 Augusto Caringi <acaringi@redhat.com> [6.16.6-0]
 - Add another bug fix staged for 6.16 (Justin M. Forbes)
 - Turn on PHY_ROCKCHIP_SAMSUNG_DCPHY for Fedora (Justin M. Forbes)
