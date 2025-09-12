@@ -790,7 +790,7 @@ void __mod_lruvec_state(struct lruvec *lruvec, enum node_stat_item idx,
 	__mod_node_page_state(lruvec_pgdat(lruvec), idx, val);
 
 	/* Update memcg and lruvec */
-	if (!mem_cgroup_disabled())
+	if (likely(!mem_cgroup_disabled()))
 		__mod_memcg_lruvec_state(lruvec, idx, val);
 }
 
