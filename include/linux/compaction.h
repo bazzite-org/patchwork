@@ -82,6 +82,8 @@ static inline unsigned long compact_gap(unsigned int order)
 
 static inline int current_is_kcompactd(void)
 {
+extern int sysctl_zero_handler(struct ctl_table *table, int write,
+			void *buffer, size_t *length, loff_t *ppos);
 	return current->flags & PF_KCOMPACTD;
 }
 

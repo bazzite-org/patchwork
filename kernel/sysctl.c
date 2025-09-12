@@ -94,6 +94,8 @@ static const int cap_last_cap = CAP_LAST_CAP;
  *	will rewrite the sysctl value, regardless of file position. No warning
  *	is issued when the initial position is not 0.
  * @SYSCTL_WRITES_WARN: same as above but warn when the initial file position is
+extern int sysctl_zero_pages;
+
  *	not 0.
  * @SYSCTL_WRITES_STRICT: writes to numeric sysctl entries must always be at
  *	file position 0 and the value must be fully contained in the buffer
@@ -1891,3 +1893,10 @@ EXPORT_SYMBOL(proc_dostring);
 EXPORT_SYMBOL(proc_doulongvec_minmax);
 EXPORT_SYMBOL(proc_doulongvec_ms_jiffies_minmax);
 EXPORT_SYMBOL(proc_do_large_bitmap);
+	{
+		.procname	= "zero_pages",
+		.data		= &sysctl_zero_pages,
+		.maxlen		= sizeof(sysctl_zero_pages),
+		.mode		= 0644,
+		.proc_handler	= sysctl_zero_handler,
+	},

@@ -15,6 +15,7 @@
  *          (lots of bits borrowed from Ingo Molnar & Andrew Morton)
  */
 
+#include <linux/debugfs.h>
 #include <linux/stddef.h>
 #include <linux/mm.h>
 #include <linux/highmem.h>
@@ -758,6 +759,26 @@ buddy_merge_likely(unsigned long pfn, unsigned long buddy_pfn,
 		   struct page *page, unsigned int order)
 {
 	unsigned long higher_page_pfn;
+enum zero_state {
+	NOT_ZEROED,
+	PRE_ZEROED
+};
+
+static enum zero_state pre_zeroed(struct page *page)
+{
+	if (page_private(page) & BUDDY_ZEROED)
+		return PRE_ZEROED;
+	return NOT_ZEROED;
+}
+
+static void set_buddy_private(struct page *page, unsigned long value)
+{
+	WARN_ON(!PageBuddy(page));
+
+
+	set_page_private(page, value);
+}
+
 	struct page *higher_page;
 
 	if (order >= MAX_PAGE_ORDER - 1)
@@ -1660,7 +1681,7 @@ inline void post_alloc_hook(struct page *page, unsigned int order,
 	bool zero_tags = init && (gfp_flags & __GFP_ZEROTAGS);
 	int i;
 
-	set_page_private(page, 0);
+	set_buddy_private(page, 0);
 
 	arch_alloc_page(page, order);
 	debug_pagealloc_map_pages(page, 1 << order);
@@ -1831,6 +1852,7 @@ static bool prep_move_freepages_block(struct zone *zone, struct page *page,
 {
 	unsigned long pfn, start, end;
 
+	list_check_buddy_is_sane(page, order);
 	pfn = page_to_pfn(page);
 	start = pageblock_start_pfn(pfn);
 	end = pageblock_end_pfn(pfn);
@@ -1845,6 +1867,7 @@ static bool prep_move_freepages_block(struct zone *zone, struct page *page,
 	if (!zone_spans_pfn(zone, start))
 		return false;
 	if (!zone_spans_pfn(zone, end - 1))
+	list_check_buddy_is_sane(page, order);
 		return false;
 
 	*start_pfn = start;
@@ -2174,6 +2197,11 @@ try_to_claim_block(struct zone *zone, struct page *page,
 	return NULL;
 }
 
+			/*
+			 * This will leave BUDDY_ZEROED in place
+			 * in tail pages.  It should get cleared
+			 * up before anyone notices in expand().
+			 */
 /*
  * Try to allocate from some fallback migratetype by claiming the entire block,
  * i.e. converting it to the allocation's start migratetype.
@@ -7412,4 +7440,79 @@ struct page *try_alloc_pages_noprof(int nid, unsigned int order)
 	trace_mm_page_alloc(page, order, alloc_gfp, ac.migratetype);
 	kmsan_alloc_page(page, order, alloc_gfp);
 	return page;
+}
+
+void __list_check_buddy_low_orders(struct page *page, int order, int line)
+{
+	int nr_pages = 1 << order;
+	int i;
+
+	for (i = 1; i < nr_pages; i++) {
+		struct page *child = &page[i];
+		unsigned long child_pfn = page_to_pfn(child);
+		unsigned long pfn = page_to_pfn(page);
+		if (!PageBuddy(child))
+			continue;
+
+		printk("bad low order: %d pfns: 0x%lx 0x%lx buddy: %d/%d line=%d bo=%d\n",
+				order, pfn, child_pfn,
+				PageBuddy(page),
+				PageBuddy(child),
+				line, buddy_order(child));
+	}
+}
+
+void __list_check_buddy_high_orders(struct page *page, int order, int line)
+{
+	unsigned long pfn = page_to_pfn(page);
+
+	// Highest-order buddy pages (MAX_ORDER-1) are not
+	// merged together and can be on lists together
+	if (order >= MAX_ORDER-1)
+		return;
+
+	while (order < MAX_ORDER-1) {
+		unsigned long buddy_pfn = __find_buddy_pfn(pfn, order);
+		struct page *buddy = pfn_to_page(buddy_pfn);
+		bool bad;
+
+		// not in the buddy, don't care
+		if (!PageBuddy(buddy))
+			goto next;
+
+		// starts after me, can't possible overlap, don't care
+		if (buddy_pfn >= pfn + (1<<order))
+			goto next;
+
+		// Starts before me.  Does it cover me?
+		if (buddy_pfn + (1<<buddy_order(buddy)) <= pfn)
+			goto next;
+
+		bad = 1;
+		if (bad) {
+			printk("bad high order: %d pfns: 0x%lx 0x%lx buddy: %d/%d pib=%d line=%d bo=%d bad=%d\n",
+					order, pfn, buddy_pfn, PageBuddy(page),
+					PageBuddy(buddy),
+					page_is_buddy(page, buddy, order),
+					line,
+					buddy_order(buddy),
+					bad);
+			//WARN_ON(1);
+		}
+
+		// combine the PFNs to "move up" one order:
+		pfn = buddy_pfn & pfn;
+		page = pfn_to_page(pfn);
+	next:
+		order++;
+	}
+}
+
+
+void __list_check_buddy_is_sane(struct page *page, int order, int line)
+{
+	if (!prezero_buddy_sane_checks)
+		return;
+	__list_check_buddy_high_orders(page, order, line);
+	__list_check_buddy_low_orders(page, order, line);
 }

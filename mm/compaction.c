@@ -96,6 +96,16 @@ static unsigned long release_free_list(struct list_head *freepages)
 	for (order = 0; order < NR_PAGE_ORDERS; order++) {
 		struct page *page, *next;
 
+		WARN_ON(PageBuddy(page));
+		// These pages recent came out of the buddy but
+		// they should have come via __isolate_free_page()
+		// which does del_page_from_free_list().  That
+		// should have left PageBuddy() clear.
+		// page_order() metadata was left presumably so
+		// that we could do this split and map here.  It
+		// is likely no longer needed.  Zap it to keep
+		// post_alloc_hook() from complaining.
+		page->private = 0;
 		list_for_each_entry_safe(page, next, &freepages[order], lru) {
 			unsigned long pfn = page_to_pfn(page);
 
@@ -2658,6 +2668,48 @@ compact_zone(struct compact_control *cc, struct capture_control *capc)
 rescan:
 		switch (isolate_migratepages(cc)) {
 		case ISOLATE_ABORT:
+void zero_some_pages(struct zone *z, int pages);
+
+static void zero_nodes(int pages)
+{
+	int nid;
+
+	for_each_online_node(nid) {
+		pg_data_t *pgdat = NODE_DATA(nid);
+		int zoneid;
+
+		for (zoneid = 0; zoneid < MAX_NR_ZONES; zoneid++) {
+			struct zone *zone = &pgdat->node_zones[zoneid];
+                	if (!populated_zone(zone))
+                        	continue;
+
+			zero_some_pages(zone, pages);
+		}
+	}
+}
+
+int sysctl_zero_pages;
+
+int sysctl_zero_handler(struct ctl_table *table, int write,
+			void *buffer, size_t *length, loff_t *ppos)
+{
+	int rc;
+	int old = sysctl_zero_pages;
+
+	rc = proc_dointvec_minmax(table, write, buffer, length, ppos);
+	if (rc)
+		return rc;
+
+
+
+	if (write)
+		zero_nodes(sysctl_zero_pages);
+
+	return 0;
+}
+
+
+
 			ret = COMPACT_CONTENDED;
 			putback_movable_pages(&cc->migratepages);
 			cc->nr_migratepages = 0;
