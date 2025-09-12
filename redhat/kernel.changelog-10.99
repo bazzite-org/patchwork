@@ -1,3 +1,8 @@
+* Fri Sep 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.320475fbd590.45]
+- redhat/Makefile: update dist-vr-check (Scott Weaver)
+- Linux v6.17.0-0.rc5.320475fbd590
+Resolves: 
+
 * Thu Sep 11 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.7aac71907bde.44]
 - Linux v6.17.0-0.rc5.7aac71907bde
 Resolves: 
