@@ -1,3 +1,8 @@
+* Sat Sep 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.22f20375f5b7.46]
+- Set CONFIG_MITIGATION_VMSCAPE for Fedora (Justin M. Forbes)
+- Linux v6.17.0-0.rc5.22f20375f5b7
+Resolves: 
+
 * Fri Sep 12 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.320475fbd590.45]
 - redhat/Makefile: update dist-vr-check (Scott Weaver)
 - Linux v6.17.0-0.rc5.320475fbd590
