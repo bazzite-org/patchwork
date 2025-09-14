@@ -1,3 +1,7 @@
+* Sun Sep 14 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.f83a4f2a4d8c.47]
+- Linux v6.17.0-0.rc5.f83a4f2a4d8c
+Resolves: 
+
 * Sat Sep 13 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc5.22f20375f5b7.46]
 - Set CONFIG_MITIGATION_VMSCAPE for Fedora (Justin M. Forbes)
 - Linux v6.17.0-0.rc5.22f20375f5b7
