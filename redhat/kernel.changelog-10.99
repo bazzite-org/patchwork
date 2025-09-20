@@ -1,3 +1,7 @@
+* Sat Sep 20 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc6.cd89d487374c.53]
+- Linux v6.17.0-0.rc6.cd89d487374c
+Resolves: 
+
 * Fri Sep 19 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc6.097a6c336d00.52]
 - os-build: Remove dead CONFIG_SCHED_DEBUG files (Phil Auld)
 - redhat/configs: automotive: Disable COMPAT_32BIT_TIME SGETMASK_SYSCALL and IA32_EMULATION configs (Dorinda Bassey)
