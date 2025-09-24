@@ -1,3 +1,7 @@
+* Wed Sep 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.cec1e6e5d1ab.57]
+- Consolidate configs to common for 6.17 (Justin M. Forbes)
+Resolves: 
+
 * Tue Sep 23 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.cec1e6e5d1ab.56]
 - Add 1010-config-newlines-test.bats self test. (Alexandra Hájková)
 - Linux v6.17.0-0.rc7.cec1e6e5d1ab
