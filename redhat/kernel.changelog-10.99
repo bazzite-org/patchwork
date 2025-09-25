@@ -1,3 +1,8 @@
+* Thu Sep 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.bf40f4b87761.58]
+- redhat/Makefile: Update the make target dist-configs-check to fail (Alexandra Hájková)
+- Linux v6.17.0-0.rc7.bf40f4b87761
+Resolves: 
+
 * Wed Sep 24 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.cec1e6e5d1ab.57]
 - Consolidate configs to common for 6.17 (Justin M. Forbes)
 Resolves: 
