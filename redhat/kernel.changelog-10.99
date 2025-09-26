@@ -1,3 +1,9 @@
+* Fri Sep 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.4ff71af020ae.59]
+- Always set LLVM=1 when building with clang (Tom Stellard)
+- redhat/configs: Move CONFIG_MITIGATION_VMSCAPE to common/generic/x86 (Waiman Long)
+- Linux v6.17.0-0.rc7.4ff71af020ae
+Resolves: 
+
 * Thu Sep 25 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.bf40f4b87761.58]
 - redhat/Makefile: Update the make target dist-configs-check to fail (Alexandra Hájková)
 - Linux v6.17.0-0.rc7.bf40f4b87761
