@@ -1,3 +1,8 @@
+* Sat Sep 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.fec734e8d564.60]
+- Revert "Merge branch 'tmp2' into 'os-build'" (Justin M. Forbes)
+- Linux v6.17.0-0.rc7.fec734e8d564
+Resolves: 
+
 * Fri Sep 26 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.4ff71af020ae.59]
 - Always set LLVM=1 when building with clang (Tom Stellard)
 - redhat/configs: Move CONFIG_MITIGATION_VMSCAPE to common/generic/x86 (Waiman Long)
