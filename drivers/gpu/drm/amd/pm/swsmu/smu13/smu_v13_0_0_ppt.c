@@ -3129,6 +3129,10 @@ static int smu_v13_0_0_set_power_limit(struct smu_context *smu,
 		}
 		return smu_v13_0_set_power_limit(smu, limit_type, limit);
 	} else if (smu->od_enabled) {
+		WARN_TAINT_ONCE(
+			1, TAINT_CPU_OUT_OF_SPEC,
+			"AMDGPU: OverDrive setting configured. Tainting kernel.\n");
+
 		ret = smu_v13_0_set_power_limit(smu, limit_type, msg_limit);
 		if (ret)
 			return ret;

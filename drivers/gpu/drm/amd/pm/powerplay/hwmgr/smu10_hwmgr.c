@@ -1551,6 +1551,10 @@ static int smu10_set_fine_grain_clk_vol(struct pp_hwmgr *hwmgr,
 		return -EINVAL;
 	}
 
+	WARN_TAINT_ONCE(
+		1, TAINT_CPU_OUT_OF_SPEC,
+		"AMDGPU: OverDrive setting configured. Tainting kernel.\n");
+
 	if (type == PP_OD_EDIT_SCLK_VDDC_TABLE) {
 		if (size != 2) {
 			pr_err("Input parameter number not correct\n");

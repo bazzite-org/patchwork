@@ -2297,6 +2297,10 @@ static int sienna_cichlid_od_edit_dpm_table(struct smu_context *smu,
 		return -EINVAL;
 	}
 
+	WARN_TAINT_ONCE(
+		1, TAINT_CPU_OUT_OF_SPEC,
+		"AMDGPU: OverDrive setting configured. Tainting kernel.\n");
+
 	switch (type) {
 	case PP_OD_EDIT_SCLK_VDDC_TABLE:
 		if (!sienna_cichlid_is_od_feature_supported(od_settings,

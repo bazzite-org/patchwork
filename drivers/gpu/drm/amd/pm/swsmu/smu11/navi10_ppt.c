@@ -2643,6 +2643,10 @@ static int navi10_od_edit_dpm_table(struct smu_context *smu, enum PP_OD_DPM_TABL
 		return -ENOENT;
 	}
 
+	WARN_TAINT_ONCE(
+		1, TAINT_CPU_OUT_OF_SPEC,
+		"AMDGPU: OverDrive setting configured. Tainting kernel.\n");
+
 	od_settings = smu->od_settings;
 
 	switch (type) {

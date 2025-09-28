@@ -5609,6 +5609,10 @@ static int vega10_odn_edit_dpm_table(struct pp_hwmgr *hwmgr,
 		return -EINVAL;
 	}
 
+	WARN_TAINT_ONCE(
+		1, TAINT_CPU_OUT_OF_SPEC,
+		"AMDGPU: OverDrive setting configured. Tainting kernel.\n");
+
 	if (PP_OD_EDIT_SCLK_VDDC_TABLE == type) {
 		dpm_table = &data->dpm_table.gfx_table;
 		podn_vdd_dep_table = &data->odn_dpm_table.vdd_dep_on_sclk;
