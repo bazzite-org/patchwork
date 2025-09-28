@@ -5510,6 +5510,12 @@ static int smu7_odn_edit_dpm_table(struct pp_hwmgr *hwmgr,
 		return -EINVAL;
 	}
 
+	if (!hwmgr->od_tainted) {
+		pr_err("OverDrive setting changed. Tainting kernel.\n");
+		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+		hwmgr->od_tainted = true;
+	}
+
 	if (PP_OD_EDIT_SCLK_VDDC_TABLE == type) {
 		podn_dpm_table_in_backend = &data->odn_dpm_table.odn_core_clock_dpm_levels;
 		podn_vdd_dep_in_backend = &data->odn_dpm_table.vdd_dependency_on_sclk;
