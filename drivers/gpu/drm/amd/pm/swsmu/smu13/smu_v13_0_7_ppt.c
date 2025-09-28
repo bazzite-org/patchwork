@@ -2718,6 +2718,13 @@ static int smu_v13_0_7_set_power_limit(struct smu_context *smu,
 		}
 		return smu_v13_0_set_power_limit(smu, limit_type, limit);
 	} else if (smu->od_enabled) {
+		if (!smu->od_tainted) {
+			dev_err(smu->adev->dev,
+				"OverDrive setting changed. Tainting kernel.\n");
+			add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+			smu->od_tainted = true;
+		}
+
 		ret = smu_v13_0_set_power_limit(smu, limit_type, msg_limit);
 		if (ret)
 			return ret;

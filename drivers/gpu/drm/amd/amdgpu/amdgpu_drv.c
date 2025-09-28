@@ -3123,7 +3123,6 @@ static int __init amdgpu_init(void)
 	amdgpu_amdkfd_init();
 
 	if (amdgpu_pp_feature_mask & PP_OVERDRIVE_MASK) {
-		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
 		pr_err("Overdrive is enabled, please disable it before "
 			"reporting any bugs unrelated to overdrive.\n");
 	}

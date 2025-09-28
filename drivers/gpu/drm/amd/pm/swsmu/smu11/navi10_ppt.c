@@ -2643,6 +2643,13 @@ static int navi10_od_edit_dpm_table(struct smu_context *smu, enum PP_OD_DPM_TABL
 		return -ENOENT;
 	}
 
+	if (!smu->od_tainted) {
+		dev_err(smu->adev->dev,
+			"OverDrive setting changed. Tainting kernel.\n");
+		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+		smu->od_tainted = true;
+	}
+
 	od_settings = smu->od_settings;
 
 	switch (type) {

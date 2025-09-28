@@ -539,6 +539,7 @@ struct smu_context {
 	uint32_t pstate_mclk;
 
 	bool od_enabled;
+	bool od_tainted;
 	uint32_t current_power_limit;
 	uint32_t default_power_limit;
 	uint32_t max_power_limit;
