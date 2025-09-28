@@ -1551,6 +1551,12 @@ static int smu10_set_fine_grain_clk_vol(struct pp_hwmgr *hwmgr,
 		return -EINVAL;
 	}
 
+	if (!hwmgr->od_tainted) {
+		pr_err("OverDrive setting changed. Tainting kernel.\n");
+		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+		hwmgr->od_tainted = true;
+	}
+
 	if (type == PP_OD_EDIT_SCLK_VDDC_TABLE) {
 		if (size != 2) {
 			pr_err("Input parameter number not correct\n");

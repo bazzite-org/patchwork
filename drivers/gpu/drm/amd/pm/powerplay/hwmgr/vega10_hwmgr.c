@@ -5609,6 +5609,12 @@ static int vega10_odn_edit_dpm_table(struct pp_hwmgr *hwmgr,
 		return -EINVAL;
 	}
 
+	if (!hwmgr->od_tainted) {
+		pr_err("OverDrive setting changed. Tainting kernel.\n");
+		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+		hwmgr->od_tainted = true;
+	}
+
 	if (PP_OD_EDIT_SCLK_VDDC_TABLE == type) {
 		dpm_table = &data->dpm_table.gfx_table;
 		podn_vdd_dep_table = &data->odn_dpm_table.vdd_dep_on_sclk;

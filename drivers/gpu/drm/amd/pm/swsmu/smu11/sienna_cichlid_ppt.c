@@ -2297,6 +2297,13 @@ static int sienna_cichlid_od_edit_dpm_table(struct smu_context *smu,
 		return -EINVAL;
 	}
 
+	if (!smu->od_tainted) {
+		dev_err(smu->adev->dev,
+			"OverDrive setting changed. Tainting kernel.\n");
+		add_taint(TAINT_CPU_OUT_OF_SPEC, LOCKDEP_STILL_OK);
+		smu->od_tainted = true;
+	}
+
 	switch (type) {
 	case PP_OD_EDIT_SCLK_VDDC_TABLE:
 		if (!sienna_cichlid_is_od_feature_supported(od_settings,
