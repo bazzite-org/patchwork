@@ -1,3 +1,7 @@
+* Sun Sep 28 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.51a24b7deaae.61]
+- Linux v6.17.0-0.rc7.51a24b7deaae
+Resolves: 
+
 * Sat Sep 27 2025 Fedora Kernel Team <kernel-team@fedoraproject.org> [6.17.0-0.rc7.fec734e8d564.60]
 - Revert "Merge branch 'tmp2' into 'os-build'" (Justin M. Forbes)
 - Linux v6.17.0-0.rc7.fec734e8d564
