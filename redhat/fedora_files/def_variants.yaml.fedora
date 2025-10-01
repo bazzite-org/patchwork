@@ -12,6 +12,10 @@ packages:
     depends-on:
     - modules-core
     - modules
+  - name: modules-akmods
+    depends-on:
+    - modules-core
+    - modules
 
 
 rules:
@@ -21,6 +25,8 @@ rules:
 
   - arch/.*: modules-core
   - crypto/.*: modules-core
+
+  - drivers/custom/.*: modules-akmods
 
   - drivers/accel/.*: modules-core
   - drivers/accessibility/.*: modules-core
