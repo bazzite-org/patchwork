@@ -11,6 +11,8 @@ source "drivers/pcmcia/Kconfig"
 source "drivers/rapidio/Kconfig"
 
 
+source "drivers/custom/Kconfig"
+
 source "drivers/base/Kconfig"
 
 source "drivers/bus/Kconfig"
