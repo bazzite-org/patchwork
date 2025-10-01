@@ -1,0 +1,57 @@
+[submodule "drivers/custom/ayn_platform"]
+	path = drivers/custom/ayn_platform
+	url = https://github.com/bazzite-org/ayn-platform
+[submodule "drivers/custom/ayaneo_platform"]
+	path = drivers/custom/ayaneo_platform
+	url = https://github.com/bazzite-org/ayaneo-platform
+[submodule "drivers/custom/framework"]
+	path = drivers/custom/framework
+	url = https://github.com/bazzite-org/framework-laptop-kmod
+[submodule "drivers/custom/bmi260"]
+	path = drivers/custom/bmi260
+	url = https://github.com/hhd-dev/bmi260
+[submodule "drivers/custom/xonedo"]
+	path = drivers/custom/xonedo
+	url = https://github.com/bazzite-org/xonedo
+[submodule "drivers/custom/kvfm"]
+	path = drivers/custom/kvfm
+	url = https://github.com/gnif/LookingGlass
+[submodule "drivers/custom/razer"]
+	path = drivers/custom/razer
+	url = https://github.com/ublue-os/openrazer.git
+[submodule "drivers/custom/v4l2loopback"]
+	path = drivers/custom/v4l2loopback
+	url = https://github.com/umlaeute/v4l2loopback
+[submodule "drivers/custom/evdi"]
+	path = drivers/custom/evdi
+	url = https://github.com/DisplayLink/evdi
+[submodule "drivers/custom/gcadapter_oc"]
+	path = drivers/custom/gcadapter_oc
+	url = https://github.com/hannesmann/gcadapter-oc-kmod
+[submodule "drivers/custom/zenergy"]
+	path = drivers/custom/zenergy
+	url = https://github.com/bazzite-org/zenergy.git
+[submodule "drivers/custom/nct6687d"]
+	path = drivers/custom/nct6687d
+	url = https://github.com/ublue-os/nct6687d.git
+[submodule "drivers/custom/lg4ff"]
+	path = drivers/custom/lg4ff
+	url = https://github.com/berarma/new-lg4ff
+[submodule "drivers/custom/system76"]
+	path = drivers/custom/system76
+	url = https://github.com/pop-os/system76-dkms
+[submodule "drivers/custom/system76_io"]
+	path = drivers/custom/system76_io
+	url = https://github.com/pop-os/system76-io-dkms
+[submodule "drivers/custom/facetimehd"]
+	path = drivers/custom/facetimehd
+	url = https://github.com/patjak/facetimehd/
+[submodule "drivers/custom/cdemu"]
+	path = drivers/custom/cdemu
+	url = https://github.com/cdemu/cdemu
+[submodule "drivers/custom/broadcom-wl"]
+	path = drivers/custom/broadcom-wl
+	url = https://github.com/bazzite-org/broadcom-wl
+[submodule "drivers/custom/fanatecff"]
+	path = drivers/custom/fanatecff
+	url = https://github.com/gotzl/hid-fanatecff
