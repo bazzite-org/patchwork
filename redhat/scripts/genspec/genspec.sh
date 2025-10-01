@@ -37,14 +37,13 @@ if [ "$PATCHLIST_URL" != "none" ]; then
 	#
 	# May need to preserve word splitting in EXCLUDE_FILES
 	# shellcheck disable=SC2086
-	git log --no-merges --pretty=oneline --no-decorate "$FMARKER".. $EXCLUDE_FILES | \
-		sed "s!^\([^ ]*\)!$BPATCHLIST_URL/\1\n &!; s!\$!\n!" \
-		> "$SOURCES"/Patchlist.changelog
 	git log --no-merges --pretty=oneline --no-decorate ${UPSTREAM}.."$FMARKER" $EXCLUDE_FILES | \
 		sed "s!^\([^ ]*\)!$PATCHLIST_URL/\1\n &!; s!\$!\n!" \
 		>> "$SOURCES"/Patchlist.changelog
 	SPECPATCHLIST_CHANGELOG=1
 fi
+
+EVDIVERSION=$(sed -n 's/MODVER=[[:space:]]*//p' $TOPDIR/drivers/custom/evdi/module/Makefile)
 
 # self-test begin
 test -f "$SOURCES/$SPECFILE" &&
@@ -66,6 +65,7 @@ test -f "$SOURCES/$SPECFILE" &&
 	s/%%SPECTARFILE_RELEASE%%/$SPECTARFILE_RELEASE/
 	s/%%SPECPACKAGE_NAME%%/$SPECPACKAGE_NAME/
 	s/%%SPECGEMINI%%/$SPECGEMINI/
+	s/%%EVDIVERSION%%/$EVDIVERSION/
 	s/%%SPECSELFTESTS_MUST_BUILD%%/$SPECSELFTESTS_MUST_BUILD/" "$SOURCES/$SPECFILE"
 test -n "$RHSELFTESTDATA" && test -f "$SOURCES/$SPECFILE" && sed -i -e "
 	/%%SPECCHANGELOG%%/r $SOURCES/$SPECCHANGELOG
@@ -104,6 +104,72 @@ test -f "$SOURCES/$SPECFILE" &&
 	/%%SPECCHANGELOG%%/d" "$SOURCES/$SPECFILE"
 
 git diff -p --binary --no-renames --stat "$MARKER".."$FMARKER" $EXCLUDE_FILES \
-	> ${SOURCES}/patch-redhat.patch
+	> ${SOURCES}/patch-1-redhat.patch
 git format-patch --stdout --zero-commit -k "$FMARKER"  --no-renames -- $EXCLUDE_FILES \
-	> ${SOURCES}/patch-handheld.patch
+	> ${SOURCES}/patch-2-handheld.patch
+
+rm -rf ${SOURCES}/patch-3-akmods.patch
+# loop through directories in drivers/custom
+EMPTY_TREE=$(git hash-object -t tree /dev/null)
+INCLUDE_FILES=("*.c" "*.h" "Makefile" "Kconfig" "Kbuild")
+
+cp "$TOPDIR/drivers/custom/broadcom-wl/lib/wlc_hybrid.o_shipped" "$SOURCES/broadcom-wl.blob"
+
+touch ${SOURCES}/patch-3-akmods.patch
+for dir in $(find $ "$TOPDIR/drivers/custom" -mindepth 1 -maxdepth 1 -type d 2>/dev/null || echo ""); do
+        SUBDIR=""
+	EXTRA_FILES=()
+
+        # Certain modules use subpaths, skip the rest of the repo
+        # Those are xpadneo, and razer
+        modname=$(basename "$dir")
+        if [[ "$modname" == "xpadneo" ]]; then
+                SUBDIR="hid-xpadneo/src/"
+        elif [[ "$modname" == "xonedo" ]]; then
+                EXTRA_FILES+=("install/modprobe.conf")
+        elif [[ "$modname" == "razer" ]]; then
+                SUBDIR="driver/"
+		EXTRA_FILES+=("install_files/udev/*")
+	elif [[ "$modname" == "v4l2loopback" ]]; then
+		EXTRA_FILES="utils/*"
+        elif [[ "$modname" == "evdi" || "$modname" == "kvfm" ]]; then
+                SUBDIR="module/"
+        elif [[ "$modname" == "cdemu" ]]; then
+                SUBDIR="vhba-module/"
+		EXTRA_FILES+=("vhba-module/debian/vhba-dkms.udev")
+        fi
+
+	# Build FILTER by excluding patterns (optionally within SUBDIR) so only
+	# needed files (minus excluded ones) are diffed.
+	FILTER=()
+	for pat in "${INCLUDE_FILES[@]}"; do
+		FILTER+=("$SUBDIR$pat" "$SUBDIR**/$pat")
+	done
+	FILTER+=("${EXTRA_FILES[@]}")
+
+	# Join array elements into a space-separated list (needed for: -- $FILTER)
+	FILTER="${FILTER[@]}"
+
+	# If git is tagged, use tag for version, otherwise short hash
+	if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+		if MODULE_VERSION=$(git -C "$dir" describe --tags --exact-match 2>/dev/null); then
+			:
+		else
+			MODULE_VERSION=$(git -C "$dir" rev-parse --short HEAD 2>/dev/null || echo Unknown)
+		fi
+	else
+		MODULE_VERSION=Unknown
+	fi
+
+	{
+		printf '# ----------------------------------------\n'
+		printf '# Module: %s\n' "$modname"
+		printf '# Version: %s\n' "$MODULE_VERSION"
+		printf '# ----------------------------------------\n'
+	} >> "${SOURCES}/patch-3-akmods.patch"
+	git -C $dir diff "$EMPTY_TREE"..HEAD \
+		--binary --no-renames \
+		--src-prefix=a/${dir#"$TOPDIR"/}/ \
+		--dst-prefix=b/${dir#"$TOPDIR"/}/ \
+		-- $FILTER >> ${SOURCES}/patch-3-akmods.patch
+done
