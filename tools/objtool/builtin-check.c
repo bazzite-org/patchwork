@@ -101,6 +101,7 @@ static const struct option check_options[] = {
 	OPT_BOOLEAN(0,   "stats", &opts.stats, "print statistics"),
 	OPT_BOOLEAN('v', "verbose", &opts.verbose, "verbose warnings"),
 	OPT_BOOLEAN(0,   "Werror", &opts.werror, "return error on warnings"),
+	OPT_BOOLEAN(0,   "skip-check", &opts.skipcheck, "return error on warnings"),
 
 	OPT_END(),
 };
