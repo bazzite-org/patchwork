@@ -1,0 +1,122 @@
+config AYN
+    tristate "AYN Platform Driver"
+    help
+        AYN platform driver for Linux. Link:
+        https://github.com/bazzite-org/ayn-platform
+
+config AYANEO
+    tristate "AYANEO Legacy Platform Driver"
+    help
+        AYANEO Legacy platform driver for Linux. Link:
+        https://github.com/bazzite-org/ayaneo-platform
+
+config BMI260
+    tristate "BMI260 Legacy Driver"
+    help
+        BMI260 driver for Linux. Link:
+        https://github.com/hhd-dev/bmi260
+
+config XONEDO
+    tristate "XONEDO Driver"
+    help
+        XONEDO driver for Linux. Link:
+        https://github.com/bazzite-org/xonedo
+
+config FANATEC
+    tristate "Fanatec Driver"
+    help
+        Fanatec driver for Linux. Link:
+        https://github.com/gotzl/hid-fanatecff
+
+config LG4FF
+    tristate "New LG4FF Driver"
+    help
+        New LG4FF driver for Linux. Link:
+        https://github.com/berarma/new-lg4ff
+
+config TMFF2
+    tristate "New TMFF Driver"
+    help
+        New TMFF driver for Linux. Link:
+        https://github.com/Kimplul/hid-tmff2
+
+config T150
+    tristate "T150 Driver"
+    help
+        T150 driver for Linux. Link:
+        https://github.com/scarburato/t150_driver
+
+config GCAOC
+    tristate "GCAdapter OC Driver"
+    help
+        GCAdapter OC driver for Linux. Link:
+        https://github.com/hannesmann/gcadapter-oc-kmod
+
+config RAZER
+    tristate "OpenRazer Driver"
+    help
+        OpenRazer driver for Linux. Link:
+        https://openrazer.github.io/
+
+config NCT6687D
+    tristate "NCT6687D Driver"
+    help
+        NCT6687D driver for Linux. Link:
+        https://github.com/ublue-os/nct6687d.git
+
+config WL
+    tristate "Broadcom WL Driver"
+	depends on CFG80211
+    help
+        Broadcom WL driver for Linux. Link:
+        https://github.com/bazzite-org/broadcom-wl
+
+
+config FWOOT
+    tristate "Framework Laptop Driver"
+    help
+        Framework Laptop driver for Linux. Link:
+        https://github.com/bazzite-org/framework-laptop-kmod
+
+config S76
+    tristate "System76 Driver"
+    help
+        System76 driver for Linux. Link:
+        https://github.com/pop-os/system76-dkms
+
+config S76IO
+    tristate "System76 IO Driver"
+    help
+        System76 IO driver for Linux. Link:
+        https://github.com/pop-os/system76-io-dkms
+
+config ZENERGY
+    tristate "Zenergy Driver"
+    help
+        Zenergy driver for Linux. Link:
+        https://github.com/bazzite-org/zenergy.git
+
+config KVFM
+    tristate "KVFM Driver"
+    help
+        KVFM driver for Linux. Link:
+
+source "drivers/custom/evdi/module/Kconfig"
+
+config V4L2LOOP
+    tristate "V4L2Loopback Driver"
+    help
+        V4L2Loopback driver for Linux. Link:
+        https://github.com/umlaeute/v4l2loopback
+
+config VHBA
+    tristate "CDEMU VHBA Driver"
+    help
+        CDEMU VHBA driver for Linux. Link:
+        https://github.com/cdemu/cdemu
+
+config FACETIMEHD
+    tristate "FacetimeHD Driver"
+    help
+        FacetimeHD driver for Linux. Link:
+        

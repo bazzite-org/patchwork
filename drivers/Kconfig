@@ -17,6 +17,8 @@ config PC104
 	  selection and configuration. Enable this option if your target
 	  machine has a PC/104 bus.
 
+source "drivers/custom/Kconfig"
+
 source "drivers/base/Kconfig"
 
 source "drivers/bus/Kconfig"
