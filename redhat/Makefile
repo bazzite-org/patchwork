@@ -312,6 +312,7 @@ else ifeq ("$(DISTRO)", "centos")
   DISTRELEASETAG:=$(RELEASETAG)$(DIST)
   DISTBASEVERSION:=$(BASEVERSION)$(DIST)
   PATCHLIST_URL:=none
+  BPATCHLIST_URL:=none
   RHPKG_BIN:=centpkg
 else
   RHDISTGIT_BRANCH:=rhel-$(RHEL_MAJOR).$(RHEL_MINOR).0
@@ -341,6 +342,7 @@ else
     SPECKABIVERSION:=$(BASEVERSION)$(DIST)
   endif
   PATCHLIST_URL:=none
+  BPATCHLIST_URL:=none
   RHPKG_BIN:=rhpkg
 endif
 
