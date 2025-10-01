@@ -8,3 +8,28 @@ CONFIG_IKCONFIG_PROC=y
 # CONFIG_DRM_PANEL_DDIC_CH13726A is not set
 # CONFIG_HID_ITHC is not set
 # CONFIG_PWM_HTR3212 is not set
+
+# Disable these for all arches except x86
+# CONFIG_AYN is not set
+# CONFIG_AYANEO is not set
+# CONFIG_BMI260 is not set
+# CONFIG_XONEDO is not set
+# CONFIG_FANATEC is not set
+# CONFIG_LG4FF is not set
+# CONFIG_TMFF2 is not set
+# CONFIG_T150 is not set
+# CONFIG_GCAOC is not set
+# CONFIG_RAZER is not set
+# CONFIG_NCT6687D is not set
+# CONFIG_WL is not set
+# CONFIG_FWOOT is not set
+# CONFIG_S76 is not set
+# CONFIG_S76IO is not set
+# CONFIG_ZENERGY is not set
+# CONFIG_KVFM is not set
+# CONFIG_DRM_EVDI is not set
+# CONFIG_V4L2LOOP is not set
+# CONFIG_VHBA is not set
+# CONFIG_FACETIMEHD is not set
+
+# CONFIG_SENSORS_GPD is not set
