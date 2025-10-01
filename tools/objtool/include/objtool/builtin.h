@@ -39,6 +39,7 @@ struct opts {
 	bool stats;
 	bool verbose;
 	bool werror;
+	bool skipcheck;
 };
 
 extern struct opts opts;
