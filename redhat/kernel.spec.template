@@ -265,6 +265,8 @@ Summary: The Linux kernel
 #
 # Additional options for user-friendly one-off kernel building:
 #
+# Build for bazzite (--with bazzite):
+%define with_bazzite  %{?_with_bazzite:     1} %{?!_with_bazzite:     0}
 # Only build the base kernel (--with baseonly):
 %define with_baseonly  %{?_with_baseonly:     1} %{?!_with_baseonly:     0}
 # Only build the debug variants (--with dbgonly):
@@ -389,6 +391,21 @@ Summary: The Linux kernel
 # Needed because we override almost everything involving build-ids
 # and debuginfo generation. Currently we rely on the old alldebug setting.
 %global _build_id_links alldebug
+
+%if %{with_bazzite}
+%define with_tools 1
+%define with_debug 0
+%define with_debuginfo 0
+%define with_realtime 0
+%define with_realtime_arm64_64k 0
+%define with_vdso_install 0
+%define with_perf 0
+%define with_libperf 0
+%define with_kernel_abi_stablelists 0
+%define with_selftests 0
+%define with_efiuki 0
+%define with_automotive 0
+%endif
 
 # if requested, only build base kernel
 %if %{with_baseonly}
@@ -947,6 +964,10 @@ Source0: linux-%{tarfile_release}.tar.xz
 Source1: Makefile.rhelver
 Source2: %{package_name}.changelog
 
+Source4: broadcom-wl.blob
+
+%define evdi_version %%EVDIVERSION%%
+
 Source10: redhatsecurebootca5.cer
 Source13: redhatsecureboot501.cer
 
@@ -1101,9 +1122,6 @@ Source212: Module.kabi_dup_s390x
 Source213: Module.kabi_dup_x86_64
 Source214: Module.kabi_dup_riscv64
 
-Source300: kernel-abi-stablelists-%{kabiversion}.tar.xz
-Source301: kernel-kabi-dw-%{kabiversion}.tar.xz
-
 %if 0%{include_rt}
 %if 0%{include_rhel}
 Source474: %{name}-aarch64-rt-rhel.config
@@ -1160,8 +1178,9 @@ Source4002: gating.yaml
 
 %if !%{nopatches}
 
-Patch1: patch-redhat.patch
-Patch2: patch-handheld.patch
+Patch1: patch-1-redhat.patch
+Patch2: patch-2-handheld.patch
+Patch3: patch-3-akmods.patch
 %endif
 
 # empty final patch to facilitate testing of kernel patches
@@ -1337,6 +1356,12 @@ This package provides debug information for the libperf package.
 %{expand:%%global _find_debuginfo_opts %{?_find_debuginfo_opts} -p '.*%%{_libdir}/libperf.so.*(\.debug)?|XXX' -o libperf-debuginfo.list}
 # with_libperf
 %endif
+
+%package common
+Summary: Files of OOT modules that would belong in common packages
+%description common
+This package contains files of out-of-tree modules that would belong
+in common packages.
 
 %if %{with_tools}
 %package -n %{package_name}-tools
@@ -1584,6 +1609,33 @@ This package provides less commonly used kernel modules for the %{?2:%{2} }kerne
 %{nil}
 
 #
+# This macro creates a kernel-<subpackage>-modules-akmods package.
+#	%%kernel_modules_akmods_package [-m] <subpackage> <pretty-name>
+#
+%define kernel_modules_akmods_package(m) \
+%package %{?1:%{1}-}modules-akmods\
+Summary: OOT kernel modules that match the %{?2:%{2} }kernel\
+License: BROADCOM and CDDL AND GPL-2.0-only AND MIT\
+Provides: %{name}%{?1:-%{1}}-modules-akmods-%{_target_cpu} = %{specrpmversion}-%{release}\
+Provides: %{name}%{?1:-%{1}}-modules-akmods-%{_target_cpu} = %{specrpmversion}-%{release}%{uname_suffix %{?1}}\
+Provides: %{name}%{?1:-%{1}}-modules-akmods = %{specrpmversion}-%{release}%{uname_suffix %{?1}}\
+Provides: installonlypkg(kernel-module)\
+Provides: evdi-kmod = %{evdi_version}\
+Provides: %{name}%{?1:-%{1}}-modules-akmods-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
+Requires: %{name}-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
+Requires: %{name}%{?1:-%{1}}-modules-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
+Requires: %{name}%{?1:-%{1}}-modules-core-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
+%if %{-m:1}%{!-m:0}\
+Requires: %{name}-modules-akmods-uname-r = %{KVERREL}%{uname_variant %{?1}}\
+%endif\
+AutoReq: no\
+AutoProv: yes\
+%description %{?1:%{1}-}modules-akmods\
+This package provides traditionally OOT modules for the %{?2:%{2} }kernel package.\
+Refer to their respective licenses.\
+%{nil}
+
+#
 # This macro creates a kernel-<subpackage>-modules package.
 #	%%kernel_modules_package [-m] <subpackage> <pretty-name>
 #
@@ -1674,6 +1726,7 @@ Requires: %{name}-%{?1:%{1}-}-modules-core-uname-r = %{KVERREL}%{uname_variant %
 %{expand:%%kernel_modules_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
 %{expand:%%kernel_modules_core_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
 %{expand:%%kernel_modules_extra_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%{expand:%%kernel_modules_akmods_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
 %if %{-m:0}%{!-m:1}\
 %{expand:%%kernel_modules_internal_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}}}\
 %if 0%{!?fedora:1}\
@@ -2010,11 +2063,16 @@ cp -a %{SOURCE1} .
 %{log_msg "Start of patch applications"}
 %if !%{nopatches}
 
-ApplyOptionalPatch patch-redhat.patch
-ApplyOptionalPatch patch-handheld.patch
+ApplyOptionalPatch patch-1-redhat.patch
+ApplyOptionalPatch patch-2-handheld.patch
+ApplyOptionalPatch patch-3-akmods.patch
 %endif
 
 ApplyOptionalPatch linux-kernel-test.patch
+
+# Copy broadcom blob
+mkdir -p drivers/custom/broadcom-wl/lib
+cp -a %{SOURCE4} drivers/custom/broadcom-wl/lib/wlc_hybrid.o_shipped
 
 %{log_msg "End of patch applications"}
 # END OF PATCH APPLICATIONS
@@ -2776,6 +2834,7 @@ BuildKernel() {
         echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules-core.list
         echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules.list
         echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules-extra.list
+        echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules-akmods.list
         echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules-internal.list
         echo '%%defattr(-,-,-)' > ../kernel${Variant:+-${Variant}}-modules-partner.list
         mkdir -p $RPM_BUILD_ROOT/lib/modules/$KernelVer/kernel
@@ -2956,6 +3015,7 @@ BuildKernel() {
         create_module_file_list "kernel" ../modules.list ../kernel${Variant:+-${Variant}}-modules.list 0 0
         create_module_file_list "internal" ../modules-internal.list ../kernel${Variant:+-${Variant}}-modules-internal.list 0 1
         create_module_file_list "kernel" ../modules-extra.list ../kernel${Variant:+-${Variant}}-modules-extra.list 0 1
+        create_module_file_list "kernel" ../modules-akmods.list ../kernel${Variant:+-${Variant}}-modules-akmods.list 0 1
 %if 0%{!?fedora:1}
         create_module_file_list "partner" ../modules-partner.list ../kernel${Variant:+-${Variant}}-modules-partner.list 1 1
 %endif
@@ -3519,6 +3579,12 @@ rm -rf %{buildroot}%{_libdir}/traceevent
 rm -rf %{buildroot}%{_libdir}/libperf.a
 %endif
 
+# setup common files
+%{log_msg "Setup common package files"}
+pushd drivers/custom
+%{make} INSTALL_DIR=%{buildroot} install
+popd
+
 %if %{with_tools}
 %ifarch %{cpupowerarchs}
 %{make} -C tools/power/cpupower DESTDIR=$RPM_BUILD_ROOT libdir=%{_libdir} libexecdir=%{_libexecdir} mandir=%{_mandir} unitdir=%{_unitdir} CPUFREQ_BENCH=false install
@@ -3787,6 +3853,19 @@ fi\
 %{nil}
 
 #
+# This macro defines a %%post script for a kernel*-modules-akmods package.
+# It also defines a %%postun script that does the same thing.
+#	%%kernel_modules_akmods_post [<subpackage>]
+#
+%define kernel_modules_akmods_post() \
+%{expand:%%post %{?1:%{1}-}modules-akmods}\
+/sbin/depmod -a %{KVERREL}%{?1:+%{1}}\
+%{nil}\
+%{expand:%%postun %{?1:%{1}-}modules-akmods}\
+/sbin/depmod -a %{KVERREL}%{?1:+%{1}}\
+%{nil}
+
+#
 # This macro defines a %%post script for a kernel*-modules-internal package.
 # It also defines a %%postun script that does the same thing.
 #	%%kernel_modules_internal_post [<subpackage>]
@@ -3879,6 +3958,7 @@ fi\
 %{expand:%%kernel_modules_post %{?-v*}}\
 %{expand:%%kernel_modules_core_post %{?-v*}}\
 %{expand:%%kernel_modules_extra_post %{?-v*}}\
+%{expand:%%kernel_modules_akmods_post %{?-v*}}\
 %{expand:%%kernel_modules_internal_post %{?-v*}}\
 %if 0%{!?fedora:1}\
 %{expand:%%kernel_modules_partner_post %{?-v*}}\
@@ -4110,6 +4190,15 @@ fi\
 # with_libperf
 %endif
 
+%files common
+/usr/lib/modules-load.d/20-akmods.conf
+/usr/lib/modprobe.d/20-akmods.conf
+/usr/lib/udev/rules.d/70-razer.rules
+/usr/lib/udev/razer_mount
+/usr/lib/udev/rules.d/70-vhba.rules
+/usr/lib/modprobe.d/xone.conf
+/usr/bin/v4l2loopback-ctl
+/usr/lib/udev/rules.d/10-t150.rules
 
 %if %{with_tools}
 %ifnarch %{cpupowerarchs}
@@ -4177,6 +4266,7 @@ fi\
 # libcpupower Python bindings
 %{python3_sitearch}/_raw_pylibcpupower.so
 %{python3_sitearch}/raw_pylibcpupower.py
+%{python3_sitearch}/__pycache__/raw_pylibcpupower.*.pyc
 %endif
 %if %{with_ynl}
 %{_libdir}/libynl*
@@ -4289,6 +4379,7 @@ fi\
 /usr/src/kernels/%{KVERREL}%{?3:+%{3}}\
 %{expand:%%files %{?3:%{3}-}devel-matched}\
 %{expand:%%files -f kernel-%{?3:%{3}-}modules-extra.list %{?3:%{3}-}modules-extra}\
+%{expand:%%files -f kernel-%{?3:%{3}-}modules-akmods.list %{?3:%{3}-}modules-akmods}\
 %{expand:%%files -f kernel-%{?3:%{3}-}modules-internal.list %{?3:%{3}-}modules-internal}\
 %if 0%{!?fedora:1}\
 %{expand:%%files -f kernel-%{?3:%{3}-}modules-partner.list %{?3:%{3}-}modules-partner}\
