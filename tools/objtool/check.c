@@ -4807,5 +4807,8 @@ out:
 		disas_warned_funcs(file);
 	}
 
+	if (opts.skipcheck)
+		ret = 0;
+
 	return ret;
 }
