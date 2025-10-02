@@ -1,3 +1,8 @@
+* Thu Oct 02 2025 Augusto Caringi <acaringi@redhat.com> [6.16.10-0]
+- Turn on USB_FUNCTIONFS for Fedora (Justin M. Forbes)
+- Linux v6.16.10
+Resolves: 
+
 * Thu Sep 25 2025 Augusto Caringi <acaringi@redhat.com> [6.16.9-0]
 - Linux v6.16.9
 Resolves: 
