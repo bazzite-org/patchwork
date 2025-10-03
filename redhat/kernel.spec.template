@@ -264,6 +264,8 @@ Summary: The Linux kernel
 %define with_selftests %{?_without_selftests: 0} %{?!_without_selftests: 1}
 # include nvidia (--with nvidia):
 %define with_nvidia  %{?_with_nvidia:     1} %{?!_with_nvidia:     0}
+# include zfs (--with zfs):
+%define with_zfs  %{?_with_zfs:     1} %{?!_with_zfs:     0}
 #
 # Additional options for user-friendly one-off kernel building:
 #
@@ -978,6 +980,11 @@ Source5: nvidia-kmod-%{_build_arch}-%{nvidia_version}-%{nvidia_version_rel}.tar.
 Source6: nvidia-kmod-%{_build_arch}-%{nvidia_version_lts}.tar.xz
 %endif
 
+%define zfs_version %%ZFSVERSION%%
+%if %{with_zfs}
+Source7: zfs-%{zfs_version}.tar.gz
+%endif
+
 Source10: redhatsecurebootca5.cer
 Source13: redhatsecureboot501.cer
 
@@ -1633,6 +1640,9 @@ Provides: installonlypkg(kernel-module)\
 Provides: evdi-kmod = %{evdi_version}\
 Provides: vhba\
 Provides: openrazer-kernel-modules-dkms\
+%if %{with_zfs}\
+Provides: zfs-kmod = %{zfs_version}\
+%endif\
 Provides: %{name}%{?1:-%{1}}-modules-akmods-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
 Requires: %{name}-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
 Requires: %{name}%{?1:-%{1}}-modules-uname-r = %{KVERREL}%{uname_suffix %{?1}}\
@@ -2135,6 +2145,12 @@ mkdir -p drivers/custom/nvidia-lts
 tar -xJf %{SOURCE6} -C drivers/custom/nvidia-lts
 %endif # with_nvidia
 
+%if %{with_zfs}
+tar xzf %{SOURCE7}
+rm -rf drivers/custom/zfs
+mv zfs-%{zfs_version} drivers/custom/zfs
+%endif
+
 %{log_msg "End of patch applications"}
 # END OF PATCH APPLICATIONS
 
@@ -2453,6 +2469,18 @@ BuildKernel() {
 	%{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags} modules %{?sparse_mflags} || exit 1
     fi
 
+    %if %{with_zfs}
+    if [ $DoModules -eq 1 ]; then
+    cdir=$(pwd)
+    pushd drivers/custom/zfs
+    sh autogen.sh
+    ./configure --with-linux="$cdir" --with-linux-obj="$cdir"
+    popd
+    %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
+      -C $(pwd)/drivers/custom/zfs/module %{?_smp_mflags} modules CONFIG_DEBUG_INFO_BTF_MODULES= || exit 1
+    fi
+    %endif # with_zfs
+
     %if %{with_nvidia}
     if [ $DoModules -eq 1 ]; then
     %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
@@ -2570,6 +2598,13 @@ BuildKernel() {
 	# we'll get it from the linux-firmware package and we don't want conflicts
 	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} modules_install KERNELRELEASE=$KernelVer mod-fw=
     fi
+
+    %if %{with_zfs}
+    if [ $DoModules -eq 1 ]; then    
+    %{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} \
+      -C $(pwd)/drivers/custom/zfs/module modules_install mod-fw= INSTALL_MOD_DIR=kernel/drivers/custom/zfs CONFIG_DEBUG_INFO_BTF_MODULES=
+    fi
+    %endif # with_zfs
 
   %if %{with_nvidia}
     if [ $DoModules -eq 1 ]; then   
