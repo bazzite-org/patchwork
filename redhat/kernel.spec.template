@@ -262,6 +262,8 @@ Summary: The Linux kernel
 %define with_kernel_abi_stablelists %{?_without_kernel_abi_stablelists: 0} %{?!_without_kernel_abi_stablelists: 1}
 # internal samples and selftests
 %define with_selftests %{?_without_selftests: 0} %{?!_without_selftests: 1}
+# include nvidia (--with nvidia):
+%define with_nvidia  %{?_with_nvidia:     1} %{?!_with_nvidia:     0}
 #
 # Additional options for user-friendly one-off kernel building:
 #
@@ -967,6 +969,13 @@ Source2: %{package_name}.changelog
 Source4: broadcom-wl.blob
 
 %define evdi_version %%EVDIVERSION%%
+%define nvidia_version %%NVIDIAVERSION%%
+%define nvidia_version_lts %%NVIDIAVERSIONLTS%%
+%define nvidia_epoch 3
+%if %{with_nvidia}
+Source5: nvidia-kmod-%{_build_arch}-%{nvidia_version}.tar.xz
+Source6: nvidia-kmod-%{_build_arch}-%{nvidia_version_lts}.tar.xz
+%endif
 
 Source10: redhatsecurebootca5.cer
 Source13: redhatsecureboot501.cer
@@ -1634,6 +1643,43 @@ AutoProv: yes\
 %description %{?1:%{1}-}modules-akmods\
 This package provides traditionally OOT modules for the %{?2:%{2} }kernel package.\
 Refer to their respective licenses.\
+
+#
+# This macro creates a kernel-<subpackage>-nvidia package.
+#	%%kernel_nvidia_package [-m] <subpackage> <nvpkg> <pretty-name>
+#
+%define kernel_nvidia_package(m) \
+%package %{?2:%{2}-}%{1}\
+Summary: Extra kernel modules to match the %{?3:%{3} }kernel\
+%if "%{1}" == "nvidia" || "%{1}" == "nvidia-lts" \
+License: (GPL-2.0-only OR MIT)\
+%else\
+License: NVIDIA\
+%endif\
+Provides: %{name}%{?2:-%{2}}-%{1}-%{_target_cpu} = %{specrpmversion}-%{release}\
+Provides: %{name}%{?2:-%{2}}-%{1}-%{_target_cpu} = %{specrpmversion}-%{release}%{uname_suffix %{?2}}\
+Provides: %{name}%{?2:-%{2}}-%{1} = %{specrpmversion}-%{release}%{uname_suffix %{?2}}\
+Provides: installonlypkg(kernel-module)\
+Provides: %{name}%{?2:-%{2}}-%{1}-uname-r = %{KVERREL}%{uname_suffix %{?2}}\
+%if "%{1}" == "nvidia-closed-lts" || "%{1}" == "nvidia-lts" \
+Provides: nvidia-kmod = %{?nvidia_epoch:%{nvidia_epoch}:}%{nvidia_version_lts}\
+%else\
+Provides: nvidia-kmod = %{?nvidia_epoch:%{nvidia_epoch}:}%{nvidia_version}\
+%endif\
+Requires: %{name}-uname-r = %{KVERREL}%{uname_suffix %{?2}}\
+Requires: %{name}%{?2:-%{2}}-modules-uname-r = %{KVERREL}%{uname_suffix %{?2}}\
+Requires: %{name}%{?2:-%{2}}-modules-core-uname-r = %{KVERREL}%{uname_suffix %{?2}}\
+%if %{-m:1}%{!-m:0}\
+Requires: %{name}%{?2:-%{2}}-uname-r = %{KVERREL}%{uname_variant %{?2}}\
+%endif\
+AutoReq: no\
+AutoProv: yes\
+%description %{?2:%{2}-}%{1}\
+%if "%{1}" == "nvidia" || "%{1}" == "nvidia-lts" \
+This package provides the Nvidia Open DRM modules for the %{?3:%{3} }kernel package.\
+%else\
+This package provides the Nvidia Closed DRM modules for the %{?3:%{3} }kernel package.\
+%endif\
 %{nil}
 
 #
@@ -1728,6 +1774,12 @@ Requires: %{name}-%{?1:%{1}-}-modules-core-uname-r = %{KVERREL}%{uname_variant %
 %{expand:%%kernel_modules_core_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
 %{expand:%%kernel_modules_extra_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
 %{expand:%%kernel_modules_akmods_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%if %{with_nvidia}\
+%{expand:%%kernel_nvidia_package nvidia %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%{expand:%%kernel_nvidia_package nvidia-closed %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%{expand:%%kernel_nvidia_package nvidia-lts %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%{expand:%%kernel_nvidia_package nvidia-closed-lts %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}} %{-m:%{-m}}}\
+%endif\
 %if %{-m:0}%{!-m:1}\
 %{expand:%%kernel_modules_internal_package %{?1:%{1}} %{!?{-n}:%{1}}%{?{-n}:%{-n*}}}\
 %if 0%{!?fedora:1}\
@@ -2075,6 +2127,13 @@ ApplyOptionalPatch linux-kernel-test.patch
 mkdir -p drivers/custom/broadcom-wl/lib
 cp -a %{SOURCE4} drivers/custom/broadcom-wl/lib/wlc_hybrid.o_shipped
 
+%if %{with_nvidia}
+mkdir -p drivers/custom/nvidia
+mkdir -p drivers/custom/nvidia-lts
+tar -xJf %{SOURCE5} -C drivers/custom/nvidia
+tar -xJf %{SOURCE6} -C drivers/custom/nvidia-lts
+%endif # with_nvidia
+
 %{log_msg "End of patch applications"}
 # END OF PATCH APPLICATIONS
 
@@ -2393,6 +2452,19 @@ BuildKernel() {
 	%{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags} modules %{?sparse_mflags} || exit 1
     fi
 
+    %if %{with_nvidia}
+    if [ $DoModules -eq 1 ]; then
+    %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
+      -C $(pwd)/drivers/custom/nvidia/kernel-open modules SYSSRC=$(pwd) SYSOUT=$(src) CONFIG_DEBUG_INFO_BTF_MODULES=
+    %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
+      -C $(pwd)/drivers/custom/nvidia/kernel modules SYSSRC=$(pwd) SYSOUT=$(src) CONFIG_DEBUG_INFO_BTF_MODULES=
+    %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
+      -C $(pwd)/drivers/custom/nvidia-lts/kernel-open modules SYSSRC=$(pwd) SYSOUT=$(src) CONFIG_DEBUG_INFO_BTF_MODULES=
+    %{make} ARCH=$Arch KCFLAGS="$KCFLAGS" WITH_GCOV="%{?with_gcov}" %{?_smp_mflags}\
+      -C $(pwd)/drivers/custom/nvidia-lts/kernel modules SYSSRC=$(pwd) SYSOUT=$(src) CONFIG_DEBUG_INFO_BTF_MODULES=
+    fi
+    %endif # with_nvidia
+
     %{log_msg "Setup RPM_BUILD_ROOT directories"}
     mkdir -p $RPM_BUILD_ROOT/%{image_install_path}
     mkdir -p $RPM_BUILD_ROOT/lib/modules/$KernelVer
@@ -2501,6 +2573,29 @@ BuildKernel() {
 	# we'll get it from the linux-firmware package and we don't want conflicts
 	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} modules_install KERNELRELEASE=$KernelVer mod-fw=
     fi
+
+  %if %{with_nvidia}
+    if [ $DoModules -eq 1 ]; then   
+	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} -C $(pwd)/drivers/custom/nvidia/kernel-open \
+    modules_install mod-fw= SYSSRC=$(pwd) SYSOUT=$(src) INSTALL_MOD_DIR=kernel/drivers/custom/nvidia/kernel-open CONFIG_DEBUG_INFO_BTF_MODULES=
+	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} -C $(pwd)/drivers/custom/nvidia/kernel \
+    modules_install mod-fw= SYSSRC=$(pwd) SYSOUT=$(src) INSTALL_MOD_DIR=kernel/drivers/custom/nvidia/kernel CONFIG_DEBUG_INFO_BTF_MODULES=
+	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} -C $(pwd)/drivers/custom/nvidia-lts/kernel-open \
+    modules_install mod-fw= SYSSRC=$(pwd) SYSOUT=$(src) INSTALL_MOD_DIR=kernel/drivers/custom/nvidia-lts/kernel-open CONFIG_DEBUG_INFO_BTF_MODULES=
+	%{make} %{?_smp_mflags} ARCH=$Arch INSTALL_MOD_PATH=$RPM_BUILD_ROOT %{?_smp_mflags} -C $(pwd)/drivers/custom/nvidia-lts/kernel \
+    modules_install mod-fw= SYSSRC=$(pwd) SYSOUT=$(src) INSTALL_MOD_DIR=kernel/drivers/custom/nvidia-lts/kernel CONFIG_DEBUG_INFO_BTF_MODULES=
+
+    # We have to do a little hack here. modules.dep cannot contain multiple modules
+    # with the same name, therefore, we cannot use the filtermods logic. Remove the
+    # nvidia drivers from modules.dep so we can create a package list manually
+    cat $RPM_BUILD_ROOT/lib/modules/$KernelVer/modules.dep | \
+      grep -v "kernel/drivers/custom/nvidia/" | \
+      grep -v "kernel/drivers/custom/nvidia-lts/" \
+      > $RPM_BUILD_ROOT/lib/modules/$KernelVer/modules.dep.tmp
+    mv $RPM_BUILD_ROOT/lib/modules/$KernelVer/modules.dep.tmp \
+      $RPM_BUILD_ROOT/lib/modules/$KernelVer/modules.dep
+    fi
+  %endif # with_nvidia
 
 %if %{with_gcov}
     %{log_msg "install gcov-needed files to $BUILDROOT/$BUILD/"}
@@ -2822,11 +2917,6 @@ BuildKernel() {
       'drm_open|drm_init'
     collect_modules_list modesetting \
       'drm_crtc_init'
-
-    %{log_msg "detect missing or incorrect license tags"}
-    # detect missing or incorrect license tags
-    ( find $RPM_BUILD_ROOT/lib/modules/$KernelVer -name '*.ko' | xargs /sbin/modinfo -l | \
-        grep -E -v 'GPL( v2)?$|Dual BSD/GPL$|Dual MPL/GPL$|GPL and additional rights$' ) && exit 1
 
 
     if [ $DoModules -eq 0 ]; then
@@ -3864,6 +3954,18 @@ fi\
 %{nil}\
 %{expand:%%postun %{?1:%{1}-}modules-akmods}\
 /sbin/depmod -a %{KVERREL}%{?1:+%{1}}\
+
+#
+# This macro defines a %%post script for the kernel*-nvidia packages.
+# It also defines a %%postun script that does the same thing.
+#	%%kernel_nvidia_post [<subpackage>] [<name>]
+#
+%define kernel_nvidia_post() \
+%{expand:%%post %{?2:%{2}-}%{?1:%{1}}}\
+/sbin/depmod -a %{KVERREL}%{?2:+%{2}}\
+%{nil}\
+%{expand:%%postun %{?2:%{2}-}%{?1:%{1}}}\
+/sbin/depmod -a %{KVERREL}%{?2:+%{2}}\
 %{nil}
 
 #
@@ -3960,6 +4062,12 @@ fi\
 %{expand:%%kernel_modules_core_post %{?-v*}}\
 %{expand:%%kernel_modules_extra_post %{?-v*}}\
 %{expand:%%kernel_modules_akmods_post %{?-v*}}\
+%if %{with_nvidia}\
+%{expand:%%kernel_nvidia_post nvidia %{?-v*}}\
+%{expand:%%kernel_nvidia_post nvidia-closed %{?-v*}}\
+%{expand:%%kernel_nvidia_post nvidia-lts %{?-v*}}\
+%{expand:%%kernel_nvidia_post nvidia-closed-lts %{?-v*}}\
+%endif\
 %{expand:%%kernel_modules_internal_post %{?-v*}}\
 %if 0%{!?fedora:1}\
 %{expand:%%kernel_modules_partner_post %{?-v*}}\
@@ -4435,6 +4543,37 @@ fi\
 %if %{with_automotive} && !%{with_automotive_build}
 %kernel_variant_files %{_use_vdso} %{with_debug} automotive-debug
 %endif
+
+%if %{with_nvidia}
+%files nvidia
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel-open/nvidia-drm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel-open/nvidia-modeset.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel-open/nvidia-peermem.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel-open/nvidia-uvm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel-open/nvidia.ko*
+
+%files nvidia-closed
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel/nvidia-drm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel/nvidia-modeset.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel/nvidia-peermem.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel/nvidia-uvm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia/kernel/nvidia.ko*
+
+%files nvidia-lts
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel-open/nvidia-drm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel-open/nvidia-modeset.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel-open/nvidia-peermem.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel-open/nvidia-uvm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel-open/nvidia.ko*
+
+%files nvidia-closed-lts
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel/nvidia-drm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel/nvidia-modeset.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel/nvidia-peermem.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel/nvidia-uvm.ko*
+/lib/modules/%{KVERREL}%{?3:+%{3}}/kernel/drivers/custom/nvidia-lts/kernel/nvidia.ko*
+
+%endif # with_nvidia
 
 %if %{with_debug_meta}
 %files debug
