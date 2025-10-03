@@ -69,6 +69,7 @@ test -f "$SOURCES/$SPECFILE" &&
 	s/%%EVDIVERSION%%/$EVDIVERSION/
 	s/%%NVIDIAVERSION%%/$NVIDIAVERSION/
 	s/%%NVIDIAVERSIONLTS%%/$NVIDIAVERSIONLTS/
+	s/%%ZFSVERSION%%/$ZFSVERSION/
 	s/%%SPECSELFTESTS_MUST_BUILD%%/$SPECSELFTESTS_MUST_BUILD/" "$SOURCES/$SPECFILE"
 test -n "$RHSELFTESTDATA" && test -f "$SOURCES/$SPECFILE" && sed -i -e "
 	/%%SPECCHANGELOG%%/r $SOURCES/$SPECCHANGELOG
@@ -140,8 +141,8 @@ for dir in $(find $ "$TOPDIR/drivers/custom" -mindepth 1 -maxdepth 1 -type d 2>/
         elif [[ "$modname" == "cdemu" ]]; then
                 SUBDIR="vhba-module/"
 		EXTRA_FILES+=("vhba-module/debian/vhba-dkms.udev")
-	elif [[ ${modname,,} == nvidia* ]]; then
-		# Skip NVIDIA modules
+	elif [[ ${modname,,} == nvidia* || "$modname" == "zfs" ]]; then
+		# Skip NVIDIA/ZFS modules
 		continue
         fi
 
