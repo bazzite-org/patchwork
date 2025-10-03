@@ -167,3 +167,6 @@ UPSTREAMBUILD_GIT_ONLY ?=
 # Nvidia versions to build
 export NVIDIAVERSION ?= 580.95.05
 export NVIDIAVERSIONLTS ?= 580.95.05
+
+# ZFS version to build
+export ZFSVERSION ?= 2.4.0-rc2
