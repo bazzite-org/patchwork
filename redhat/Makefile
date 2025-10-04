@@ -758,9 +758,6 @@ sources-rh: $(TARBALL) $(KABI_TARBALL) $(KABIDW_TARBALL) generate-testpatch-tmp 
 		scripts/gating/rpminspect.yaml > $(SOURCES)/rpminspect.yaml
 	@$(REDHAT)/scripts/uki_addons/uki_create_json.py $(REDHAT)/scripts/uki_addons/uki_addons.json
 	@cp scripts/kernel-tools/kvm_stat.logrotate \
-		keys/rhel*.x509 \
-		keys/nvidia*.x509 \
-		keys/fedora*.x509 \
 		kabi/check-kabi \
 		configs/$(SPECPACKAGE_NAME)-*.config \
 		configs/partial*.config \
@@ -783,7 +780,7 @@ sources-rh: $(TARBALL) $(KABI_TARBALL) $(KABIDW_TARBALL) generate-testpatch-tmp 
 	[[ -n "$(AUTOMOTIVE_BUILD)" ]] && changelog_glob="kernel.changelog-*"; \
 	cat $$(ls -1 $$changelog_glob | sort -V -r) \
 		> $(SOURCES)/$(SPECPACKAGE_NAME).changelog
-	cp keys/redhatsecureboot{501,ca5}.cer $(SOURCES)/;
+	cp keys/ubmok*.cer $(SOURCES)/;
 	@for KABIARCH in $(ARCH_LIST); do \
 		cp kabi/Module.kabi_$$KABIARCH $(SOURCES)/; \
 		cp kabi/Module.kabi_dup_$$KABIARCH $(SOURCES)/; \
