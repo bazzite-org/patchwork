@@ -1,3 +1,33 @@
+* Mon Oct 06 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.1-1]
+- Add Bug to BugsFixed (Justin M. Forbes)
+- gpio: usbio: Add ACPI device-id for MTL-CVF devices (Hans de Goede)
+- i2c: usbio: Add ACPI device-id for MTL-CVF devices (Hans de Goede)
+- wifi: ath11k: Add missing platform IDs for quirk table (Mark Pearson)
+- blk-mq: fix blk_mq_tags double free while nr_requests grown (Yu Kuai)
+- usb: typec: ucsi: Handle incorrect num_connectors capability (Mark Pearson)
+- Initial setup for stable Fedora releases (Justin M. Forbes)
+- arm64: dts: qcom: x1e80100-lenovo-yoga-slim7x: add Bluetooth support (Jens Glathe)
+- redhat: config: Enable USBIO modules (Hans de Goede)
+- i2c: Add Intel USBIO I2C driver (Israel Cepeda)
+- gpio: Add Intel USBIO GPIO driver (Israel Cepeda)
+- usb: misc: Add Intel USBIO bridge driver (Israel Cepeda)
+- media: ov08x40: Fix the horizontal flip control (Hao Yao)
+- ACPI: scan: Add Intel CVS ACPI HIDs to acpi_ignore_dep_ids[] (Hans de Goede)
+- platform/x86: int3472: Increase ov08x40 handshake GPIO delay to 45 ms (Hans de Goede)
+- platform/x86: int3472: Rework regulator enable-time handling (Hans de Goede)
+- platform/x86: int3472: Convert int3472_gpio_map to use C99 initializers (Hans de Goede)
+- powerpc/tools: drop `-o pipefail` in gcc check scripts (Jan Stancek)
+- redhat/configs: enable CONFIG_KVM_INTEL_TDX for Fedora x86 (Daniel P. Berrangé)
+- KVM/TDX: Explicitly do WBINVD when no more TDX SEAMCALLs (Kai Huang)
+- x86/virt/tdx: Update the kexec section in the TDX documentation (Kai Huang)
+- x86/virt/tdx: Remove the !KEXEC_CORE dependency (Kai Huang)
+- x86/kexec: Disable kexec/kdump on platforms with TDX partial write erratum (Kai Huang)
+- x86/virt/tdx: Mark memory cache state incoherent when making SEAMCALL (Kai Huang)
+- x86/sme: Use percpu boolean to control WBINVD during kexec (Kai Huang)
+- x86/kexec: Consolidate relocate_kernel() function parameters (Kai Huang)
+- Linux v6.17.1
+Resolves: 
+
 * Mon Sep 29 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.0-1]
 - Reset RHEL_RELEASE for the 6.18 cycle (Justin M. Forbes)
 - Turn on USB_FUNCTIONFS for Fedora (Justin M. Forbes)
