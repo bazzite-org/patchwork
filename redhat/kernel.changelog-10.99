@@ -1,3 +1,9 @@
+* Sun Oct 12 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.2-1]
+- fedora: aarch64: Enable arm MHUv2 driver (Peter Robinson)
+- fedora: arm: Enable the NVMEM_IMX_OCOTP_ELE module (Peter Robinson)
+- Linux v6.17.2
+Resolves: 
+
 * Mon Oct 06 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.1-1]
 - Add Bug to BugsFixed (Justin M. Forbes)
 - gpio: usbio: Add ACPI device-id for MTL-CVF devices (Hans de Goede)
