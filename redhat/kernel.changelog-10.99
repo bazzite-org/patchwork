@@ -1,3 +1,7 @@
+* Wed Oct 15 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.3-1]
+- Linux v6.17.3
+Resolves: 
+
 * Sun Oct 12 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.2-1]
 - fedora: aarch64: Enable arm MHUv2 driver (Peter Robinson)
 - fedora: arm: Enable the NVMEM_IMX_OCOTP_ELE module (Peter Robinson)
