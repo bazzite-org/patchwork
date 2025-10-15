@@ -137,6 +137,18 @@ static const struct dmi_system_id s2idle_delay_quirks[] = {
 		},
 		.driver_data = (void *)&rog_ally_quirks
 	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC73Y"), // non-x (YA)
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
+	{
+		.matches = {
+			DMI_MATCH(DMI_BOARD_NAME, "RC73X"), // x (XA)
+		},
+		.driver_data = (void *)&rog_ally_quirks
+	},
 	/* Legion Go S */
 	{
 		.matches = {
