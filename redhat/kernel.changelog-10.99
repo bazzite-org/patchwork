@@ -1,3 +1,12 @@
+* Sun Oct 19 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.4-0]
+- Add Fedora 42 and 41 to release_targets (Justin M. Forbes)
+- RHEL_RELEASE should be 0, not 1 (Justin M. Forbes)
+- PCI: vmd: override irq_startup()/irq_shutdown() in vmd_init_dev_msi_info() (Inochi Amaoto)
+- fedora: arm64: Updates for AMD Xilinx devices (Peter Robinson)
+- Fix up config issue due to stable backport (Justin M. Forbes)
+- Linux v6.17.4
+Resolves: 
+
 * Wed Oct 15 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.3-1]
 - Linux v6.17.3
 Resolves: 
