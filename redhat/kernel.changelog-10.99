@@ -1,3 +1,7 @@
+* Thu Oct 23 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.5-0]
+- Linux v6.17.5
+Resolves: 
+
 * Sun Oct 19 2025 Justin M. Forbes <jforbes@fedoraproject.org> [6.17.4-0]
 - Add Fedora 42 and 41 to release_targets (Justin M. Forbes)
 - RHEL_RELEASE should be 0, not 1 (Justin M. Forbes)
