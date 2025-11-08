@@ -421,6 +421,14 @@ static irqreturn_t gpio_keys_gpio_isr(int irq, void *dev_id)
 		if (bdata->suspended  &&
 		    (button->type == 0 || button->type == EV_KEY)) {
 			/*
+			 * We woke up due to KEY_POWER. If we reprocess the
+			 * event userspace/PM logic will get confused and
+			 * the device will sleep again. Do not handle
+			 * KEY_POWER during the resume phase.
+			 */
+			if (button->code == KEY_POWER)
+				return IRQ_HANDLED;
+			/*
 			 * Simulate wakeup key press in case the key has
 			 * already released by the time we got interrupt
 			 * handler to run.
