@@ -12,7 +12,7 @@
 	url = https://github.com/hhd-dev/bmi260
 [submodule "drivers/custom/xonedo"]
 	path = drivers/custom/xonedo
-	url = https://github.com/bazzite-org/xonedo
+	url = https://github.com/dlundqvist/xone
 [submodule "drivers/custom/kvfm"]
 	path = drivers/custom/kvfm
 	url = https://github.com/gnif/LookingGlass
