@@ -121,7 +121,7 @@ INCLUDE_FILES=("*.c" "*.h" "Makefile" "Kconfig" "Kbuild")
 cp "$TOPDIR/drivers/custom/broadcom-wl/lib/wlc_hybrid.o_shipped" "$SOURCES/broadcom-wl.blob"
 
 touch ${SOURCES}/patch-3-akmods.patch
-for dir in $(find $ "$TOPDIR/drivers/custom" -mindepth 1 -maxdepth 1 -type d 2>/dev/null || echo ""); do
+for dir in $(find $ "$TOPDIR/drivers/custom" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort || echo ""); do
         SUBDIR=""
 	EXTRA_FILES=()
 
