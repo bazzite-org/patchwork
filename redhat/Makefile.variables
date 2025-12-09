@@ -162,3 +162,8 @@ endif
 # be set to 1 to decrease the kernel UTS_RELEASE and SPECBUILD by 11 characters
 # (YYYYMMDDgit).
 UPSTREAMBUILD_GIT_ONLY ?=
+
+# Nvidia versions to build
+NVIDIAVERSION ?= 590.44.01
+NVIDIAVERSIONREL ?= 1
+NVIDIAVERSIONLTS ?= 580.95.05
